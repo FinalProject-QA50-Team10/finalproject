@@ -2,6 +2,7 @@ package com.telerikacademy.testframework;
 
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -43,6 +44,14 @@ public class UserActions {
         LOGGER.info("Clicking on element " + key);
         WebElement element = driver.findElement(By.xpath(locator));
         element.click();
+    }
+
+    public void pressKey(Keys key) {
+        // TODO: Implement the method
+        // 1. Initialize Actions
+        Actions action = new Actions(driver);
+        // 2. Perform key press
+        action.sendKeys(key).build().perform();
     }
 
     public void typeValueInField(String value, String field, Object... fieldArguments) {
@@ -105,6 +114,34 @@ public class UserActions {
         String value = element.getAttribute(attributeName);
         // 3. Assert equality with expected value
         Assertions.assertEquals(format("Element with locator %s doesn't match", attributeName), getLocatorValueByKey(attributeValue), value);
+    }
+
+    public WebElement getElement(String key, Object... arguments) {
+        String locator = getLocatorValueByKey(key, arguments);
+        LOGGER.info("Hovering on element " + key);
+        WebElement element = driver.findElement(By.xpath(locator));
+        return element;
+    }
+
+    public String getElementAttribute(String locator, String attributeName) { // attributeName = po id, x-path..
+        // TODO: Implement the method
+        // 1. Find Element using the locator value from Properties
+        String locatorKey = getLocatorValueByKey(locator);
+        WebElement element = driver.findElement(By.xpath(locatorKey));
+        // 2. Get the element attribute
+        // 3. Return the expected value
+        return element.getAttribute(attributeName);
+    }
+
+    public void scrollDown(String locator)
+    {
+        String xpath = getLocatorValueByKey(locator);
+        WebElement element = driver.findElement(By.xpath(xpath));
+
+        Actions actions = new Actions(driver);
+        actions.scrollToElement(element);
+        //  actions.moveToElement(element);
+        actions.perform();
     }
 
     private String getLocatorValueByKey(String locator) {
