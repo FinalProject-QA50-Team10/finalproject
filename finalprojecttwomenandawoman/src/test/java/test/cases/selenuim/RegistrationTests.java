@@ -1,4 +1,4 @@
-package test.cases;
+package test.cases.selenuim;
 
 public class RegistrationTests {
 }
