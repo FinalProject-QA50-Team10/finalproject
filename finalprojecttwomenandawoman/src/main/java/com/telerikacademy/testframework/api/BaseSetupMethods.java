@@ -3,25 +3,26 @@ package com.telerikacademy.testframework.api;
 import com.telerikacademy.testframework.api.models.PublicPostsModel;
 import com.telerikacademy.testframework.api.models.SearchModel;
 import io.restassured.RestAssured;
+import io.restassured.authentication.FormAuthConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 import static com.telerikacademy.testframework.api.utils.Endpoints.*;
-import static org.apache.http.HttpStatus.SC_ACCEPTED;
-import static org.apache.http.HttpStatus.SC_OK;
+import static io.restassured.RestAssured.given;
+import static org.apache.http.HttpStatus.*;
 
 public class BaseSetupMethods {
 
     private RequestSpecification getRestAssured()
     {
-        return RestAssured
-                .given()
+        return given()
                 .contentType(ContentType.JSON)
                 .log().all()
                 .baseUri(BASE_API_URL);
@@ -65,12 +66,29 @@ public class BaseSetupMethods {
         return Arrays.asList(response.getBody().as(SearchModel[].class));
     }
 
+    public Response signInWithUserMrBeast() {
+        RestAssured.baseURI = BASE_URL;
+
+        Response response = given()
+                .auth()
+                .form(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, new FormAuthConfig(AUTHENTICATE, MR_BEAST_USERNAME, MR_BEAST_PASSWORD))
+                .post(AUTHENTICATE);
+
+        return response;
+    }
+
           //############# Asserts #############
 
     public void assertStatusCodeIsOk(int statusCode)
     {
         Assertions.assertEquals(SC_OK, statusCode, "Incorrect status code. Expected 200.");
         System.out.println("Status Code is 200.");
+    }
+
+    public void assertStatusCode302(int statusCode)
+    {
+        Assertions.assertEquals(SC_MOVED_TEMPORARILY, statusCode, "Incorrect status code. Expected 302.");
+        System.out.println("Status Code is 302.");
     }
 
     public void assertListIsNotEmpty(List<Object> object) {
