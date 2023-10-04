@@ -1,6 +1,7 @@
 package com.telerikacademy.testframework.api;
 
 import com.telerikacademy.testframework.api.models.PublicPostsModel;
+import com.telerikacademy.testframework.api.models.SearchModel;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -50,6 +51,19 @@ public class BaseSetupMethods {
                 .asString();
     }
 
+    public Response searchUsers(){
+        var body = String.format(SEARCH_BY_FIRST_AND_LAST_NAME_BODY, GEORGE_BUSH_NAME);
+
+        return getRestAssured()
+                .body(body)
+                .when()
+                .post(USERS);
+    }
+
+    public List<SearchModel> getListOfUsers(Response response)
+    {
+        return Arrays.asList(response.getBody().as(SearchModel[].class));
+    }
 
           //############# Asserts #############
 
@@ -59,18 +73,29 @@ public class BaseSetupMethods {
         System.out.println("Status Code is 200.");
     }
 
-    public void assertListIsNotEmpty(List<PublicPostsModel> posts) {
-        Assertions.assertFalse(posts.isEmpty());
-        System.out.println("Post list is not empty.");
+    public void assertListIsNotEmpty(List<Object> object) {
+        Assertions.assertFalse(object.isEmpty());
+        System.out.println("List is not empty.");
     }
 
+    // da priniram v otg. koj e private
     public void assertPostsArePublic(List<PublicPostsModel> posts)
     {
         for (var post : posts) {
             var publicField = post.mypublic;
             Assertions.assertTrue(publicField,
-                    String.format("Post is different than expected: %s.", post.toString()));
+                    String.format("Post is different than expected."));
         }
         System.out.println("Posts are public.");
+    }
+
+    public void assertUsername(List<SearchModel> users)
+    {
+        for (var user : users) {
+            var username = user.username;
+            Assertions.assertEquals(GEORGE_BUSH_USERNAME, username,
+                    String.format("Username is different than expected: %s.", username));
+        }
+        System.out.println("Usernames are correct than expected.");
     }
 }

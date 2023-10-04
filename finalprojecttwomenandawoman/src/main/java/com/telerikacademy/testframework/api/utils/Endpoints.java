@@ -12,12 +12,12 @@ public class Endpoints {
     public static final String AUTHENTICATE = "/authenticate";
 
     //users
-    public static final String USERS = BASE_API_URL + "/users";
-    public static final String GET_USERS = BASE_API_URL + "/users";
-    public static final String REGISTER_USER = BASE_API_URL + "/users/";
+    public static final String USERS = "/users";
+    public static final String GET_USERS = "/users";
+    public static final String REGISTER_USER = "/users/";
 
     //requests
-    public static final String SEND_REQUEST = BASE_API_URL + "/auth/request";
+    public static final String SEND_REQUEST = "/auth/request";
     public static final String GET_USER_REQUESTS = format("%s%s", BASE_API_URL, "/auth/users/%s/request/");
     public static final String APPROVE_REQUESTS = format("%s%s", BASE_API_URL, "/auth/users/%s/request/approve");
 
