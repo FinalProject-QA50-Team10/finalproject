@@ -21,4 +21,12 @@ public class Constants {
             "\"searchParam2\": \"%s\"," +
             "\"size\": 20" +
             "}";
+
+    public static final String CREATE_POST_WITH_MR_BEAST = "{\n" +
+            "  \"content\": \"Initial Post by MrBeast using Postman\",\n" +
+            "  \"picture\": \"\",\n" +
+            "  \"public\": true\n" +
+            "}";
 }
+
+
