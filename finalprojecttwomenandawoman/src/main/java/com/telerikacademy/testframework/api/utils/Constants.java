@@ -22,11 +22,11 @@ public class Constants {
             "\"size\": 20" +
             "}";
 
-    public static final String CREATE_POST_WITH_MR_BEAST = "{\n" +
-            "  \"content\": \"Initial Post by MrBeast using Postman\",\n" +
-            "  \"picture\": \"\",\n" +
-            "  \"public\": true\n" +
+    public static final String CREATE_POST_BODY = "{\"content\": \"Initial Post by MrBeast using Postman\"," +
+            "\"picture\": \"\"," +
+            "\"public\": true" +
             "}";
 }
+
 
 

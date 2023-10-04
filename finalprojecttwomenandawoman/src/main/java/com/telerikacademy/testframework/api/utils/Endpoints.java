@@ -23,7 +23,7 @@ public class Endpoints {
     public static final String APPROVE_REQUESTS = format("%s%s", BASE_API_URL, "/auth/users/%s/request/approve");
 
     //posts
-    public static final String CREATE_POST = BASE_API_URL + "/post/auth/creator";
+    public static final String CREATE_POST = "/post/auth/creator";
     public static final String EDIT_POST = BASE_API_URL + "/post/auth/editor";
     public static final String DELETE_POST = BASE_API_URL + "/post/auth/manager";
     public static final String LATEST_POSTS = "/post/";
