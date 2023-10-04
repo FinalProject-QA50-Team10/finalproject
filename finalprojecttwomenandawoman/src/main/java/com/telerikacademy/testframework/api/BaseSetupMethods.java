@@ -1,5 +1,6 @@
 package com.telerikacademy.testframework.api;
 
+import com.telerikacademy.testframework.PropertiesManager;
 import com.telerikacademy.testframework.api.models.PublicPostsModel;
 import com.telerikacademy.testframework.api.models.SearchModel;
 import io.restassured.RestAssured;
@@ -77,6 +78,22 @@ public class BaseSetupMethods {
         return response;
     }
 
+    public Response signInUser(String username, String password) {
+
+        RestAssured.baseURI = BASE_URL;
+
+        String authString = MR_BEAST_USERNAME +
+                ":" + MR_BEAST_PASSWORD;
+        String authHeader = "Basic " + Base64.getEncoder().encodeToString(authString.getBytes());
+
+        return given()
+                .contentType("multipart/form-data; boundary=<calculated when request is sent>")
+                .log().all()
+                .formParam("username", username)
+                .formParam("password", password)
+                .when()
+                .post(AUTHENTICATE);
+    }
           //############# Asserts #############
 
     public void assertStatusCodeIsOk(int statusCode)
@@ -102,7 +119,7 @@ public class BaseSetupMethods {
         for (var post : posts) {
             var publicField = post.mypublic;
             Assertions.assertTrue(publicField,
-                    String.format("Post is different than expected."));
+                    String.format("Post with ID %s is different than expected. Public type is %s.", post.postId, post.mypublic));
         }
         System.out.println("Posts are public.");
     }
