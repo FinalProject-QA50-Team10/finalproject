@@ -82,10 +82,6 @@ public class BaseSetupMethods {
 
         RestAssured.baseURI = BASE_URL;
 
-        String authString = MR_BEAST_USERNAME +
-                ":" + MR_BEAST_PASSWORD;
-        String authHeader = "Basic " + Base64.getEncoder().encodeToString(authString.getBytes());
-
         return given()
                 .contentType("multipart/form-data; boundary=<calculated when request is sent>")
                 .log().all()
