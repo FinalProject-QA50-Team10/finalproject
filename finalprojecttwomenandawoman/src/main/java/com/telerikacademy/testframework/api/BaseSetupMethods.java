@@ -1,6 +1,5 @@
 package com.telerikacademy.testframework.api;
 
-import com.telerikacademy.testframework.PropertiesManager;
 import com.telerikacademy.testframework.api.models.PublicPostsModel;
 import com.telerikacademy.testframework.api.models.SearchModel;
 import io.restassured.RestAssured;
@@ -17,19 +16,19 @@ import java.util.List;
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 import static com.telerikacademy.testframework.api.utils.Endpoints.*;
 import static io.restassured.RestAssured.given;
-import static org.apache.http.HttpStatus.*;
+import static org.apache.http.HttpStatus.SC_MOVED_TEMPORARILY;
+import static org.apache.http.HttpStatus.SC_OK;
 
 public class BaseSetupMethods {
 
-    private RequestSpecification getRestAssured()
-    {
+    private RequestSpecification getRestAssured() {
         return given()
                 .contentType(ContentType.JSON)
                 .log().all()
                 .baseUri(BASE_API_URL);
     }
 
-    public Response browseAllPublicPosts(){
+    public Response browseAllPublicPosts() {
         return getRestAssured()
                 .when()
                 .get(LATEST_POSTS)
@@ -38,12 +37,11 @@ public class BaseSetupMethods {
                 .response();
     }
 
-    public List<PublicPostsModel> getListOfPosts(Response response)
-    {
-       return Arrays.asList(response.getBody().as(PublicPostsModel[].class));
+    public List<PublicPostsModel> getListOfPosts(Response response) {
+        return Arrays.asList(response.getBody().as(PublicPostsModel[].class));
     }
 
-    public String registerUser(){
+    public String registerUser() {
         return getRestAssured()
                 .body(REGISTRATION_BODY)
                 .when()
@@ -53,7 +51,7 @@ public class BaseSetupMethods {
                 .asString();
     }
 
-    public Response searchUsers(){
+    public Response searchUsers() {
         var body = String.format(SEARCH_BY_FIRST_AND_LAST_NAME_BODY, GEORGE_BUSH_NAME);
 
         return getRestAssured()
@@ -62,8 +60,7 @@ public class BaseSetupMethods {
                 .post(USERS);
     }
 
-    public List<SearchModel> getListOfUsers(Response response)
-    {
+    public List<SearchModel> getListOfUsers(Response response) {
         return Arrays.asList(response.getBody().as(SearchModel[].class));
     }
 
@@ -77,6 +74,19 @@ public class BaseSetupMethods {
 
         return response;
     }
+
+    public Response createPublicPost() {
+        RestAssured.baseURI = BASE_URL;
+
+            return getRestAssured().
+                    contentType(ContentType.JSON).
+                    body(CREATE_POST_WITH_MR_BEAST).
+                    post("/api/post/auth/creator").then().
+                    statusCode(200).extract().
+                    response();
+    }
+
+
 
     public Response signInUser(String username, String password) {
 
