@@ -50,8 +50,8 @@ public class BaseSetupMethods {
                 .asString();
     }
 
-    public Response searchUsers() {
-        var body = String.format(SEARCH_BY_FIRST_AND_LAST_NAME_BODY, GEORGE_BUSH_NAME);
+    public Response searchUsers(String name) {
+        var body = String.format(SEARCH_BY_FIRST_AND_LAST_NAME_BODY, name);
 
         return getRestAssured()
                 .body(body)
@@ -118,10 +118,11 @@ public class BaseSetupMethods {
         System.out.println("Posts are public.");
     }
 
-    public void assertUsername(List<SearchModel> users) {
+    public void assertUsername(List<SearchModel> users, String name)
+    {
         for (var user : users) {
             var username = user.username;
-            Assertions.assertEquals(GEORGE_BUSH_USERNAME, username,
+            Assertions.assertEquals(name, username,
                     String.format("Username is different than expected: %s.", username));
         }
         System.out.println("Usernames are correct than expected.");

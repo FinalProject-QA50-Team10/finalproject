@@ -5,10 +5,11 @@ import com.telerikacademy.testframework.api.models.PublicPostsModel;
 import com.telerikacademy.testframework.api.models.SearchModel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
-import restassured.base.BaseTestSetupBeforeAfter;
 
 import java.util.Collections;
 import java.util.List;
+
+import static com.telerikacademy.testframework.api.utils.Constants.*;
 
 public class UnregisteredUserTest {
     private final BaseSetupMethods userActionsAPI = new BaseSetupMethods();
@@ -30,11 +31,22 @@ public class UnregisteredUserTest {
     @Test
     public void when_guestUserSearchForUserWithValidName_expected_success()
     {
-        searchAsGuest = userActionsAPI.searchUsers();
+        searchAsGuest = userActionsAPI.searchUsers(GEORGE_BUSH_NAME);
         List<SearchModel> users = userActionsAPI.getListOfUsers(searchAsGuest);
 
         userActionsAPI.assertStatusCodeIsOk(searchAsGuest.statusCode());
         userActionsAPI.assertListIsNotEmpty(Collections.singletonList(users));
-        userActionsAPI.assertUsername(users);
+        userActionsAPI.assertUsername(users, GEORGE_BUSH_NAME);
+    }
+
+    @Test
+    public void when_guestUserSearchForUserWithValidFirstName_expected_success()
+    {
+        searchAsGuest = userActionsAPI.searchUsers(GEORGE_BUSH_NAME);
+        List<SearchModel> users = userActionsAPI.getListOfUsers(searchAsGuest);
+
+        userActionsAPI.assertStatusCodeIsOk(searchAsGuest.statusCode());
+        userActionsAPI.assertListIsNotEmpty(Collections.singletonList(users));
+        userActionsAPI.assertUsername(users, GEORGE_BUSH_NAME);
     }
 }
