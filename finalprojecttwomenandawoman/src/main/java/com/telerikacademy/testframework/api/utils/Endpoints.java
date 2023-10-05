@@ -14,6 +14,7 @@ public class Endpoints {
     public static final String GET_USERS = "/search";
     public static final String REGISTER_USER = "/users/";
     public static final String EDIT_USER_PROFILE = "/users/auth/%s/personal/";
+    public static final String GET_USER_INFO = "/users/auth/%d";
 
     //requests
     public static final String SEND_REQUEST = "/auth/request";
