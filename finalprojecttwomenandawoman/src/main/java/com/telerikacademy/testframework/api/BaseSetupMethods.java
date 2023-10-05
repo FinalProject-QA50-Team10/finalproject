@@ -1,9 +1,7 @@
 package com.telerikacademy.testframework.api;
 
-import com.telerikacademy.testframework.api.models.CommentModel;
 import com.telerikacademy.testframework.api.models.PublicPostsModel;
 import com.telerikacademy.testframework.api.models.SearchModel;
-import com.telerikacademy.testframework.api.utils.Constants;
 import io.restassured.RestAssured;
 import io.restassured.authentication.FormAuthConfig;
 import io.restassured.http.ContentType;
@@ -43,7 +41,7 @@ public class BaseSetupMethods {
     }
 
     public String registerUser() {
-        var body = String.format(REGISTRATION_BODY,VALID_JOB_TITLE, VALID_PASSWORD, RANDOM_EMAIL, VALID_PASSWORD, RANDOM_USERNAME);
+        var body = String.format(REGISTRATION_BODY, VALID_JOB_TITLE, VALID_PASSWORD, RANDOM_EMAIL, VALID_PASSWORD, RANDOM_USERNAME);
         return getRestAssured()
                 .body(body)
                 .when()
@@ -248,7 +246,27 @@ public class BaseSetupMethods {
         System.out.println("Usernames are correct.");
     }
 
-    public void assertRegistrationMessage(String responseMessage){
+    public void assertPostIdIsPositive(int postId) {
+        Assertions.assertTrue(postId > 0, "Post ID is not a positive number.");
+        System.out.println("Post ID is positive.");
+    }
+
+    public void assertContentIsExpected(String actualContent, String expectedContent) {
+        Assertions.assertEquals(expectedContent, actualContent, "Content is not as expected.");
+        System.out.println("Content is as expected.");
+    }
+
+    public void assertCategoryIdIsExpected(int categoryId, int expectedCategoryId) {
+        Assertions.assertEquals(expectedCategoryId, categoryId, "Category ID is not as expected.");
+        System.out.println("Category ID is as expected.");
+    }
+
+    public void assertCategoryNameIsExpected(String actualCategoryName, String expectedCategoryName) {
+        Assertions.assertEquals(expectedCategoryName, actualCategoryName, "Category name is not as expected.");
+        System.out.println("Category name is as expected.");
+    }
+
+    public void assertRegistrationMessage(String responseMessage) {
         var response = searchUsersByEmptyName();
         List<SearchModel> users = getListOfUsers(response);
         var lastUser = users.get(0);
@@ -258,7 +276,7 @@ public class BaseSetupMethods {
         System.out.println("Registration message is correct!");
     }
 
-    public void generateRandomUsername(){
+    public void generateRandomUsername() {
         String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "abcdefghijklmnopqrstuvxyz";
         int minLength = 2;
@@ -267,15 +285,14 @@ public class BaseSetupMethods {
         StringBuilder sb = new StringBuilder(length);
 
         for (int i = 0; i < length; i++) {
-            int index = (int)(alphaNumericString.length() * Math.random());
+            int index = (int) (alphaNumericString.length() * Math.random());
             sb.append(alphaNumericString.charAt(index));
         }
         RANDOM_USERNAME = sb.toString();
         RANDOM_EMAIL = sb.toString() + "user@abv.bg";
     }
 
-    private int generateRandomLength(int maxLength, int minLength)
-    {
+    private int generateRandomLength(int maxLength, int minLength) {
         Random rand = new Random();
         return rand.nextInt(maxLength - minLength + 1) + minLength;
     }
