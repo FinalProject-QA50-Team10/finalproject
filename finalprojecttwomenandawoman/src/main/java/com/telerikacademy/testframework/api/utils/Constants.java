@@ -10,7 +10,11 @@ public class Constants {
     public static final String JACK_NICHOLSON_PASSWORD = "TheJack123";
     public static final String TOM_CRUISE_USERNAME = "TomCruise";
     public static final String TOM_CRUISE_PASSWORD = "HaHaHa123!";
-
+    public static String RANDOM_USERNAME;
+    public static String  RANDOM_EMAIL;
+    public static String  VALID_PASSWORD = "HaHaHa123!";
+    public static String  EMPTY_NAME = "";
+    public static String  VALID_JOB_TITLE = "Author";
     public static final String USER_ID_FOR_TOM_CRUISE = "188";
     public static final String POST_DESCRIPTION_INVALID = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
             " Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient" +
@@ -29,14 +33,14 @@ public class Constants {
     public static final String EDIT_POST_DESCRIPTION_VALID = "Edit Valid Post";
     public static final String COMMENT_DESCRIPTION_VALID = "Valid Comment";
 
-    public static final String REGISTRATION_BODY = "{\"authorities\": [\"\"], " +
+    public static String REGISTRATION_BODY = "{\"authorities\": [\"\"], " +
             "\"category\": " +
             "{\"id\": 150," +
-            "\"name\": \"{{validJobTitle}}\"}," +
-            "\"confirmPassword\": \"{{MrBeastPassword}}\"," +
-            "\"email\": \"{{randomEmail}}\"," +
-            "\"password\": \"{{MrBeastPassword}}\"," +
-            "\"username\": \"{{randomUsername}}\"}";
+            "\"name\": \"%s\"}," +
+            "\"confirmPassword\": \"%s\"," +
+            "\"email\": \"%s\"," +
+            "\"password\": \"%s\"," +
+            "\"username\": \"%s\"}";
 
     public static final String SEARCH_BY_FIRST_AND_LAST_NAME_BODY = "{\"index\": 0, " +
             "\"next\": true," +

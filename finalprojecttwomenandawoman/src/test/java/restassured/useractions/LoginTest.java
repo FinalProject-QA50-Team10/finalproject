@@ -15,9 +15,6 @@ public class LoginTest {
     public void when_unauthenticatedUserLogin_expect_successLoginUser()
     {
         loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
-
-        loginAPI.assertStatusCodeIsOk(loginResponse.statusCode());
-
-        var t = 3;
+        loginAPI.assertStatusCode302(loginResponse.statusCode());
     }
 }

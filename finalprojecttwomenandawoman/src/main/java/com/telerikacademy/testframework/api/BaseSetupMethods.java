@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Assertions;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 import static com.telerikacademy.testframework.api.utils.Endpoints.*;
@@ -42,8 +43,9 @@ public class BaseSetupMethods {
     }
 
     public String registerUser() {
+        var body = String.format(REGISTRATION_BODY,VALID_JOB_TITLE, VALID_PASSWORD, RANDOM_EMAIL, VALID_PASSWORD, RANDOM_USERNAME);
         return getRestAssured()
-                .body(REGISTRATION_BODY)
+                .body(body)
                 .when()
                 .post(REGISTER_USER)
                 .then()
@@ -51,8 +53,17 @@ public class BaseSetupMethods {
                 .asString();
     }
 
-    public Response searchUsers(String name) {
+    public Response searchUsersByName(String name) {
         var body = String.format(SEARCH_BY_FIRST_AND_LAST_NAME_BODY, name);
+
+        return getRestAssured()
+                .body(body)
+                .when()
+                .post(USERS);
+    }
+
+    public Response searchUsersByEmptyName() {
+        var body = String.format(SEARCH_BY_FIRST_AND_LAST_NAME_BODY, EMPTY_NAME);
 
         return getRestAssured()
                 .body(body)
@@ -63,6 +74,9 @@ public class BaseSetupMethods {
     public List<SearchModel> getListOfUsers(Response response) {
         return Arrays.asList(response.getBody().as(SearchModel[].class));
     }
+//    public List<Response> getListOfUsers(Response response) {
+//        return Arrays.asList(response.getBody());
+//    }
 
     public Response createPublicPost(String username, String password, String description) {
         RestAssured.baseURI = BASE_API_URL;
@@ -86,12 +100,9 @@ public class BaseSetupMethods {
                 .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
                 .contentType("application/json")
                 .log().all()
-                .queryParam("postId", lastPostId)
                 .body(body)
-                .put(EDIT_POST);
+                .put(EDIT_POST + lastPostId);
     }
-
-
 
     public Response createComment(String username, String password, String description, int lastPostId) {
         RestAssured.baseURI = BASE_API_URL;
@@ -106,7 +117,6 @@ public class BaseSetupMethods {
                 .post(CREATE_COMMENT);
     }
 
-
     public Response signInUser(String username, String password) {
 
         RestAssured.baseURI = BASE_URL;
@@ -119,7 +129,6 @@ public class BaseSetupMethods {
                 .when()
                 .post(AUTHENTICATE);
     }
-
 
     //############# Asserts #############
 
@@ -172,12 +181,44 @@ public class BaseSetupMethods {
         System.out.println("Post is public.");
     }
 
-    public void assertUsername(List<SearchModel> users, String name) {
+    public void assertUsername(List<SearchModel> users, String searchedUsername) {
         for (var user : users) {
             var username = user.username;
-            Assertions.assertEquals(name, username,
+            Assertions.assertEquals(searchedUsername, username,
                     String.format("Username is different than expected: %s.", username));
         }
-        System.out.println("Usernames are correct than expected.");
+        System.out.println("Usernames are correct.");
+    }
+
+    public void assertRegistrationMessage(String responseMessage){
+        var response = searchUsersByEmptyName();
+        List<SearchModel> users = getListOfUsers(response);
+        var lastUser = users.get(0);
+        var lastUserId = lastUser.userId;
+        var expectedMessage = String.format("User with name %s and id %s was created", RANDOM_USERNAME, lastUserId);
+        Assertions.assertEquals(expectedMessage, responseMessage, "Expected message is different than actual.");
+        System.out.println("Registration message is correct!");
+    }
+
+    public void generateRandomUsername(){
+        String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "abcdefghijklmnopqrstuvxyz";
+        int minLength = 2;
+        int maxLength = 20;
+        int length = generateRandomLength(maxLength, minLength);
+        StringBuilder sb = new StringBuilder(length);
+
+        for (int i = 0; i < length; i++) {
+            int index = (int)(alphaNumericString.length() * Math.random());
+            sb.append(alphaNumericString.charAt(index));
+        }
+        RANDOM_USERNAME = sb.toString();
+        RANDOM_EMAIL = sb.toString() + "user@abv.bg";
+    }
+
+    private int generateRandomLength(int maxLength, int minLength)
+    {
+        Random rand = new Random();
+        return rand.nextInt(maxLength - minLength + 1) + minLength;
     }
 }
