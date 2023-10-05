@@ -10,7 +10,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
 @TestMethodOrder(OrderAnnotation.class)
-public class CommentTest {
+public class PublicCommentManipulationTest {
 
     private final BaseSetupMethods posts = new BaseSetupMethods();
     private static int lastPostId;
