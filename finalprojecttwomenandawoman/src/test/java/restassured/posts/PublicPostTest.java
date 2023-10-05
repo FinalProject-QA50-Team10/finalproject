@@ -18,8 +18,10 @@ public class PublicPostTest {
 
     private Response createNewPublicPost;
 
-    @Test
-    public void when_userSignsIn_expected_loginSuccessful() {
+    private Response createNewInvalidPublicPost;
+
+    @BeforeEach
+    public void loginSuccessful() {
 
         signInWithUserMrBeast = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         posts.assertStatusCode302(signInWithUserMrBeast.statusCode());
@@ -31,6 +33,15 @@ public class PublicPostTest {
 
         createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_VALID);
         posts.assertStatusCodeIsOk(createNewPublicPost.statusCode());
+        posts.assertPostContent(createNewPublicPost, "Valid Post");
+        posts.assertPostIsPublic(createNewPublicPost);
+    }
 
+    @Test
+    public void when_userSignsIn_expect_invalidPublicPostNotBeCreated() {
+        createNewInvalidPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
+                POST_DESCRIPTION_INVALID);
+        posts.assertStatusCode400(createNewInvalidPublicPost.statusCode());
+        posts.assertBadRequestError(createNewInvalidPublicPost);
     }
 }

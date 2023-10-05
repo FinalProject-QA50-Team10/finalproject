@@ -15,8 +15,7 @@ import java.util.List;
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 import static com.telerikacademy.testframework.api.utils.Endpoints.*;
 import static io.restassured.RestAssured.given;
-import static org.apache.http.HttpStatus.SC_MOVED_TEMPORARILY;
-import static org.apache.http.HttpStatus.SC_OK;
+import static org.apache.http.HttpStatus.*;
 
 public class BaseSetupMethods {
 
@@ -103,6 +102,11 @@ public class BaseSetupMethods {
         System.out.println("Status Code is 302.");
     }
 
+    public void assertStatusCode400(int statusCode) {
+        Assertions.assertEquals(SC_BAD_REQUEST, statusCode, "Incorrect status code. Expected 400.");
+        System.out.println("Status Code is 400.");
+    }
+
     public void assertListIsNotEmpty(List<Object> object) {
         Assertions.assertFalse(object.isEmpty());
         System.out.println("List is not empty.");
@@ -118,8 +122,26 @@ public class BaseSetupMethods {
         System.out.println("Posts are public.");
     }
 
-    public void assertUsername(List<SearchModel> users, String name)
-    {
+    public void assertBadRequestError(Response response) {
+        String error = response.jsonPath().getString("error");
+        Assertions.assertEquals("Bad Request", error, "Response does not have 'Bad Request' error.");
+        System.out.println("Response has 'Bad Request' error.");
+    }
+
+    public void assertPostContent(Response response, String expectedContent) {
+        String responseBody = response.getBody().asString();
+        Assertions.assertTrue(responseBody.contains(expectedContent),
+                String.format("Expected content '%s' not found in the response.", expectedContent));
+        System.out.println("New public post has been created.");
+    }
+
+    public void assertPostIsPublic(Response response) {
+        boolean isPublic = response.jsonPath().getBoolean("public");
+        Assertions.assertTrue(isPublic, "Post is not public.");
+        System.out.println("Post is public.");
+    }
+
+    public void assertUsername(List<SearchModel> users, String name) {
         for (var user : users) {
             var username = user.username;
             Assertions.assertEquals(name, username,
