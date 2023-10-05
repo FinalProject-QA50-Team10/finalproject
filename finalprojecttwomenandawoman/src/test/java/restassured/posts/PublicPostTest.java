@@ -60,4 +60,11 @@ public class PublicPostTest {
 
     }
 
+    @Test
+    @Order(6)
+    public void when_userSignIn_expect_lastPublicPostDeleted() {
+        Response lastPublicPostDeleted = posts.getLastPublicPost(lastPostId);
+        posts.assertStatusCode404(lastPublicPostDeleted.statusCode());
+    }
+
 }

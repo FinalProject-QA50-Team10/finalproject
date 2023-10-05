@@ -117,6 +117,15 @@ public class BaseSetupMethods {
                 .delete(DELETE_POST);
     }
 
+    public Response getLastPublicPost(int lastPostId) {
+        return getRestAssured()
+                .when()
+                .get(LATEST_POSTS + lastPostId)
+                .then()
+                .extract()
+                .response();
+    }
+
     public Response createComment(String username, String password, String description, int lastPostId) {
         RestAssured.baseURI = BASE_API_URL;
         String body = String.format(CREATE_COMMENT_BODY, COMMENT_DESCRIPTION_VALID, lastPostId, USER_ID_FOR_TOM_CRUISE);
@@ -183,6 +192,11 @@ public class BaseSetupMethods {
     public void assertStatusCode400(int statusCode) {
         Assertions.assertEquals(SC_BAD_REQUEST, statusCode, "Incorrect status code. Expected 400.");
         System.out.println("Status Code is 400.");
+    }
+
+    public void assertStatusCode404(int statusCode) {
+        Assertions.assertEquals(SC_NOT_FOUND, statusCode, "Incorrect status code. Expected 404.");
+        System.out.println("Status Code is 404.");
     }
 
     public void assertListIsNotEmpty(List<Object> object) {
