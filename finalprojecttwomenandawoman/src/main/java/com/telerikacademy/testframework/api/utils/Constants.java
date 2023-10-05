@@ -8,6 +8,8 @@ public class Constants {
     public static final String MR_BEAST_PASSWORD = "Abv123!";
     public static final String JACK_NICHOLSON_USERNAME = "JackNicholson";
     public static final String JACK_NICHOLSON_PASSWORD = "TheJack123";
+    public static final String TOM_CRUISE_USERNAME = "TomCruise";
+    public static final String TOM_CRUISE_PASSWORD = "HaHaHa123!";
     public static final String POST_DESCRIPTION_INVALID = "";
     public static final String POST_DESCRIPTION_VALID = "Initial Post by MrBeast using Postman";
 

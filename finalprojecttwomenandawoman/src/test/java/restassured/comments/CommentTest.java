@@ -11,6 +11,7 @@ public class CommentTest {
     private final BaseSetupMethods posts = new BaseSetupMethods();
 
     private Response signInWithUserJackNicholson;
+    private Response signInWithUserTomCruise;
 
     private Response createNewPublicPost;
 
@@ -24,6 +25,12 @@ public class CommentTest {
     public void when_userSignsIn_expected_newPublicPostCreated() {
         createNewPublicPost = posts.createPublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, POST_DESCRIPTION_VALID);
         posts.assertStatusCodeIsOk(createNewPublicPost.statusCode());
+    }
+
+    @Test
+    public void when_anotherUserSignsIn_expected_loginSuccessful() {
+        signInWithUserTomCruise = posts.signInUser(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
+        posts.assertStatusCode302(signInWithUserTomCruise.statusCode());
     }
 
 }
