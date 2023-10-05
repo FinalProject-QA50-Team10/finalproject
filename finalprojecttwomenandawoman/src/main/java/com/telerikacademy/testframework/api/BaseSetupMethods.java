@@ -77,6 +77,19 @@ public class BaseSetupMethods {
                 .post(CREATE_POST);
     }
 
+    public Response editPublicPost(String username, String password, String newDescription, int lastPostId) {
+        RestAssured.baseURI = BASE_API_URL;
+        String body = String.format(EDIT_PUBLIC_POST_BODY, newDescription);
+
+        return given()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .body(body)
+                .put(CREATE_POST + lastPostId);
+    }
+
     public Response createComment(String username, String password, String description, int lastPostId) {
         RestAssured.baseURI = BASE_API_URL;
         String body = String.format(CREATE_COMMENT_BODY, COMMENT_DESCRIPTION_VALID, lastPostId, USER_ID_FOR_TOM_CRUISE);

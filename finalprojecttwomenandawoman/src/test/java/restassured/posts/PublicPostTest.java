@@ -20,6 +20,10 @@ public class PublicPostTest {
 
     private Response createNewInvalidPublicPost;
 
+    private Response editPublicPost;
+
+    private static int lastPostId;
+
     @BeforeEach
     public void loginSuccessful() {
 
@@ -35,6 +39,8 @@ public class PublicPostTest {
         posts.assertStatusCodeIsOk(createNewPublicPost.statusCode());
         posts.assertPostContent(createNewPublicPost, "Valid Post");
         posts.assertPostIsPublic(createNewPublicPost);
+        lastPostId = createNewPublicPost.jsonPath().getInt("postId");
+        System.out.println("Last Post ID: " + lastPostId);
     }
 
     @Test
@@ -43,5 +49,12 @@ public class PublicPostTest {
                 POST_DESCRIPTION_INVALID);
         posts.assertStatusCode400(createNewInvalidPublicPost.statusCode());
         posts.assertBadRequestError(createNewInvalidPublicPost);
+    }
+
+    @Test
+    public void when_userSignsIn_expect_editPublicPostCreated() {
+        editPublicPost = posts.editPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, EDIT_POST_DESCRIPTION_VALID,
+                lastPostId);
+        posts.assertStatusCodeIsOk(createNewPublicPost.statusCode());
     }
 }

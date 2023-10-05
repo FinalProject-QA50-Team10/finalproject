@@ -2,8 +2,8 @@ package com.telerikacademy.testframework.api.utils;
 
 public class Constants {
 
-    public static final String GEORGE_BUSH_NAME ="George Bush";
-    public static final String GEORGE_BUSH_USERNAME ="GeorgeBush";
+    public static final String GEORGE_BUSH_NAME = "George Bush";
+    public static final String GEORGE_BUSH_USERNAME = "GeorgeBush";
     public static final String MR_BEAST_USERNAME = "MrBeast";
     public static final String MR_BEAST_PASSWORD = "Abv123!";
     public static final String JACK_NICHOLSON_USERNAME = "JackNicholson";
@@ -26,10 +26,10 @@ public class Constants {
             "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, " +
             "sit amet adipiscing sem neque sed ipsum. Na";
     public static final String POST_DESCRIPTION_VALID = "Valid Post";
-
+    public static final String EDIT_POST_DESCRIPTION_VALID = "Edit Valid Post";
     public static final String COMMENT_DESCRIPTION_VALID = "Valid Comment";
 
-    public static  final  String REGISTRATION_BODY = "{\"authorities\": [\"\"], " +
+    public static final String REGISTRATION_BODY = "{\"authorities\": [\"\"], " +
             "\"category\": " +
             "{\"id\": 150," +
             "\"name\": \"{{validJobTitle}}\"}," +
@@ -46,6 +46,11 @@ public class Constants {
             "}";
 
     public static final String CREATE_PUBLIC_POST_BODY = "{\"content\": \"%s\"," +
+            "\"picture\": \"\"," +
+            "\"public\": true" +
+            "}";
+
+    public static final String EDIT_PUBLIC_POST_BODY = "{\"content\": \"%s\"," +
             "\"picture\": \"\"," +
             "\"public\": true" +
             "}";
