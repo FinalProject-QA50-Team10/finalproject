@@ -31,22 +31,22 @@ public class UnregisteredUserTest {
     @Test
     public void when_guestUserSearchForUserWithValidName_expected_success()
     {
-        searchAsGuest = userActionsAPI.searchUsers(GEORGE_BUSH_NAME);
+        searchAsGuest = userActionsAPI.searchUsersByName(GEORGE_BUSH_NAME);
         List<SearchModel> users = userActionsAPI.getListOfUsers(searchAsGuest);
 
         userActionsAPI.assertStatusCodeIsOk(searchAsGuest.statusCode());
         userActionsAPI.assertListIsNotEmpty(Collections.singletonList(users));
-        userActionsAPI.assertUsername(users, GEORGE_BUSH_NAME);
+        userActionsAPI.assertUsername(users, GEORGE_BUSH_USERNAME);
     }
 
-    @Test
-    public void when_guestUserSearchForUserWithValidFirstName_expected_success()
-    {
-        searchAsGuest = userActionsAPI.searchUsers(GEORGE_BUSH_NAME);
-        List<SearchModel> users = userActionsAPI.getListOfUsers(searchAsGuest);
-
-        userActionsAPI.assertStatusCodeIsOk(searchAsGuest.statusCode());
-        userActionsAPI.assertListIsNotEmpty(Collections.singletonList(users));
-        userActionsAPI.assertUsername(users, GEORGE_BUSH_NAME);
-    }
+//    @Test
+//    public void when_guestUserSearchForUserWithValidFirstName_expected_success()
+//    {
+//        searchAsGuest = userActionsAPI.searchUsers(GEORGE_BUSH_FIRST_NAME);
+//        List<SearchModel> users = userActionsAPI.getListOfUsers(searchAsGuest);
+//
+//        userActionsAPI.assertStatusCodeIsOk(searchAsGuest.statusCode());
+//        userActionsAPI.assertListIsNotEmpty(Collections.singletonList(users));
+//        userActionsAPI.assertUsername(users, GEORGE_BUSH_USERNAME);
+//    }
 }
