@@ -26,7 +26,7 @@ public class PublicPostTest {
     @Test
     public void when_userSignsIn_as_MrBeast_expected_create_new_public_post() {
 
-        createNewPublicPost = posts.crp(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
+        createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         posts.assertStatusCodeIsOk(createNewPublicPost.statusCode());
 
     }

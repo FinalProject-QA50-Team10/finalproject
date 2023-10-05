@@ -10,13 +10,11 @@ import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.Arrays;
-import java.util.Base64;
 import java.util.List;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 import static com.telerikacademy.testframework.api.utils.Endpoints.*;
 import static io.restassured.RestAssured.given;
-import static io.restassured.config.EncoderConfig.encoderConfig;
 import static org.apache.http.HttpStatus.SC_MOVED_TEMPORARILY;
 import static org.apache.http.HttpStatus.SC_OK;
 
@@ -65,29 +63,29 @@ public class BaseSetupMethods {
         return Arrays.asList(response.getBody().as(SearchModel[].class));
     }
 
-    public Response signInWithUserMrBeast() {
-        RestAssured.baseURI = BASE_URL;
+//    public Response signInWithUserMrBeast() {
+//        RestAssured.baseURI = BASE_URL;
+//
+//        Response response = given()
+//                .auth()
+//                .form(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, new FormAuthConfig(AUTHENTICATE, MR_BEAST_USERNAME, MR_BEAST_PASSWORD))
+//                .post(AUTHENTICATE);
+//
+//        return response;
+//    }
 
-        Response response = given()
-                .auth()
-                .form(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, new FormAuthConfig(AUTHENTICATE, MR_BEAST_USERNAME, MR_BEAST_PASSWORD))
-                .post(AUTHENTICATE);
+//    public Response createPublicPost() {
+//        RestAssured.baseURI = BASE_URL;
+//
+//            return getRestAssured().
+//                    contentType(ContentType.JSON).
+//                    body(CREATE_POST_BODY).
+//                    post("/api/post/auth/creator").then().
+//                    statusCode(200).extract().
+//                    response();
+//    }
 
-        return response;
-    }
-
-    public Response createPublicPost() {
-        RestAssured.baseURI = BASE_URL;
-
-            return getRestAssured().
-                    contentType(ContentType.JSON).
-                    body(CREATE_POST_BODY).
-                    post("/api/post/auth/creator").then().
-                    statusCode(200).extract().
-                    response();
-    }
-
-    public Response crp(String username, String password)
+    public Response createPublicPost(String username, String password)
     {
         RestAssured.baseURI = BASE_API_URL;
 
@@ -95,7 +93,7 @@ public class BaseSetupMethods {
                 .auth()
                 .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
                 .contentType("application/json")
-               .log().all()
+                .log().all()
                 .body(CREATE_POST_BODY)
                 .post(CREATE_POST);
     }
