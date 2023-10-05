@@ -4,6 +4,7 @@ public class Constants {
 
     public static final String GEORGE_BUSH_NAME = "George Bush";
     public static final String GEORGE_BUSH_USERNAME = "GeorgeBush";
+    public static final String GEORGE_BUSH_PASSWORD = "Abv123*";
     public static final String MR_BEAST_USERNAME = "MrBeast";
     public static final String MR_BEAST_PASSWORD = "Abv123!";
     public static final String JACK_NICHOLSON_USERNAME = "JackNicholson";
