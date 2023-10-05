@@ -63,38 +63,16 @@ public class BaseSetupMethods {
         return Arrays.asList(response.getBody().as(SearchModel[].class));
     }
 
-//    public Response signInWithUserMrBeast() {
-//        RestAssured.baseURI = BASE_URL;
-//
-//        Response response = given()
-//                .auth()
-//                .form(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, new FormAuthConfig(AUTHENTICATE, MR_BEAST_USERNAME, MR_BEAST_PASSWORD))
-//                .post(AUTHENTICATE);
-//
-//        return response;
-//    }
-
-//    public Response createPublicPost() {
-//        RestAssured.baseURI = BASE_URL;
-//
-//            return getRestAssured().
-//                    contentType(ContentType.JSON).
-//                    body(CREATE_POST_BODY).
-//                    post("/api/post/auth/creator").then().
-//                    statusCode(200).extract().
-//                    response();
-//    }
-
-    public Response createPublicPost(String username, String password)
-    {
+    public Response createPublicPost(String username, String password, String description) {
         RestAssured.baseURI = BASE_API_URL;
+        String body = String.format(CREATE_PUBLIC_POST_BODY, description);
 
-       return given()
+        return given()
                 .auth()
                 .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
                 .contentType("application/json")
                 .log().all()
-                .body(CREATE_POST_BODY)
+                .body(body)
                 .post(CREATE_POST);
     }
 
@@ -113,16 +91,14 @@ public class BaseSetupMethods {
     }
 
 
-          //############# Asserts #############
+    //############# Asserts #############
 
-    public void assertStatusCodeIsOk(int statusCode)
-    {
+    public void assertStatusCodeIsOk(int statusCode) {
         Assertions.assertEquals(SC_OK, statusCode, "Incorrect status code. Expected 200.");
         System.out.println("Status Code is 200.");
     }
 
-    public void assertStatusCode302(int statusCode)
-    {
+    public void assertStatusCode302(int statusCode) {
         Assertions.assertEquals(SC_MOVED_TEMPORARILY, statusCode, "Incorrect status code. Expected 302.");
         System.out.println("Status Code is 302.");
     }
@@ -133,8 +109,7 @@ public class BaseSetupMethods {
     }
 
     // da priniram v otg. koj e private
-    public void assertPostsArePublic(List<PublicPostsModel> posts)
-    {
+    public void assertPostsArePublic(List<PublicPostsModel> posts) {
         for (var post : posts) {
             var publicField = post.mypublic;
             Assertions.assertTrue(publicField,
@@ -143,8 +118,7 @@ public class BaseSetupMethods {
         System.out.println("Posts are public.");
     }
 
-    public void assertUsername(List<SearchModel> users)
-    {
+    public void assertUsername(List<SearchModel> users) {
         for (var user : users) {
             var username = user.username;
             Assertions.assertEquals(GEORGE_BUSH_USERNAME, username,

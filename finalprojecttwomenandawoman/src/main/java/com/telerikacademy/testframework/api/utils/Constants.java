@@ -6,6 +6,9 @@ public class Constants {
     public static final String GEORGE_BUSH_USERNAME ="GeorgeBush";
     public static final String MR_BEAST_USERNAME = "MrBeast";
     public static final String MR_BEAST_PASSWORD = "Abv123!";
+    public static final String POST_DESCRIPTION_INVALID = "";
+    public static final String POST_DESCRIPTION_VALID = "Initial Post by MrBeast using Postman";
+
     public static  final  String REGISTRATION_BODY = "{\"authorities\": [\"\"], " +
             "\"category\": " +
             "{\"id\": 150," +
@@ -22,7 +25,7 @@ public class Constants {
             "\"size\": 20" +
             "}";
 
-    public static final String CREATE_POST_BODY = "{\"content\": \"Initial Post by MrBeast using Postman\"," +
+    public static final String CREATE_PUBLIC_POST_BODY = "{\"content\": \"%s\"," +
             "\"picture\": \"\"," +
             "\"public\": true" +
             "}";
