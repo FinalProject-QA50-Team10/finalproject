@@ -105,6 +105,18 @@ public class BaseSetupMethods {
                 .put(EDIT_POST);
     }
 
+    public Response deletePublicPost(String username, String password, int lastPostId) {
+        RestAssured.baseURI = BASE_API_URL;
+
+        return given()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .queryParam("postId", lastPostId)
+                .delete(DELETE_POST);
+    }
+
     public Response createComment(String username, String password, String description, int lastPostId) {
         RestAssured.baseURI = BASE_API_URL;
         String body = String.format(CREATE_COMMENT_BODY, COMMENT_DESCRIPTION_VALID, lastPostId, USER_ID_FOR_TOM_CRUISE);
@@ -205,6 +217,12 @@ public class BaseSetupMethods {
         boolean isPublic = response.jsonPath().getBoolean("public");
         Assertions.assertTrue(isPublic, "Post is not public.");
         System.out.println("Post is public.");
+    }
+
+    public void assertResponseBodyIsEmpty(Response response) {
+        String responseBody = response.getBody().asString();
+        Assertions.assertTrue(responseBody.isEmpty(), "Response body is not empty.");
+        System.out.println("Response body is empty.");
     }
 
     public void assertUsername(List<SearchModel> users, String searchedUsername) {

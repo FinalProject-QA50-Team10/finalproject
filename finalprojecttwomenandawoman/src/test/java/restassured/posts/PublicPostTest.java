@@ -49,4 +49,15 @@ public class PublicPostTest {
         posts.assertStatusCodeIsOk(editPublicPost.statusCode());
     }
 
+    @Test
+    @Order(5)
+    public void when_userSignIn_expect_deletePublicPostCreated() {
+        Response signInResponse = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
+        posts.assertStatusCode302(signInResponse.statusCode());
+        Response deletePublicPost = posts.deletePublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
+        posts.assertStatusCodeIsOk(deletePublicPost.statusCode());
+        posts.assertResponseBodyIsEmpty(deletePublicPost);
+
+    }
+
 }
