@@ -10,6 +10,8 @@ public class Constants {
     public static final String JACK_NICHOLSON_PASSWORD = "TheJack123";
     public static final String TOM_CRUISE_USERNAME = "TomCruise";
     public static final String TOM_CRUISE_PASSWORD = "HaHaHa123!";
+
+    public static final String USER_ID_FOR_TOM_CRUISE = "188";
     public static final String POST_DESCRIPTION_INVALID = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
             " Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient" +
             " montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. " +
@@ -24,6 +26,8 @@ public class Constants {
             "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, " +
             "sit amet adipiscing sem neque sed ipsum. Na";
     public static final String POST_DESCRIPTION_VALID = "Valid Post";
+
+    public static final String COMMENT_DESCRIPTION_VALID = "Valid Comment";
 
     public static  final  String REGISTRATION_BODY = "{\"authorities\": [\"\"], " +
             "\"category\": " +
@@ -45,6 +49,9 @@ public class Constants {
             "\"picture\": \"\"," +
             "\"public\": true" +
             "}";
+
+    public static final String CREATE_COMMENT_BODY = "{\"commentId\": 0, \"content\": \"%s\", \"deletedConfirmed\": true, \"postId\": %s, \"userId\": %s}";
+
 }
 
 

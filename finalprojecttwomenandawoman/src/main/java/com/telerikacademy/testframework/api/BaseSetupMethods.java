@@ -1,7 +1,9 @@
 package com.telerikacademy.testframework.api;
 
+import com.telerikacademy.testframework.api.models.CommentModel;
 import com.telerikacademy.testframework.api.models.PublicPostsModel;
 import com.telerikacademy.testframework.api.models.SearchModel;
+import com.telerikacademy.testframework.api.utils.Constants;
 import io.restassured.RestAssured;
 import io.restassured.authentication.FormAuthConfig;
 import io.restassured.http.ContentType;
@@ -73,6 +75,19 @@ public class BaseSetupMethods {
                 .log().all()
                 .body(body)
                 .post(CREATE_POST);
+    }
+
+    public Response createComment(String username, String password, String description, int lastPostId) {
+        RestAssured.baseURI = BASE_API_URL;
+        String body = String.format(CREATE_COMMENT_BODY, COMMENT_DESCRIPTION_VALID, lastPostId, USER_ID_FOR_TOM_CRUISE);
+
+        return given()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .body(body)
+                .post(CREATE_COMMENT);
     }
 
 
