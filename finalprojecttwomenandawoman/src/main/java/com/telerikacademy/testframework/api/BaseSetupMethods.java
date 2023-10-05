@@ -87,7 +87,7 @@ public class BaseSetupMethods {
                 .contentType("application/json")
                 .log().all()
                 .body(body)
-                .put(CREATE_POST + lastPostId);
+                .put(EDIT_POST + lastPostId);
     }
 
     public Response createComment(String username, String password, String description, int lastPostId) {
