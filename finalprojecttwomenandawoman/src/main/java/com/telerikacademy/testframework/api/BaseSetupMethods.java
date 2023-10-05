@@ -100,8 +100,9 @@ public class BaseSetupMethods {
                 .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
                 .contentType("application/json")
                 .log().all()
+                .queryParam("postId", lastPostId)
                 .body(body)
-                .put(EDIT_POST + lastPostId);
+                .put(EDIT_POST);
     }
 
     public Response createComment(String username, String password, String description, int lastPostId) {
