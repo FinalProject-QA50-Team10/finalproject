@@ -14,6 +14,7 @@ public class CommentTest {
 
     private final BaseSetupMethods posts = new BaseSetupMethods();
     private static int lastPostId;
+    private static int lastCommentId;
 
     @Test
     @Order(1)
@@ -46,6 +47,24 @@ public class CommentTest {
         posts.assertStatusCode302(signInWithUserTomCruise.statusCode());
         Response createCommentResponse = posts.createComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, COMMENT_DESCRIPTION_VALID, lastPostId);
         posts.assertStatusCodeIsOk(createCommentResponse.statusCode());
+        lastCommentId = createCommentResponse.jsonPath().getInt("commentId");
         //add more assertions
     }
+
+    @Test
+    @Order(5)
+    public void when_TomCruiseEditsComment_expected_CommentIsEdited() {
+        Response editCommentResponse = posts.editComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, EDIT_COMMENT_CONTENT, lastCommentId);
+        posts.assertStatusCodeIsOk(editCommentResponse.statusCode());
+        // Add more assertions
+    }
+
+    @Test
+    @Order(6)
+    public void when_TomCruiseDeletesComment_expected_CommentIsDeleted() {
+        Response deleteCommentResponse = posts.deleteComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, lastCommentId);
+        posts.assertStatusCodeIsOk(deleteCommentResponse.statusCode());
+        // Add more assertions here to validate the delete if needed
+    }
+
 }

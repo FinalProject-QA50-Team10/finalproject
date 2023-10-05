@@ -118,6 +118,31 @@ public class BaseSetupMethods {
                 .post(CREATE_COMMENT);
     }
 
+    public Response editComment(String username, String password, String newContent, int lastCommentId) {
+        RestAssured.baseURI = BASE_API_URL;
+        return given()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .queryParam("commentId", lastCommentId)
+                .queryParam("content", newContent)
+                .queryParam("name", username)
+                .put(EDIT_COMMENT);
+    }
+
+    public Response deleteComment(String username, String password, int lastCommentId) {
+        RestAssured.baseURI = BASE_API_URL;
+        return given()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .queryParam("commentId", lastCommentId)
+                .delete(DELETE_COMMENT);
+    }
+
+
     public Response signInUser(String username, String password) {
 
         RestAssured.baseURI = BASE_URL;

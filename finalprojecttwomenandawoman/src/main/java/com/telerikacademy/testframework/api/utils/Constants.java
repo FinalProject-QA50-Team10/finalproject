@@ -32,6 +32,7 @@ public class Constants {
     public static final String POST_DESCRIPTION_VALID = "Valid Post";
     public static final String EDIT_POST_DESCRIPTION_VALID = "Edit Valid Post";
     public static final String COMMENT_DESCRIPTION_VALID = "Valid Comment";
+    public static final String EDIT_COMMENT_CONTENT = "Edit comment";
 
     public static String REGISTRATION_BODY = "{\"authorities\": [\"\"], " +
             "\"category\": " +
