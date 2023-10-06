@@ -65,14 +65,11 @@ public class PublicCommentLikeTest {
         posts.assertStatusCode302(signInWithUserTomCruise.statusCode());
 
         Response createCommentResponse = posts.createComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, COMMENT_DESCRIPTION_VALID, lastPostId);
-
         posts.assertStatusCode200(createCommentResponse.statusCode());
 
         var t = createCommentResponse.as(CommentModel.class);
-
         String commentContent = t.content;
         posts.assertContentIsExpected(commentContent, "Valid Comment");
-
         lastCommentId = createCommentResponse.jsonPath().getInt("commentId");
     }
 
@@ -92,9 +89,8 @@ public class PublicCommentLikeTest {
         posts.assertStatusCode302(signInWithUserJackNicholson.statusCode());
 
         Response likeCommentResponse = posts.likeComment(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastCommentId);
-
         posts.assertStatusCode200(likeCommentResponse.statusCode());
-
+        posts.assertCommentIsLiked(likeCommentResponse);
     }
 
     @Test
@@ -105,8 +101,9 @@ public class PublicCommentLikeTest {
         posts.assertStatusCode302(signInWithUserJackNicholson.statusCode());
 
         Response dislikeCommentResponse = posts.dislikeComment(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastCommentId);
-
         posts.assertStatusCode200(dislikeCommentResponse.statusCode());
+        posts.assertStatusCode200(dislikeCommentResponse.statusCode());
+        posts.assertCommentIsDisliked(dislikeCommentResponse);
     }
 
 }

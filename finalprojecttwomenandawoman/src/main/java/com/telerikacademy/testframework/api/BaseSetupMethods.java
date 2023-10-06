@@ -362,6 +362,18 @@ public class BaseSetupMethods {
         System.out.println("Category name is as expected.");
     }
 
+    public void assertCommentIsLiked(Response response) {
+        boolean liked = response.jsonPath().getBoolean("liked");
+        Assertions.assertTrue(liked, "Comment was not liked");
+        System.out.println("Comment was liked.");
+    }
+
+    public void assertCommentIsDisliked(Response response) {
+        boolean liked = response.jsonPath().getBoolean("liked");
+        Assertions.assertFalse(liked, "Comment was not disliked");
+        System.out.println("Comment was disliked.");
+    }
+
     public void assertRegistrationMessage(Response responseMessage) {
         var response = searchUsersByEmptyName();
         List<SearchModel> users = getListOfUsers(response);
