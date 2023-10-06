@@ -14,6 +14,12 @@ public class Constants {
     public static final String TOM_CRUISE_USERNAME = "TomCruise";
     public static final String TOM_CRUISE_PASSWORD = "HaHaHa123!";
     public static final int TOM_CRUISE_ID = 188;
+    public static final String FOR_EDIT_USERNAME = "telerikdani";
+    public static final String FOR_EDIT_PASSWORD = "123456";
+    public static final int FOR_EDIT_ID = 39;
+    public static final String FOR_EDIT_BIRTHDAY = "1955-07-17";
+    public static final String FOR_EDIT_FIRST_NAME = "Ryan";
+    public static final String FOR_EDIT_LAST_NAME = "Gosling";
     public static final int INVALID_ID = 800;
     public static String RANDOM_USERNAME;
     public static String  RANDOM_EMAIL;
@@ -53,7 +59,8 @@ public class Constants {
             "\"confirmPassword\": \"%s\"," +
             "\"email\": \"%s\"," +
             "\"password\": \"%s\"," +
-            "\"username\": \"%s\"}";
+            "\"username\": \"%s\"" +
+            "}";
 
     public static final String SEARCH_BY_JOB_TITLE_AND_NAME_BODY = "{\"index\": 0, " +
             "\"next\": true," +
@@ -82,9 +89,31 @@ public class Constants {
             "\"public\": false" +
             "}";
 
-    public static final String CREATE_COMMENT_BODY = "{\"commentId\": 0, \"content\": \"%s\", \"deletedConfirmed\": " +
-            "true, \"postId\": %s, \"userId\": %s}";
+    public static final String CREATE_COMMENT_BODY = "{\"commentId\": 0," +
+            "\"content\": \"%s\"," +
+            "\"deletedConfirmed\": true, " +
+            "\"postId\": %s, " +
+            "\"userId\": %s" +
+            "}";
 
+    public static final String EDIT_USER_PROFILE_BODY = "{\"birthYear\": \"%s\"," +
+            "\"firstName\": \"%s\"," +
+            "\"id\": %s," +
+            "\"lastName\": \"%s\"," +
+            "\"location\": {" +
+            "\"city\": {" +
+            "\"city\": \"Varna\"," +
+            "\"country\": {}," +
+            "\"id\": 3" +
+            "}," +
+            "\"id\": 0" +
+            "}," +
+            "\"memberSince\": \"\"," +
+            "\"personalReview\": \"\"," +
+            "\"picture\": \"\"," +
+            "\"picturePrivacy\": true," +
+            "\"sex\": \"FEMALE\"" +
+            "}";
 }
 
 

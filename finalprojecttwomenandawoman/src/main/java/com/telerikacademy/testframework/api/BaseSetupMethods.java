@@ -1,9 +1,6 @@
 package com.telerikacademy.testframework.api;
 
-import com.telerikacademy.testframework.api.models.PublicPostsModel;
-import com.telerikacademy.testframework.api.models.RegistrationErrorModel;
-import com.telerikacademy.testframework.api.models.SearchModel;
-import com.telerikacademy.testframework.api.models.UserInformationModel;
+import com.telerikacademy.testframework.api.models.*;
 import io.restassured.RestAssured;
 import io.restassured.authentication.FormAuthConfig;
 import io.restassured.http.ContentType;
@@ -17,6 +14,7 @@ import java.util.Random;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 import static com.telerikacademy.testframework.api.utils.Endpoints.*;
+import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.*;
 
@@ -42,16 +40,20 @@ public class BaseSetupMethods {
         return Arrays.asList(response.getBody().as(PublicPostsModel[].class));
     }
 
-//    public String registerUserSuccessful(String jobTitle, String password, String email, String username) {
-//        var body = String.format(REGISTRATION_BODY, jobTitle, password, email, password, username);
-//        return getRestAssured()
-//                .body(body)
-//                .when()
-//                .post(REGISTER_USER)
-//                .then()
-//                .extract()
-//                .asString();
-//    }
+    public Response editUserProfile(String username, String password,
+                                    String birthday, String firstName, int id, String lastName){
+        var body = String.format(EDIT_USER_PROFILE_BODY, birthday, firstName, id, lastName);
+
+        return getRestAssured()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .body(body)
+                .when()
+                .post(String.format(EDIT_USER_PROFILE, id))
+                .then()
+                .extract()
+                .response();
+    }
 
     public Response registerUser(String jobTitle, String password, String email, String username) {
         var body = String.format(REGISTRATION_BODY, jobTitle, password, email, password, username);
@@ -349,6 +351,28 @@ public class BaseSetupMethods {
         System.out.println("User ID is correct.");
     }
 
+    public void assertUserId(EditProfileModel user, int expectedId) {
+        Assertions.assertEquals(user.id, expectedId, "Expected user ID is different than actual.");
+        System.out.println("User ID is correct.");
+    }
+
+    public void assertFirstName(EditProfileModel user, String expectedFirstName) {
+        Assertions.assertEquals(user.firstName, expectedFirstName,
+                "Expected first name is different than actual.");
+        System.out.println("First name is correct.");
+    }
+
+    public void assertLastName(EditProfileModel user, String expectedLastName) {
+        Assertions.assertEquals(user.lastName, expectedLastName,
+                "Expected last name is different than actual.");
+        System.out.println("Last name is correct.");
+    }
+
+    public void assertBirthDate(EditProfileModel user, String birthDate) {
+        Assertions.assertEquals(user.birthYear, birthDate, "Expected birth date is different than actual.");
+        System.out.println("Birth date is correct.");
+    }
+
     public void assertUserUsername(UserInformationModel user, String expectedUsername) {
         Assertions.assertEquals(user.username, expectedUsername, "Expected username is different than actual.");
         System.out.println("Username is correct.");
@@ -498,5 +522,6 @@ public class BaseSetupMethods {
         }
         return sb.toString();
     }
+
 
 }
