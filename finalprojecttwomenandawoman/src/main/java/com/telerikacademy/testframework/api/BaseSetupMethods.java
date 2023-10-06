@@ -165,7 +165,7 @@ public class BaseSetupMethods {
 
     public Response createComment(String username, String password, String description, int lastPostId) {
         //  RestAssured.baseURI = BASE_API_URL;
-        String body = String.format(CREATE_COMMENT_BODY, COMMENT_DESCRIPTION_VALID, lastPostId, TOM_CRUISE_ID);
+        String body = String.format(CREATE_COMMENT_BODY, description, lastPostId, TOM_CRUISE_ID);
 
         return getRestAssured()
                 .auth()
