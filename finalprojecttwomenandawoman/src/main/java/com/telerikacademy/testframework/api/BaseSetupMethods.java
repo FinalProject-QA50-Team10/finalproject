@@ -285,7 +285,7 @@ public class BaseSetupMethods {
         String responseBody = response.getBody().asString();
         Assertions.assertTrue(responseBody.contains(expectedContent),
                 String.format("Expected content '%s' not found in the response.", expectedContent));
-        System.out.println("New public post has been created.");
+        System.out.println("New post has been created.");
     }
 
     public void assertPostIsPublic(Response response) {
@@ -294,10 +294,10 @@ public class BaseSetupMethods {
         System.out.println("Post is public.");
     }
 
-    public void assertPostIsPrivate(Response response) {
-        boolean isPublic = response.jsonPath().getBoolean("private");
-        Assertions.assertTrue(isPublic, "Post is not private.");
-        System.out.println("Post is private.");
+    public void assertPostIsNotPublic(Response response) {
+        boolean isPublic = response.jsonPath().getBoolean("public");
+        Assertions.assertFalse(isPublic, "Post should not be public.");
+        System.out.println("Post is not public.");
     }
 
     public void assertResponseBodyIsEmpty(Response response) {

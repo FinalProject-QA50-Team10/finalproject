@@ -30,7 +30,7 @@ public class PrivatePostTest {
         Response createNewPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_VALID);
         posts.assertStatusCode200(createNewPrivatePost.statusCode());
         posts.assertPostContent(createNewPrivatePost, "Valid Post");
-        posts.assertPostIsPrivate(createNewPrivatePost);
+        posts.assertPostIsNotPublic(createNewPrivatePost);
         lastPostId = createNewPrivatePost.jsonPath().getInt("postId");
     }
 }
