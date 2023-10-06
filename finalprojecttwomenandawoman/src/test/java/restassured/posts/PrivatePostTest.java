@@ -55,4 +55,22 @@ public class PrivatePostTest {
         Response editPrivatePost = posts.editPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, EDIT_POST_DESCRIPTION_VALID, lastPostId);
         posts.assertStatusCode200(editPrivatePost.statusCode());
     }
+
+    @Test
+    @Order(4)
+    //FPT1-56 [Delete Post] Confirming user can delete his own private post
+    public void when_userSignIn_expect_deletePrivatePostCreated() {
+        Response signInResponse = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
+        posts.assertStatusCode302(signInResponse.statusCode());
+        Response deletePrivatePost = posts.deletePublicPost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
+        posts.assertStatusCode200(deletePrivatePost.statusCode());
+        posts.assertResponseBodyIsEmpty(deletePrivatePost);
+    }
+
+    @Test
+    @Order(6)
+    public void when_userSignIn_expect_lastPrivatePostDeleted() {
+        Response lastPrivatePostDeleted = posts.getLastPublicPost(lastPostId);
+        posts.assertStatusCode404(lastPrivatePostDeleted.statusCode());
+    }
 }
