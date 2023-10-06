@@ -415,4 +415,18 @@ public class BaseSetupMethods {
         return rand.nextInt(maxLength - minLength + 1) + minLength;
     }
 
+    public String generateInvalidComment() {
+        String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "abcdefghijklmnopqrstuvxyz"
+                + "0123456789 ";
+        int length = 1001;
+        StringBuilder sb = new StringBuilder(length);
+
+        for (int i = 0; i < length; i++) {
+            int index = (int) (alphaNumericString.length() * Math.random());
+            sb.append(alphaNumericString.charAt(index));
+        }
+        return sb.toString();
+    }
+
 }
