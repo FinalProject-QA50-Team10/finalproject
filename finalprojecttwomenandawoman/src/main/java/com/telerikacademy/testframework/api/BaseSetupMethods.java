@@ -261,6 +261,11 @@ public class BaseSetupMethods {
         System.out.println("Status Code is 404.");
     }
 
+    public void assertStatusCode401(int statusCode) {
+        Assertions.assertEquals(SC_UNAUTHORIZED, statusCode, "Incorrect status code. Expected 401.");
+        System.out.println("Status Code is 401.");
+    }
+
     public void assertListIsNotEmpty(List<Object> object) {
         Assertions.assertFalse(object.isEmpty());
         System.out.println("List is not empty.");
@@ -298,6 +303,13 @@ public class BaseSetupMethods {
         System.out.println("Response has 'Not Found' error.");
     }
 
+    public void assertUnauthorizedError(RegistrationErrorModel response) {
+        String error = response.error;
+        Assertions.assertEquals(UNAUTHORIZED_ERROR, error,
+                String.format("Response does not have '%s' error. Error is %s", UNAUTHORIZED_ERROR, error));
+        System.out.println("Response has 'Unauthorized' error.");
+    }
+
     public void assertBadRequestMessage(RegistrationErrorModel response) {
         String message = response.message;
         Assertions.assertTrue(message.contains(REGISTRATION_ERROR_MESSAGE),
@@ -308,6 +320,13 @@ public class BaseSetupMethods {
     public void assertNotFoundMessage(RegistrationErrorModel response) {
         String message = response.message;
         Assertions.assertEquals(NOT_FOUND_ERROR_MESSAGE, message,
+                "Error message is different than expected.");
+        System.out.println("Error message is correct.");
+    }
+
+    public void assertUnauthorizedMessage(RegistrationErrorModel response) {
+        String message = response.message;
+        Assertions.assertEquals(UNAUTHORIZED_ERROR_MESSAGE, message,
                 "Error message is different than expected.");
         System.out.println("Error message is correct.");
     }
