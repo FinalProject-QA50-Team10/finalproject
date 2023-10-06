@@ -40,9 +40,10 @@ public class PublicPostTest {
     //FTP1-35 [Add New Post] Generate new invalid public post
     public void when_userSignsIn_expect_invalidPublicPostNotBeCreated() {
         Response createNewInvalidPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_INVALID);
-        var t = createNewInvalidPublicPost.as(RegistrationErrorModel.class);
+        var registrationErrorModel = createNewInvalidPublicPost.as(RegistrationErrorModel.class);
         posts.assertStatusCode400(createNewInvalidPublicPost.statusCode());
-        posts.assertBadRequest(t);
+        posts.assertBadRequest(registrationErrorModel);
+        posts.assertInvalidPostContent(createNewInvalidPublicPost);
     }
 
     @Test

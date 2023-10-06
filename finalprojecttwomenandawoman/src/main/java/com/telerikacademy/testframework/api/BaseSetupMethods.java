@@ -308,6 +308,13 @@ public class BaseSetupMethods {
         System.out.println("Username is correct.");
     }
 
+    public void assertInvalidPostContent(Response response) {
+        String responseBody = response.getBody().asString();
+        Assertions.assertTrue(responseBody.contains("Content size must be up to 1000 symbols"),
+                "Invalid post content message not found in the response.");
+        System.out.println("Content size must be up to 1000 symbols");
+    }
+
     public void assertPostContent(Response response, String expectedContent) {
         String responseBody = response.getBody().asString();
         Assertions.assertTrue(responseBody.contains(expectedContent),
