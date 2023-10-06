@@ -20,7 +20,7 @@ public class PublicCommentLikeTest {
     @Test
     @Order(1)
     //FPT1-85 [Login Page] Login with valid username and valid password - JackNicholson
-    public void when_userSignsIn_expected_loginSuccessful() {
+    public void when_userSignsIn_expect_loginSuccessful() {
         Response signInWithUserJackNicholson = posts.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         posts.assertStatusCode302(signInWithUserJackNicholson.statusCode());
     }
@@ -28,7 +28,7 @@ public class PublicCommentLikeTest {
     @Test
     @Order(2)
     //FPT1-25 [Add New Post] Generate new valid public post
-    public void when_userSignsIn_expected_newPublicPostCreated() {
+    public void when_userSignsIn_expect_newPublicPostCreated() {
         Response createNewPublicPost = posts.createPublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, POST_DESCRIPTION_VALID);
         posts.assertStatusCode200(createNewPublicPost.statusCode());
         posts.assertPostContent(createNewPublicPost, "Valid Post");
@@ -52,7 +52,7 @@ public class PublicCommentLikeTest {
     @Test
     @Order(3)
     //FPT1-85 [Login Page] Login with valid username and valid password - TomCruise
-    public void when_anotherUserSignsIn_expected_loginSuccessful() {
+    public void when_anotherUserSignsIn_expect_loginSuccessful() {
         Response signInWithUserTomCruise = posts.signInUser(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
         posts.assertStatusCode302(signInWithUserTomCruise.statusCode());
     }
@@ -60,7 +60,7 @@ public class PublicCommentLikeTest {
     @Test
     @Order(4)
     //FPT1-167 [Comment] Create Comment Successfully as Registered User
-    public void when_UserCreatesComment_expected_CommentIsCreated() {
+    public void when_userCreatesComment_expect_commentIsCreated() {
         Response signInWithUserTomCruise = posts.signInUser(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
         posts.assertStatusCode302(signInWithUserTomCruise.statusCode());
 
@@ -79,15 +79,15 @@ public class PublicCommentLikeTest {
     @Test
     @Order(5)
     //FPT1-85 [Login Page] Login with valid username and valid password - JackNicholson
-    public void when_userSignsInAgain_expected_loginSuccessful() {
+    public void when_userSignsInAgain_expect_loginSuccessful() {
         Response signInWithUserJackNicholson = posts.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         posts.assertStatusCode302(signInWithUserJackNicholson.statusCode());
     }
 
     @Test
     @Order(6)
-    public void when_JackNicholsonLikesTomCruisesComment_expected_CommentIsLiked() {
-
+    //FPT1-125 [Like] Verify comments Like button
+    public void when_userLikesComment_expect_commentIsLiked() {
         Response signInWithUserJackNicholson = posts.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         posts.assertStatusCode302(signInWithUserJackNicholson.statusCode());
 
@@ -99,8 +99,8 @@ public class PublicCommentLikeTest {
 
     @Test
     @Order(7)
-    public void when_UserDislikesComment_expected_CommentIsDisliked() {
-
+    //FPT1-126 [Like] Verify comments Dislike button
+    public void when_userDislikesComment_expect_commentIsDisliked() {
         Response signInWithUserJackNicholson = posts.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         posts.assertStatusCode302(signInWithUserJackNicholson.statusCode());
 

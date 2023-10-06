@@ -1,6 +1,9 @@
 package com.telerikacademy.testframework.api;
 
-import com.telerikacademy.testframework.api.models.*;
+import com.telerikacademy.testframework.api.models.PublicPostsModel;
+import com.telerikacademy.testframework.api.models.RegistrationErrorModel;
+import com.telerikacademy.testframework.api.models.SearchModel;
+import com.telerikacademy.testframework.api.models.UserInformationModel;
 import io.restassured.RestAssured;
 import io.restassured.authentication.FormAuthConfig;
 import io.restassured.http.ContentType;
@@ -148,7 +151,7 @@ public class BaseSetupMethods {
     }
 
     public Response createComment(String username, String password, String description, int lastPostId) {
-      //  RestAssured.baseURI = BASE_API_URL;
+        //  RestAssured.baseURI = BASE_API_URL;
         String body = String.format(CREATE_COMMENT_BODY, COMMENT_DESCRIPTION_VALID, lastPostId, TOM_CRUISE_ID);
 
         return getRestAssured()
@@ -300,7 +303,7 @@ public class BaseSetupMethods {
         System.out.println("User ID is correct.");
     }
 
-    public void assertUserUsername(UserInformationModel user, String expectedUsername){
+    public void assertUserUsername(UserInformationModel user, String expectedUsername) {
         Assertions.assertEquals(user.username, expectedUsername, "Expected username is different than actual.");
         System.out.println("Username is correct.");
     }
