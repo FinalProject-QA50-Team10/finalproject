@@ -12,9 +12,18 @@ public class LoginTest {
     private Response loginResponse;
 
     @Test
-    public void when_unauthenticatedUserLogin_expect_successLoginUser()
+    public void when_unauthenticatedUserLoginWithValidCredentials_expect_successLoginUser()
     {
         loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
+        loginAPI.assertStatusCode302(loginResponse.statusCode());
+    }
+
+    //----------------Kakvi da sa assurtite
+
+    @Test
+    public void when_unauthenticatedUserLoginWithValidUsernameAndInvalidPassword_expect_successLoginUser()
+    {
+        loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, GEORGE_BUSH_PASSWORD);
         loginAPI.assertStatusCode302(loginResponse.statusCode());
     }
 }

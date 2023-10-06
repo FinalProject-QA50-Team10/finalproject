@@ -1,7 +1,9 @@
 package com.telerikacademy.testframework.api;
 
 import com.telerikacademy.testframework.api.models.PublicPostsModel;
+import com.telerikacademy.testframework.api.models.RegistrationErrorModel;
 import com.telerikacademy.testframework.api.models.SearchModel;
+import com.telerikacademy.testframework.api.models.UserInformationModel;
 import io.restassured.RestAssured;
 import io.restassured.authentication.FormAuthConfig;
 import io.restassured.http.ContentType;
@@ -40,15 +42,25 @@ public class BaseSetupMethods {
         return Arrays.asList(response.getBody().as(PublicPostsModel[].class));
     }
 
-    public String registerUser() {
-        var body = String.format(REGISTRATION_BODY, VALID_JOB_TITLE, VALID_PASSWORD, RANDOM_EMAIL, VALID_PASSWORD, RANDOM_USERNAME);
+//    public String registerUserSuccessful(String jobTitle, String password, String email, String username) {
+//        var body = String.format(REGISTRATION_BODY, jobTitle, password, email, password, username);
+//        return getRestAssured()
+//                .body(body)
+//                .when()
+//                .post(REGISTER_USER)
+//                .then()
+//                .extract()
+//                .asString();
+//    }
+
+    public Response registerUser(String jobTitle, String password, String email, String username) {
+        var body = String.format(REGISTRATION_BODY, jobTitle, password, email, password, username);
         return getRestAssured()
                 .body(body)
                 .when()
                 .post(REGISTER_USER)
                 .then()
-                .extract()
-                .asString();
+                .extract().response();
     }
 
     public Response searchUsersByName(String name) {
@@ -61,7 +73,7 @@ public class BaseSetupMethods {
     }
 
     public Response searchUsersByEmptyName() {
-        var body = String.format(SEARCH_BY_FIRST_AND_LAST_NAME_BODY, EMPTY_NAME);
+        var body = String.format(SEARCH_BY_FIRST_AND_LAST_NAME_BODY, EMPTY_STRING);
 
         return getRestAssured()
                 .body(body)
@@ -72,9 +84,10 @@ public class BaseSetupMethods {
     public List<SearchModel> getListOfUsers(Response response) {
         return Arrays.asList(response.getBody().as(SearchModel[].class));
     }
-//    public List<Response> getListOfUsers(Response response) {
-//        return Arrays.asList(response.getBody());
-//    }
+
+    public RegistrationErrorModel convertErrorBody(Response response) {
+        return response.as(RegistrationErrorModel.class);
+    }
 
     public Response createPublicPost(String username, String password, String description) {
         RestAssured.baseURI = BASE_API_URL;
@@ -126,7 +139,7 @@ public class BaseSetupMethods {
 
     public Response createComment(String username, String password, String description, int lastPostId) {
         RestAssured.baseURI = BASE_API_URL;
-        String body = String.format(CREATE_COMMENT_BODY, COMMENT_DESCRIPTION_VALID, lastPostId, USER_ID_FOR_TOM_CRUISE);
+        String body = String.format(CREATE_COMMENT_BODY, COMMENT_DESCRIPTION_VALID, lastPostId, TOM_CRUISE_ID);
 
         return given()
                 .auth()
@@ -161,6 +174,7 @@ public class BaseSetupMethods {
                 .delete(DELETE_COMMENT);
     }
 
+    // https://stackoverflow.com/questions/40317130/apis-http-response-yields-the-entire-html-page-instead-of-the-responses-body
 
     public Response signInUser(String username, String password) {
 
@@ -175,9 +189,19 @@ public class BaseSetupMethods {
                 .post(AUTHENTICATE);
     }
 
+    public Response getUserInformation(String username, int userId) {
+        return getRestAssured()
+                .queryParam("principal", username)
+                .when()
+                .get(String.format(GET_USER_INFO, userId))
+                .then()
+                .extract()
+                .response();
+    }
+
     //############# Asserts #############
 
-    public void assertStatusCodeIsOk(int statusCode) {
+    public void assertStatusCode200(int statusCode) {
         Assertions.assertEquals(SC_OK, statusCode, "Incorrect status code. Expected 200.");
         System.out.println("Status Code is 200.");
     }
@@ -202,20 +226,46 @@ public class BaseSetupMethods {
         System.out.println("List is not empty.");
     }
 
-    // da priniram v otg. koj e private
     public void assertPostsArePublic(List<PublicPostsModel> posts) {
         for (var post : posts) {
             var publicField = post.mypublic;
             Assertions.assertTrue(publicField,
-                    String.format("Post with ID %s is different than expected. Public type is %s.", post.postId, post.mypublic));
+                    String.format("Post with ID %s is different than expected. " +
+                            "Public type is %s.", post.postId, post.mypublic));
         }
         System.out.println("Posts are public.");
     }
 
+    //-------------------------------//
     public void assertBadRequestError(Response response) {
         String error = response.jsonPath().getString("error");
         Assertions.assertEquals("Bad Request", error, "Response does not have 'Bad Request' error.");
         System.out.println("Response has 'Bad Request' error.");
+    }
+
+    //--------------------------------//
+    public void assertBadRequest(RegistrationErrorModel response) {
+        String error = response.error;
+        Assertions.assertEquals(BAD_REQUEST, error,
+                String.format("Response does not have '%s' error. Error is %s", BAD_REQUEST, error));
+        System.out.println("Response has 'Bad Request' error.");
+    }
+
+    public void assertBadRequestMessage(RegistrationErrorModel response) {
+        String message = response.message;
+        Assertions.assertTrue(message.contains(REGISTRATION_ERROR_MESSAGE),
+                "Error message is different than expected.");
+        System.out.println("Error message is correct.");
+    }
+
+    public void assertUserId(UserInformationModel user, int expectedId) {
+        Assertions.assertEquals(user.id, expectedId, "Expected user ID is different than actual.");
+        System.out.println("User ID is correct.");
+    }
+
+    public void assertUserUsername(UserInformationModel user, String expectedUsername){
+        Assertions.assertEquals(user.username, expectedUsername, "Expected username is different than actual.");
+        System.out.println("Username is correct.");
     }
 
     public void assertPostContent(Response response, String expectedContent) {
@@ -237,7 +287,7 @@ public class BaseSetupMethods {
         System.out.println("Response body is empty.");
     }
 
-    public void assertUsername(List<SearchModel> users, String searchedUsername) {
+    public void assertUsersContainSearchedName(List<SearchModel> users, String searchedUsername) {
         for (var user : users) {
             var username = user.username;
             Assertions.assertEquals(searchedUsername, username,
@@ -266,14 +316,17 @@ public class BaseSetupMethods {
         System.out.println("Category name is as expected.");
     }
 
-    public void assertRegistrationMessage(String responseMessage) {
+    public void assertRegistrationMessage(Response responseMessage) {
         var response = searchUsersByEmptyName();
         List<SearchModel> users = getListOfUsers(response);
         var lastUser = users.get(0);
         var lastUserId = lastUser.userId;
         var expectedMessage = String.format("User with name %s and id %s was created", RANDOM_USERNAME, lastUserId);
-        Assertions.assertEquals(expectedMessage, responseMessage, "Expected message is different than actual.");
+        var actualMessage = responseMessage.asString();
+        Assertions.assertEquals(expectedMessage, actualMessage, "Expected message is different than actual.");
         System.out.println("Registration message is correct!");
+        System.out.printf("User with ID %s is registered.", lastUserId);
+        LAST_REGISTERED_USER_ID = lastUserId;
     }
 
     public void generateRandomUsername() {
@@ -296,4 +349,5 @@ public class BaseSetupMethods {
         Random rand = new Random();
         return rand.nextInt(maxLength - minLength + 1) + minLength;
     }
+
 }

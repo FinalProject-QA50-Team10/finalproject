@@ -10,7 +10,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
 @TestMethodOrder(OrderAnnotation.class)
-public class CommentTest {
+public class PublicCommentManipulationTest {
 
     private final BaseSetupMethods posts = new BaseSetupMethods();
     private static int lastPostId;
@@ -29,7 +29,7 @@ public class CommentTest {
     //FPT1-25 [Add New Post] Generate new valid public post
     public void when_userSignsIn_expected_newPublicPostCreated() {
         Response createNewPublicPost = posts.createPublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, POST_DESCRIPTION_VALID);
-        posts.assertStatusCodeIsOk(createNewPublicPost.statusCode());
+        posts.assertStatusCode200(createNewPublicPost.statusCode());
         posts.assertPostContent(createNewPublicPost, "Valid Post");
         posts.assertPostIsPublic(createNewPublicPost);
 
@@ -65,7 +65,7 @@ public class CommentTest {
 
         Response createCommentResponse = posts.createComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, COMMENT_DESCRIPTION_VALID, lastPostId);
 
-        posts.assertStatusCodeIsOk(createCommentResponse.statusCode());
+        posts.assertStatusCode200(createCommentResponse.statusCode());
 
         String commentContent = createCommentResponse.jsonPath().getString("content");
         posts.assertContentIsExpected(commentContent, "Valid Comment");
@@ -78,7 +78,7 @@ public class CommentTest {
     //FPT1-178 [Comment] Edit Comment Successfully as Registered User
     public void when_TomCruiseEditsComment_expected_CommentIsEdited() {
         Response editCommentResponse = posts.editComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, EDIT_COMMENT_CONTENT, lastCommentId);
-        posts.assertStatusCodeIsOk(editCommentResponse.statusCode());
+        posts.assertStatusCode200(editCommentResponse.statusCode());
     }
 
     @Test
@@ -86,7 +86,7 @@ public class CommentTest {
     //FPT1-182 [Comment] Delete Comment Successfully as Registered User
     public void when_TomCruiseDeletesComment_expected_CommentIsDeleted() {
         Response deleteCommentResponse = posts.deleteComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, lastCommentId);
-        posts.assertStatusCodeIsOk(deleteCommentResponse.statusCode());
+        posts.assertStatusCode200(deleteCommentResponse.statusCode());
         posts.assertResponseBodyIsEmpty(deleteCommentResponse);
     }
 
@@ -95,7 +95,7 @@ public class CommentTest {
     //FPT1-55 [Delete Post] Delete an Existing Public Post
     public void when_JackNicholsonDeletesPost_expected_PostIsDeleted() {
         Response deletePostResponse = posts.deletePublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastPostId);
-        posts.assertStatusCodeIsOk(deletePostResponse.statusCode());
+        posts.assertStatusCode200(deletePostResponse.statusCode());
         posts.assertResponseBodyIsEmpty(deletePostResponse);
     }
 }
