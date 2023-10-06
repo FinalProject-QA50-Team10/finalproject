@@ -33,5 +33,6 @@ public class Endpoints {
     public static final String EDIT_COMMENT = "/comment/auth/editor";
     public static final String DELETE_COMMENT = "/comment/auth/manager";
     public static final String LIKE_COMMENT = "/comment/auth/likesUp";
+    public static final String DISLIKE_COMMENT = "/comment/auth/likesUp";
 
 }

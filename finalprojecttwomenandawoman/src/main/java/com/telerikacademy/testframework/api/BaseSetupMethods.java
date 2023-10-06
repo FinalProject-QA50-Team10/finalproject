@@ -185,6 +185,32 @@ public class BaseSetupMethods {
                 .delete(DELETE_COMMENT);
     }
 
+    public Response likeComment(String username, String password, int commentId) {
+        return getRestAssured()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .queryParam("commentId", commentId)
+                .post(LIKE_COMMENT)
+                .then()
+                .extract()
+                .response();
+    }
+
+    public Response dislikeComment(String username, String password, int commentId) {
+        return getRestAssured()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .queryParam("commentId", commentId)
+                .post(DISLIKE_COMMENT)
+                .then()
+                .extract()
+                .response();
+    }
+
     // https://stackoverflow.com/questions/40317130/apis-http-response-yields-the-entire-html-page-instead-of-the-responses-body
 
     public Response signInUser(String username, String password) {
