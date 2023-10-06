@@ -106,4 +106,13 @@ public class PublicCommentLikeTest {
         posts.assertCommentIsDisliked(dislikeCommentResponse);
     }
 
+    @Test
+    @Order(8)
+    //FPT1-55 [Delete Post] Delete an Existing Public Post
+    public void when_userDeletesPost_expect_postIsDeleted() {
+        Response deletePostResponse = posts.deletePublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastPostId);
+        posts.assertStatusCode200(deletePostResponse.statusCode());
+        posts.assertResponseBodyIsEmpty(deletePostResponse);
+    }
+
 }
