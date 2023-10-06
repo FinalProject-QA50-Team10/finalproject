@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import javax.xml.stream.events.Comment;
-
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
 @TestMethodOrder(OrderAnnotation.class)
@@ -22,7 +20,7 @@ public class PublicCommentManipulationTest {
     @Test
     @Order(1)
     //FPT1-85 [Login Page] Login with valid username and valid password - JackNicholson
-    public void when_userSignsIn_expected_loginSuccessful() {
+    public void when_userSignsIn_expect_loginSuccessful() {
         Response signInWithUserJackNicholson = posts.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         posts.assertStatusCode302(signInWithUserJackNicholson.statusCode());
     }
@@ -30,7 +28,7 @@ public class PublicCommentManipulationTest {
     @Test
     @Order(2)
     //FPT1-25 [Add New Post] Generate new valid public post
-    public void when_userSignsIn_expected_newPublicPostCreated() {
+    public void when_userSignsIn_expect_newPublicPostCreated() {
         Response createNewPublicPost = posts.createPublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, POST_DESCRIPTION_VALID);
         posts.assertStatusCode200(createNewPublicPost.statusCode());
         posts.assertPostContent(createNewPublicPost, "Valid Post");
@@ -54,7 +52,7 @@ public class PublicCommentManipulationTest {
     @Test
     @Order(3)
     //FPT1-85 [Login Page] Login with valid username and valid password - TomCruise
-    public void when_anotherUserSignsIn_expected_loginSuccessful() {
+    public void when_anotherUserSignsIn_expect_loginSuccessful() {
         Response signInWithUserTomCruise = posts.signInUser(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
         posts.assertStatusCode302(signInWithUserTomCruise.statusCode());
     }
@@ -62,7 +60,7 @@ public class PublicCommentManipulationTest {
     @Test
     @Order(4)
     //FPT1-167 [Comment] Create Comment Successfully as Registered User
-    public void when_TomCruiseCreatesComment_expected_CommentIsCreated() {
+    public void when_userCreatesComment_expect_commentIsCreated() {
         Response signInWithUserTomCruise = posts.signInUser(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
         posts.assertStatusCode302(signInWithUserTomCruise.statusCode());
 
@@ -81,7 +79,7 @@ public class PublicCommentManipulationTest {
     @Test
     @Order(5)
     //FPT1-178 [Comment] Edit Comment Successfully as Registered User
-    public void when_TomCruiseEditsComment_expected_CommentIsEdited() {
+    public void when_userEditsComment_expect_commentIsEdited() {
         Response editCommentResponse = posts.editComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, EDIT_COMMENT_CONTENT, lastCommentId);
         posts.assertStatusCode200(editCommentResponse.statusCode());
     }
@@ -89,7 +87,7 @@ public class PublicCommentManipulationTest {
     @Test
     @Order(6)
     //FPT1-182 [Comment] Delete Comment Successfully as Registered User
-    public void when_TomCruiseDeletesComment_expected_CommentIsDeleted() {
+    public void when_userDeletesComment_expect_commentIsDeleted() {
         Response deleteCommentResponse = posts.deleteComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, lastCommentId);
         posts.assertStatusCode200(deleteCommentResponse.statusCode());
         posts.assertResponseBodyIsEmpty(deleteCommentResponse);
@@ -98,7 +96,7 @@ public class PublicCommentManipulationTest {
     @Test
     @Order(7)
     //FPT1-55 [Delete Post] Delete an Existing Public Post
-    public void when_JackNicholsonDeletesPost_expected_PostIsDeleted() {
+    public void when_userDeletesPost_expect_postIsDeleted() {
         Response deletePostResponse = posts.deletePublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastPostId);
         posts.assertStatusCode200(deletePostResponse.statusCode());
         posts.assertResponseBodyIsEmpty(deletePostResponse);

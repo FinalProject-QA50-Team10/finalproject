@@ -1,6 +1,9 @@
 package com.telerikacademy.testframework.api;
 
-import com.telerikacademy.testframework.api.models.*;
+import com.telerikacademy.testframework.api.models.PublicPostsModel;
+import com.telerikacademy.testframework.api.models.RegistrationErrorModel;
+import com.telerikacademy.testframework.api.models.SearchModel;
+import com.telerikacademy.testframework.api.models.UserInformationModel;
 import io.restassured.RestAssured;
 import io.restassured.authentication.FormAuthConfig;
 import io.restassured.http.ContentType;
@@ -148,7 +151,7 @@ public class BaseSetupMethods {
     }
 
     public Response createComment(String username, String password, String description, int lastPostId) {
-      //  RestAssured.baseURI = BASE_API_URL;
+        //  RestAssured.baseURI = BASE_API_URL;
         String body = String.format(CREATE_COMMENT_BODY, COMMENT_DESCRIPTION_VALID, lastPostId, TOM_CRUISE_ID);
 
         return getRestAssured()
@@ -183,6 +186,32 @@ public class BaseSetupMethods {
                 .log().all()
                 .queryParam("commentId", lastCommentId)
                 .delete(DELETE_COMMENT);
+    }
+
+    public Response likeComment(String username, String password, int commentId) {
+        return getRestAssured()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .queryParam("commentId", commentId)
+                .post(LIKE_COMMENT)
+                .then()
+                .extract()
+                .response();
+    }
+
+    public Response dislikeComment(String username, String password, int commentId) {
+        return getRestAssured()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .queryParam("commentId", commentId)
+                .post(DISLIKE_COMMENT)
+                .then()
+                .extract()
+                .response();
     }
 
     // https://stackoverflow.com/questions/40317130/apis-http-response-yields-the-entire-html-page-instead-of-the-responses-body
@@ -288,7 +317,7 @@ public class BaseSetupMethods {
         System.out.println("User ID is correct.");
     }
 
-    public void assertUserUsername(UserInformationModel user, String expectedUsername){
+    public void assertUserUsername(UserInformationModel user, String expectedUsername) {
         Assertions.assertEquals(user.username, expectedUsername, "Expected username is different than actual.");
         System.out.println("Username is correct.");
     }
