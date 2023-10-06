@@ -71,7 +71,8 @@ public class Constants {
             "\"public\": true" +
             "}";
 
-    public static final String CREATE_COMMENT_BODY = "{\"commentId\": 0, \"content\": \"%s\", \"deletedConfirmed\": true, \"postId\": %s, \"userId\": %s}";
+    public static final String CREATE_COMMENT_BODY = "{\"commentId\": 0, \"content\": \"%s\", \"deletedConfirmed\": " +
+            "true, \"postId\": %s, \"userId\": %s}";
 
 }
 
