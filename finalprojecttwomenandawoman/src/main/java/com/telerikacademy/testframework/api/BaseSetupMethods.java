@@ -75,7 +75,7 @@ public class BaseSetupMethods {
     }
 
     public Response searchUsersByEmptyName() {
-        var body = String.format(SEARCH_BY_JOB_TITLE_AND_NAME_BODY, EMPTY_STRING);
+        var body = String.format(SEARCH_BY_JOB_TITLE_AND_NAME_BODY, EMPTY_STRING, EMPTY_STRING);
 
         return getRestAssured()
                 .body(body)
