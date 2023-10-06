@@ -71,6 +71,11 @@ public class Constants {
             "\"public\": true" +
             "}";
 
+    public static final String EDIT_PRIVATE_POST_BODY = "{\"content\": \"%s\"," +
+            "\"picture\": \"\"," +
+            "\"public\": false" +
+            "}";
+
     public static final String CREATE_COMMENT_BODY = "{\"commentId\": 0, \"content\": \"%s\", \"deletedConfirmed\": " +
             "true, \"postId\": %s, \"userId\": %s}";
 

@@ -129,6 +129,19 @@ public class BaseSetupMethods {
                 .put(EDIT_POST);
     }
 
+    public Response editPrivatePost(String username, String password, String newDescription, int lastPostId) {
+        String body = String.format(EDIT_PRIVATE_POST_BODY, newDescription);
+
+        return getRestAssured()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .queryParam("postId", lastPostId)
+                .body(body)
+                .put(EDIT_POST);
+    }
+
     public Response deletePublicPost(String username, String password, int lastPostId) {
         RestAssured.baseURI = BASE_API_URL;
 
