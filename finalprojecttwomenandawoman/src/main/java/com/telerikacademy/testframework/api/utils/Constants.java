@@ -61,6 +61,11 @@ public class Constants {
             "\"public\": true" +
             "}";
 
+    public static final String CREATE_PRIVATE_POST_BODY = "{\"content\": \"%s\"," +
+            "\"picture\": \"\"," +
+            "\"public\": false" +
+            "}";
+
     public static final String EDIT_PUBLIC_POST_BODY = "{\"content\": \"%s\"," +
             "\"picture\": \"\"," +
             "\"public\": true" +

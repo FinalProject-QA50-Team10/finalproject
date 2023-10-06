@@ -23,5 +23,14 @@ public class PrivatePostTest {
         posts.assertStatusCode302(signInWithUserMrBeast.statusCode());
     }
 
-
+    @Test
+    @Order(2)
+    ////FPT1-26 [Add New Post] Generate new valid private post
+    public void when_userSignsIn_expected_newPrivatePostCreated() {
+        Response createNewPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_VALID);
+        posts.assertStatusCode200(createNewPrivatePost.statusCode());
+        posts.assertPostContent(createNewPrivatePost, "Valid Post");
+        posts.assertPostIsPrivate(createNewPrivatePost);
+        lastPostId = createNewPrivatePost.jsonPath().getInt("postId");
+    }
 }

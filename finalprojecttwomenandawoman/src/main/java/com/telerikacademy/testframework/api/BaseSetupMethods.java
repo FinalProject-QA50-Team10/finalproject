@@ -102,6 +102,19 @@ public class BaseSetupMethods {
                 .post(CREATE_POST);
     }
 
+    public Response createPrivatePost(String username, String password, String description) {
+        RestAssured.baseURI = BASE_API_URL;
+        String body = String.format(CREATE_PRIVATE_POST_BODY, description);
+
+        return given()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .body(body)
+                .post(CREATE_POST);
+    }
+
     public Response editPublicPost(String username, String password, String newDescription, int lastPostId) {
         RestAssured.baseURI = BASE_API_URL;
         String body = String.format(EDIT_PUBLIC_POST_BODY, newDescription);
@@ -279,6 +292,12 @@ public class BaseSetupMethods {
         boolean isPublic = response.jsonPath().getBoolean("public");
         Assertions.assertTrue(isPublic, "Post is not public.");
         System.out.println("Post is public.");
+    }
+
+    public void assertPostIsPrivate(Response response) {
+        boolean isPublic = response.jsonPath().getBoolean("private");
+        Assertions.assertTrue(isPublic, "Post is not private.");
+        System.out.println("Post is private.");
     }
 
     public void assertResponseBodyIsEmpty(Response response) {
