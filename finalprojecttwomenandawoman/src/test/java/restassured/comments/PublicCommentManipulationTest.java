@@ -1,11 +1,14 @@
 package restassured.comments;
 
 import com.telerikacademy.testframework.api.BaseSetupMethods;
+import com.telerikacademy.testframework.api.models.CommentModel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+
+import javax.xml.stream.events.Comment;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
@@ -67,7 +70,9 @@ public class PublicCommentManipulationTest {
 
         posts.assertStatusCode200(createCommentResponse.statusCode());
 
-        String commentContent = createCommentResponse.jsonPath().getString("content");
+        var t = createCommentResponse.as(CommentModel.class);
+
+        String commentContent = t.content;
         posts.assertContentIsExpected(commentContent, "Valid Comment");
 
         lastCommentId = createCommentResponse.jsonPath().getInt("commentId");

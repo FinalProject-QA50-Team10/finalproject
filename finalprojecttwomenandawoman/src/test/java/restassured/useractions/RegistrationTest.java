@@ -15,9 +15,7 @@ public class RegistrationTest {
     {
         registrationAPI.generateRandomUsername();
         registerResponse = registrationAPI.registerUser(VALID_JOB_TITLE, TOM_CRUISE_PASSWORD, RANDOM_EMAIL, RANDOM_USERNAME);
-
         registrationAPI.assertRegistrationMessage(registerResponse);
-        //--------------------------da napravq get zaqvka------------
     }
 
     @Test
