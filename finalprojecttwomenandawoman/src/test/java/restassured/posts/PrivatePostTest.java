@@ -17,6 +17,7 @@ public class PrivatePostTest {
 
     @Test
     @Order(1)
+    //FPT1-85 [Login Page] Sign in with username GeorgeBush
     public void when_userSignsIn_expected_loginSuccessful() {
         Response signInWithUserMrBeast = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         posts.assertStatusCode302(signInWithUserMrBeast.statusCode());

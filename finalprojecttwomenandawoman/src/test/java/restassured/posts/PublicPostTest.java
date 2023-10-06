@@ -17,6 +17,7 @@ public class PublicPostTest {
 
     @Test
     @Order(1)
+    //FPT1-85 [Login Page] Sign in with username MrBeast
     public void when_userSignsIn_expected_loginSuccessful() {
         Response signInWithUserMrBeast = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         posts.assertStatusCode302(signInWithUserMrBeast.statusCode());
@@ -24,6 +25,7 @@ public class PublicPostTest {
 
     @Test
     @Order(2)
+    //FPT1-25 [Add New Post] Generate new valid public post
     public void when_userSignsIn_expected_newPublicPostCreated() {
         Response createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_VALID);
         posts.assertStatusCode200(createNewPublicPost.statusCode());
@@ -34,6 +36,7 @@ public class PublicPostTest {
 
     @Test
     @Order(3)
+    //FTP1-35 [Add New Post] Generate new invalid public post
     public void when_userSignsIn_expect_invalidPublicPostNotBeCreated() {
         Response createNewInvalidPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_INVALID);
         posts.assertStatusCode400(createNewInvalidPublicPost.statusCode());
@@ -42,6 +45,7 @@ public class PublicPostTest {
 
     @Test
     @Order(4)
+    //FTP1-45 [Edit Post] Edit existing public post
     public void when_userSignsIn_expect_editPublicPostCreated() {
         Response signInResponse = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         posts.assertStatusCode302(signInResponse.statusCode());
@@ -51,6 +55,7 @@ public class PublicPostTest {
 
     @Test
     @Order(5)
+    //FPT1-55 [Delete Post] Confirming user can delete his own public post
     public void when_userSignIn_expect_deletePublicPostCreated() {
         Response signInResponse = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         posts.assertStatusCode302(signInResponse.statusCode());
