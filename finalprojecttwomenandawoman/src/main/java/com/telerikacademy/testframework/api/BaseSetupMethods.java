@@ -129,6 +129,19 @@ public class BaseSetupMethods {
                 .put(EDIT_POST);
     }
 
+    public Response editPrivatePost(String username, String password, String newDescription, int lastPostId) {
+        String body = String.format(EDIT_PRIVATE_POST_BODY, newDescription);
+
+        return getRestAssured()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .queryParam("postId", lastPostId)
+                .body(body)
+                .put(EDIT_POST);
+    }
+
     public Response deletePublicPost(String username, String password, int lastPostId) {
         RestAssured.baseURI = BASE_API_URL;
 
@@ -341,6 +354,13 @@ public class BaseSetupMethods {
         System.out.println("Username is correct.");
     }
 
+    public void assertInvalidPostContent(Response response) {
+        String responseBody = response.getBody().asString();
+        Assertions.assertTrue(responseBody.contains("Content size must be up to 1000 symbols"),
+                "Invalid post content message not found in the response.");
+        System.out.println("Content size must be up to 1000 symbols");
+    }
+
     public void assertPostContent(Response response, String expectedContent) {
         String responseBody = response.getBody().asString();
         Assertions.assertTrue(responseBody.contains(expectedContent),
@@ -393,6 +413,18 @@ public class BaseSetupMethods {
     public void assertCategoryNameIsExpected(String actualCategoryName, String expectedCategoryName) {
         Assertions.assertEquals(expectedCategoryName, actualCategoryName, "Category name is not as expected.");
         System.out.println("Category name is as expected.");
+    }
+
+    public void assertCommentIsLiked(Response response) {
+        boolean liked = response.jsonPath().getBoolean("liked");
+        Assertions.assertTrue(liked, "Comment was not liked");
+        System.out.println("Comment was liked.");
+    }
+
+    public void assertCommentIsDisliked(Response response) {
+        boolean liked = response.jsonPath().getBoolean("liked");
+        Assertions.assertFalse(liked, "Comment was not disliked");
+        System.out.println("Comment was disliked.");
     }
 
     public void assertRegistrationMessage(Response responseMessage) {
@@ -452,4 +484,19 @@ public class BaseSetupMethods {
         Random rand = new Random();
         return rand.nextInt(maxLength - minLength + 1) + minLength;
     }
+
+    public String generateInvalidComment() {
+        String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "abcdefghijklmnopqrstuvxyz"
+                + "0123456789 ";
+        int length = 1001;
+        StringBuilder sb = new StringBuilder(length);
+
+        for (int i = 0; i < length; i++) {
+            int index = (int) (alphaNumericString.length() * Math.random());
+            sb.append(alphaNumericString.charAt(index));
+        }
+        return sb.toString();
+    }
+
 }
