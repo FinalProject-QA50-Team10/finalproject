@@ -21,8 +21,10 @@ public class Constants {
     public static String INVALID_EMAIL = "invalid email@weare.com";
     public static String  VALID_JOB_TITLE = "Author";
     public static final String BAD_REQUEST = "Bad Request";
-    public static final String INVALID_USERNAME = "Джордж Буш";
+    public static final String NOT_FOUND = "Not Found";
+    public static final String INVALID_NAME = "Джордж Буш";
     public static final String REGISTRATION_ERROR_MESSAGE = "Validation failed for object";
+    public static final String NOT_FOUND_ERROR_MESSAGE = "USER not found";
     public static final String POST_DESCRIPTION_VALID = "Valid Post";
     public static final String EDIT_POST_DESCRIPTION_VALID = "Edit Valid Post";
     public static final String COMMENT_DESCRIPTION_VALID = "Valid Comment";
@@ -49,9 +51,9 @@ public class Constants {
             "\"password\": \"%s\"," +
             "\"username\": \"%s\"}";
 
-    public static final String SEARCH_BY_FIRST_AND_LAST_NAME_BODY = "{\"index\": 0, " +
+    public static final String SEARCH_BY_JOB_TITLE_AND_NAME_BODY = "{\"index\": 0, " +
             "\"next\": true," +
-            "\"searchParam1\": \"\"," +
+            "\"searchParam1\": \"%s\"," +
             "\"searchParam2\": \"%s\"," +
             "\"size\": 20" +
             "}";

@@ -33,7 +33,7 @@ public class RegistrationTest {
     public void when_unregisteredUserFillRegisterFormWithInvalidData_expect_badRequest()
     {
         registrationAPI.generateRandomUsername();
-        registerResponse = registrationAPI.registerUser(VALID_JOB_TITLE, TOM_CRUISE_PASSWORD, RANDOM_EMAIL, INVALID_USERNAME);
+        registerResponse = registrationAPI.registerUser(VALID_JOB_TITLE, TOM_CRUISE_PASSWORD, RANDOM_EMAIL, INVALID_NAME);
         var errorBody = registrationAPI.convertErrorBody(registerResponse);
 
         registrationAPI.assertStatusCode400(registerResponse.statusCode());

@@ -2,6 +2,7 @@ package restassured.useractions;
 
 import com.telerikacademy.testframework.api.BaseSetupMethods;
 import com.telerikacademy.testframework.api.models.PublicPostsModel;
+import com.telerikacademy.testframework.api.models.RegistrationErrorModel;
 import com.telerikacademy.testframework.api.models.SearchModel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ public class UnregisteredUserTest {
     @Test
     public void when_guestUserSearchForUserWithValidName_expected_success()
     {
-        unregisteredUser = userActionsAPI.searchUsersByName(GEORGE_BUSH_NAME);
+        unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_NAME);
         List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
 
         userActionsAPI.assertStatusCode200(unregisteredUser.statusCode());
@@ -38,16 +39,46 @@ public class UnregisteredUserTest {
         userActionsAPI.assertUsersContainSearchedName(users, GEORGE_BUSH_USERNAME);
     }
 
-    //-------------------- Kakvi da sa assurtite?!
+    @Test
+    public void when_guestUserSearchForUserWithEmptyNameAndEmptyJobTitle_expected_success()
+    {
+        unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, EMPTY_STRING);
+        List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
 
-//    @Test
-//    public void when_guestUserSearchForUserWithValidFirstName_expected_success()
-//    {
-//        searchAsGuest = userActionsAPI.searchUsersByName(GEORGE_BUSH_FIRST_NAME);
-//        List<SearchModel> users = userActionsAPI.getListOfUsers(searchAsGuest);
-//
-//        userActionsAPI.assertStatusCode200(searchAsGuest.statusCode());
-//        userActionsAPI.assertListIsNotEmpty(Collections.singletonList(users));
-//        userActionsAPI.assertUsername(users, GEORGE_BUSH_USERNAME);
-//    }
+        userActionsAPI.assertStatusCode200(unregisteredUser.statusCode());
+        userActionsAPI.assertListIsNotEmpty(Collections.singletonList(users));
+    }
+
+    @Test
+    public void when_guestUserSearchForUserWithValidFirstName_expected_success()
+    {
+        unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_FIRST_NAME);
+        List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
+
+        userActionsAPI.assertStatusCode200(unregisteredUser.statusCode());
+        userActionsAPI.assertListIsNotEmpty(Collections.singletonList(users));
+        userActionsAPI.assertSearchedFirstNameContainsInUserProfile(users, GEORGE_BUSH_FIRST_NAME);
+    }
+
+    @Test
+    public void when_guestUserSearchForUserWithValidLastName_expected_success()
+    {
+        unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_LAST_NAME);
+        List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
+
+        userActionsAPI.assertStatusCode200(unregisteredUser.statusCode());
+        userActionsAPI.assertListIsNotEmpty(Collections.singletonList(users));
+        userActionsAPI.assertSearchedLastNameContainsInUserProfile(users, GEORGE_BUSH_LAST_NAME);
+    }
+
+    @Test
+    public void when_guestUserSearchForUserWithInvalidName_expected_success()
+    {
+        unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, INVALID_NAME);
+        var errorModel = unregisteredUser.as(RegistrationErrorModel.class);
+
+        userActionsAPI.assertStatusCode404(unregisteredUser.statusCode());
+        userActionsAPI.assertNotFound(errorModel);
+        userActionsAPI.assertNotFoundMessage(errorModel);
+    }
 }

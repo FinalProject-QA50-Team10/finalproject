@@ -60,8 +60,8 @@ public class BaseSetupMethods {
                 .extract().response();
     }
 
-    public Response searchUsersByName(String name) {
-        var body = String.format(SEARCH_BY_FIRST_AND_LAST_NAME_BODY, name);
+    public Response searchUsersByName(String jobTitle, String name) {
+        var body = String.format(SEARCH_BY_JOB_TITLE_AND_NAME_BODY, jobTitle, name);
 
         return getRestAssured()
                 .body(body)
@@ -70,7 +70,7 @@ public class BaseSetupMethods {
     }
 
     public Response searchUsersByEmptyName() {
-        var body = String.format(SEARCH_BY_FIRST_AND_LAST_NAME_BODY, EMPTY_STRING);
+        var body = String.format(SEARCH_BY_JOB_TITLE_AND_NAME_BODY, EMPTY_STRING);
 
         return getRestAssured()
                 .body(body)
@@ -262,9 +262,23 @@ public class BaseSetupMethods {
         System.out.println("Response has 'Bad Request' error.");
     }
 
+    public void assertNotFound(RegistrationErrorModel response) {
+        String error = response.error;
+        Assertions.assertEquals(NOT_FOUND, error,
+                String.format("Response does not have '%s' error. Error is %s", NOT_FOUND, error));
+        System.out.println("Response has 'Not Found' error.");
+    }
+
     public void assertBadRequestMessage(RegistrationErrorModel response) {
         String message = response.message;
         Assertions.assertTrue(message.contains(REGISTRATION_ERROR_MESSAGE),
+                "Error message is different than expected.");
+        System.out.println("Error message is correct.");
+    }
+
+    public void assertNotFoundMessage(RegistrationErrorModel response) {
+        String message = response.message;
+        Assertions.assertEquals(NOT_FOUND_ERROR_MESSAGE, message,
                 "Error message is different than expected.");
         System.out.println("Error message is correct.");
     }
@@ -346,6 +360,30 @@ public class BaseSetupMethods {
         LAST_REGISTERED_USER_ID = lastUserId;
     }
 
+    public void assertSearchedFirstNameContainsInUserProfile(List<SearchModel> users, String firstName) {
+        for (var user : users) {
+            var username = user.username;
+            var userId = user.userId;
+            var userInformation = getUserInformation(username, userId);
+            var userModel = userInformation.as(UserInformationModel.class);
+            Assertions.assertEquals(userModel.firstName, firstName,
+                    String.format("First name is different than expected: %s.", userModel.firstName));
+        }
+        System.out.println("First name is correct.");
+    }
+
+    public void assertSearchedLastNameContainsInUserProfile(List<SearchModel> users, String lastName) {
+        for (var user : users) {
+            var username = user.username;
+            var userId = user.userId;
+            var userInformation = getUserInformation(username, userId);
+            var userModel = userInformation.as(UserInformationModel.class);
+            Assertions.assertTrue(lastName.contains(userModel.lastNAme),
+                    String.format("Last name is different than expected: %s.", userModel.lastNAme));
+        }
+        System.out.println("Last name is correct.");
+    }
+
     public void generateRandomUsername() {
         String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "abcdefghijklmnopqrstuvxyz";
@@ -366,5 +404,4 @@ public class BaseSetupMethods {
         Random rand = new Random();
         return rand.nextInt(maxLength - minLength + 1) + minLength;
     }
-
 }
