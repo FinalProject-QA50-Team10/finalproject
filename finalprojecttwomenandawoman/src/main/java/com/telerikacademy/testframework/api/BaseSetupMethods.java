@@ -178,6 +178,19 @@ public class BaseSetupMethods {
                 .response();
     }
 
+    public Response dislikePublicPost(String username, String password, int lastPostId) {
+        return getRestAssured()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .queryParam("postId", lastPostId)
+                .post(DISLIKE_POST)
+                .then()
+                .extract()
+                .response();
+    }
+
     public Response createComment(String username, String password, String description, int lastPostId) {
         //  RestAssured.baseURI = BASE_API_URL;
         String body = String.format(CREATE_COMMENT_BODY, description, lastPostId, TOM_CRUISE_ID);

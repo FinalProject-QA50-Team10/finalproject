@@ -2,11 +2,13 @@ package restassured.posts;
 
 import com.telerikacademy.testframework.api.BaseSetupMethods;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
-
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PublicPostLikeTest {
 
     private final BaseSetupMethods posts = new BaseSetupMethods();
@@ -49,4 +51,16 @@ public class PublicPostLikeTest {
         posts.assertStatusCode200(likePublicPost.statusCode());
         posts.assertPostIsLiked(likePublicPost);
     }
+
+    @Test
+    @Order(5)
+    //FTP1-124 [Like] Dislike a public post of another user
+    public void when_userSignsIn_expected_dislikeAnotherUserPublicPost() {
+        Response signInWithUserGeorgeBush = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
+        posts.assertStatusCode302(signInWithUserGeorgeBush.statusCode());
+        Response dislikePublicPost = posts.dislikePublicPost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
+        posts.assertStatusCode200(dislikePublicPost.statusCode());
+        posts.assertPostIsDisliked(dislikePublicPost);
+    }
+
 }
