@@ -87,6 +87,10 @@ public class BaseSetupMethods {
         return Arrays.asList(response.getBody().as(SearchModel[].class));
     }
 
+    public List<FriendsRequestModel> getListOfRequests(Response response) {
+        return  Arrays.asList(response.getBody().as(FriendsRequestModel[].class));
+    }
+
     public RegistrationErrorModel convertErrorBody(Response response) {
         return response.as(RegistrationErrorModel.class);
     }
@@ -165,7 +169,7 @@ public class BaseSetupMethods {
                 .response();
     }
 
-    public Response likePublicPost(String username, String password, int lastPostId) {
+    public Response likePost(String username, String password, int lastPostId) {
         return getRestAssured()
                 .auth()
                 .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
@@ -178,7 +182,7 @@ public class BaseSetupMethods {
                 .response();
     }
 
-    public Response dislikePublicPost(String username, String password, int lastPostId) {
+    public Response dislikePost(String username, String password, int lastPostId) {
         return getRestAssured()
                 .auth()
                 .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
@@ -292,6 +296,33 @@ public class BaseSetupMethods {
                 .then()
                 .extract()
                 .response();
+    }
+
+    public Response getUserRequest(String username, String password, int id) {
+        return getRestAssured()
+                .auth()
+                .form(username, password, new FormAuthConfig
+                        (AUTHENTICATE, "username", "password"))
+                .when()
+                .get(String.format(GET_USER_REQUESTS, id))
+                .then()
+                .extract()
+                .response();
+    }
+
+    public String approveFriendRequest(String acceptingUsername, String acceptingPassword,
+                                         int userAcceptingId, int userSendingId) {
+        return getRestAssured()
+                .auth()
+                .form(acceptingUsername, acceptingPassword, new FormAuthConfig(AUTHENTICATE,
+                        "username", "password"))
+                .queryParam("requestId", userSendingId)
+                .when()
+                .post(String.format(APPROVE_REQUESTS, userAcceptingId))
+                .then()
+                .extract()
+                .response()
+                .asString();
     }
 
     //############# Asserts #############
@@ -533,13 +564,23 @@ public class BaseSetupMethods {
         System.out.println("First name is correct.");
     }
 
-    public void assertFriendRequestSuccessMessage(Response friendRequestResponse, String sendRequestUsername, String recieveRequestUsername) {
+    public void assertSentFriendRequestMessage(Response friendRequestResponse, String sendRequestUsername, String recieveRequestUsername) {
         String expectedMessage = friendRequestResponse.asString();
         String actualMessage = String.format("%s send friend request to %s", sendRequestUsername, recieveRequestUsername);
         Assertions.assertEquals(expectedMessage, actualMessage, "Expected message is different than actual." +
                 String.format("Actual message: %s", actualMessage) +
                 String.format("Expected message: %s", expectedMessage));
         System.out.println("Request message is correct.");
+    }
+
+    public void assertDuplicatedRequestErrorMessage(Response friendRequestResponse, String sendRequestUsername, String recieveRequestUsername) {
+        String expectedMessage = friendRequestResponse.asString();
+        String actualMessage = String.format("%s can't connect to %s", sendRequestUsername, recieveRequestUsername);
+        Assertions.assertEquals(expectedMessage, actualMessage, "Expected message is different than actual." +
+                String.format("Actual message: %s", actualMessage) +
+                String.format("Expected message: %s", expectedMessage));
+        System.out.println("Request message is correct.");
+
     }
 
     public void assertSearchedLastNameContainsInUserProfile(List<SearchModel> users, String lastName) {
@@ -554,6 +595,12 @@ public class BaseSetupMethods {
         System.out.println("Last name is correct.");
     }
 
+    public void assertSuccessfulAcceptMessage(String responseMessage) {
+        var expectedText = "approved request of";
+        Assertions.assertTrue(responseMessage.contains(expectedText), "Actual message doesn't contain " +
+                "expected text. " + String.format("Actual message: %s", responseMessage));
+        System.out.println("Actual message contains expected text.");
+    }
     public void generateRandomUsername() {
         String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "abcdefghijklmnopqrstuvxyz";

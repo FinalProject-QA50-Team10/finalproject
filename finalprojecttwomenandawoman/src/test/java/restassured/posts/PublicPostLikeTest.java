@@ -47,7 +47,7 @@ public class PublicPostLikeTest {
     public void when_userSignsIn_expected_likeAnotherUserPublicPost() {
         Response signInWithUserGeorgeBush = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         posts.assertStatusCode302(signInWithUserGeorgeBush.statusCode());
-        Response likePublicPost = posts.likePublicPost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
+        Response likePublicPost = posts.likePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
         posts.assertStatusCode200(likePublicPost.statusCode());
         posts.assertPostIsLiked(likePublicPost);
     }
@@ -58,7 +58,7 @@ public class PublicPostLikeTest {
     public void when_userSignsIn_expected_dislikeAnotherUserPublicPost() {
         Response signInWithUserGeorgeBush = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         posts.assertStatusCode302(signInWithUserGeorgeBush.statusCode());
-        Response dislikePublicPost = posts.dislikePublicPost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
+        Response dislikePublicPost = posts.dislikePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
         posts.assertStatusCode200(dislikePublicPost.statusCode());
         posts.assertPostIsDisliked(dislikePublicPost);
     }
@@ -72,5 +72,12 @@ public class PublicPostLikeTest {
         Response deletePublicPost = posts.deletePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
         posts.assertStatusCode200(deletePublicPost.statusCode());
         posts.assertResponseBodyIsEmpty(deletePublicPost);
+    }
+
+    @Test
+    @Order(7)
+    public void when_userSignIn_expect_lastPublicPostDeleted() {
+        Response lastPublicPostDeleted = posts.getLastPublicPost(lastPostId);
+        posts.assertStatusCode404(lastPublicPostDeleted.statusCode());
     }
 }
