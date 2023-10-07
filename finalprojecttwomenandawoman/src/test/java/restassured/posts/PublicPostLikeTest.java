@@ -35,7 +35,18 @@ public class PublicPostLikeTest {
     @Order(3)
     //FPT1-85 [Login Page] Sign in with username GeorgeBush
     public void when_userSignsIn_expected_loginSuccessfulGeorgeBush() {
-        Response signInWithUserMrBeast = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
-        posts.assertStatusCode302(signInWithUserMrBeast.statusCode());
+        Response signInWithUserGeorgeBush = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
+        posts.assertStatusCode302(signInWithUserGeorgeBush.statusCode());
+    }
+
+    @Test
+    @Order(4)
+    //FPT1-123 [Like] Like a public post of another user
+    public void when_userSignsIn_expected_likeAnotherUserPublicPost() {
+        Response signInWithUserGeorgeBush = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
+        posts.assertStatusCode302(signInWithUserGeorgeBush.statusCode());
+        Response likePublicPost = posts.likePublicPost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
+        posts.assertStatusCode200(likePublicPost.statusCode());
+        posts.assertPostIsLiked(likePublicPost);
     }
 }
