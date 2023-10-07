@@ -114,6 +114,10 @@ public class Constants {
             "\"picturePrivacy\": true," +
             "\"sex\": \"FEMALE\"" +
             "}";
+
+    public static final String FRIENDS_REQUEST_BODY = "{\"id\": %s," +
+            "\"username\": \"%s\"" +
+            "}";
 }
 
 

@@ -1,6 +1,7 @@
 package restassured.useractions;
 
 import com.telerikacademy.testframework.api.BaseSetupMethods;
+import com.telerikacademy.testframework.api.models.UserInformationModel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,17 +13,22 @@ public class SendFriendRequestTest {
     private Response userResponse;
 
     @BeforeEach
-    public void login(){
-        userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
+    public void precondition(){
+        userAPI.generateRandomUsername();
+        userResponse = userAPI.registerUser(VALID_JOB_TITLE, TOM_CRUISE_PASSWORD, RANDOM_EMAIL, RANDOM_USERNAME);
+        userAPI.assertRegistrationMessage(userResponse);
     }
 
     @Test
     public void when_sendFriendRequestToAnotherUserWhoIsNotYourFriend_expect_successfulAcceptIt(){
-        userAPI.generateRandomUsername();
-        userResponse = userAPI.registerUser(VALID_JOB_TITLE, TOM_CRUISE_PASSWORD, RANDOM_EMAIL, RANDOM_USERNAME);
-        userAPI.assertRegistrationMessage(userResponse);
+        var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
+                .as(UserInformationModel.class);
 
+        userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
+        userResponse = userAPI.sendFriendRequest(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD, userAccepting.id, RANDOM_USERNAME);
 
+        userAPI.assertStatusCode200(userResponse.statusCode());
+        userAPI.assertFriendRequestSuccessMessage(userResponse, FOR_EDIT_USERNAME, RANDOM_USERNAME);
     }
 
 

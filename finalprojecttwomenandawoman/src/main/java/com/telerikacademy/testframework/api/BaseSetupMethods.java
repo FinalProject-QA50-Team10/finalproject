@@ -254,6 +254,20 @@ public class BaseSetupMethods {
                 .response();
     }
 
+    public Response sendFriendRequest(String username, String password, int id, String userName){
+        var body = String.format(FRIENDS_REQUEST_BODY, id, userName);
+
+        return getRestAssured()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .body(body)
+                .when()
+                .post(SEND_REQUEST)
+                .then()
+                .extract()
+                .response();
+    }
+
     //############# Asserts #############
 
     public void assertStatusCode200(int statusCode) {
@@ -378,6 +392,11 @@ public class BaseSetupMethods {
         System.out.println("Username is correct.");
     }
 
+    public void assertNotEqual(String expect, String actual) {
+        Assertions.assertNotEquals(expect, actual, "Expected name is the same than actual.");
+        System.out.println("Name is different.");
+    }
+
     public void assertInvalidPostContent(Response response) {
         String responseBody = response.getBody().asString();
         Assertions.assertTrue(responseBody.contains("Content size must be up to 1000 symbols"),
@@ -476,6 +495,15 @@ public class BaseSetupMethods {
         System.out.println("First name is correct.");
     }
 
+    public void assertFriendRequestSuccessMessage(Response friendRequestResponse, String sendRequestUsername, String recieveRequestUsername) {
+        String expectedMessage = friendRequestResponse.asString();
+        String actualMessage = String.format("%s send friend request to %s", sendRequestUsername, recieveRequestUsername);
+        Assertions.assertEquals(expectedMessage, actualMessage, "Expected message is different than actual." +
+                String.format("Actual message: %s", actualMessage) +
+                String.format("Expected message: %s", expectedMessage));
+        System.out.println("Request message is correct.");
+    }
+
     public void assertSearchedLastNameContainsInUserProfile(List<SearchModel> users, String lastName) {
         for (var user : users) {
             var username = user.username;
@@ -522,6 +550,4 @@ public class BaseSetupMethods {
         }
         return sb.toString();
     }
-
-
 }
