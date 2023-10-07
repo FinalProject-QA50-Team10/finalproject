@@ -63,4 +63,14 @@ public class PublicPostLikeTest {
         posts.assertPostIsDisliked(dislikePublicPost);
     }
 
+    @Test
+    @Order(6)
+    //FPT1-55 [Delete Post] Delete the latest public post
+    public void when_userSignsIn_expected_deleteLatestPublicPost() {
+        Response signInResponse = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
+        posts.assertStatusCode302(signInResponse.statusCode());
+        Response deletePublicPost = posts.deletePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
+        posts.assertStatusCode200(deletePublicPost.statusCode());
+        posts.assertResponseBodyIsEmpty(deletePublicPost);
+    }
 }

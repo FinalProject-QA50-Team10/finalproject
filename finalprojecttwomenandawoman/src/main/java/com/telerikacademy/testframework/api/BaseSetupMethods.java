@@ -144,7 +144,7 @@ public class BaseSetupMethods {
                 .put(EDIT_POST);
     }
 
-    public Response deletePublicPost(String username, String password, int lastPostId) {
+    public Response deletePost(String username, String password, int lastPostId) {
         RestAssured.baseURI = BASE_API_URL;
 
         return given()

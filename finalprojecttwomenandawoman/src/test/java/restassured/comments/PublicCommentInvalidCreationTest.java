@@ -73,7 +73,7 @@ public class PublicCommentInvalidCreationTest {
     @Order(5)
     //FPT1-55 [Delete Post] Delete an Existing Public Post
     public void when_userDeletesPost_expect_postIsDeleted() {
-        Response deletePostResponse = posts.deletePublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastPostId);
+        Response deletePostResponse = posts.deletePost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastPostId);
         posts.assertStatusCode200(deletePostResponse.statusCode());
         posts.assertResponseBodyIsEmpty(deletePostResponse);
     }
