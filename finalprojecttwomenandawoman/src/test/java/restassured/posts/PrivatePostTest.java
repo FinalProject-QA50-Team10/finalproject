@@ -62,7 +62,7 @@ public class PrivatePostTest {
     public void when_userSignIn_expect_deletePrivatePostCreated() {
         Response signInResponse = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         posts.assertStatusCode302(signInResponse.statusCode());
-        Response deletePrivatePost = posts.deletePublicPost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
+        Response deletePrivatePost = posts.deletePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
         posts.assertStatusCode200(deletePrivatePost.statusCode());
         posts.assertResponseBodyIsEmpty(deletePrivatePost);
     }

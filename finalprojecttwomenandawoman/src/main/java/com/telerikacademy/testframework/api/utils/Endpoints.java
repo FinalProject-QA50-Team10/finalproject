@@ -27,6 +27,7 @@ public class Endpoints {
     public static final String DELETE_POST = "/post/auth/manager";
     public static final String LATEST_POSTS = "/post/";
     public static final String LIKE_POST = "/post/auth/likesUp";
+    public static final String DISLIKE_POST = "/post/auth/likesUp";
 
     //comments
     public static final String CREATE_COMMENT = "/comment/auth/creator";

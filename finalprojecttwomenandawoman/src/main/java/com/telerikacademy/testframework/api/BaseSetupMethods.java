@@ -41,7 +41,7 @@ public class BaseSetupMethods {
     }
 
     public Response editUserProfile(String username, String password,
-                                    String birthday, String firstName, int id, String lastName){
+                                    String birthday, String firstName, int id, String lastName) {
         var body = String.format(EDIT_USER_PROFILE_BODY, birthday, firstName, id, lastName);
 
         return getRestAssured()
@@ -144,7 +144,7 @@ public class BaseSetupMethods {
                 .put(EDIT_POST);
     }
 
-    public Response deletePublicPost(String username, String password, int lastPostId) {
+    public Response deletePost(String username, String password, int lastPostId) {
         RestAssured.baseURI = BASE_API_URL;
 
         return given()
@@ -160,6 +160,32 @@ public class BaseSetupMethods {
         return getRestAssured()
                 .when()
                 .get(LATEST_POSTS + lastPostId)
+                .then()
+                .extract()
+                .response();
+    }
+
+    public Response likePublicPost(String username, String password, int lastPostId) {
+        return getRestAssured()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .queryParam("postId", lastPostId)
+                .post(LIKE_POST)
+                .then()
+                .extract()
+                .response();
+    }
+
+    public Response dislikePublicPost(String username, String password, int lastPostId) {
+        return getRestAssured()
+                .auth()
+                .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
+                .contentType("application/json")
+                .log().all()
+                .queryParam("postId", lastPostId)
+                .post(DISLIKE_POST)
                 .then()
                 .extract()
                 .response();
@@ -421,6 +447,18 @@ public class BaseSetupMethods {
         boolean isPublic = response.jsonPath().getBoolean("public");
         Assertions.assertFalse(isPublic, "Post should not be public.");
         System.out.println("Post is not public.");
+    }
+
+    public void assertPostIsLiked(Response response) {
+        boolean liked = response.jsonPath().getBoolean("liked");
+        Assertions.assertTrue(liked, "Post was not liked");
+        System.out.println("Post was liked.");
+    }
+
+    public void assertPostIsDisliked(Response response) {
+        boolean liked = response.jsonPath().getBoolean("liked");
+        Assertions.assertFalse(liked, "Post was not disliked");
+        System.out.println("Post was disliked.");
     }
 
     public void assertResponseBodyIsEmpty(Response response) {

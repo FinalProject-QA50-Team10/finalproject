@@ -62,7 +62,7 @@ public class PublicPostTest {
     public void when_userSignIn_expect_deletePublicPostCreated() {
         Response signInResponse = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         posts.assertStatusCode302(signInResponse.statusCode());
-        Response deletePublicPost = posts.deletePublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
+        Response deletePublicPost = posts.deletePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
         posts.assertStatusCode200(deletePublicPost.statusCode());
         posts.assertResponseBodyIsEmpty(deletePublicPost);
 
