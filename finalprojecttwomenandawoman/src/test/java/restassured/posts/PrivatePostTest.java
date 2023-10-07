@@ -1,7 +1,7 @@
 package restassured.posts;
 
 import com.telerikacademy.testframework.api.BaseSetupMethods;
-import com.telerikacademy.testframework.api.models.RegistrationErrorModel;
+import com.telerikacademy.testframework.api.models.ErrorModel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -40,7 +40,7 @@ public class PrivatePostTest {
     //FTP1-36 [Add New Post] Generate new invalid private post
     public void when_userSignsIn_expect_invalidPrivatePostNotBeCreated() {
         Response createNewInvalidPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_INVALID);
-        var registrationErrorModel = createNewInvalidPrivatePost.as(RegistrationErrorModel.class);
+        var registrationErrorModel = createNewInvalidPrivatePost.as(ErrorModel.class);
         posts.assertStatusCode400(createNewInvalidPrivatePost.statusCode());
         posts.assertBadRequest(registrationErrorModel);
         posts.assertInvalidPostContent(createNewInvalidPrivatePost);

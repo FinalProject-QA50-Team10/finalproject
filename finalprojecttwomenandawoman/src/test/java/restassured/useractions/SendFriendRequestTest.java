@@ -22,6 +22,7 @@ public class SendFriendRequestTest {
     }
 
     @Test
+    //FPT1-116 [Friends Request] User sends request to connect with another user
     public void when_sendFriendRequestToAnotherUserWhoIsNotYourFriend_expect_successfulSentRequest(){
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
@@ -34,6 +35,7 @@ public class SendFriendRequestTest {
     }
 
     @Test
+    //FPT1-116 [Friends Request] User sends request to connect with another user
     public void when_sendFriendRequestToAnotherUserWhoIsNotYourFriend_expect_successfulRequestsAreVisible(){
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
@@ -52,6 +54,7 @@ public class SendFriendRequestTest {
     }
 
     @Test
+    //FPT1-116 [Friends Request] User sends request to connect with another user
     public void when_sendFriendRequestToAnotherUserWhoIsNotYourFriend_expect_successfulAcceptIt(){
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);

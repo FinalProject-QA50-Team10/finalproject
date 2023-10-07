@@ -11,6 +11,7 @@ public class RegistrationTest {
     private Response registerResponse;
 
     @Test
+    //FPT1-135 [Registration] Successful Registration
     public void when_unregisteredUserFillRegisterFormWithValidData_expect_successRegistration()
     {
         registrationAPI.generateRandomUsername();
@@ -19,6 +20,7 @@ public class RegistrationTest {
     }
 
     @Test
+    //FPT1-136 [Registration] Empty Fields
     public void when_unregisteredUserFillRegisterFormWithEmptyData_expect_badRequest()
     {
         registerResponse = registrationAPI.registerUser(EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING);
@@ -30,6 +32,7 @@ public class RegistrationTest {
     }
 
     @Test
+    //FPT1-149 [Registration] Attempt Registration With Cyrillic Characters in Username
     public void when_unregisteredUserFillRegisterFormWithInvalidData_expect_badRequest()
     {
         registrationAPI.generateRandomUsername();
@@ -42,6 +45,7 @@ public class RegistrationTest {
     }
 
     @Test
+    //FPT1-150 [Registration] Attempt Registration With Empty Password Field
     public void when_unregisteredUserFillRegisterFormWithEmptyPassword_expect_badRequest()
     {
         registrationAPI.generateRandomUsername();
@@ -54,6 +58,7 @@ public class RegistrationTest {
     }
 
     @Test
+    //FPT1-162 [Registration] Attempt Registration With Email Containing Spaces
     public void when_unregisteredUserFillRegisterFormWithInvalidEmail_expect_badRequest()
     {
         registrationAPI.generateRandomUsername();
