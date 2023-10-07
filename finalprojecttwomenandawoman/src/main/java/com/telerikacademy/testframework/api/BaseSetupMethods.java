@@ -165,7 +165,7 @@ public class BaseSetupMethods {
                 .response();
     }
 
-    public Response likePublicPost(String username, String password, int lastPostId) {
+    public Response likePost(String username, String password, int lastPostId) {
         return getRestAssured()
                 .auth()
                 .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
@@ -178,7 +178,7 @@ public class BaseSetupMethods {
                 .response();
     }
 
-    public Response dislikePublicPost(String username, String password, int lastPostId) {
+    public Response dislikePost(String username, String password, int lastPostId) {
         return getRestAssured()
                 .auth()
                 .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
