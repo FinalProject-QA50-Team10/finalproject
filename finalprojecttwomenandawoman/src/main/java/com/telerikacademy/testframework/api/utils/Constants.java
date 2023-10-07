@@ -1,7 +1,8 @@
 package com.telerikacademy.testframework.api.utils;
 
 public class Constants {
-
+    public static final String ADMIN_NAME = "adminYordan";
+    public static final String ADMIN_PASSWORD = "Abv123!";
     public static final String GEORGE_BUSH_NAME = "George Bush";
     public static final String GEORGE_BUSH_USERNAME = "GeorgeBush";
     public static final String GEORGE_BUSH_FIRST_NAME = "George";
