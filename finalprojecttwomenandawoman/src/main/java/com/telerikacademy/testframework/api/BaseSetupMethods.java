@@ -595,6 +595,20 @@ public class BaseSetupMethods {
         System.out.println("Last name is correct.");
     }
 
+    public void assertEquals(UserInformationModel unchangedUser, UserInformationModel userProfile) {
+        Assertions.assertEquals(userProfile.firstName, unchangedUser.firstName,
+                "Expected first name is different than actual.");
+        Assertions.assertEquals(userProfile.lastNAme, unchangedUser.lastNAme,
+                "Expected last name is different than actual.");
+        Assertions.assertEquals(userProfile.birthYear, unchangedUser.birthYear,
+                "Expected birth date is different than actual.");
+        Assertions.assertEquals(userProfile.email, unchangedUser.email,
+                "Expected email is different than actual.");
+        Assertions.assertEquals(userProfile.username, unchangedUser.username,
+                "Expected username is different than actual.");
+        System.out.println("There are no differences between user information.");
+    }
+
     public void assertSuccessfulAcceptMessage(String responseMessage) {
         var expectedText = "approved request of";
         Assertions.assertTrue(responseMessage.contains(expectedText), "Actual message doesn't contain " +
