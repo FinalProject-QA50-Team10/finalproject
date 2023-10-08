@@ -42,5 +42,15 @@ public class AdminPostEditDeleteTest {
         posts.assertStatusCode302(signInWithUserAdmin.statusCode());
     }
 
+    @Test
+    @Order(4)
+    //FPT1-60 [Edit Post]  Edit existing public post as Admin
+    public void when_adminEditsPost_expect_postIsEdited() {
+        Response signInWithUserAdmin = posts.signInUser(ADMIN_NAME, ADMIN_PASSWORD);
+        posts.assertStatusCode302(signInWithUserAdmin.statusCode());
+        Response editPostAsAdmin = posts.editPublicPost(ADMIN_NAME, ADMIN_PASSWORD, EDIT_PUBLIC_POST_BODY, lastPostId);
+        posts.assertStatusCode200(editPostAsAdmin.statusCode());
+    }
+
 
 }
