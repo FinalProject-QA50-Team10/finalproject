@@ -34,5 +34,13 @@ public class AdminPostEditDeleteTest {
         lastPostId = createNewPublicPost.jsonPath().getInt("postId");
     }
 
+    @Test
+    @Order(3)
+    //FPT1-224 [Login Form] Login with a valid username and a valid password as an admin user
+    public void when_adminUserSignsIn_expect_loginSuccessful() {
+        Response signInWithUserAdmin = posts.signInUser(ADMIN_NAME, ADMIN_PASSWORD);
+        posts.assertStatusCode302(signInWithUserAdmin.statusCode());
+    }
+
 
 }
