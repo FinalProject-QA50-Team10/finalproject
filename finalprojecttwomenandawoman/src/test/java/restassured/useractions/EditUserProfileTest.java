@@ -16,11 +16,6 @@ public class EditUserProfileTest {
     private final ApiTestAssertions assertions = new ApiTestAssertions();
     private Response userResponse;
 
-    @BeforeEach
-    public void login() {
-        userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
-    }
-
     @Test
     //FPT1-1 [Edit Profile] Edit User Profile with Personal Information
     public void when_userEditHisUserProfile_expect_successfullyEditedProfile() {

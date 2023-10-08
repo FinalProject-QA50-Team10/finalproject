@@ -19,8 +19,6 @@ public class LoginTest {
         assertions.assertStatusCode302(loginResponse.statusCode());
     }
 
-    //----------------Kakvi da sa assurtite
-
     @Test
     public void when_unauthenticatedUserLoginWithValidUsernameAndInvalidPassword_expect_successLoginUser() {
         loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, GEORGE_BUSH_PASSWORD);
