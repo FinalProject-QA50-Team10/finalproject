@@ -67,9 +67,10 @@ public class EditUserProfileTest {
         userResponse = userAPI.editUserProfile(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD,
                 EMPTY_STRING, EMPTY_STRING, EMPTY_INTEGER, EMPTY_STRING);
         var editedProfileModel = userResponse.as(ErrorModel.class);
+        var userProfile = userAPI.getUserInformation(FOR_EDIT_USERNAME, FOR_EDIT_ID).as(UserInformationModel.class);
 
         userAPI.assertStatusCode404(userResponse.statusCode());
         userAPI.assertNotFound(editedProfileModel);
-        userAPI.assertNotFoundMessage(editedProfileModel);
+        userAPI.assertEquals(unchangedUser, userProfile);
     }
 }
