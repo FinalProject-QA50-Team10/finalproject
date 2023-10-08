@@ -1,6 +1,6 @@
 package com.telerikacademy.testframework.api.models;
 
-public class RegistrationErrorModel {
+public class ErrorModel {
     public int status;
     public String error;
     public String message;

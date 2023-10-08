@@ -87,8 +87,12 @@ public class BaseSetupMethods {
         return Arrays.asList(response.getBody().as(SearchModel[].class));
     }
 
-    public RegistrationErrorModel convertErrorBody(Response response) {
-        return response.as(RegistrationErrorModel.class);
+    public List<FriendsRequestModel> getListOfRequests(Response response) {
+        return  Arrays.asList(response.getBody().as(FriendsRequestModel[].class));
+    }
+
+    public ErrorModel convertErrorBody(Response response) {
+        return response.as(ErrorModel.class);
     }
 
     public Response createPublicPost(String username, String password, String description) {
@@ -294,6 +298,33 @@ public class BaseSetupMethods {
                 .response();
     }
 
+    public Response getUserRequest(String username, String password, int id) {
+        return getRestAssured()
+                .auth()
+                .form(username, password, new FormAuthConfig
+                        (AUTHENTICATE, "username", "password"))
+                .when()
+                .get(String.format(GET_USER_REQUESTS, id))
+                .then()
+                .extract()
+                .response();
+    }
+
+    public String approveFriendRequest(String acceptingUsername, String acceptingPassword,
+                                         int userAcceptingId, int userSendingId) {
+        return getRestAssured()
+                .auth()
+                .form(acceptingUsername, acceptingPassword, new FormAuthConfig(AUTHENTICATE,
+                        "username", "password"))
+                .queryParam("requestId", userSendingId)
+                .when()
+                .post(String.format(APPROVE_REQUESTS, userAcceptingId))
+                .then()
+                .extract()
+                .response()
+                .asString();
+    }
+
     //############# Asserts #############
 
     public void assertStatusCode200(int statusCode) {
@@ -344,42 +375,42 @@ public class BaseSetupMethods {
     }
 
     //--------------------------------//
-    public void assertBadRequest(RegistrationErrorModel response) {
+    public void assertBadRequest(ErrorModel response) {
         String error = response.error;
         Assertions.assertEquals(BAD_REQUEST, error,
                 String.format("Response does not have '%s' error. Error is %s", BAD_REQUEST, error));
         System.out.println("Response has 'Bad Request' error.");
     }
 
-    public void assertNotFound(RegistrationErrorModel response) {
+    public void assertNotFound(ErrorModel response) {
         String error = response.error;
         Assertions.assertEquals(NOT_FOUND, error,
                 String.format("Response does not have '%s' error. Error is %s", NOT_FOUND, error));
         System.out.println("Response has 'Not Found' error.");
     }
 
-    public void assertUnauthorizedError(RegistrationErrorModel response) {
+    public void assertUnauthorizedError(ErrorModel response) {
         String error = response.error;
         Assertions.assertEquals(UNAUTHORIZED_ERROR, error,
                 String.format("Response does not have '%s' error. Error is %s", UNAUTHORIZED_ERROR, error));
         System.out.println("Response has 'Unauthorized' error.");
     }
 
-    public void assertBadRequestMessage(RegistrationErrorModel response) {
+    public void assertBadRequestMessage(ErrorModel response) {
         String message = response.message;
         Assertions.assertTrue(message.contains(REGISTRATION_ERROR_MESSAGE),
                 "Error message is different than expected.");
         System.out.println("Error message is correct.");
     }
 
-    public void assertNotFoundMessage(RegistrationErrorModel response) {
+    public void assertNotFoundMessage(ErrorModel response) {
         String message = response.message;
         Assertions.assertEquals(NOT_FOUND_ERROR_MESSAGE, message,
                 "Error message is different than expected.");
         System.out.println("Error message is correct.");
     }
 
-    public void assertUnauthorizedMessage(RegistrationErrorModel response) {
+    public void assertUnauthorizedMessage(ErrorModel response) {
         String message = response.message;
         Assertions.assertEquals(UNAUTHORIZED_ERROR_MESSAGE, message,
                 "Error message is different than expected.");
@@ -533,13 +564,23 @@ public class BaseSetupMethods {
         System.out.println("First name is correct.");
     }
 
-    public void assertFriendRequestSuccessMessage(Response friendRequestResponse, String sendRequestUsername, String recieveRequestUsername) {
+    public void assertSentFriendRequestMessage(Response friendRequestResponse, String sendRequestUsername, String recieveRequestUsername) {
         String expectedMessage = friendRequestResponse.asString();
         String actualMessage = String.format("%s send friend request to %s", sendRequestUsername, recieveRequestUsername);
         Assertions.assertEquals(expectedMessage, actualMessage, "Expected message is different than actual." +
                 String.format("Actual message: %s", actualMessage) +
                 String.format("Expected message: %s", expectedMessage));
         System.out.println("Request message is correct.");
+    }
+
+    public void assertDuplicatedRequestErrorMessage(Response friendRequestResponse, String sendRequestUsername, String recieveRequestUsername) {
+        String expectedMessage = friendRequestResponse.asString();
+        String actualMessage = String.format("%s can't connect to %s", sendRequestUsername, recieveRequestUsername);
+        Assertions.assertEquals(expectedMessage, actualMessage, "Expected message is different than actual." +
+                String.format("Actual message: %s", actualMessage) +
+                String.format("Expected message: %s", expectedMessage));
+        System.out.println("Request message is correct.");
+
     }
 
     public void assertSearchedLastNameContainsInUserProfile(List<SearchModel> users, String lastName) {
@@ -554,6 +595,12 @@ public class BaseSetupMethods {
         System.out.println("Last name is correct.");
     }
 
+    public void assertSuccessfulAcceptMessage(String responseMessage) {
+        var expectedText = "approved request of";
+        Assertions.assertTrue(responseMessage.contains(expectedText), "Actual message doesn't contain " +
+                "expected text. " + String.format("Actual message: %s", responseMessage));
+        System.out.println("Actual message contains expected text.");
+    }
     public void generateRandomUsername() {
         String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "abcdefghijklmnopqrstuvxyz";

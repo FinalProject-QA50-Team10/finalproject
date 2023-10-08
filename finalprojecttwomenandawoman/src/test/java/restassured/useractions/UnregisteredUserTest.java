@@ -2,7 +2,7 @@ package restassured.useractions;
 
 import com.telerikacademy.testframework.api.BaseSetupMethods;
 import com.telerikacademy.testframework.api.models.PublicPostsModel;
-import com.telerikacademy.testframework.api.models.RegistrationErrorModel;
+import com.telerikacademy.testframework.api.models.ErrorModel;
 import com.telerikacademy.testframework.api.models.SearchModel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
@@ -18,6 +18,7 @@ public class UnregisteredUserTest {
     private Response unregisteredUser;
 
     @Test
+    //FPT1-189 [Feed] Verify Unauthenticated Users Can Access Public Feed
     public void when_guestUserBrowsePublicPosts_expected_allPostsArePublic()
     {
         unregisteredUser = userActionsAPI.browseAllPublicPosts();
@@ -29,6 +30,7 @@ public class UnregisteredUserTest {
     }
 
     @Test
+    //FPT1-103 [Search Form] Search users with a valid first and valid second name as a guest
     public void when_guestUserSearchForUserWithValidName_expected_success()
     {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_NAME);
@@ -40,6 +42,7 @@ public class UnregisteredUserTest {
     }
 
     @Test
+    //FPT1-101 [Search Form] Search users with empty name and empty job title as a guest
     public void when_guestUserSearchForUserWithEmptyNameAndEmptyJobTitle_expected_success()
     {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, EMPTY_STRING);
@@ -50,6 +53,7 @@ public class UnregisteredUserTest {
     }
 
     @Test
+    //FPT1-104 [Search Form] Search for users with valid first name as a guest
     public void when_guestUserSearchForUserWithValidFirstName_expected_success()
     {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_FIRST_NAME);
@@ -61,6 +65,7 @@ public class UnregisteredUserTest {
     }
 
     @Test
+    //FPT1-105 [Search Form] Search users with valid last name as a guest
     public void when_guestUserSearchForUserWithValidLastName_expected_success()
     {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_LAST_NAME);
@@ -72,10 +77,11 @@ public class UnregisteredUserTest {
     }
 
     @Test
+    //FPT1-226 [Search Form] Search users by invalid first and last name as a guest
     public void when_guestUserSearchForUserWithInvalidName_expected_success()
     {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, INVALID_NAME);
-        var errorModel = unregisteredUser.as(RegistrationErrorModel.class);
+        var errorModel = unregisteredUser.as(ErrorModel.class);
 
         userActionsAPI.assertStatusCode404(unregisteredUser.statusCode());
         userActionsAPI.assertNotFound(errorModel);
