@@ -38,6 +38,7 @@ public class Constants {
     public static final String UNAUTHORIZED_ERROR_MESSAGE = "User is not authorised";
     public static final String POST_DESCRIPTION_VALID = "Valid Post";
     public static final String EDIT_POST_DESCRIPTION_VALID = "Edit Valid Post";
+    public static final String EDIT_POST_AS_ADMIN = "Edit Post as Admin";
     public static final String COMMENT_DESCRIPTION_VALID = "Valid Comment";
     public static final String EDIT_COMMENT_CONTENT = "Edit comment";
     public static final String POST_DESCRIPTION_INVALID = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +

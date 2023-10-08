@@ -122,10 +122,9 @@ public class BaseSetupMethods {
     }
 
     public Response editPublicPost(String username, String password, String newDescription, int lastPostId) {
-        RestAssured.baseURI = BASE_API_URL;
         String body = String.format(EDIT_PUBLIC_POST_BODY, newDescription);
 
-        return given()
+        return getRestAssured()
                 .auth()
                 .form(username, password, new FormAuthConfig(AUTHENTICATE, "username", "password"))
                 .contentType("application/json")

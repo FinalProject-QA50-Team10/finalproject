@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
+import static com.telerikacademy.testframework.api.utils.Endpoints.EDIT_POST;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AdminPostEditDeleteTest {
@@ -46,9 +47,7 @@ public class AdminPostEditDeleteTest {
     @Order(4)
     //FPT1-60 [Edit Post]  Edit existing public post as Admin
     public void when_adminEditsPost_expect_postIsEdited() {
-        Response signInWithUserAdmin = posts.signInUser(ADMIN_NAME, ADMIN_PASSWORD);
-        posts.assertStatusCode302(signInWithUserAdmin.statusCode());
-        Response editPostAsAdmin = posts.editPublicPost(ADMIN_NAME, ADMIN_PASSWORD, EDIT_PUBLIC_POST_BODY, lastPostId);
+        Response editPostAsAdmin = posts.editPublicPost(ADMIN_NAME, ADMIN_PASSWORD, EDIT_POST_AS_ADMIN, lastPostId);
         posts.assertStatusCode200(editPostAsAdmin.statusCode());
     }
 
