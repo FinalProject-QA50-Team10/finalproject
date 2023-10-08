@@ -18,7 +18,7 @@ public class PrivatePostLikeTest {
     @Test
     @Order(1)
     //FPT1-85 [Login Page] Sign in with username GeorgeBush
-    public void when_userSignsIn_expected_loginSuccessfulMrBeast() {
+    public void when_userSignsIn_expected_loginSuccessful() {
         Response signInWithUserMrBeast = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         posts.assertStatusCode302(signInWithUserMrBeast.statusCode());
     }
@@ -37,7 +37,7 @@ public class PrivatePostLikeTest {
     @Test
     @Order(3)
     //FPT1-85 [Login Page] Sign in with username MrBeast
-    public void when_userSignsIn_expected_loginSuccessfulGeorgeBush() {
+    public void when_anotherUserSignsIn_expect_loginSuccessful() {
         Response signInWithUserGeorgeBush = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         posts.assertStatusCode302(signInWithUserGeorgeBush.statusCode());
     }

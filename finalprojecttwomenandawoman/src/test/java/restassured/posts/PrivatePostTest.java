@@ -59,7 +59,7 @@ public class PrivatePostTest {
     @Test
     @Order(4)
     //FPT1-56 [Delete Post] Confirming user can delete his own private post
-    public void when_userSignIn_expect_deletePrivatePostCreated() {
+    public void when_userSignsIn_expected_deleteLatestPublicPost() {
         Response signInResponse = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         posts.assertStatusCode302(signInResponse.statusCode());
         Response deletePrivatePost = posts.deletePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);

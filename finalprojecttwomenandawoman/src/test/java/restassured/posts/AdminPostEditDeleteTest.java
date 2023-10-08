@@ -15,7 +15,6 @@ public class AdminPostEditDeleteTest {
     private final BaseSetupMethods posts = new BaseSetupMethods();
     private static int lastPostId;
 
-
     @Test
     @Order(1)
     //FPT1-85 [Login Page] Sign in with username MrBeast
@@ -24,6 +23,16 @@ public class AdminPostEditDeleteTest {
         posts.assertStatusCode302(signInWithUserMrBeast.statusCode());
     }
 
+    @Test
+    @Order(2)
+    //FPT1-25 [Add New Post] Generate new valid public post
+    public void when_userSignsIn_expected_newPublicPostCreated() {
+        Response createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_VALID);
+        posts.assertStatusCode200(createNewPublicPost.statusCode());
+        posts.assertPostContent(createNewPublicPost, "Valid Post");
+        posts.assertPostIsPublic(createNewPublicPost);
+        lastPostId = createNewPublicPost.jsonPath().getInt("postId");
+    }
 
 
 }
