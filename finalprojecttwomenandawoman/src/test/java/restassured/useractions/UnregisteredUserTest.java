@@ -1,8 +1,9 @@
 package restassured.useractions;
 
+import com.telerikacademy.testframework.api.ApiTestAssertions;
 import com.telerikacademy.testframework.api.BaseSetupMethods;
-import com.telerikacademy.testframework.api.models.PublicPostsModel;
 import com.telerikacademy.testframework.api.models.ErrorModel;
+import com.telerikacademy.testframework.api.models.PublicPostsModel;
 import com.telerikacademy.testframework.api.models.SearchModel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
@@ -14,77 +15,72 @@ import static com.telerikacademy.testframework.api.utils.Constants.*;
 
 public class UnregisteredUserTest {
     private final BaseSetupMethods userActionsAPI = new BaseSetupMethods();
+    private final ApiTestAssertions assertions = new ApiTestAssertions();
 
     private Response unregisteredUser;
 
     @Test
     //FPT1-189 [Feed] Verify Unauthenticated Users Can Access Public Feed
-    public void when_guestUserBrowsePublicPosts_expected_allPostsArePublic()
-    {
+    public void when_guestUserBrowsePublicPosts_expected_allPostsArePublic() {
         unregisteredUser = userActionsAPI.browseAllPublicPosts();
         List<PublicPostsModel> posts = userActionsAPI.getListOfPosts(unregisteredUser);
 
-        userActionsAPI.assertStatusCode200(unregisteredUser.statusCode());
-        userActionsAPI.assertListIsNotEmpty(Collections.singletonList(posts));
-        userActionsAPI.assertPostsArePublic(posts);
+        assertions.assertStatusCode200(unregisteredUser.statusCode());
+        assertions.assertListIsNotEmpty(Collections.singletonList(posts));
+        assertions.assertPostsArePublic(posts);
     }
 
     @Test
     //FPT1-103 [Search Form] Search users with a valid first and valid second name as a guest
-    public void when_guestUserSearchForUserWithValidName_expected_success()
-    {
+    public void when_guestUserSearchForUserWithValidName_expected_success() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_NAME);
-        List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
+        List<SearchModel> users = assertions.getListOfUsers(unregisteredUser);
 
-        userActionsAPI.assertStatusCode200(unregisteredUser.statusCode());
-        userActionsAPI.assertListIsNotEmpty(Collections.singletonList(users));
-        userActionsAPI.assertUsersContainSearchedName(users, GEORGE_BUSH_USERNAME);
+        assertions.assertStatusCode200(unregisteredUser.statusCode());
+        assertions.assertListIsNotEmpty(Collections.singletonList(users));
+        assertions.assertUsersContainSearchedName(users, GEORGE_BUSH_USERNAME);
     }
 
     @Test
     //FPT1-101 [Search Form] Search users with empty name and empty job title as a guest
-    public void when_guestUserSearchForUserWithEmptyNameAndEmptyJobTitle_expected_success()
-    {
+    public void when_guestUserSearchForUserWithEmptyNameAndEmptyJobTitle_expected_success() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, EMPTY_STRING);
         List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
 
-        userActionsAPI.assertStatusCode200(unregisteredUser.statusCode());
-        userActionsAPI.assertListIsNotEmpty(Collections.singletonList(users));
+        assertions.assertStatusCode200(unregisteredUser.statusCode());
+        assertions.assertListIsNotEmpty(Collections.singletonList(users));
     }
 
     @Test
     //FPT1-104 [Search Form] Search for users with valid first name as a guest
-    public void when_guestUserSearchForUserWithValidFirstName_expected_success()
-    {
+    public void when_guestUserSearchForUserWithValidFirstName_expected_success() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_FIRST_NAME);
         List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
 
-        userActionsAPI.assertStatusCode200(unregisteredUser.statusCode());
-        userActionsAPI.assertListIsNotEmpty(Collections.singletonList(users));
-        userActionsAPI.assertSearchedFirstNameContainsInUserProfile(users, GEORGE_BUSH_FIRST_NAME);
+        assertions.assertStatusCode200(unregisteredUser.statusCode());
+        assertions.assertListIsNotEmpty(Collections.singletonList(users));
+        assertions.assertSearchedFirstNameContainsInUserProfile(users, GEORGE_BUSH_FIRST_NAME);
     }
 
     @Test
     //FPT1-105 [Search Form] Search users with valid last name as a guest
-    public void when_guestUserSearchForUserWithValidLastName_expected_success()
-    {
+    public void when_guestUserSearchForUserWithValidLastName_expected_success() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_LAST_NAME);
         List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
 
-        userActionsAPI.assertStatusCode200(unregisteredUser.statusCode());
-        userActionsAPI.assertListIsNotEmpty(Collections.singletonList(users));
-        userActionsAPI.assertSearchedLastNameContainsInUserProfile(users, GEORGE_BUSH_LAST_NAME);
+        assertions.assertStatusCode200(unregisteredUser.statusCode());
+        assertions.assertListIsNotEmpty(Collections.singletonList(users));
+        assertions.assertSearchedLastNameContainsInUserProfile(users, GEORGE_BUSH_LAST_NAME);
     }
 
     @Test
     //FPT1-226 [Search Form] Search users by invalid first and last name as a guest
-    public void when_guestUserSearchForUserWithInvalidName_expected_success()
-    {
+    public void when_guestUserSearchForUserWithInvalidName_expected_success() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, INVALID_NAME);
         var errorModel = unregisteredUser.as(ErrorModel.class);
 
-        userActionsAPI.assertStatusCode404(unregisteredUser.statusCode());
-        userActionsAPI.assertNotFound(errorModel);
-        userActionsAPI.assertNotFoundMessage(errorModel);
+        assertions.assertStatusCode404(unregisteredUser.statusCode());
+        assertions.assertNotFound(errorModel);
+        assertions.assertNotFoundMessage(errorModel);
     }
 }

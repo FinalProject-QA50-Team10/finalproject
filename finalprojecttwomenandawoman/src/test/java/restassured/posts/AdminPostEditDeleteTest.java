@@ -1,5 +1,6 @@
 package restassured.posts;
 
+import com.telerikacademy.testframework.api.ApiTestAssertions;
 import com.telerikacademy.testframework.api.BaseSetupMethods;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.MethodOrderer;
@@ -8,12 +9,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
-import static com.telerikacademy.testframework.api.utils.Endpoints.EDIT_POST;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AdminPostEditDeleteTest {
 
     private final BaseSetupMethods posts = new BaseSetupMethods();
+    private final ApiTestAssertions assertions = new ApiTestAssertions();
     private static int lastPostId;
 
     @Test
@@ -21,7 +22,7 @@ public class AdminPostEditDeleteTest {
     //FPT1-85 [Login Page] Sign in with username MrBeast
     public void when_userSignsIn_expected_loginSuccessful() {
         Response signInWithUserMrBeast = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
-        posts.assertStatusCode302(signInWithUserMrBeast.statusCode());
+        assertions.assertStatusCode302(signInWithUserMrBeast.statusCode());
     }
 
     @Test
@@ -29,9 +30,9 @@ public class AdminPostEditDeleteTest {
     //FPT1-25 [Add New Post] Generate new valid public post
     public void when_userSignsIn_expected_newPublicPostCreated() {
         Response createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_VALID);
-        posts.assertStatusCode200(createNewPublicPost.statusCode());
-        posts.assertPostContent(createNewPublicPost, "Valid Post");
-        posts.assertPostIsPublic(createNewPublicPost);
+        assertions.assertStatusCode200(createNewPublicPost.statusCode());
+        assertions.assertPostContent(createNewPublicPost, "Valid Post");
+        assertions.assertPostIsPublic(createNewPublicPost);
         lastPostId = createNewPublicPost.jsonPath().getInt("postId");
     }
 
@@ -40,7 +41,7 @@ public class AdminPostEditDeleteTest {
     //FPT1-224 [Login Form] Login with a valid username and a valid password as an admin user
     public void when_adminUserSignsIn_expect_loginSuccessful() {
         Response signInWithUserAdmin = posts.signInUser(ADMIN_NAME, ADMIN_PASSWORD);
-        posts.assertStatusCode302(signInWithUserAdmin.statusCode());
+        assertions.assertStatusCode302(signInWithUserAdmin.statusCode());
     }
 
     @Test
@@ -48,7 +49,7 @@ public class AdminPostEditDeleteTest {
     //FPT1-60 [Edit Post]  Edit existing public post as Admin
     public void when_adminEditsPost_expect_postIsEdited() {
         Response editPostAsAdmin = posts.editPublicPost(ADMIN_NAME, ADMIN_PASSWORD, EDIT_POST_AS_ADMIN, lastPostId);
-        posts.assertStatusCode200(editPostAsAdmin.statusCode());
+        assertions.assertStatusCode200(editPostAsAdmin.statusCode());
     }
 
     @Test
@@ -56,7 +57,7 @@ public class AdminPostEditDeleteTest {
     //FPT1-61 [Delete Post] Delete an Existing Post as Admin
     public void when_adminDeletesPost_expect_postIsDeleted() {
         Response deletePostWithUserAdmin = posts.deletePost(ADMIN_NAME, ADMIN_PASSWORD, lastPostId);
-        posts.assertStatusCode200(deletePostWithUserAdmin.statusCode());
-        posts.assertResponseBodyIsEmpty(deletePostWithUserAdmin);
+        assertions.assertStatusCode200(deletePostWithUserAdmin.statusCode());
+        assertions.assertResponseBodyIsEmpty(deletePostWithUserAdmin);
     }
 }
