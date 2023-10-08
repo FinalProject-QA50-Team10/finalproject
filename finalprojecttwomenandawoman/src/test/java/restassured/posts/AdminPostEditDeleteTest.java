@@ -52,5 +52,12 @@ public class AdminPostEditDeleteTest {
         posts.assertStatusCode200(editPostAsAdmin.statusCode());
     }
 
-
+    @Test
+    @Order(5)
+    //FPT1-61 [Delete Post] Delete an Existing Post as Admin
+    public void when_adminDeletesPost_expect_postIsDeleted() {
+        Response deletePostWithUserAdmin = posts.deletePost(ADMIN_NAME, ADMIN_PASSWORD, lastPostId);
+        posts.assertStatusCode200(deletePostWithUserAdmin.statusCode());
+        posts.assertResponseBodyIsEmpty(deletePostWithUserAdmin);
+    }
 }
