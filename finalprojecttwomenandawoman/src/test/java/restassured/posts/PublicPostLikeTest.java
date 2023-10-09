@@ -28,7 +28,7 @@ public class PublicPostLikeTest {
     @Test
     @Order(2)
     //FPT1-25 [Add New Post] Generate new valid public post
-    public void when_userSignsIn_expected_newPublicPostCreated() {
+    public void when_userCreatePublicPost_expected_newPublicPostCreated() {
         Response createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_VALID);
         assertions.assertStatusCode200(createNewPublicPost.statusCode());
         assertions.assertPostContent(createNewPublicPost, "Valid Post");
@@ -47,7 +47,7 @@ public class PublicPostLikeTest {
     @Test
     @Order(4)
     //FPT1-123 [Like] Like a public post of another user
-    public void when_userSignsIn_expected_likeAnotherUserPublicPost() {
+    public void when_userLikePublicPost_expected_likeAnotherUserPublicPost() {
         Response signInWithUserGeorgeBush = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         assertions.assertStatusCode302(signInWithUserGeorgeBush.statusCode());
         Response likePublicPost = posts.likePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
@@ -58,7 +58,7 @@ public class PublicPostLikeTest {
     @Test
     @Order(5)
     //FTP1-124 [Like] Dislike a public post of another user
-    public void when_userSignsIn_expected_dislikeAnotherUserPublicPost() {
+    public void when_userDislikePublicPost_expected_dislikeAnotherUserPublicPost() {
         Response signInWithUserGeorgeBush = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         assertions.assertStatusCode302(signInWithUserGeorgeBush.statusCode());
         Response dislikePublicPost = posts.dislikePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
@@ -69,7 +69,7 @@ public class PublicPostLikeTest {
     @Test
     @Order(6)
     //FPT1-55 [Delete Post] Delete the latest public post
-    public void when_userSignsIn_expected_deleteLatestPublicPost() {
+    public void when_userDeletePublicPost_expected_deleteLatestPublicPost() {
         Response signInResponse = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         assertions.assertStatusCode302(signInResponse.statusCode());
         Response deletePublicPost = posts.deletePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);

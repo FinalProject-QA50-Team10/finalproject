@@ -29,7 +29,7 @@ public class PrivatePostTest {
     @Test
     @Order(2)
     //FPT1-26 [Add New Post] Generate new valid private post
-    public void when_userSignsIn_expected_newPrivatePostCreated() {
+    public void when_userCreatePrivatePost_expected_newPrivatePostCreated() {
         Response createNewPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_VALID);
         assertions.assertStatusCode200(createNewPrivatePost.statusCode());
         assertions.assertPostContent(createNewPrivatePost, "Valid Post");
@@ -40,7 +40,7 @@ public class PrivatePostTest {
     @Test
     @Order(3)
     //FTP1-36 [Add New Post] Generate new invalid private post
-    public void when_userSignsIn_expect_invalidPrivatePostNotBeCreated() {
+    public void when_userCreateInvalidPrivatePost_expect_invalidPrivatePostNotBeCreated() {
         Response createNewInvalidPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_INVALID);
         var registrationErrorModel = createNewInvalidPrivatePost.as(ErrorModel.class);
         assertions.assertStatusCode400(createNewInvalidPrivatePost.statusCode());
@@ -51,7 +51,7 @@ public class PrivatePostTest {
     @Test
     @Order(3)
     //FTP1-46 [Edit Post] Edit existing private post
-    public void when_userSignsIn_expect_editPrivatePostCreated() {
+    public void when_userEditPrivatePost_expect_postIsEdited() {
         Response signInResponse = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         assertions.assertStatusCode302(signInResponse.statusCode());
         Response editPrivatePost = posts.editPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, EDIT_POST_DESCRIPTION_VALID, lastPostId);
@@ -61,7 +61,7 @@ public class PrivatePostTest {
     @Test
     @Order(4)
     //FPT1-56 [Delete Post] Confirming user can delete his own private post
-    public void when_userSignsIn_expected_deleteLatestPublicPost() {
+    public void when_userDeletePrivatePost_expected_deleteLatestPrivatePost() {
         Response signInResponse = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         assertions.assertStatusCode302(signInResponse.statusCode());
         Response deletePrivatePost = posts.deletePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
@@ -70,7 +70,7 @@ public class PrivatePostTest {
     }
 
     @Test
-    @Order(6)
+    @Order(5)
     public void when_userSignIn_expect_lastPrivatePostDeleted() {
         Response lastPrivatePostDeleted = posts.getLastPublicPost(lastPostId);
         assertions.assertStatusCode404(lastPrivatePostDeleted.statusCode());

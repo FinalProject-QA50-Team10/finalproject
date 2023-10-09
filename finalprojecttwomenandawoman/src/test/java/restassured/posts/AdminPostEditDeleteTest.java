@@ -28,7 +28,7 @@ public class AdminPostEditDeleteTest {
     @Test
     @Order(2)
     //FPT1-25 [Add New Post] Generate new valid public post
-    public void when_userSignsIn_expected_newPublicPostCreated() {
+    public void when_userCreatePublicPost_expected_newPublicPostCreated() {
         Response createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_VALID);
         assertions.assertStatusCode200(createNewPublicPost.statusCode());
         assertions.assertPostContent(createNewPublicPost, "Valid Post");
