@@ -2,6 +2,7 @@ package restassured.comments;
 
 import com.telerikacademy.testframework.api.ApiTestAssertions;
 import com.telerikacademy.testframework.api.BaseSetupMethods;
+import com.telerikacademy.testframework.api.models.PublicPostsModel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -32,8 +33,10 @@ public class PublicCommentInvalidCreationTest {
     //FPT1-25 [Add New Post] Generate new valid public post
     public void when_userSignsIn_expect_newPublicPostCreated() {
         Response createNewPublicPost = comments.createPublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, POST_DESCRIPTION_VALID);
+        var t = createNewPublicPost.as(PublicPostsModel.class);
+
         assertions.assertStatusCode200(createNewPublicPost.statusCode());
-        assertions.assertPostContent(createNewPublicPost, "Valid Post");
+        assertions.assertPostContent(t.content);
         assertions.assertPostIsPublic(createNewPublicPost);
 
         int postId = createNewPublicPost.jsonPath().getInt("postId");

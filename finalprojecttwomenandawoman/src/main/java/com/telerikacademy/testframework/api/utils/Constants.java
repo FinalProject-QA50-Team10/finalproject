@@ -36,6 +36,7 @@ public class Constants {
     public static final String REGISTRATION_ERROR_MESSAGE = "Validation failed for object";
     public static final String NOT_FOUND_ERROR_MESSAGE = "USER not found";
     public static final String UNAUTHORIZED_ERROR_MESSAGE = "User is not authorised";
+
     public static final String POST_DESCRIPTION_VALID = "Valid Post";
     public static final String EDIT_POST_DESCRIPTION_VALID = "Edit Valid Post";
     public static final String EDIT_POST_AS_ADMIN = "Edit Post as Admin";

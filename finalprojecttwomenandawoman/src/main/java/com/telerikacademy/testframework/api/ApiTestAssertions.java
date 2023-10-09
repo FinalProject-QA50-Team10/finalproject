@@ -147,10 +147,10 @@ public class ApiTestAssertions extends BaseSetupMethods {
         System.out.println("Content size must be up to 1000 symbols");
     }
 
-    public void assertPostContent(Response response, String expectedContent) {
-        String responseBody = response.getBody().asString();
-        Assertions.assertTrue(responseBody.contains(expectedContent),
-                String.format("Expected content '%s' not found in the response.", expectedContent));
+    public void assertPostContent(String response) {
+       // String responseBody = response.getBody().asString();
+        Assertions.assertEquals(POST_DESCRIPTION_VALID, response,
+                String.format("Expected content '%s' not found in the response.", response));
         System.out.println("New post has been created.");
     }
 
