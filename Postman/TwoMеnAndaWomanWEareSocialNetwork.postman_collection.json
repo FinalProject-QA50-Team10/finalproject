@@ -1,0 +1,5394 @@
+{
+	"info": {
+		"_postman_id": "d14f8705-eeed-40dc-bf8a-69c32e3026d6",
+		"name": "TwoMеnAndaWomanWEareSocialNetwork",
+		"description": "This is our Final Project Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30343943",
+		"_collection_link": "https://planetary-firefly-93288.postman.co/workspace/TwoMenAndWoman~37375650-4545-49fe-8095-a57f8c4c9ee8/collection/30343943-d14f8705-eeed-40dc-bf8a-69c32e3026d6?action=share&source=collection_link&creator=30343943"
+	},
+	"item": [
+		{
+			"name": "Post and Comments",
+			"item": [
+				{
+					"name": "Posts",
+					"item": [
+						{
+							"name": "[Public] Create, Edit and Delete a Post",
+							"item": [
+								{
+									"name": "FPT1-85 [Login Page] Sign in with username MrBeast",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{MrBeastUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{MrBeastPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-25 [Add New Post] Generate new valid public post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"console.log(jsonData.postId)\r",
+													"pm.globals.set(\"LatestPostId\", jsonData.postId)\r",
+													"\r",
+													"pm.test(\"New public post has been created\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Initial Post by MrBeast using Postman\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Post content length is within limits\", function () {\r",
+													"    pm.expect(jsonData.content.length).to.be.below(1001);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Post is public\", function () {\r",
+													"    pm.expect(jsonData.public).to.equal(true);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{MrBeastPassword}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{MrBeastUsername}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{postByMrBeast}}\",\r\n  \"picture\": \"\",\r\n  \"public\": true\r\n}\r\n\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createPostEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createPostEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FTP1-35 [Add New Post] Create Public Post with a Description Length of 1001 symbols",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Bad Request 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Invalid Post Content\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Content size must be up to 1000 symbols\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Response has 'Bad Request' error\", function () {\r",
+													"    pm.expect(pm.response.json().error).to.equal(\"Bad Request\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{MrBeastPassword}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{MrBeastUsername}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{invalidPostByMrBeast}}\",\r\n  \"picture\": \"\",\r\n  \"public\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createPostEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createPostEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FTP1-45 [Edit Post] Edit existing public post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{MrBeastPassword}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{MrBeastUsername}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{editPostByMrBeast}}\",\r\n  \"picture\": \"\",\r\n  \"public\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{editPostEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{editPostEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-55 [Delete Post] Delete an Existing Public Post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Response body is empty\", function () {\r",
+													"    pm.expect(pm.response.text()).to.be.empty;\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{deletePostEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{deletePostEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Confirming last public post was deleted",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Not Found\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify post is delete\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify message for deletion\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"No message available\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "[Private] Create, Edit and Delete a Post",
+							"item": [
+								{
+									"name": "FPT1-85 [Login Page] Sign in with username GeorgeBush",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{GeorgeBushUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{GeorgeBushPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-26 [Add New Post] Generate new valid private post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"console.log(jsonData.postId)\r",
+													"pm.globals.set(\"LatestPostId\", jsonData.postId)\r",
+													"\r",
+													"pm.test(\"New private post has been created\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Initial Post by GeorgeBush using Postman\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Post content length is within limits\", function () {\r",
+													"    pm.expect(jsonData.content.length).to.be.below(1001);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Post is public\", function () {\r",
+													"    pm.expect(jsonData.public).to.equal(false);\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{GeorgeBushPassword}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{GeorgeBushUsername}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{postByGeorgeBush}}\",\r\n  \"picture\": \"\",\r\n  \"public\": false\r\n}\r\n\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createPostEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createPostEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FTP1-36 [Add New Post] Generate new invalid private post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Bad Request 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Invalid Post Content\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Content size must be up to 1000 symbols\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response has 'Bad Request' error\", function () {\r",
+													"    pm.expect(pm.response.json().error).to.equal(\"Bad Request\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{GeorgeBushPassword}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{GeorgeBushUsername}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{invalidPostByGeorgeBush}}\",\r\n  \"picture\": \"\",\r\n  \"public\": false\r\n}\r\n\r\n"
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createPostEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createPostEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FTP1-46 [Edit Post] Edit existing private post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{GeorgeBushPassword}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{GeorgeBushUsername}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{editPostByGeorgeBush}}\",\r\n  \"picture\": \"\",\r\n  \"public\": false\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{editPostEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{editPostEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-56 [Delete Post] Confirming user can delete his own private post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response body is empty\", function () {\r",
+													"    pm.expect(pm.response.text()).to.be.empty;\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{deletePostEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{deletePostEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Confirming last private post was deleted",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Not Found\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify post is delete\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify message for deletion\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"No message available\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "[Public] Like and Unlike Post of Another User",
+							"item": [
+								{
+									"name": "FPT1-85 [Login Page] Sign in with username MrBeast",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{MrBeastUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{MrBeastPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-25 [Add New Post] Generate new public post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"console.log(jsonData.postId)\r",
+													"pm.globals.set(\"LatestPostId\", jsonData.postId)\r",
+													"\r",
+													"pm.test(\"New public post has been created\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Initial Post by MrBeast using Postman\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"The post have 0 likes\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.liked).to.eql(false);\r",
+													"})\r",
+													"\r",
+													"pm.test(\"Post is public\", function () {\r",
+													"    pm.expect(jsonData.public).to.equal(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Post content length is within limits\", function () {\r",
+													"    pm.expect(jsonData.content.length).to.be.below(1001);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{MrBeastPassword}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{MrBeastUsername}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{postByMrBeast}}\",\r\n  \"picture\": \"\",\r\n  \"public\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createPostEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createPostEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Sign in with username GeorgeBush",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{GeorgeBushUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{GeorgeBushPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-123 [Like] Like a public post of another user",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"The new post was liked\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.liked).to.eql(true);\r",
+													"})\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{likesUpEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{likesUpEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FTP1-124 [Like] Dislike a public post of another user",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"The new post was unliked\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.liked).to.eql(false);\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{likesUpEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{likesUpEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Sign in with username MrBeast",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{MrBeastUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{MrBeastPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-55 [Delete Post] Delete the latest public post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Response body is empty\", function () {\r",
+													"    pm.expect(pm.response.text()).to.be.empty;\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{deletePostEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{deletePostEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Confirming last public post was deleted",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Not Found\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify post is delete\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify message for deletion\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"No message available\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "[Private] Like and Unlike Post of Another User",
+							"item": [
+								{
+									"name": "FPT1-85 [Login Page] Sign in with username GeorgeBush",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{GeorgeBushUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{GeorgeBushPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-26 [Add New Post] Generate new private post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"console.log(jsonData.postId)\r",
+													"pm.globals.set(\"LatestPostId\", jsonData.postId)\r",
+													"\r",
+													"pm.test(\"New public post has been created\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Initial Post by GeorgeBush using Postman\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"The post have 0 likes\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.liked).to.eql(false);\r",
+													"})\r",
+													"\r",
+													"pm.test(\"Post is public\", function () {\r",
+													"    pm.expect(jsonData.public).to.equal(false);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Post content length is within limits\", function () {\r",
+													"    pm.expect(jsonData.content.length).to.be.below(1001);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{GeorgeBushPassword}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{GeorgeBushUsername}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{postByGeorgeBush}}\",\r\n  \"picture\": \"\",\r\n  \"public\": false\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createPostEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createPostEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Sign in with username MrBeast",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{MrBeastPassword}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{MrBeastUsername}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{MrBeastUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{MrBeastPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-123 [Like] Like a private post of another user",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"The new post was liked\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.liked).to.eql(true);\r",
+													"})\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{likesUpEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{likesUpEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FTP1-124 [Like] Dislike a private post of another user",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"The new post was unliked\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.liked).to.eql(false);\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{likesUpEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{likesUpEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Sign in with username GeorgeBush",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{GeorgeBushUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{GeorgeBushPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-56 [Delete Post] Delete the latest private post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Response body is empty\", function () {\r",
+													"    pm.expect(pm.response.text()).to.be.empty;\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{deletePostEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{deletePostEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Confirming last private post was deleted",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Not Found\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify post is delete\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify message for deletion\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"No message available\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "[Public] Edit and Delete Post As Admin",
+							"item": [
+								{
+									"name": "FPT1-85 [Login Page] Sign in with username MrBeast",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{MrBeastUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{MrBeastPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-25 [Add New Post] Generate new valid public post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"console.log(jsonData.postId)\r",
+													"pm.globals.set(\"LatestPostId\", jsonData.postId)\r",
+													"\r",
+													"pm.test(\"New public post has been created\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Initial Post by MrBeast using Postman\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Post content length is within limits\", function () {\r",
+													"    pm.expect(jsonData.content.length).to.be.below(1001);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Post is public\", function () {\r",
+													"    pm.expect(jsonData.public).to.equal(true);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{MrBeastPassword}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{MrBeastUsername}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{postByMrBeast}}\",\r\n  \"picture\": \"\",\r\n  \"public\": true\r\n}\r\n\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createPostEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createPostEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-224 [Login Form] Login with a valid username and a valid password as an admin user",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{adminUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{adminPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-60 [Edit Post]  Edit existing public post as Admin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{adminEditPostContent}}\",\r\n  \"picture\": \"\",\r\n  \"public\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{editPostEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{editPostEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-61 [Delete Post] Delete an Existing Post as Admin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Response body is empty\", function () {\r",
+													"    pm.expect(pm.response.text()).to.be.empty;\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{deletePostEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{deletePostEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Confirming last public post was deleted",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Not Found\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify post is delete\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify message for deletion\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"No message available\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Comments",
+					"item": [
+						{
+							"name": "[Public] Add, Edit and Delete Comment to a Post",
+							"item": [
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - JackNicholson",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{JackNicholsonUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{JackNicholsonPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-25 [Add New Post] Generate new valid public post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//check post id exists and is a number\r",
+													"pm.test(\"Post ID is a number\", function () {\r",
+													"    pm.expect(pm.response.json().postId).to.be.a('number');\r",
+													"});\r",
+													"\r",
+													"//check content\r",
+													"pm.test(\"Content is as expected\", function () {\r",
+													"    pm.expect(pm.response.json().content).to.eql(\"You can't handle the truth!\");\r",
+													"});\r",
+													"\r",
+													"//check category\r",
+													"pm.test(\"Category is as expected\", function () {\r",
+													"    pm.expect(pm.response.json().category.id).to.eql(102);\r",
+													"    pm.expect(pm.response.json().category.name).to.eql(\"Actor\");\r",
+													"});\r",
+													"\r",
+													"//check if public\r",
+													"pm.test(\"Post is public\", function () {\r",
+													"    pm.expect(pm.response.json().public).to.be.true;\r",
+													"});\r",
+													"\r",
+													"//save the latest post id to a variable\r",
+													"var jsonData = pm.response.json();\r",
+													"console.log(jsonData.postId)\r",
+													"pm.globals.set(\"LatestPostId\", jsonData.postId)\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{postByJackNicholson}}\",\r\n  \"picture\": \"\",\r\n  \"public\": true\r\n}\r\n\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createPostEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createPostEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - TomCruise",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{TomCruiseUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{TomCruisePassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-167 [Comment] Create Comment Successfully as Registered User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//check comment added\r",
+													"pm.test(\"Comment added\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.content).to.eql(\"I want the truth!\");\r",
+													"})\r",
+													"\r",
+													"//save the latest comment id to a variable\r",
+													"var jsonData = pm.response.json();\r",
+													"console.log(jsonData.commentId)\r",
+													"pm.globals.set(\"LatestCommentId\", jsonData.commentId)\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"commentId\": 0,\r\n  \"content\": \"{{commentByTomCruise}}\",\r\n  \"deletedConfirmed\": true,\r\n  \"postId\": {{LatestPostId}},\r\n  \"userId\": 188\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createCommentEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createCommentEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-178 [Comment] Edit Comment Successfully as Registered User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentEditEndpoint}}?commentId={{LatestCommentId}}&content={{editCommentContent}}&name={{TomCruiseUsername}}",
+											"host": [
+												"{{baseUrl}}{{commentEditEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "commentId",
+													"value": "{{LatestCommentId}}"
+												},
+												{
+													"key": "content",
+													"value": "{{editCommentContent}}"
+												},
+												{
+													"key": "name",
+													"value": "{{TomCruiseUsername}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-182 [Comment] Delete Comment Successfully as Registered User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//check if response body is empty\r",
+													"pm.test(\"Response body is empty\", function () {\r",
+													"    pm.expect(pm.response.text()).to.be.empty;\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentDeleteEndpoint}}?commentId={{LatestCommentId}}",
+											"host": [
+												"{{baseUrl}}{{commentDeleteEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "commentId",
+													"value": "{{LatestCommentId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Confirm last comment was deleted successfully",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 404\r",
+													"pm.test(\"Not Found\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"//confirm comment deleted\r",
+													"pm.test(\"Confirm comment was deleted\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentDeleteCheckEndpoint}}{{LatestCommentId}}",
+											"host": [
+												"{{baseUrl}}{{commentDeleteCheckEndpoint}}{{LatestCommentId}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - JackNicholson",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{JackNicholsonUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{JackNicholsonPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-55 [Delete Post] Delete an Existing Public Post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//check if response body is empty\r",
+													"pm.test(\"Response body is empty\", function () {\r",
+													"    pm.expect(pm.response.text()).to.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{deletePostEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{deletePostEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Confirm last post was deleted successfully",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Not Found\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify post is delete\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify message for deletion\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"No message available\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "[Public] Like a Comment of Another User",
+							"item": [
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - BahaMen",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{BahaMenUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{BahaMenPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-25 [Add New Post] Generate new valid public post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//check post id exists and is a number\r",
+													"pm.test(\"Post ID is a number\", function () {\r",
+													"    pm.expect(pm.response.json().postId).to.be.a('number');\r",
+													"});\r",
+													"\r",
+													"//check content\r",
+													"pm.test(\"Content is as expected\", function () {\r",
+													"    pm.expect(pm.response.json().content).to.eql(\"Who let the dogs out?!\");\r",
+													"});\r",
+													"\r",
+													"//check category\r",
+													"pm.test(\"Category is as expected\", function () {\r",
+													"    pm.expect(pm.response.json().category.id).to.eql(128);\r",
+													"    pm.expect(pm.response.json().category.name).to.eql(\"Musician\");\r",
+													"});\r",
+													"\r",
+													"//check if public\r",
+													"pm.test(\"Post is public\", function () {\r",
+													"    pm.expect(pm.response.json().public).to.be.true;\r",
+													"});\r",
+													"\r",
+													"//save the latest post id to a variable\r",
+													"var jsonData = pm.response.json();\r",
+													"console.log(jsonData.postId)\r",
+													"pm.globals.set(\"LatestPostId\", jsonData.postId)\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{postByBahaMen}}\",\r\n  \"picture\": \"\",\r\n  \"public\": true\r\n}\r\n\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createPostEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createPostEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - TheDogs",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{TheDogsUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{TheDogsPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-167 [Comment] Create Comment Successfully as Registered User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//check comment added\r",
+													"pm.test(\"Comment added\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.content).to.eql(\"Woof, woof, woof, woof woof!\");\r",
+													"})\r",
+													"\r",
+													"//save the latest comment id to a variable\r",
+													"var jsonData = pm.response.json();\r",
+													"console.log(jsonData.commentId)\r",
+													"pm.globals.set(\"LatestCommentId\", jsonData.commentId)"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"commentId\": 0,\r\n  \"content\": \"{{commentByTheDogs}}\",\r\n  \"deletedConfirmed\": true,\r\n  \"postId\": {{LatestPostId}},\r\n  \"userId\": 190\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createCommentEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createCommentEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - BahaMen",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{BahaMenUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{BahaMenPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-125 [Like] Verify comments Like button",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//verify comment was liked\r",
+													"pm.test(\"comment liked\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.liked).to.eql(true);\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentLikeEndpoint}}?commentId={{LatestCommentId}}",
+											"host": [
+												"{{baseUrl}}{{commentLikeEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "commentId",
+													"value": "{{LatestCommentId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-126 [Like] Verify comments Dislike button",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//verify comment was disliked\r",
+													"pm.test(\"comment liked\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.liked).to.eql(false);\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentLikeEndpoint}}?commentId={{LatestCommentId}}",
+											"host": [
+												"{{baseUrl}}{{commentLikeEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "commentId",
+													"value": "{{LatestCommentId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - TheDogs",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{TheDogsUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{TheDogsPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-182 [Comment] Delete Comment Successfully as Registered User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//check if response body is empty\r",
+													"pm.test(\"Response body is empty\", function () {\r",
+													"    pm.expect(pm.response.text()).to.be.empty;\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentDeleteEndpoint}}?commentId={{LatestCommentId}}",
+											"host": [
+												"{{baseUrl}}{{commentDeleteEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "commentId",
+													"value": "{{LatestCommentId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Confirm last comment was deleted successfully",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 404\r",
+													"pm.test(\"Not Found\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"//confirm comment was deleted\r",
+													"pm.test(\"Confirm comment was deleted\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentDeleteCheckEndpoint}}{{LatestCommentId}}",
+											"host": [
+												"{{baseUrl}}{{commentDeleteCheckEndpoint}}{{LatestCommentId}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - TheDogs",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{TheDogsUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{TheDogsPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-170 [Comment] Create Comment With 1001 Characters as Registered User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check status code is 400\r",
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"//check error message\r",
+													"pm.test(\"Error type and message are correct\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+													"    pm.expect(jsonData.message).to.eql(\"Content size must be up to 1000 symbols\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"//initialize a comment with 1001 characters\r",
+													"function randomString(length) {\r",
+													"    let result = '';\r",
+													"    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\r",
+													"    let charactersLength = characters.length;\r",
+													"    for (let i = 0; i < length; i++) {\r",
+													"        result += characters.charAt(Math.floor(Math.random() * charactersLength));\r",
+													"    }\r",
+													"    return result;\r",
+													"}\r",
+													"\r",
+													"let longRandomComment = randomString(1001);\r",
+													"pm.environment.set(\"invalidCommentByTheDogs\", longRandomComment);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"commentId\": 0,\r\n  \"content\": \"{{invalidCommentByTheDogs}}\",\r\n  \"deletedConfirmed\": true,\r\n  \"postId\": {{LatestPostId}},\r\n  \"userId\": 190\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createCommentEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createCommentEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - BahaMen",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{BahaMenUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{BahaMenPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-55 [Delete Post] Delete an Existing Public Post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//assert status code \r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert body is empty\r",
+													"pm.test(\"Response body is empty\", function () {\r",
+													"    pm.expect(pm.response.text()).to.be.empty;\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{deletePostEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{deletePostEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Confirm last comment was deleted successfully",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 404\r",
+													"pm.test(\"Not Found\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"//confirm comment deleted\r",
+													"pm.test(\"Confirm comment was deleted\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentDeleteCheckEndpoint}}{{LatestCommentId}}",
+											"host": [
+												"{{baseUrl}}{{commentDeleteCheckEndpoint}}{{LatestCommentId}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "[Public] Edit and Delete Comment as Admin",
+							"item": [
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - JackNicholson",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{JackNicholsonUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{JackNicholsonPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-25 [Add New Post] Generate new valid public post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//check post id exists and is a number\r",
+													"pm.test(\"Post ID is a number\", function () {\r",
+													"    pm.expect(pm.response.json().postId).to.be.a('number');\r",
+													"});\r",
+													"\r",
+													"//check content\r",
+													"pm.test(\"Content is as expected\", function () {\r",
+													"    pm.expect(pm.response.json().content).to.eql(\"You can't handle the truth!\");\r",
+													"});\r",
+													"\r",
+													"//check category\r",
+													"pm.test(\"Category is as expected\", function () {\r",
+													"    pm.expect(pm.response.json().category.id).to.eql(102);\r",
+													"    pm.expect(pm.response.json().category.name).to.eql(\"Actor\");\r",
+													"});\r",
+													"\r",
+													"//check if public\r",
+													"pm.test(\"Post is public\", function () {\r",
+													"    pm.expect(pm.response.json().public).to.be.true;\r",
+													"});\r",
+													"\r",
+													"//save the latest post id to a variable\r",
+													"var jsonData = pm.response.json();\r",
+													"console.log(jsonData.postId)\r",
+													"pm.globals.set(\"LatestPostId\", jsonData.postId)\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{postByJackNicholson}}\",\r\n  \"picture\": \"\",\r\n  \"public\": true\r\n}\r\n\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createPostEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createPostEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - TomCruise",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{TomCruiseUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{TomCruisePassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-167 [Comment] Create Comment Successfully as Registered User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//check comment added\r",
+													"pm.test(\"Comment added\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.content).to.eql(\"I want the truth!\");\r",
+													"})\r",
+													"\r",
+													"//save the latest comment id to a variable\r",
+													"var jsonData = pm.response.json();\r",
+													"console.log(jsonData.commentId)\r",
+													"pm.globals.set(\"LatestCommentId\", jsonData.commentId)\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"commentId\": 0,\r\n  \"content\": \"{{commentByTomCruise}}\",\r\n  \"deletedConfirmed\": true,\r\n  \"postId\": {{LatestPostId}},\r\n  \"userId\": 188\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createCommentEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createCommentEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - JackNicholson",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{JackNicholsonUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{JackNicholsonPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "[Login Form] Login with a valid username and a valid password as an admin user",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{adminUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{adminPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-62 [Edit Comment] Edit an Existing Comment as Admin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentEditEndpoint}}?commentId={{LatestCommentId}}&content={{adminEditCommentContent}}&name={{adminUsername}}",
+											"host": [
+												"{{baseUrl}}{{commentEditEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "commentId",
+													"value": "{{LatestCommentId}}"
+												},
+												{
+													"key": "content",
+													"value": "{{adminEditCommentContent}}"
+												},
+												{
+													"key": "name",
+													"value": "{{adminUsername}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-63 [Delete Comment] Delete an Existing Comment as Admin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//check if response body is empty\r",
+													"pm.test(\"Response body is empty\", function () {\r",
+													"    pm.expect(pm.response.text()).to.be.empty;\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentDeleteEndpoint}}?commentId={{LatestCommentId}}",
+											"host": [
+												"{{baseUrl}}{{commentDeleteEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "commentId",
+													"value": "{{LatestCommentId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Confirm last comment was deleted successfully",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 404\r",
+													"pm.test(\"Not Found\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"//confirm comment deleted\r",
+													"pm.test(\"Confirm comment was deleted\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentDeleteCheckEndpoint}}?commentId={{LatestCommentId}}",
+											"host": [
+												"{{baseUrl}}{{commentDeleteCheckEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "commentId",
+													"value": "{{LatestCommentId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "[Private] Like a Comment of Connected User",
+							"item": [
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - GeorgeBush",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{GeorgeBushUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{GeorgeBushPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-26 [Add New Post] Generate new valid private post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"console.log(jsonData.postId)\r",
+													"pm.globals.set(\"LatestPostId\", jsonData.postId)\r",
+													"\r",
+													"pm.test(\"New private post has been created\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Initial Post by GeorgeBush using Postman\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Post content length is within limits\", function () {\r",
+													"    pm.expect(jsonData.content.length).to.be.below(1001);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Post is public\", function () {\r",
+													"    pm.expect(jsonData.public).to.equal(false);\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"content\": \"{{postByGeorgeBush}}\",\r\n  \"picture\": \"\",\r\n  \"public\": false\r\n}\r\n\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createPostEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createPostEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - MrBeast",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{MrBeastUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{MrBeastPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-167 [Comment] Create Comment Successfully as Registered User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//check comment added\r",
+													"pm.test(\"Comment added\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.content).to.eql(\"Woof, woof, woof, woof woof!\");\r",
+													"})\r",
+													"\r",
+													"//save the latest comment id to a variable\r",
+													"var jsonData = pm.response.json();\r",
+													"console.log(jsonData.commentId)\r",
+													"pm.globals.set(\"LatestCommentId\", jsonData.commentId)"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"commentId\": 0,\r\n  \"content\": \"{{commentByTheDogs}}\",\r\n  \"deletedConfirmed\": true,\r\n  \"postId\": {{LatestPostId}},\r\n  \"userId\": 40\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{createCommentEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{createCommentEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - GeorgeBush",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{GeorgeBushUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{GeorgeBushPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-125 [Like] Verify comments Like button",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//verify comment was liked\r",
+													"pm.test(\"comment liked\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.liked).to.eql(true);\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentLikeEndpoint}}?commentId={{LatestCommentId}}",
+											"host": [
+												"{{baseUrl}}{{commentLikeEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "commentId",
+													"value": "{{LatestCommentId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-126 [Like] Verify comments Dislike button",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//verify comment was disliked\r",
+													"pm.test(\"comment liked\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.liked).to.eql(false);\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentLikeEndpoint}}?commentId={{LatestCommentId}}",
+											"host": [
+												"{{baseUrl}}{{commentLikeEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "commentId",
+													"value": "{{LatestCommentId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - MrBeast",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{MrBeastUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{MrBeastPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-182 [Comment] Delete Comment Successfully as Registered User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//check if response body is empty\r",
+													"pm.test(\"Response body is empty\", function () {\r",
+													"    pm.expect(pm.response.text()).to.be.empty;\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentDeleteEndpoint}}?commentId={{LatestCommentId}}",
+											"host": [
+												"{{baseUrl}}{{commentDeleteEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "commentId",
+													"value": "{{LatestCommentId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Confirm last comment was deleted successfully",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 404\r",
+													"pm.test(\"Not Found\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"//confirm comment was deleted\r",
+													"pm.test(\"Confirm comment was deleted\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{commentDeleteCheckEndpoint}}{{LatestCommentId}}",
+											"host": [
+												"{{baseUrl}}{{commentDeleteCheckEndpoint}}{{LatestCommentId}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-85 [Login Page] Login with valid username and valid password - GeorgeBush",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//check code is 200\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//assert presence of buttons\r",
+													"pm.test(\"Successful login\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+													"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "username",
+													"value": "{{GeorgeBushUsername}}",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{GeorgeBushPassword}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+											"host": [
+												"{{baseUrl}}{{authenticateEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-55 [Delete Post] Delete an Existing Private Post",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//check if response body is empty\r",
+													"pm.test(\"Response body is empty\", function () {\r",
+													"    pm.expect(pm.response.text()).to.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{deletePostEndpoint}}?postId={{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{deletePostEndpoint}}"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "{{LatestPostId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Confirm last post was deleted successfully",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Not Found\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify post is delete\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify message for deletion\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"No message available\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}",
+											"host": [
+												"{{baseUrl}}{{latestPostEndpoint}}{{LatestPostId}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User Actions",
+			"item": [
+				{
+					"name": "Unregistered Users",
+					"item": [
+						{
+							"name": "Validate Public Feed",
+							"item": [
+								{
+									"name": "FPT1-189 [Feed] Verify Unauthenticated Users Can Access Public Feed",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Assert all request posts are public\", function(){\r",
+													"    var postList = pm.response.json();\r",
+													"    console.log(postList);\r",
+													"    postList.forEach(function(post) {\r",
+													"        pm.expect(post.public).to.equal(true);\r",
+													"    });\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURLWithAPI}}{{latestPostEndpoint}}",
+											"host": [
+												"{{baseURLWithAPI}}{{latestPostEndpoint}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Search Form",
+							"item": [
+								{
+									"name": "FPT1-103 [Search Form] Search users with a valid first and valid second name as a guest",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response body is not empty.\", function(){\r",
+													"    pm.response.to.be.withBody;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Assert username is \" + pm.variables.get(\"MrBeastUsername\"), function(){\r",
+													"    var body = pm.response.json();\r",
+													"    var firstProfile = body[0];\r",
+													"    console.log(firstProfile.username);\r",
+													"    pm.expect(firstProfile.username).to.eql(pm.variables.get(\"MrBeastUsername\"));\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"index\": 0,\r\n  \"next\": true,\r\n  \"searchParam1\": \"\",\r\n  \"searchParam2\": \"{{MrBeastName}}\",\r\n  \"size\": 20\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{usersURL}}",
+											"host": [
+												"{{usersURL}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FPT1-102 [Search Form] Search users by valid job title as a guest",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response body is not empty.\", function(){\r",
+													"    pm.response.to.be.withBody;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Assert all users have job title \" + pm.variables.get(\"validJobTitle\"), function(){\r",
+													"    var body = pm.response.json();\r",
+													"    body.forEach(function(users) {\r",
+													"        var profile = users.expertiseProfile;\r",
+													"        console.log(profile);\r",
+													"        var category = profile.category;\r",
+													"        console.log(category);\r",
+													"        console.log(category.name)\r",
+													"        pm.expect(category.name).to.equal(pm.variables.get(\"validJobTitle\"));\r",
+													"    });\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"index\": 0,\r\n  \"next\": true,\r\n  \"searchParam1\": \"{{validJobTitle}}\",\r\n  \"searchParam2\": \"\",\r\n  \"size\": 20\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{usersURL}}",
+											"host": [
+												"{{usersURL}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Action - Register User",
+					"item": [
+						{
+							"name": "FPT1-135 [Registration] Successful Registration",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert body is not empty\", function(){\r",
+											"var body = pm.response.text();\r",
+											"console.log(body);\r",
+											"pm.expect(body).is.not.empty;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert text message contains username and Id\", function(){\r",
+											"pm.expect(pm.response.text()).to.include(\"User with name \" + pm.environment.get(\"randomUsername\") + \" and id \")\r",
+											"});\r",
+											"\r",
+											"var message = pm.response.text();\r",
+											"findNumber = str => {\r",
+											"  return +(str.replace(/\\D+/g, ''));\r",
+											"}\r",
+											"console.log(findNumber(message));\r",
+											"pm.environment.set(\"registeredUserId\", findNumber(message))"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"\r",
+											"\r",
+											"function randomString(minValue, maxValue, dataSet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {\r",
+											"    if (!minValue) {\r",
+											"        minValue = 2;\r",
+											"        maxValue = 20;\r",
+											"    }\r",
+											"    if (!maxValue) {\r",
+											"        maxValue = minValue;\r",
+											"    }\r",
+											"    let length = _.random(minValue, maxValue),\r",
+											"        randomString = \"\";\r",
+											"    for (let i = 0; i < length; i++)\r",
+											"        randomString += dataSet.charAt(Math.floor(Math.random() * dataSet.length));\r",
+											"    return randomString;\r",
+											"}\r",
+											"pm.environment.set('randomUsername', randomString());\r",
+											"var userEmail = pm.environment.get('randomUsername') + `user@abv.com`;\r",
+											"pm.environment.set(\"randomEmail\", userEmail)\r",
+											"\r",
+											"console.log(pm.environment.get(\"randomUsername\"));\r",
+											"console.log(pm.environment.get(\"randomEmail\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"authorities\": [\r\n    \"\"\r\n  ],\r\n  \"category\": {\r\n    \"id\": 150,\r\n    \"name\": \"{{validJobTitle}}\"\r\n  },\r\n  \"confirmPassword\": \"{{MrBeastPassword}}\",\r\n  \"email\": \"{{randomEmail}}\",\r\n  \"password\": \"{{MrBeastPassword}}\",\r\n  \"username\": \"{{randomUsername}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersURL}}/",
+									"host": [
+										"{{usersURL}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-136 [Registration] Empty Fields",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//test to check if the status code is 400\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"//function to generate a random string of alphabetic characters\r",
+											"function generateRandomString(min, max, chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {\r",
+											"    //generate a random length between min and max\r",
+											"    const length = Math.floor(Math.random() * (max - min + 1)) + min;\r",
+											"    let result = '';\r",
+											"    //loop to construct the random string\r",
+											"    for (let i = 0; i < length; i++) {\r",
+											"        result += chars.charAt(Math.floor(Math.random() * chars.length));\r",
+											"    }\r",
+											"    return result;\r",
+											"}\r",
+											"\r",
+											"//generate a random username using the function\r",
+											"const randomUsername = generateRandomString(2, 20);\r",
+											"//set the random username as an environment variable in Postman\r",
+											"pm.environment.set('randomUsername', randomUsername);\r",
+											"\r",
+											"//generate a random email using the random username\r",
+											"const randomEmail = `${randomUsername}@weare.com`;\r",
+											"//set the random email as an environment variable in Postman\r",
+											"pm.environment.set('randomEmail', randomEmail);\r",
+											"\r",
+											"//generate a random password using the function\r",
+											"const randomPassword = generateRandomString(8, 8);\r",
+											"//set the random password as an environment variable in Postman\r",
+											"pm.environment.set('randomPassword', randomPassword);\r",
+											"\r",
+											"//log the generated username, email, and password to the console\r",
+											"console.log(`Random Username: ${randomUsername}`);\r",
+											"console.log(`Random Email: ${randomEmail}`);\r",
+											"console.log(`Random Password: ${randomPassword}`);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"authorities\": [\r\n    \"\"\r\n  ],\r\n  \"category\": {\r\n    \"id\": 105,\r\n    \"name\": \"\"\r\n  },\r\n  \"confirmPassword\": \"\",\r\n  \"email\": \"\",\r\n  \"password\": \"\",\r\n  \"username\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersURL}}/",
+									"host": [
+										"{{usersURL}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-149 [Registration] Attempt Registration With Cyrillic Characters in Username",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//test to check if the status code is 400\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"//test to check if the there is an error for Cyrillic username\r",
+											"pm.test(\"error for Cyrillic username\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    const usernameError = jsonData.errors.find(e => e.field === \"username\");\r",
+											"    pm.expect(usernameError.defaultMessage).to.eql(\"username requires no whitespaces, only character\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"//function to generate a random string of alphabetic characters\r",
+											"function generateRandomString(min, max, chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {\r",
+											"    //generate a random length between min and max\r",
+											"    const length = Math.floor(Math.random() * (max - min + 1)) + min;\r",
+											"    let result = '';\r",
+											"    //loop to construct the random string\r",
+											"    for (let i = 0; i < length; i++) {\r",
+											"        result += chars.charAt(Math.floor(Math.random() * chars.length));\r",
+											"    }\r",
+											"    return result;\r",
+											"}\r",
+											"\r",
+											"//generate a random username using the function\r",
+											"const randomUsername = generateRandomString(2, 20);\r",
+											"//set the random username as an environment variable in Postman\r",
+											"pm.environment.set('randomUsername', randomUsername);\r",
+											"\r",
+											"//generate a random email using the random username\r",
+											"const randomEmail = `${randomUsername}@weare.com`;\r",
+											"//set the random email as an environment variable in Postman\r",
+											"pm.environment.set('randomEmail', randomEmail);\r",
+											"\r",
+											"//generate a random password using the function\r",
+											"const randomPassword = generateRandomString(8, 8);\r",
+											"//set the random password as an environment variable in Postman\r",
+											"pm.environment.set('randomPassword', randomPassword);\r",
+											"\r",
+											"//log the generated username, email, and password to the console\r",
+											"console.log(`Random Username: ${randomUsername}`);\r",
+											"console.log(`Random Email: ${randomEmail}`);\r",
+											"console.log(`Random Password: ${randomPassword}`);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"authorities\": [\r\n    \"\"\r\n  ],\r\n  \"category\": {\r\n    \"id\": 105,\r\n    \"name\": \"{{validJobTitle}}\"\r\n  },\r\n  \"confirmPassword\": \"{{randomPassword}}\",\r\n  \"email\": \"{{randomEmail}}\",\r\n  \"password\": \"{{randomPassword}}\",\r\n  \"username\": \"{{invalidCyrillicUsername}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersURL}}/",
+									"host": [
+										"{{usersURL}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-150 [Registration] Attempt Registration With Empty Password Field",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//test to check if the status code is 400\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"//test to check if the there is an error for password field\r",
+											"pm.test(\"error for password field\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    const passwordError = jsonData.errors.find(e => e.field === \"password\");\r",
+											"    pm.expect(passwordError.defaultMessage).to.eql(\"password must be minimum 6 characters\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"//function to generate a random string of alphabetic characters\r",
+											"function generateRandomString(min, max, chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {\r",
+											"    //generate a random length between min and max\r",
+											"    const length = Math.floor(Math.random() * (max - min + 1)) + min;\r",
+											"    let result = '';\r",
+											"    //loop to construct the random string\r",
+											"    for (let i = 0; i < length; i++) {\r",
+											"        result += chars.charAt(Math.floor(Math.random() * chars.length));\r",
+											"    }\r",
+											"    return result;\r",
+											"}\r",
+											"\r",
+											"//generate a random username using the function\r",
+											"const randomUsername = generateRandomString(2, 20);\r",
+											"//set the random username as an environment variable in Postman\r",
+											"pm.environment.set('randomUsername', randomUsername);\r",
+											"\r",
+											"//generate a random email using the random username\r",
+											"const randomEmail = `${randomUsername}@weare.com`;\r",
+											"//set the random email as an environment variable in Postman\r",
+											"pm.environment.set('randomEmail', randomEmail);\r",
+											"\r",
+											"//generate a random password using the function\r",
+											"const randomPassword = generateRandomString(8, 8);\r",
+											"//set the random password as an environment variable in Postman\r",
+											"pm.environment.set('randomPassword', randomPassword);\r",
+											"\r",
+											"//log the generated username, email, and password to the console\r",
+											"console.log(`Random Username: ${randomUsername}`);\r",
+											"console.log(`Random Email: ${randomEmail}`);\r",
+											"console.log(`Random Password: ${randomPassword}`);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"authorities\": [\r\n    \"\"\r\n  ],\r\n  \"category\": {\r\n    \"id\": 105,\r\n    \"name\": \"{{validJobTitle}}\"\r\n  },\r\n  \"confirmPassword\": \"\",\r\n  \"email\": \"{{randomEmail}}\",\r\n  \"password\": \"\",\r\n  \"username\": \"{{randomUsername}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersURL}}/",
+									"host": [
+										"{{usersURL}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-162 [Registration] Attempt Registration With Email Containing Spaces",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//test to check if the status code is 400\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"//test to check if the there is an error for email field\r",
+											"pm.test(\"error for email field\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    const emailError = jsonData.errors.find(e => e.field === \"email\");\r",
+											"    pm.expect(emailError.defaultMessage).to.eql(\"this doesn't look like valid email\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"//function to generate a random string of alphabetic characters\r",
+											"function generateRandomString(min, max, chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {\r",
+											"    //generate a random length between min and max\r",
+											"    const length = Math.floor(Math.random() * (max - min + 1)) + min;\r",
+											"    let result = '';\r",
+											"    //loop to construct the random string\r",
+											"    for (let i = 0; i < length; i++) {\r",
+											"        result += chars.charAt(Math.floor(Math.random() * chars.length));\r",
+											"    }\r",
+											"    return result;\r",
+											"}\r",
+											"\r",
+											"//generate a random username using the function\r",
+											"const randomUsername = generateRandomString(2, 20);\r",
+											"//set the random username as an environment variable in Postman\r",
+											"pm.environment.set('randomUsername', randomUsername);\r",
+											"\r",
+											"//generate a random email using the random username\r",
+											"const randomEmail = `${randomUsername}@weare.com`;\r",
+											"//set the random email as an environment variable in Postman\r",
+											"pm.environment.set('randomEmail', randomEmail);\r",
+											"\r",
+											"//generate a random password using the function\r",
+											"const randomPassword = generateRandomString(8, 8);\r",
+											"//set the random password as an environment variable in Postman\r",
+											"pm.environment.set('randomPassword', randomPassword);\r",
+											"\r",
+											"//log the generated username, email, and password to the console\r",
+											"console.log(`Random Username: ${randomUsername}`);\r",
+											"console.log(`Random Email: ${randomEmail}`);\r",
+											"console.log(`Random Password: ${randomPassword}`);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"authorities\": [\r\n    \"\"\r\n  ],\r\n  \"category\": {\r\n    \"id\": 105,\r\n    \"name\": \"{{validJobTitle}}\"\r\n  },\r\n  \"confirmPassword\": \"{{randomPassword}}\",\r\n  \"email\": \"{{invalidEmailWithSpace}}\",\r\n  \"password\": \"{{randomPassword}}\",\r\n  \"username\": \"{{randomUsername}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersURL}}/",
+									"host": [
+										"{{usersURL}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Action - Edit User Profile",
+					"item": [
+						{
+							"name": "FPT1-85 [Login Page] Login with valid username and valid password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Successful login\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "{{usernameEditUser}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{passwordEditUser}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+									"host": [
+										"{{baseUrl}}{{authenticateEndpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-1 [Edit Profile] Edit User Profile with Personal Information",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert user ID is \" + pm.environment.get(\"idEditUser\"), function () {\r",
+											"    var body = pm.response.json();\r",
+											"    pm.expect(body.id).to.eql(parseInt(pm.environment.get(\"idEditUser\")));\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert user first name is \\\"Dydi\\\"\", function () {\r",
+											"    var body = pm.response.json();\r",
+											"    pm.expect(body.firstName).to.eql(\"Dydi\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert user last name is \\\"Test\\\"\", function () {\r",
+											"    var body = pm.response.json();\r",
+											"    pm.expect(body.lastName).to.eql(\"Test\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert user city name is \\\"Varna\\\"\", function () {\r",
+											"    var body = pm.response.json();\r",
+											"    var location = body.location;\r",
+											"    var city = location.city;\r",
+											"    var cityName = city.city;\r",
+											"    pm.expect(cityName).to.eql(\"Varna\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"birthYear\": \"1970-10-07\",\r\n  \"firstName\": \"Dydi\",\r\n  \"id\": 39,\r\n  \"lastName\": \"Test\",\r\n  \"location\": {\r\n    \"city\": {\r\n      \"city\": \"Varna\",\r\n      \"country\": {},\r\n      \"id\": 3\r\n    },\r\n    \"id\": 0\r\n  },\r\n  \"memberSince\": \"\",\r\n  \"personalReview\": \"\",\r\n  \"picture\": \"\",\r\n  \"picturePrivacy\": true,\r\n  \"sex\": \"FEMALE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{editProfileEndpoint}}{{idEditUser}}{{personalEndpoint}}",
+									"host": [
+										"{{baseUrl}}{{editProfileEndpoint}}{{idEditUser}}{{personalEndpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-85 [Login Page] Login with valid username and valid password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Successful login\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "{{usernameEditUser}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{passwordEditUser}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+									"host": [
+										"{{baseUrl}}{{authenticateEndpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-23 [Edit Profile] Edit User Profile with Empty Data and Verify Error Handling",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert first name is not empty\", function () {\r",
+											"    var body = pm.response.json();\r",
+											"    pm.expect(body.firstName).to.be.not.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert last name is not empty\", function () {\r",
+											"    var body = pm.response.json();\r",
+											"    pm.expect(body.lastName).to.be.not.null;\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"birthYear\": \"\",\r\n  \"firstName\": \"\",\r\n  \"id\": 39,\r\n  \"lastName\": \"\",\r\n  \"location\": {\r\n    \"city\": {\r\n      \"city\": \"Varna\",\r\n      \"country\": {},\r\n      \"id\": 3\r\n    },\r\n    \"id\": 0\r\n  },\r\n  \"memberSince\": \"\",\r\n  \"personalReview\": \"\",\r\n  \"picture\": \"\",\r\n  \"picturePrivacy\": true,\r\n  \"sex\": \"FEMALE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{editProfileEndpoint}}{{idEditUser}}{{personalEndpoint}}",
+									"host": [
+										"{{baseUrl}}{{editProfileEndpoint}}{{idEditUser}}{{personalEndpoint}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Action - Send Request",
+					"item": [
+						{
+							"name": "FPT1-85 [Login Page] Login with valid username and valid password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Successful login\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "{{GeorgeBushUsername}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{GeorgeBushPassword}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+									"host": [
+										"{{baseUrl}}{{authenticateEndpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-135 [Registration] Successful Registration",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert body is not empty\", function(){\r",
+											"var body = pm.response.text();\r",
+											"console.log(body);\r",
+											"pm.expect(body).is.not.empty;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert text message contains username and Id\", function(){\r",
+											"pm.expect(pm.response.text()).to.include(\"User with name \" + pm.environment.get(\"randomUsername\") + \" and id \")\r",
+											"});\r",
+											"\r",
+											"var message = pm.response.text();\r",
+											"findNumber = str => {\r",
+											"  return +(str.replace(/\\D+/g, ''));\r",
+											"}\r",
+											"console.log(findNumber(message));\r",
+											"pm.environment.set(\"registeredUserId\", findNumber(message))"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"\r",
+											"\r",
+											"function randomString(minValue, maxValue, dataSet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {\r",
+											"    if (!minValue) {\r",
+											"        minValue = 2;\r",
+											"        maxValue = 20;\r",
+											"    }\r",
+											"    if (!maxValue) {\r",
+											"        maxValue = minValue;\r",
+											"    }\r",
+											"    let length = _.random(minValue, maxValue),\r",
+											"        randomString = \"\";\r",
+											"    for (let i = 0; i < length; i++)\r",
+											"        randomString += dataSet.charAt(Math.floor(Math.random() * dataSet.length));\r",
+											"    return randomString;\r",
+											"}\r",
+											"pm.environment.set('randomUsername', randomString());\r",
+											"var userEmail = pm.environment.get('randomUsername') + `user@abv.com`;\r",
+											"pm.environment.set(\"randomEmail\", userEmail)\r",
+											"\r",
+											"console.log(pm.environment.get(\"randomUsername\"));\r",
+											"console.log(pm.environment.get(\"randomEmail\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"authorities\": [\r\n    \"\"\r\n  ],\r\n  \"category\": {\r\n    \"id\": 150,\r\n    \"name\": \"{{validJobTitle}}\"\r\n  },\r\n  \"confirmPassword\": \"{{MrBeastPassword}}\",\r\n  \"email\": \"{{randomEmail}}\",\r\n  \"password\": \"{{MrBeastPassword}}\",\r\n  \"username\": \"{{randomUsername}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersURL}}/",
+									"host": [
+										"{{usersURL}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-116 [Friends Request] User sends request to connect with another user PART1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert body is not empty\", function(){\r",
+											"var body = pm.response.text();\r",
+											"console.log(body);\r",
+											"pm.expect(body).is.not.empty;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert successful message\", function(){\r",
+											"  var textMessage = pm.response.text();\r",
+											"  pm.expect(textMessage).to.eql(pm.environment.get(\"GeorgeBushUsername\") + \" send friend request to \" + pm.environment.get(\"randomUsername\"));\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": {{registeredUserId}},\r\n  \"username\": \"{{randomUsername}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{sendUserRequestEndpoint}}",
+									"host": [
+										"{{baseUrl}}{{sendUserRequestEndpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-85 [Login Page] Login with valid username and valid password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Successful login\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "{{randomUsername}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{MrBeastPassword}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+									"host": [
+										"{{baseUrl}}{{authenticateEndpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert body is not empty\", function(){\r",
+											"var body = pm.response.text();\r",
+											"console.log(body);\r",
+											"pm.expect(body).is.not.empty;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert George Bush sent friend request\", function(){\r",
+											"var body = pm.response.json();\r",
+											"body.forEach((element) => {\r",
+											"    if(element.userId == pm.environment.get(\"GeorgeBushId\"))\r",
+											"    pm.expect(element.id).to.eql(pm.environment.get(\"GeorgeBushId\"));\r",
+											"});\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{getUserRequestEndpoint}}{{registeredUserId}}{{requestEndpoint}}",
+									"host": [
+										"{{baseUrl}}{{getUserRequestEndpoint}}{{registeredUserId}}{{requestEndpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-85 [Login Page] Login with valid username and valid password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Successful login\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Personal\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "{{randomUsername}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{MrBeastPassword}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+									"host": [
+										"{{baseUrl}}{{authenticateEndpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-116 [Friends Request] Approve Friend Request PART2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert body is not empty\", function(){\r",
+											"var body = pm.response.text();\r",
+											"console.log(body);\r",
+											"pm.expect(body).is.not.empty;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Assert friend request is approved\", function(){\r",
+											"var body = pm.response.text();\r",
+											"pm.expect(body).contain(\"approved request of\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{getUserRequestEndpoint}}{{registeredUserId}}{{requestEndpoint}}{{approveEndpoint}}?requestId={{GeorgeBushId}}",
+									"host": [
+										"{{baseUrl}}{{getUserRequestEndpoint}}{{registeredUserId}}{{requestEndpoint}}{{approveEndpoint}}"
+									],
+									"query": [
+										{
+											"key": "requestId",
+											"value": "{{GeorgeBushId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Actions - Login",
+					"item": [
+						{
+							"name": "FPT1-85 [Login Page] Login with valid username and valid password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//check code is 200\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//assert presence of buttons\r",
+											"pm.test(\"Successful login\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"LOGOUT\");\r",
+											"    pm.expect(pm.response.text()).to.include(\"Add New\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "{{JackNicholsonUsername}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{JackNicholsonPassword}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+									"host": [
+										"{{baseUrl}}{{authenticateEndpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-89 [Login Page] Try to log in with a valid username and invalid password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//check code is 200\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//assert presence of text\r",
+											"pm.test(\"Unsuccessful login\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Wrong username or password. \");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "{{JackNicholsonUsername}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{invalidPassword}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+									"host": [
+										"{{baseUrl}}{{authenticateEndpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-90 [Login Page] Try to login with invalid username and valid password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//check code is 200\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//assert presence of text\r",
+											"pm.test(\"Unsuccessful login\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Wrong username or password. \");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "{{invalidUserName}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{JackNicholsonPassword}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+									"host": [
+										"{{baseUrl}}{{authenticateEndpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FPT1-86 [Login Page] Try to log in with an empty username and an empty password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//check code is 200\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//assert presence of text\r",
+											"pm.test(\"Unsuccessful login\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Wrong username or password. \");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}{{authenticateEndpoint}}",
+									"host": [
+										"{{baseUrl}}{{authenticateEndpoint}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
