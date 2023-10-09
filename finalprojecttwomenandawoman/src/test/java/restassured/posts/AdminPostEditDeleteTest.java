@@ -60,4 +60,11 @@ public class AdminPostEditDeleteTest {
         assertions.assertStatusCode200(deletePostWithUserAdmin.statusCode());
         assertions.assertResponseBodyIsEmpty(deletePostWithUserAdmin);
     }
+
+    @Test
+    @Order(6)
+    public void when_userDeletePost_expect_lastPublicPostDeleted() {
+        Response lastPublicPostDeleted = posts.getLastPost(lastPostId);
+        assertions.assertStatusCode404(lastPublicPostDeleted.statusCode());
+    }
 }

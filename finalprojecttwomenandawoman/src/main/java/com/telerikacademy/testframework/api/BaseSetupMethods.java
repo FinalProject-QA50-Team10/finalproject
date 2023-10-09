@@ -171,7 +171,7 @@ public class BaseSetupMethods {
                 .delete(DELETE_POST);
     }
 
-    public Response getLastPublicPost(int lastPostId) {
+    public Response getLastPost(int lastPostId) {
         return getRestAssured()
                 .when()
                 .get(LATEST_POSTS + lastPostId)

@@ -71,8 +71,8 @@ public class PrivatePostTest {
 
     @Test
     @Order(5)
-    public void when_userSignIn_expect_lastPrivatePostDeleted() {
-        Response lastPrivatePostDeleted = posts.getLastPublicPost(lastPostId);
+    public void when_userDeletePost_expect_lastPrivatePostDeleted() {
+        Response lastPrivatePostDeleted = posts.getLastPost(lastPostId);
         assertions.assertStatusCode404(lastPrivatePostDeleted.statusCode());
     }
 }

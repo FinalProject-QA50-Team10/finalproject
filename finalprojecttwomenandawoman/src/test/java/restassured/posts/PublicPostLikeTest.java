@@ -79,8 +79,8 @@ public class PublicPostLikeTest {
 
     @Test
     @Order(7)
-    public void when_userSignIn_expect_lastPublicPostDeleted() {
-        Response lastPublicPostDeleted = posts.getLastPublicPost(lastPostId);
+    public void when_userDeletePost_expect_lastPublicPostDeleted() {
+        Response lastPublicPostDeleted = posts.getLastPost(lastPostId);
         assertions.assertStatusCode404(lastPublicPostDeleted.statusCode());
     }
 }
