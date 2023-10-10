@@ -4,11 +4,11 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import restassured.base.BaseTestSetupBeforeAfter;
+import restassured.base.BasePostTestSetupBeforeAfter;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
-public class PublicPostLikeTest extends BaseTestSetupBeforeAfter {
+public class PublicPostLikePostTest extends BasePostTestSetupBeforeAfter {
 
     @BeforeEach
     public void setup() {

@@ -4,11 +4,11 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import restassured.base.BaseTestSetupBeforeAfter;
+import restassured.base.BasePostTestSetupBeforeAfter;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
-public class AdminPostEditDeleteTest extends BaseTestSetupBeforeAfter {
+public class AdminPostEditDeletePostTest extends BasePostTestSetupBeforeAfter {
 
     @BeforeEach
     public void setup() {
@@ -46,7 +46,7 @@ public class AdminPostEditDeleteTest extends BaseTestSetupBeforeAfter {
     //FPT1-61 [Delete Post] Delete an Existing Post as Admin
     public void when_adminUserDeletePost_expect_lastPublicPostDeleted() {
         Response lastPublicPostDeleted = posts.getLastPost(lastPostId);
-        
+
         // Assert that the HTTP status code is 404 (Not Found)
         assertions.assertStatusCode404(lastPublicPostDeleted.statusCode());
     }

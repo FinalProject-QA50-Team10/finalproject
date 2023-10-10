@@ -6,7 +6,7 @@ import io.restassured.response.Response;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
-public class BaseTestSetupBeforeAfter {
+public class BasePostTestSetupBeforeAfter {
 
     protected final BaseSetupMethods posts = new BaseSetupMethods();
     protected final ApiTestAssertions assertions = new ApiTestAssertions();
