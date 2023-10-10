@@ -17,13 +17,13 @@ public class PrivatePostTest {
     @BeforeEach
     //FPT1-25 [Add New Post] Generate new valid public post
     public void createPost() {
-        Response createNewPublicPost = posts.createPublicPost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_VALID);
-        assertions.assertStatusCode200(createNewPublicPost.statusCode());
+        Response createNewPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_VALID);
+        assertions.assertStatusCode200(createNewPrivatePost.statusCode());
         assertions.assertPostContent("Valid Post");
-        assertions.assertPostIsPublic(createNewPublicPost);
-        int postId = createNewPublicPost.jsonPath().getInt("postId");
+        assertions.assertPostIsNotPublic(createNewPrivatePost);
+        int postId = createNewPrivatePost.jsonPath().getInt("postId");
         assertions.assertPostIdIsPositive(postId);
-        lastPostId = createNewPublicPost.jsonPath().getInt("postId");
+        lastPostId = createNewPrivatePost.jsonPath().getInt("postId");
     }
 
     @AfterEach
