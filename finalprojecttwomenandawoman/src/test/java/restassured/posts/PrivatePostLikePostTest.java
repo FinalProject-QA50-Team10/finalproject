@@ -24,13 +24,13 @@ public class PrivatePostLikePostTest extends BasePostTestSetupBeforeAfter {
     public void when_userLikePrivatePost_expected_likeAnotherUserPrivatePost() {
 
         //FPT1-85 [Login Page] Login with valid username and valid password
-        Response signInWithUserMrBeast = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
+        Response signInWithUserMrBeast = apiMethods.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
 
         // Assert that the HTTP status code is 302 (Found/Redirect)
         assertions.assertStatusCode302(signInWithUserMrBeast.statusCode());
 
         //FPT1-123 [Like] Verify posts Like button
-        Response likePrivatePost = posts.likePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
+        Response likePrivatePost = apiMethods.likePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
 
         // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(likePrivatePost.statusCode());
@@ -39,7 +39,7 @@ public class PrivatePostLikePostTest extends BasePostTestSetupBeforeAfter {
         assertions.assertPostIsLiked(likePrivatePost);
 
         //FPT1-124 [Like] Verify posts Dislike button
-        Response dislikePrivatePost = posts.dislikePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
+        Response dislikePrivatePost = apiMethods.dislikePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
 
         // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(dislikePrivatePost.statusCode());
@@ -51,7 +51,7 @@ public class PrivatePostLikePostTest extends BasePostTestSetupBeforeAfter {
     @Test
     //FPT1-56 [Delete Post] Delete an Existing Private Post
     public void when_userDeletePost_expect_lastPrivatePostDeleted() {
-        Response lastPrivatePostDeleted = posts.getLastPost(lastPostId);
+        Response lastPrivatePostDeleted = apiMethods.getLastPost(lastPostId);
 
         // Assert that the HTTP status code is 404 (Not Found)
         assertions.assertStatusCode404(lastPrivatePostDeleted.statusCode());

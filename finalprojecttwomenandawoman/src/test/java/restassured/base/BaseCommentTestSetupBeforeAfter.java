@@ -1,4 +1,4 @@
 package restassured.base;
 
-public class BaseCommentTestSetupBeforeAfter {
+public class BaseCommentTestSetupBeforeAfter extends BasePostTestSetupBeforeAfter {
 }

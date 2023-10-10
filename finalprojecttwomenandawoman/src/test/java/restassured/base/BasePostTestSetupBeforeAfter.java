@@ -8,13 +8,13 @@ import static com.telerikacademy.testframework.api.utils.Constants.*;
 
 public class BasePostTestSetupBeforeAfter {
 
-    protected final BaseSetupMethods posts = new BaseSetupMethods();
+    protected final BaseSetupMethods apiMethods = new BaseSetupMethods();
     protected final ApiTestAssertions assertions = new ApiTestAssertions();
     protected static int lastPostId;
 
     public void createPublicPost() {
         //FPT1-25 [Add New Post] Create Public Post
-        Response createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
+        Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
 
         // Assert that the HTTP status code is 200 (OK)
@@ -36,7 +36,7 @@ public class BasePostTestSetupBeforeAfter {
 
     public void createPrivatePost() {
         //FPT1-26 [Add New Post] Create Private Post
-        Response createNewPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
+        Response createNewPrivatePost = apiMethods.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
                 POST_DESCRIPTION_VALID);
 
         // Assert that the HTTP status code is 200 (OK)
@@ -58,13 +58,13 @@ public class BasePostTestSetupBeforeAfter {
 
     public void deletePublicPost() {
         //FPT1-85 [Login Page] Login with valid username and valid password
-        Response signInResponse = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
+        Response signInResponse = apiMethods.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
 
         // Assert that the HTTP status code is 302 (Found/Redirect)
         assertions.assertStatusCode302(signInResponse.statusCode());
 
         //FPT1-55 [Delete Post] Delete an Existing Public Post
-        Response deletePublicPost = posts.deletePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
+        Response deletePublicPost = apiMethods.deletePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
 
         // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(deletePublicPost.statusCode());
@@ -75,13 +75,13 @@ public class BasePostTestSetupBeforeAfter {
 
     public void deletePrivatePost() {
         //FPT1-85 [Login Page] Login with valid username and valid password
-        Response signInResponse = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
+        Response signInResponse = apiMethods.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
 
         // Assert that the HTTP status code is 302 (Found/Redirect)
         assertions.assertStatusCode302(signInResponse.statusCode());
 
         //FPT1-56 [Delete Post] Delete an Existing Private Post
-        Response deletePrivatePost = posts.deletePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
+        Response deletePrivatePost = apiMethods.deletePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
 
         // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(deletePrivatePost.statusCode());
