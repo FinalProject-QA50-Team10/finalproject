@@ -3,7 +3,7 @@ package restassured.useractions;
 import com.telerikacademy.testframework.api.ApiTestAssertions;
 import com.telerikacademy.testframework.api.BaseSetupMethods;
 import com.telerikacademy.testframework.api.models.ErrorModel;
-import com.telerikacademy.testframework.api.models.PublicPostsModel;
+import com.telerikacademy.testframework.api.models.PostsModel;
 import com.telerikacademy.testframework.api.models.SearchModel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
@@ -16,14 +16,13 @@ import static com.telerikacademy.testframework.api.utils.Constants.*;
 public class UnregisteredUserTest {
     private final BaseSetupMethods userActionsAPI = new BaseSetupMethods();
     private final ApiTestAssertions assertions = new ApiTestAssertions();
-
     private Response unregisteredUser;
 
     @Test
     //FPT1-189 [Feed] Verify Unauthenticated Users Can Access Public Feed
     public void when_guestUserBrowsePublicPosts_expected_allPostsArePublic() {
         unregisteredUser = userActionsAPI.browseAllPublicPosts();
-        List<PublicPostsModel> posts = userActionsAPI.getListOfPosts(unregisteredUser);
+        List<PostsModel> posts = userActionsAPI.getListOfPosts(unregisteredUser);
 
         assertions.assertStatusCode200(unregisteredUser.statusCode());
         assertions.assertListIsNotEmpty(Collections.singletonList(posts));
