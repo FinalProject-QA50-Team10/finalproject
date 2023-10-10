@@ -20,15 +20,6 @@ public class PublicCommentInvalidCreationTest {
     private static int lastCommentId;
 
     @Test
-    @Order(1)
-    //FPT1-85 [Login Page] Login with valid username and valid password - JackNicholson
-    public void when_userSignsIn_expect_loginSuccessful() {
-        Response signInWithUserJackNicholson = comments.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        assertions.assertStatusCode302(signInWithUserJackNicholson.statusCode());
-
-    }
-
-    @Test
     @Order(2)
     //FPT1-25 [Add New Post] Generate new valid public post
     public void when_userSignsIn_expect_newPublicPostCreated() {
@@ -52,14 +43,6 @@ public class PublicCommentInvalidCreationTest {
         assertions.assertCategoryNameIsExpected(categoryName, "Actor");
 
         lastPostId = postId;
-    }
-
-    @Test
-    @Order(3)
-    //FPT1-85 [Login Page] Login with valid username and valid password - TomCruise
-    public void when_anotherUserSignsIn_expect_loginSuccessful() {
-        Response signInWithUserTomCruise = comments.signInUser(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
-        assertions.assertStatusCode302(signInWithUserTomCruise.statusCode());
     }
 
     @Test
