@@ -9,7 +9,6 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
-@TestMethodOrder(OrderAnnotation.class)
 public class PublicPostTest {
 
     private final BaseSetupMethods posts = new BaseSetupMethods();
@@ -17,6 +16,7 @@ public class PublicPostTest {
     private static int lastPostId;
 
     @BeforeEach
+    //FPT1-25 [Add New Post] Generate new valid public post
     public void createPost() {
         Response createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_VALID);
         assertions.assertStatusCode200(createNewPublicPost.statusCode());
@@ -28,6 +28,7 @@ public class PublicPostTest {
     }
 
     @AfterEach
+    //FPT1-55 [Delete Post] Delete the latest public post
     public void deletePost() {
         Response signInResponse = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         assertions.assertStatusCode302(signInResponse.statusCode());
@@ -37,7 +38,6 @@ public class PublicPostTest {
     }
 
     @Test
-    @Order(2)
     //FTP1-35 [Add New Post] Generate new invalid public post
     //Check it for before each
     public void when_userCreateInvalidPublicPost_expect_invalidPublicPostNotBeCreated() {
@@ -49,7 +49,6 @@ public class PublicPostTest {
     }
 
     @Test
-    @Order(3)
     //FTP1-45 [Edit Post] Edit existing public post
     public void when_userEditPublicPost_expect_postIsEdited() {
         Response signInResponse = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
@@ -59,7 +58,6 @@ public class PublicPostTest {
     }
 
     @Test
-    @Order(5)
     public void when_userDeletePost_expect_lastPublicPostDeleted() {
         Response lastPublicPostDeleted = posts.getLastPost(lastPostId);
         assertions.assertStatusCode404(lastPublicPostDeleted.statusCode());

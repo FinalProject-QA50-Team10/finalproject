@@ -8,7 +8,6 @@ import org.junit.jupiter.api.*;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PrivatePostTest {
 
     private final BaseSetupMethods posts = new BaseSetupMethods();
@@ -16,6 +15,7 @@ public class PrivatePostTest {
     private static int lastPostId;
 
     @BeforeEach
+    //FPT1-25 [Add New Post] Generate new valid public post
     public void createPost() {
         Response createNewPublicPost = posts.createPublicPost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_VALID);
         assertions.assertStatusCode200(createNewPublicPost.statusCode());
@@ -27,6 +27,7 @@ public class PrivatePostTest {
     }
 
     @AfterEach
+    //FPT1-55 [Delete Post] Delete the latest public post
     public void deletePost() {
         Response signInResponse = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         assertions.assertStatusCode302(signInResponse.statusCode());
@@ -36,7 +37,6 @@ public class PrivatePostTest {
     }
 
     @Test
-    @Order(2)
     //FTP1-36 [Add New Post] Generate new invalid private post
     public void when_userCreateInvalidPrivatePost_expect_invalidPrivatePostNotBeCreated() {
         Response createNewInvalidPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_INVALID);
@@ -47,7 +47,6 @@ public class PrivatePostTest {
     }
 
     @Test
-    @Order(3)
     //FTP1-46 [Edit Post] Edit existing private post
     public void when_userEditPrivatePost_expect_postIsEdited() {
         Response signInResponse = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
@@ -57,7 +56,6 @@ public class PrivatePostTest {
     }
 
     @Test
-    @Order(5)
     public void when_userDeletePost_expect_lastPrivatePostDeleted() {
         Response lastPrivatePostDeleted = posts.getLastPost(lastPostId);
         assertions.assertStatusCode404(lastPrivatePostDeleted.statusCode());
