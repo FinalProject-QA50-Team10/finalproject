@@ -4,10 +4,7 @@ import com.telerikacademy.testframework.api.ApiTestAssertions;
 import com.telerikacademy.testframework.api.BaseSetupMethods;
 import com.telerikacademy.testframework.api.models.ErrorModel;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
@@ -18,15 +15,24 @@ public class PrivatePostTest {
     private final ApiTestAssertions assertions = new ApiTestAssertions();
     private static int lastPostId;
 
-    @Test
-    @Order(1)
-    //FPT1-26 [Add New Post] Generate new valid private post
-    public void when_userCreatePrivatePost_expected_newPrivatePostCreated() {
-        Response createNewPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_VALID);
-        assertions.assertStatusCode200(createNewPrivatePost.statusCode());
+    @BeforeEach
+    public void createPost() {
+        Response createNewPublicPost = posts.createPublicPost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_VALID);
+        assertions.assertStatusCode200(createNewPublicPost.statusCode());
         assertions.assertPostContent("Valid Post");
-        assertions.assertPostIsNotPublic(createNewPrivatePost);
-        lastPostId = createNewPrivatePost.jsonPath().getInt("postId");
+        assertions.assertPostIsPublic(createNewPublicPost);
+        int postId = createNewPublicPost.jsonPath().getInt("postId");
+        assertions.assertPostIdIsPositive(postId);
+        lastPostId = createNewPublicPost.jsonPath().getInt("postId");
+    }
+
+    @AfterEach
+    public void deletePost() {
+        Response signInResponse = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
+        assertions.assertStatusCode302(signInResponse.statusCode());
+        Response deletePublicPost = posts.deletePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
+        assertions.assertStatusCode200(deletePublicPost.statusCode());
+        assertions.assertResponseBodyIsEmpty(deletePublicPost);
     }
 
     @Test
@@ -48,17 +54,6 @@ public class PrivatePostTest {
         assertions.assertStatusCode302(signInResponse.statusCode());
         Response editPrivatePost = posts.editPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, EDIT_POST_DESCRIPTION_VALID, lastPostId);
         assertions.assertStatusCode200(editPrivatePost.statusCode());
-    }
-
-    @Test
-    @Order(4)
-    //FPT1-56 [Delete Post] Confirming user can delete his own private post
-    public void when_userDeletePrivatePost_expected_deleteLatestPrivatePost() {
-        Response signInResponse = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
-        assertions.assertStatusCode302(signInResponse.statusCode());
-        Response deletePrivatePost = posts.deletePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
-        assertions.assertStatusCode200(deletePrivatePost.statusCode());
-        assertions.assertResponseBodyIsEmpty(deletePrivatePost);
     }
 
     @Test
