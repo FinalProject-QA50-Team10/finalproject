@@ -13,7 +13,8 @@ public class BaseTestSetupBeforeAfter {
     protected static int lastPostId;
 
     public void createPublicPost() {
-        Response createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_VALID);
+        Response createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
+                POST_DESCRIPTION_VALID);
         assertions.assertStatusCode200(createNewPublicPost.statusCode());
         assertions.assertPostContent("Valid Post");
         assertions.assertPostIsPublic(createNewPublicPost);
@@ -23,7 +24,8 @@ public class BaseTestSetupBeforeAfter {
     }
 
     public void createPrivatePost() {
-        Response createNewPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_VALID);
+        Response createNewPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
+                POST_DESCRIPTION_VALID);
         assertions.assertStatusCode200(createNewPrivatePost.statusCode());
         assertions.assertPostContent("Valid Post");
         assertions.assertPostIsNotPublic(createNewPrivatePost);
