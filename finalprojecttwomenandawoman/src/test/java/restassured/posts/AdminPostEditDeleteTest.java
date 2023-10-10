@@ -1,29 +1,18 @@
 package restassured.posts;
 
-import com.telerikacademy.testframework.api.ApiTestAssertions;
-import com.telerikacademy.testframework.api.BaseSetupMethods;
 import io.restassured.response.Response;
-import jdk.jfr.Description;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import restassured.base.BaseTestSetupBeforeAfter;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
-public class AdminPostEditDeleteTest {
-
-    private final BaseSetupMethods posts = new BaseSetupMethods();
-    private final ApiTestAssertions assertions = new ApiTestAssertions();
-    private static int lastPostId;
+public class AdminPostEditDeleteTest extends BaseTestSetupBeforeAfter {
 
     @BeforeEach
-    //FPT1-25 [Add New Post] Generate new valid public post
-    public void createPost() {
-        Response createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_VALID);
-        assertions.assertStatusCode200(createNewPublicPost.statusCode());
-        assertions.assertPostContent("Valid Post");
-        assertions.assertPostIsPublic(createNewPublicPost);
-        int postId = createNewPublicPost.jsonPath().getInt("postId");
-        assertions.assertPostIdIsPositive(postId);
-        lastPostId = createNewPublicPost.jsonPath().getInt("postId");
+    public void setup() {
+        createPublicPost();
     }
 
     @AfterEach
