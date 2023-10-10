@@ -28,7 +28,7 @@ public class UserInformationTest {
     }
 
     @Test
-    public void when_getUserInformationByValidId_expected_success() {
+    public void when_getUserInformationByUsernameWithoutId_expected_notFound() {
         userResponse = userAPI.getUserInformation(TOM_CRUISE_USERNAME, EMPTY_INTEGER);
         var userModel = userResponse.as(ErrorModel.class);
 
@@ -41,7 +41,7 @@ public class UserInformationTest {
     }
 
     @Test
-    public void when_getUserInformationByDifferentIdAndValidUsername_expected_success() {
+    public void when_getUserInformationByDifferentIdAndValidUsername_expected_unauthorized() {
         userResponse = userAPI.getUserInformation(MR_BEAST_USERNAME, TOM_CRUISE_ID);
         var userModel = userResponse.as(ErrorModel.class);
 
@@ -54,7 +54,7 @@ public class UserInformationTest {
     }
 
     @Test
-    public void when_getUserInformationByInvalidIdAndValidUsername_expected_success() {
+    public void when_getUserInformationByInvalidIdAndValidUsername_expected_notFound() {
         userResponse = userAPI.getUserInformation(MR_BEAST_USERNAME, INVALID_ID);
         var userModel = userResponse.as(ErrorModel.class);
 

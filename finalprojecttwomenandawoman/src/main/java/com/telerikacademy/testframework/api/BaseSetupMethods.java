@@ -36,18 +36,6 @@ public class BaseSetupMethods {
                 .response();
     }
 
-//    public String authenticateUser() {
-//
-//        String jsessionIdCookie = getRestAssured()
-//                .formParam("username", getLatestRegisteredUsername(getAllUsers()))
-//                .formParam("password", USER_PASSWORD)
-//                .when()
-//                .post("/authenticate")
-//                .then().statusCode(302)
-//                .extract().response().getCookie("JSESSIONID");
-//        return jsessionIdCookie;
-//    }
-
     public List<PostsModel> getListOfPosts(Response response) {
         return Arrays.asList(response.getBody().as(PostsModel[].class));
     }

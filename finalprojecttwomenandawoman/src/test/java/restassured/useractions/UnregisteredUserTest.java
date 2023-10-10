@@ -88,7 +88,7 @@ public class UnregisteredUserTest {
 
     @Test
     //FPT1-226 [Search Form] Search users by invalid first and last name as a guest
-    public void when_guestUserSearchForUserWithInvalidName_expected_success() {
+    public void when_guestUserSearchForUserWithInvalidName_expected_notFound() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, INVALID_NAME);
         var errorModel = unregisteredUser.as(ErrorModel.class);
 

@@ -68,7 +68,7 @@ public class EditUserProfileTest {
 
     @Test
     //FPT1-23 [Edit Profile] Edit User Profile with Empty Data and Verify Error Handling
-    public void when_userEditHisPersonalProfileWithEmptyData_expect_errorHandling() {
+    public void when_userEditHisPersonalProfileWithEmptyData_expect_notFound() {
         var unchangedUser = userAPI.getUserInformation(FOR_EDIT_USERNAME, FOR_EDIT_ID).as(UserInformationModel.class);
         userResponse = userAPI.editUserProfile(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD,
                 EMPTY_STRING, EMPTY_STRING, EMPTY_INTEGER, EMPTY_STRING);
