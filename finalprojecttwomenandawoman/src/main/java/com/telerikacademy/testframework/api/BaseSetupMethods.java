@@ -2,7 +2,7 @@ package com.telerikacademy.testframework.api;
 
 import com.telerikacademy.testframework.api.models.ErrorModel;
 import com.telerikacademy.testframework.api.models.FriendsRequestModel;
-import com.telerikacademy.testframework.api.models.PostsModel;
+import com.telerikacademy.testframework.api.models.PublicPostsModel;
 import com.telerikacademy.testframework.api.models.SearchModel;
 import io.restassured.RestAssured;
 import io.restassured.authentication.FormAuthConfig;
@@ -48,8 +48,8 @@ public class BaseSetupMethods {
 //        return jsessionIdCookie;
 //    }
 
-    public List<PostsModel> getListOfPosts(Response response) {
-        return Arrays.asList(response.getBody().as(PostsModel[].class));
+    public List<PublicPostsModel> getListOfPosts(Response response) {
+        return Arrays.asList(response.getBody().as(PublicPostsModel[].class));
     }
 
     public Response editUserProfile(String username, String password,

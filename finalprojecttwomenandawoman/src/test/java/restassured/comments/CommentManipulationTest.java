@@ -4,15 +4,15 @@ import com.telerikacademy.testframework.api.ApiTestAssertions;
 import com.telerikacademy.testframework.api.BaseSetupMethods;
 import com.telerikacademy.testframework.api.models.CommentModel;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class PublicCommentLikeTest {
+@TestMethodOrder(OrderAnnotation.class)
+public class CommentManipulationTest {
 
     private final BaseSetupMethods comments = new BaseSetupMethods();
     private final ApiTestAssertions assertions = new ApiTestAssertions();
@@ -51,37 +51,32 @@ public class PublicCommentLikeTest {
         assertions.assertStatusCode302(signInWithUserTomCruise.statusCode());
 
         Response createCommentResponse = comments.createComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, COMMENT_DESCRIPTION_VALID, lastPostId);
+
         assertions.assertStatusCode200(createCommentResponse.statusCode());
 
         var t = createCommentResponse.as(CommentModel.class);
+
         String commentContent = t.content;
         assertions.assertContentIsExpected(commentContent, "Valid Comment");
+
         lastCommentId = createCommentResponse.jsonPath().getInt("commentId");
     }
 
     @Test
     @Order(3)
-    //FPT1-125 [Like] Verify comments Like button
-    public void when_userLikesComment_expect_commentIsLiked() {
-        Response signInWithUserJackNicholson = comments.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        assertions.assertStatusCode302(signInWithUserJackNicholson.statusCode());
-
-        Response likeCommentResponse = comments.likeComment(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastCommentId);
-        assertions.assertStatusCode200(likeCommentResponse.statusCode());
-        assertions.assertCommentIsLiked(likeCommentResponse);
+    //FPT1-178 [Comment] Edit Comment Successfully as Registered User
+    public void when_userEditsComment_expect_commentIsEdited() {
+        Response editCommentResponse = comments.editComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, EDIT_COMMENT_CONTENT, lastCommentId);
+        assertions.assertStatusCode200(editCommentResponse.statusCode());
     }
 
     @Test
     @Order(4)
-    //FPT1-126 [Like] Verify comments Dislike button
-    public void when_userDislikesComment_expect_commentIsDisliked() {
-        Response signInWithUserJackNicholson = comments.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        assertions.assertStatusCode302(signInWithUserJackNicholson.statusCode());
-
-        Response dislikeCommentResponse = comments.dislikeComment(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastCommentId);
-        assertions.assertStatusCode200(dislikeCommentResponse.statusCode());
-        assertions.assertStatusCode200(dislikeCommentResponse.statusCode());
-        assertions.assertCommentIsDisliked(dislikeCommentResponse);
+    //FPT1-182 [Comment] Delete Comment Successfully as Registered User
+    public void when_userDeletesComment_expect_commentIsDeleted() {
+        Response deleteCommentResponse = comments.deleteComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, lastCommentId);
+        assertions.assertStatusCode200(deleteCommentResponse.statusCode());
+        assertions.assertResponseBodyIsEmpty(deleteCommentResponse);
     }
 
     @Test
@@ -92,5 +87,4 @@ public class PublicCommentLikeTest {
         assertions.assertStatusCode200(deletePostResponse.statusCode());
         assertions.assertResponseBodyIsEmpty(deletePostResponse);
     }
-
 }

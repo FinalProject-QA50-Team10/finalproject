@@ -2,7 +2,7 @@ package restassured.comments;
 
 import com.telerikacademy.testframework.api.ApiTestAssertions;
 import com.telerikacademy.testframework.api.BaseSetupMethods;
-import com.telerikacademy.testframework.api.models.PostsModel;
+import com.telerikacademy.testframework.api.models.CommentModel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class PublicCommentInvalidCreationTest {
+public class CommentLikeTest {
 
     private final BaseSetupMethods comments = new BaseSetupMethods();
     private final ApiTestAssertions assertions = new ApiTestAssertions();
@@ -24,10 +24,8 @@ public class PublicCommentInvalidCreationTest {
     //FPT1-25 [Add New Post] Generate new valid public post
     public void when_userSignsIn_expect_newPublicPostCreated() {
         Response createNewPublicPost = comments.createPublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, POST_DESCRIPTION_VALID);
-        var t = createNewPublicPost.as(PostsModel.class);
-
         assertions.assertStatusCode200(createNewPublicPost.statusCode());
-        assertions.assertPostContent(t.content);
+        assertions.assertPostContent("Valid Post");
         assertions.assertPostIsPublic(createNewPublicPost);
 
         int postId = createNewPublicPost.jsonPath().getInt("postId");
@@ -47,23 +45,52 @@ public class PublicCommentInvalidCreationTest {
 
     @Test
     @Order(2)
-    //FPT1-170 [Comment] Create Comment With 1001 Characters as Registered User
-    public void when_userCreatesInvalidComment_expect_errorStatusCode() {
-        String invalidComment = comments.generateInvalidComment();
-
+    //FPT1-167 [Comment] Create Comment Successfully as Registered User
+    public void when_userCreatesComment_expect_commentIsCreated() {
         Response signInWithUserTomCruise = comments.signInUser(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
         assertions.assertStatusCode302(signInWithUserTomCruise.statusCode());
 
-        Response createCommentResponse = comments.createComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, invalidComment, lastPostId);
-        assertions.assertStatusCode400(createCommentResponse.statusCode());
+        Response createCommentResponse = comments.createComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD, COMMENT_DESCRIPTION_VALID, lastPostId);
+        assertions.assertStatusCode200(createCommentResponse.statusCode());
+
+        var t = createCommentResponse.as(CommentModel.class);
+        String commentContent = t.content;
+        assertions.assertContentIsExpected(commentContent, "Valid Comment");
+        lastCommentId = createCommentResponse.jsonPath().getInt("commentId");
     }
 
     @Test
     @Order(3)
+    //FPT1-125 [Like] Verify comments Like button
+    public void when_userLikesComment_expect_commentIsLiked() {
+        Response signInWithUserJackNicholson = comments.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
+        assertions.assertStatusCode302(signInWithUserJackNicholson.statusCode());
+
+        Response likeCommentResponse = comments.likeComment(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastCommentId);
+        assertions.assertStatusCode200(likeCommentResponse.statusCode());
+        assertions.assertCommentIsLiked(likeCommentResponse);
+    }
+
+    @Test
+    @Order(4)
+    //FPT1-126 [Like] Verify comments Dislike button
+    public void when_userDislikesComment_expect_commentIsDisliked() {
+        Response signInWithUserJackNicholson = comments.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
+        assertions.assertStatusCode302(signInWithUserJackNicholson.statusCode());
+
+        Response dislikeCommentResponse = comments.dislikeComment(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastCommentId);
+        assertions.assertStatusCode200(dislikeCommentResponse.statusCode());
+        assertions.assertStatusCode200(dislikeCommentResponse.statusCode());
+        assertions.assertCommentIsDisliked(dislikeCommentResponse);
+    }
+
+    @Test
+    @Order(5)
     //FPT1-55 [Delete Post] Delete an Existing Public Post
     public void when_userDeletesPost_expect_postIsDeleted() {
         Response deletePostResponse = comments.deletePost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastPostId);
         assertions.assertStatusCode200(deletePostResponse.statusCode());
         assertions.assertResponseBodyIsEmpty(deletePostResponse);
     }
+
 }
