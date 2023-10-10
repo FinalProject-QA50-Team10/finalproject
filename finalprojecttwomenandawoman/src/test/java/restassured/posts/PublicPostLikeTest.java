@@ -19,14 +19,6 @@ public class PublicPostLikeTest {
 
     @Test
     @Order(1)
-    //FPT1-85 [Login Page] Sign in with username MrBeast
-    public void when_userSignsIn_expected_loginSuccessful() {
-        Response signInWithUserMrBeast = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
-        assertions.assertStatusCode302(signInWithUserMrBeast.statusCode());
-    }
-
-    @Test
-    @Order(2)
     //FPT1-25 [Add New Post] Generate new valid public post
     public void when_userCreatePublicPost_expected_newPublicPostCreated() {
         Response createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_VALID);
@@ -36,16 +28,9 @@ public class PublicPostLikeTest {
         lastPostId = createNewPublicPost.jsonPath().getInt("postId");
     }
 
-    @Test
-    @Order(3)
-    //FPT1-85 [Login Page] Sign in with username GeorgeBush
-    public void when_anotherUserSignsIn_expect_loginSuccessful() {
-        Response signInWithUserGeorgeBush = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
-        assertions.assertStatusCode302(signInWithUserGeorgeBush.statusCode());
-    }
 
     @Test
-    @Order(4)
+    @Order(2)
     //FPT1-123 [Like] Like a public post of another user
     public void when_userLikePublicPost_expected_likeAnotherUserPublicPost() {
         Response signInWithUserGeorgeBush = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
@@ -56,7 +41,7 @@ public class PublicPostLikeTest {
     }
 
     @Test
-    @Order(5)
+    @Order(3)
     //FTP1-124 [Like] Dislike a public post of another user
     public void when_userDislikePublicPost_expected_dislikeAnotherUserPublicPost() {
         Response signInWithUserGeorgeBush = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
@@ -67,7 +52,7 @@ public class PublicPostLikeTest {
     }
 
     @Test
-    @Order(6)
+    @Order(4)
     //FPT1-55 [Delete Post] Delete the latest public post
     public void when_userDeletePublicPost_expected_deleteLatestPublicPost() {
         Response signInResponse = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
@@ -78,7 +63,7 @@ public class PublicPostLikeTest {
     }
 
     @Test
-    @Order(7)
+    @Order(5)
     public void when_userDeletePost_expect_lastPublicPostDeleted() {
         Response lastPublicPostDeleted = posts.getLastPost(lastPostId);
         assertions.assertStatusCode404(lastPublicPostDeleted.statusCode());
