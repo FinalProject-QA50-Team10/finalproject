@@ -2,16 +2,14 @@ package restassured.comments;
 
 import com.telerikacademy.testframework.api.ApiTestAssertions;
 import com.telerikacademy.testframework.api.BaseSetupMethods;
-import com.telerikacademy.testframework.api.models.PostsModel;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CommentInvalidCreationTest {
 
     private final BaseSetupMethods comments = new BaseSetupMethods();
@@ -19,30 +17,32 @@ public class CommentInvalidCreationTest {
     private static int lastPostId;
     private static int lastCommentId;
 
-    @Test
-    @Order(1)
+    @BeforeEach
     //FPT1-25 [Add New Post] Generate new valid public post
-    public void when_userSignsIn_expect_newPublicPostCreated() {
+    public void createPost() {
+
+        //FPT1-25 [Add New Post] Generate new valid public post
         Response createNewPublicPost = comments.createPublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, POST_DESCRIPTION_VALID);
-        var t = createNewPublicPost.as(PostsModel.class);
-
         assertions.assertStatusCode200(createNewPublicPost.statusCode());
-        assertions.assertPostContent(t.content);
+        assertions.assertPostContent("Valid Post");
         assertions.assertPostIsPublic(createNewPublicPost);
-
         int postId = createNewPublicPost.jsonPath().getInt("postId");
         assertions.assertPostIdIsPositive(postId);
-
         String content = createNewPublicPost.jsonPath().getString("content");
         assertions.assertContentIsExpected(content, "Valid Post");
-
         int categoryId = createNewPublicPost.jsonPath().getInt("category.id");
         assertions.assertCategoryIdIsExpected(categoryId, 102);
-
         String categoryName = createNewPublicPost.jsonPath().getString("category.name");
         assertions.assertCategoryNameIsExpected(categoryName, "Actor");
-
         lastPostId = postId;
+    }
+
+    @AfterEach
+    //FPT1-55 [Delete Post] Delete an Existing Public Post
+    public void deleteInvalidComment() {
+        Response deletePostResponse = comments.deletePost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastPostId);
+        assertions.assertStatusCode200(deletePostResponse.statusCode());
+        assertions.assertResponseBodyIsEmpty(deletePostResponse);
     }
 
     @Test
@@ -58,12 +58,4 @@ public class CommentInvalidCreationTest {
         assertions.assertStatusCode400(createCommentResponse.statusCode());
     }
 
-    @Test
-    @Order(3)
-    //FPT1-55 [Delete Post] Delete an Existing Public Post
-    public void when_userDeletesPost_expect_postIsDeleted() {
-        Response deletePostResponse = comments.deletePost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastPostId);
-        assertions.assertStatusCode200(deletePostResponse.statusCode());
-        assertions.assertResponseBodyIsEmpty(deletePostResponse);
-    }
 }
