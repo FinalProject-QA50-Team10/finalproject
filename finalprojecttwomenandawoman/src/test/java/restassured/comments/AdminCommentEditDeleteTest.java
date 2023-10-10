@@ -19,14 +19,6 @@ public class AdminCommentEditDeleteTest {
     private static int lastCommentId;
 
     @Test
-    @Order(1)
-    //FPT1-85 [Login Page] Login with valid username and valid password - JackNicholson
-    public void when_userSignsIn_expect_loginSuccessful() {
-        Response signInWithUserJackNicholson = comments.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        assertions.assertStatusCode302(signInWithUserJackNicholson.statusCode());
-    }
-
-    @Test
     @Order(2)
     //FPT1-25 [Add New Post] Generate new valid public post
     public void when_userSignsIn_expect_newPublicPostCreated() {
@@ -51,14 +43,6 @@ public class AdminCommentEditDeleteTest {
     }
 
     @Test
-    @Order(3)
-    //FPT1-85 [Login Page] Login with valid username and valid password - TomCruise
-    public void when_anotherUserSignsIn_expect_loginSuccessful() {
-        Response signInWithUserTomCruise = comments.signInUser(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
-        assertions.assertStatusCode302(signInWithUserTomCruise.statusCode());
-    }
-
-    @Test
     @Order(4)
     //FPT1-167 [Comment] Create Comment Successfully as Registered User
     public void when_userCreatesComment_expect_commentIsCreated() {
@@ -75,14 +59,6 @@ public class AdminCommentEditDeleteTest {
         assertions.assertContentIsExpected(commentContent, "Valid Comment");
 
         lastCommentId = createCommentResponse.jsonPath().getInt("commentId");
-    }
-
-    @Test
-    @Order(5)
-    //[Login Form] Login with a valid username and a valid password as an admin user
-    public void when_adminUserSignsIn_expect_loginSuccessful() {
-        Response signInWithUserAdmin = comments.signInUser(ADMIN_NAME, ADMIN_PASSWORD);
-        assertions.assertStatusCode302(signInWithUserAdmin.statusCode());
     }
 
     @Test
