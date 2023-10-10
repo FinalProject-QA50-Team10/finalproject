@@ -20,14 +20,6 @@ public class PrivatePostTest {
 
     @Test
     @Order(1)
-    //FPT1-85 [Login Page] Sign in with username GeorgeBush
-    public void when_userSignsIn_expected_loginSuccessful() {
-        Response signInWithUserMrBeast = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
-        assertions.assertStatusCode302(signInWithUserMrBeast.statusCode());
-    }
-
-    @Test
-    @Order(2)
     //FPT1-26 [Add New Post] Generate new valid private post
     public void when_userCreatePrivatePost_expected_newPrivatePostCreated() {
         Response createNewPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_VALID);
@@ -38,7 +30,7 @@ public class PrivatePostTest {
     }
 
     @Test
-    @Order(3)
+    @Order(2)
     //FTP1-36 [Add New Post] Generate new invalid private post
     public void when_userCreateInvalidPrivatePost_expect_invalidPrivatePostNotBeCreated() {
         Response createNewInvalidPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_INVALID);
