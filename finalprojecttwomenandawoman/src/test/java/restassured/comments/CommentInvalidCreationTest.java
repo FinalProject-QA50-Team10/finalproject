@@ -26,10 +26,14 @@ public class CommentInvalidCreationTest extends BaseCommentTestSetupBeforeAfter 
         String invalidComment = apiMethods.generateInvalidComment();
 
         Response signInWithUserTomCruise = apiMethods.signInUser(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
+
+        // Assert that the HTTP status code is 302 (Found/Redirect)
         assertions.assertStatusCode302(signInWithUserTomCruise.statusCode());
 
         Response createCommentResponse = apiMethods.createComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD,
                 invalidComment, lastPostId);
+
+        // Assert that the HTTP status code is 400 (Bad Request)
         assertions.assertStatusCode400(createCommentResponse.statusCode());
     }
 }

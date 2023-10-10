@@ -23,12 +23,12 @@ public class Constants {
     public static final String FOR_EDIT_LAST_NAME = "Gosling";
     public static final int INVALID_ID = 800;
     public static String RANDOM_USERNAME;
-    public static String  RANDOM_EMAIL;
+    public static String RANDOM_EMAIL;
     public static int LAST_REGISTERED_USER_ID;
     public static String EMPTY_STRING = "";
     public static int EMPTY_INTEGER;
     public static String INVALID_EMAIL = "invalid email@weare.com";
-    public static String  VALID_JOB_TITLE = "Author";
+    public static String VALID_JOB_TITLE = "Author";
     public static final String BAD_REQUEST = "Bad Request";
     public static final String NOT_FOUND = "Not Found";
     public static final String UNAUTHORIZED_ERROR = "Unauthorized";

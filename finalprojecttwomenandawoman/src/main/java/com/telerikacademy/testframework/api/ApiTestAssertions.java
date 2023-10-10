@@ -53,14 +53,12 @@ public class ApiTestAssertions extends BaseSetupMethods {
         System.out.println("Posts are public.");
     }
 
-    //-------------------------------//
     public void assertBadRequestError(Response response) {
         String error = response.jsonPath().getString("error");
         Assertions.assertEquals("Bad Request", error, "Response does not have 'Bad Request' error.");
         System.out.println("Response has 'Bad Request' error.");
     }
 
-    //--------------------------------//
     public void assertBadRequest(ErrorModel response) {
         String error = response.error;
         Assertions.assertEquals(BAD_REQUEST, error,
@@ -148,7 +146,7 @@ public class ApiTestAssertions extends BaseSetupMethods {
     }
 
     public void assertPostContent(String response) {
-       // String responseBody = response.getBody().asString();
+        // String responseBody = response.getBody().asString();
         Assertions.assertEquals(POST_DESCRIPTION_VALID, response,
                 String.format("Expected content '%s' not found in the response.", response));
         System.out.println("New post has been created.");

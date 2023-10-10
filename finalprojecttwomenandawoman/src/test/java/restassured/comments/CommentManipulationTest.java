@@ -28,6 +28,8 @@ public class CommentManipulationTest extends BaseCommentTestSetupBeforeAfter {
         Response editCommentResponse = apiMethods.editComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD,
                 EDIT_COMMENT_CONTENT,
                 lastCommentId);
+
+        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(editCommentResponse.statusCode());
     }
 }
