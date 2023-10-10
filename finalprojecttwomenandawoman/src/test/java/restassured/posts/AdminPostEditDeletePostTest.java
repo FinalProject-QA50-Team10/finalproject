@@ -16,7 +16,7 @@ public class AdminPostEditDeletePostTest extends BasePostTestSetupBeforeAfter {
     }
 
     @AfterEach
-    public void deletePost() {
+    public void deletePostAsAdmin() {
         //FPT1-224 [Login Form] Login with a valid username and a valid password as an admin user
         Response signInResponse = apiMethods.signInUser(ADMIN_NAME, ADMIN_PASSWORD);
 
@@ -36,7 +36,8 @@ public class AdminPostEditDeletePostTest extends BasePostTestSetupBeforeAfter {
     @Test
     //FPT1-60 [Edit Post] Edit existing public post as Admin
     public void when_adminEditsPost_expect_postIsEdited() {
-        Response editPostAsAdmin = apiMethods.editPublicPost(ADMIN_NAME, ADMIN_PASSWORD, EDIT_POST_AS_ADMIN, lastPostId);
+        Response editPostAsAdmin = apiMethods.editPublicPost(ADMIN_NAME, ADMIN_PASSWORD, EDIT_POST_AS_ADMIN,
+                lastPostId);
 
         // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(editPostAsAdmin.statusCode());
