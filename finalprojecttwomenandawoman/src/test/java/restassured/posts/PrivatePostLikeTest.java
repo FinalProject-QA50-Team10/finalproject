@@ -19,14 +19,6 @@ public class PrivatePostLikeTest {
 
     @Test
     @Order(1)
-    //FPT1-85 [Login Page] Sign in with username GeorgeBush
-    public void when_userSignsIn_expected_loginSuccessful() {
-        Response signInWithUserMrBeast = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
-        assertions.assertStatusCode302(signInWithUserMrBeast.statusCode());
-    }
-
-    @Test
-    @Order(2)
     //FPT1-26 [Add New Post] Generate new private post
     public void when_userCreatePrivatePost_expected_newPrivatePostCreated() {
         Response createNewPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_VALID);
@@ -37,15 +29,7 @@ public class PrivatePostLikeTest {
     }
 
     @Test
-    @Order(3)
-    //FPT1-85 [Login Page] Sign in with username MrBeast
-    public void when_anotherUserSignsIn_expect_loginSuccessful() {
-        Response signInWithUserGeorgeBush = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
-        assertions.assertStatusCode302(signInWithUserGeorgeBush.statusCode());
-    }
-
-    @Test
-    @Order(4)
+    @Order(2)
     //FPT1-123 [Like] Like a private post of another user
     public void when_userLikePrivatePost_expected_likeAnotherUserPrivatePost() {
         Response signInWithUserGeorgeBush = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
@@ -56,7 +40,7 @@ public class PrivatePostLikeTest {
     }
 
     @Test
-    @Order(5)
+    @Order(3)
     //FTP1-124 [Like] Dislike a private post of another user
     public void when_userDislikePrivatePost_expected_dislikeAnotherUserPrivatePost() {
         Response signInWithUserGeorgeBush = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
@@ -67,7 +51,7 @@ public class PrivatePostLikeTest {
     }
 
     @Test
-    @Order(6)
+    @Order(4)
     //FPT1-56 [Delete Post] Delete the latest private post
     public void when_userDeletePrivatePost_expected_deleteLatestPrivatePost() {
         Response signInResponse = posts.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
@@ -78,7 +62,7 @@ public class PrivatePostLikeTest {
     }
 
     @Test
-    @Order(7)
+    @Order(5)
     public void when_userDeletePost_expect_lastPrivatePostDeleted() {
         Response lastPublicPostDeleted = posts.getLastPost(lastPostId);
         assertions.assertStatusCode404(lastPublicPostDeleted.statusCode());

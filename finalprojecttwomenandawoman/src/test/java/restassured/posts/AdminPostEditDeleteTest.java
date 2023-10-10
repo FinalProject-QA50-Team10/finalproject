@@ -47,7 +47,7 @@ public class AdminPostEditDeleteTest {
 
     @Test
     @Order(4)
-    public void when_userDeletePost_expect_lastPublicPostDeleted() {
+    public void when_adminUserDeletePost_expect_lastPublicPostDeleted() {
         Response lastPublicPostDeleted = posts.getLastPost(lastPostId);
         assertions.assertStatusCode404(lastPublicPostDeleted.statusCode());
     }
