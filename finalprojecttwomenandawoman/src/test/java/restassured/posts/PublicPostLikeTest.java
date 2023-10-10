@@ -6,8 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import restassured.base.BaseTestSetupBeforeAfter;
 
-import static com.telerikacademy.testframework.api.utils.Constants.GEORGE_BUSH_PASSWORD;
-import static com.telerikacademy.testframework.api.utils.Constants.GEORGE_BUSH_USERNAME;
+import static com.telerikacademy.testframework.api.utils.Constants.*;
 
 public class PublicPostLikeTest extends BaseTestSetupBeforeAfter {
 
@@ -30,7 +29,7 @@ public class PublicPostLikeTest extends BaseTestSetupBeforeAfter {
         // Assert that the HTTP status code is 302 (Found/Redirect)
         assertions.assertStatusCode302(signInWithUserGeorgeBush.statusCode());
 
-        // Like a public post
+        //FPT1-123 [Like] Verify posts Like button
         Response likePublicPost = posts.likePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
 
         // Assert that the HTTP status code is 200 (OK)
@@ -39,7 +38,7 @@ public class PublicPostLikeTest extends BaseTestSetupBeforeAfter {
         // Assert that the post is liked
         assertions.assertPostIsLiked(likePublicPost);
 
-        // Dislike the same public post
+        //FPT1-124 [Like] Verify posts Dislike button
         Response dislikePublicPost = posts.dislikePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
 
         // Assert that the HTTP status code is 200 (OK)
