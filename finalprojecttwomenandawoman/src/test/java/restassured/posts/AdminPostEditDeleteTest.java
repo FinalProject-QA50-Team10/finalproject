@@ -31,7 +31,7 @@ public class AdminPostEditDeleteTest {
     public void when_userCreatePublicPost_expected_newPublicPostCreated() {
         Response createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_VALID);
         assertions.assertStatusCode200(createNewPublicPost.statusCode());
-        assertions.assertPostContent(createNewPublicPost, "Valid Post");
+        assertions.assertPostContent("Valid Post");
         assertions.assertPostIsPublic(createNewPublicPost);
         lastPostId = createNewPublicPost.jsonPath().getInt("postId");
     }

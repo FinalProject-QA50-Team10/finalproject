@@ -31,7 +31,7 @@ public class PrivatePostLikeTest {
     public void when_userCreatePrivatePost_expected_newPrivatePostCreated() {
         Response createNewPrivatePost = posts.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, POST_DESCRIPTION_VALID);
         assertions.assertStatusCode200(createNewPrivatePost.statusCode());
-        assertions.assertPostContent(createNewPrivatePost, "Valid Post");
+        assertions.assertPostContent("Valid Post");
         assertions.assertPostIsNotPublic(createNewPrivatePost);
         lastPostId = createNewPrivatePost.jsonPath().getInt("postId");
     }

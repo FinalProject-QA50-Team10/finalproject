@@ -33,7 +33,7 @@ public class PublicCommentManipulationTest {
     public void when_userSignsIn_expect_newPublicPostCreated() {
         Response createNewPublicPost = comments.createPublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, POST_DESCRIPTION_VALID);
         assertions.assertStatusCode200(createNewPublicPost.statusCode());
-        assertions.assertPostContent(createNewPublicPost, "Valid Post");
+        assertions.assertPostContent("Valid Post");
         assertions.assertPostIsPublic(createNewPublicPost);
 
         int postId = createNewPublicPost.jsonPath().getInt("postId");
