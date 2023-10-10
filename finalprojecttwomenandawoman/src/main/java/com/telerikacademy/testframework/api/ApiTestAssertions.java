@@ -43,7 +43,7 @@ public class ApiTestAssertions extends BaseSetupMethods {
         System.out.println("List is not empty.");
     }
 
-    public void assertPostsArePublic(List<PublicPostsModel> posts) {
+    public void assertPostsArePublic(List<PostsModel> posts) {
         for (var post : posts) {
             var publicField = post.mypublic;
             Assertions.assertTrue(publicField,
