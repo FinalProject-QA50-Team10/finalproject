@@ -14,14 +14,20 @@ public class LoginTest {
     private Response loginResponse;
 
     @Test
+    //FPT1-85 [Login Page] Login with valid username and valid password
     public void when_unauthenticatedUserLoginWithValidCredentials_expect_successLoginUser() {
         loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
+
+        // Assert that the HTTP status code is 302 (Found)
         assertions.assertStatusCode302(loginResponse.statusCode());
     }
 
     @Test
-    public void when_unauthenticatedUserLoginWithValidUsernameAndInvalidPassword_expect_successLoginUser() {
+    //FPT1-89 [Login Page] Try to log in with a valid username and invalid password
+    public void when_unauthenticatedUserLoginWithValidUsernameAndInvalidPassword_expect_unsuccessfulLogin() {
         loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, GEORGE_BUSH_PASSWORD);
+
+        // Assert that the HTTP status code is 302 (Found)
         assertions.assertStatusCode302(loginResponse.statusCode());
     }
 }

@@ -28,7 +28,7 @@ public class SendFriendRequestTest {
     public void when_sendFriendRequestToAnotherUserWhoIsNotYourFriend_expect_successfulSentRequest() {
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
-      //  userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
+        //  userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
         userResponse = userAPI.sendFriendRequest(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD, userAccepting.id, RANDOM_USERNAME);
 
         assertions.assertStatusCode200(userResponse.statusCode());
@@ -40,12 +40,12 @@ public class SendFriendRequestTest {
     public void when_sendFriendRequestToAnotherUserWhoIsNotYourFriend_expect_successfulRequestsAreVisible() {
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
-      //  userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
+        //  userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
         userResponse = userAPI.sendFriendRequest(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD, userAccepting.id, RANDOM_USERNAME);
         assertions.assertStatusCode200(userResponse.statusCode());
         assertions.assertSentFriendRequestMessage(userResponse, FOR_EDIT_USERNAME, RANDOM_USERNAME);
 
-      //  userResponse = userAPI.signInUser(RANDOM_USERNAME, TOM_CRUISE_PASSWORD);
+        //  userResponse = userAPI.signInUser(RANDOM_USERNAME, TOM_CRUISE_PASSWORD);
         userResponse = userAPI.getUserRequest(userAccepting.username, TOM_CRUISE_PASSWORD, userAccepting.id);
         var listOfRequests = userAPI.getListOfRequests(userResponse);
         assertions.assertListIsNotEmpty(Collections.singletonList(listOfRequests));
@@ -56,13 +56,13 @@ public class SendFriendRequestTest {
     public void when_sendFriendRequestToAnotherUserWhoIsNotYourFriend_expect_successfulAcceptIt() {
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
-      //  userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
+        //  userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
         var userSending = userAPI.getUserInformation(FOR_EDIT_USERNAME, FOR_EDIT_ID).as(UserInformationModel.class);
         userResponse = userAPI.sendFriendRequest(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD, userAccepting.id, RANDOM_USERNAME);
         assertions.assertStatusCode200(userResponse.statusCode());
         assertions.assertSentFriendRequestMessage(userResponse, FOR_EDIT_USERNAME, RANDOM_USERNAME);
 
-    //    userResponse = userAPI.signInUser(RANDOM_USERNAME, TOM_CRUISE_PASSWORD);
+        //    userResponse = userAPI.signInUser(RANDOM_USERNAME, TOM_CRUISE_PASSWORD);
         userResponse = userAPI.getUserRequest(userAccepting.username, TOM_CRUISE_PASSWORD, userAccepting.id);
         assertions.assertStatusCode200(userResponse.statusCode());
 
@@ -74,7 +74,7 @@ public class SendFriendRequestTest {
     public void when_sendTwiceFriendRequestToAnotherUserWhoIsNotYourFriend_expect_errorMessage() {
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
-     //   userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
+        //   userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
         userResponse = userAPI.sendFriendRequest(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD, userAccepting.id, RANDOM_USERNAME);
         assertions.assertSentFriendRequestMessage(userResponse, FOR_EDIT_USERNAME, RANDOM_USERNAME);
 
@@ -86,19 +86,19 @@ public class SendFriendRequestTest {
     public void when_sendFriendRequestToAnotherUserWhoIsAlreadyYourFriend_expect_errorMessage() {
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
-    //    userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
+        //    userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
         var userSending = userAPI.getUserInformation(FOR_EDIT_USERNAME, FOR_EDIT_ID).as(UserInformationModel.class);
         userResponse = userAPI.sendFriendRequest(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD, userAccepting.id, RANDOM_USERNAME);
         assertions.assertStatusCode200(userResponse.statusCode());
         assertions.assertSentFriendRequestMessage(userResponse, FOR_EDIT_USERNAME, RANDOM_USERNAME);
 
-     //   userResponse = userAPI.signInUser(RANDOM_USERNAME, TOM_CRUISE_PASSWORD);
+        //   userResponse = userAPI.signInUser(RANDOM_USERNAME, TOM_CRUISE_PASSWORD);
         userResponse = userAPI.getUserRequest(userAccepting.username, TOM_CRUISE_PASSWORD, userAccepting.id);
         assertions.assertStatusCode200(userResponse.statusCode());
         var responseMessage = userAPI.approveFriendRequest(RANDOM_USERNAME, TOM_CRUISE_PASSWORD, userAccepting.id, userSending.id);
         assertions.assertSuccessfulAcceptMessage(responseMessage);
 
-    //    userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
+        //    userResponse = userAPI.signInUser(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
         userResponse = userAPI.sendFriendRequest(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD, userAccepting.id, RANDOM_USERNAME);
         assertions.assertDuplicatedRequestErrorMessage(userResponse, FOR_EDIT_USERNAME, RANDOM_USERNAME);
     }
