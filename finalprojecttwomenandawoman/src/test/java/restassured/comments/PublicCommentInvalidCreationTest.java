@@ -20,7 +20,7 @@ public class PublicCommentInvalidCreationTest {
     private static int lastCommentId;
 
     @Test
-    @Order(2)
+    @Order(1)
     //FPT1-25 [Add New Post] Generate new valid public post
     public void when_userSignsIn_expect_newPublicPostCreated() {
         Response createNewPublicPost = comments.createPublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, POST_DESCRIPTION_VALID);
@@ -46,7 +46,7 @@ public class PublicCommentInvalidCreationTest {
     }
 
     @Test
-    @Order(4)
+    @Order(2)
     //FPT1-170 [Comment] Create Comment With 1001 Characters as Registered User
     public void when_userCreatesInvalidComment_expect_errorStatusCode() {
         String invalidComment = comments.generateInvalidComment();
@@ -59,7 +59,7 @@ public class PublicCommentInvalidCreationTest {
     }
 
     @Test
-    @Order(5)
+    @Order(3)
     //FPT1-55 [Delete Post] Delete an Existing Public Post
     public void when_userDeletesPost_expect_postIsDeleted() {
         Response deletePostResponse = comments.deletePost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastPostId);

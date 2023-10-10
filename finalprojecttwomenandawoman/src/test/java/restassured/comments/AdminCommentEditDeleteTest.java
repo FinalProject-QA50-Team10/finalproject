@@ -19,7 +19,7 @@ public class AdminCommentEditDeleteTest {
     private static int lastCommentId;
 
     @Test
-    @Order(2)
+    @Order(1)
     //FPT1-25 [Add New Post] Generate new valid public post
     public void when_userSignsIn_expect_newPublicPostCreated() {
         Response createNewPublicPost = comments.createPublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, POST_DESCRIPTION_VALID);
@@ -43,7 +43,7 @@ public class AdminCommentEditDeleteTest {
     }
 
     @Test
-    @Order(4)
+    @Order(2)
     //FPT1-167 [Comment] Create Comment Successfully as Registered User
     public void when_userCreatesComment_expect_commentIsCreated() {
         Response signInWithUserTomCruise = comments.signInUser(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
@@ -62,7 +62,7 @@ public class AdminCommentEditDeleteTest {
     }
 
     @Test
-    @Order(6)
+    @Order(3)
     //FPT1-62 [Edit Comment] Edit an Existing Comment as Admin
     public void when_adminEditsComment_expect_commentIsEdited() {
         Response editCommentResponse = comments.editComment(ADMIN_NAME, ADMIN_PASSWORD, EDIT_COMMENT_CONTENT, lastCommentId);
@@ -70,7 +70,7 @@ public class AdminCommentEditDeleteTest {
     }
 
     @Test
-    @Order(7)
+    @Order(4)
     //FPT1-63 [Delete Comment] Delete an Existing Comment as Admin
     public void when_adminDeletesComment_expect_commentIsDeleted() {
         Response deleteCommentResponse = comments.deleteComment(ADMIN_NAME, ADMIN_PASSWORD, lastCommentId);
@@ -79,7 +79,7 @@ public class AdminCommentEditDeleteTest {
     }
 
     @Test
-    @Order(7)
+    @Order(5)
     //FPT1-55 [Delete Post] Delete an Existing Public Post
     public void when_userDeletesPost_expect_postIsDeleted() {
         Response deletePostResponse = comments.deletePost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastPostId);

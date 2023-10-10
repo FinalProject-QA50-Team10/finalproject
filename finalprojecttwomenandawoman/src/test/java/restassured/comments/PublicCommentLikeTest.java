@@ -20,7 +20,7 @@ public class PublicCommentLikeTest {
     private static int lastCommentId;
 
     @Test
-    @Order(2)
+    @Order(1)
     //FPT1-25 [Add New Post] Generate new valid public post
     public void when_userSignsIn_expect_newPublicPostCreated() {
         Response createNewPublicPost = comments.createPublicPost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, POST_DESCRIPTION_VALID);
@@ -44,7 +44,7 @@ public class PublicCommentLikeTest {
     }
 
     @Test
-    @Order(4)
+    @Order(2)
     //FPT1-167 [Comment] Create Comment Successfully as Registered User
     public void when_userCreatesComment_expect_commentIsCreated() {
         Response signInWithUserTomCruise = comments.signInUser(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
@@ -60,7 +60,7 @@ public class PublicCommentLikeTest {
     }
 
     @Test
-    @Order(6)
+    @Order(3)
     //FPT1-125 [Like] Verify comments Like button
     public void when_userLikesComment_expect_commentIsLiked() {
         Response signInWithUserJackNicholson = comments.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
@@ -72,7 +72,7 @@ public class PublicCommentLikeTest {
     }
 
     @Test
-    @Order(7)
+    @Order(4)
     //FPT1-126 [Like] Verify comments Dislike button
     public void when_userDislikesComment_expect_commentIsDisliked() {
         Response signInWithUserJackNicholson = comments.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
@@ -85,7 +85,7 @@ public class PublicCommentLikeTest {
     }
 
     @Test
-    @Order(8)
+    @Order(5)
     //FPT1-55 [Delete Post] Delete an Existing Public Post
     public void when_userDeletesPost_expect_postIsDeleted() {
         Response deletePostResponse = comments.deletePost(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD, lastPostId);
