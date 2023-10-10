@@ -1,40 +1,24 @@
 package restassured.posts;
 
-import com.telerikacademy.testframework.api.ApiTestAssertions;
-import com.telerikacademy.testframework.api.BaseSetupMethods;
 import com.telerikacademy.testframework.api.models.ErrorModel;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import restassured.base.BaseTestSetupBeforeAfter;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
-public class PublicPostTest {
-
-    private final BaseSetupMethods posts = new BaseSetupMethods();
-    private final ApiTestAssertions assertions = new ApiTestAssertions();
-    private static int lastPostId;
+public class PublicPostTest extends BaseTestSetupBeforeAfter {
 
     @BeforeEach
-    //FPT1-25 [Add New Post] Generate new valid public post
-    public void createPost() {
-        Response createNewPublicPost = posts.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, POST_DESCRIPTION_VALID);
-        assertions.assertStatusCode200(createNewPublicPost.statusCode());
-        assertions.assertPostContent("Valid Post");
-        assertions.assertPostIsPublic(createNewPublicPost);
-        int postId = createNewPublicPost.jsonPath().getInt("postId");
-        assertions.assertPostIdIsPositive(postId);
-        lastPostId = createNewPublicPost.jsonPath().getInt("postId");
+    public void setup() {
+        createPublicPost();
     }
 
     @AfterEach
-    //FPT1-55 [Delete Post] Delete the latest public post
-    public void deletePost() {
-        Response signInResponse = posts.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
-        assertions.assertStatusCode302(signInResponse.statusCode());
-        Response deletePublicPost = posts.deletePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
-        assertions.assertStatusCode200(deletePublicPost.statusCode());
-        assertions.assertResponseBodyIsEmpty(deletePublicPost);
+    public void teardown() {
+        deletePublicPost();
     }
 
     @Test
