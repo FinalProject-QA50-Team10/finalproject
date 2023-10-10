@@ -46,7 +46,6 @@ public class CommentInvalidCreationTest {
     }
 
     @Test
-    @Order(2)
     //FPT1-170 [Comment] Create Comment With 1001 Characters as Registered User
     public void when_userCreatesInvalidComment_expect_errorStatusCode() {
         String invalidComment = comments.generateInvalidComment();
