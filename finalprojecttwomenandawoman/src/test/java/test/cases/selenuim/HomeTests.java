@@ -12,15 +12,15 @@ public class HomeTests extends BaseTestSetup {
     @Test
     public void when_navigateToHomePage_expect_searchFormIsVisible(){
         home.navigateToPage();
-        actions.assertElementPresent(SEARCH_FORM);
+        actions.assertElementPresent(SEARCH_FORM_PATH);
     }
 
     @Test
     public void when_unauthenticatedUserClickOnSignInButton_expect_successfulLoginPageElementsAreVisible()
     {
         home.clickSignInButton();
-        actions.assertElementPresent(LOGOUT_BUTTON);
-        actions.assertElementPresent(PERSONAL_PROFILE_BUTTON);
-        actions.assertElementPresent(ADD_NEW_POST_BUTTON);
+        actions.assertElementPresent(LOGOUT_BUTTON_PATH);
+        actions.assertElementPresent(PERSONAL_PROFILE_BUTTON_PATH);
+        actions.assertElementPresent(ADD_NEW_POST_BUTTON_PATH);
     }
 }

@@ -11,10 +11,7 @@ public class UnauthenticatedUserHomePage extends BasePage{
 
     public void clickSignInButton()
     {
-        actions.waitForElementClickable(SIGN_IN_BUTTON);
-        actions.clickElement(SIGN_IN_BUTTON);
+        actions.waitForElementClickable(SIGN_IN_BUTTON_PATH);
+        actions.clickElement(SIGN_IN_BUTTON_PATH);
     }
-
-
-
 }

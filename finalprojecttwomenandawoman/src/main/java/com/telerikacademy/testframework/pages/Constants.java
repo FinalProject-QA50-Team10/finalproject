@@ -14,8 +14,8 @@ public class Constants {
     //    public static final String GEORGE_BUSH_FIRST_NAME = "George";
 //    public static final String GEORGE_BUSH_LAST_NAME = " Bush";
     public static final String GEORGE_BUSH_PASSWORD = "WEare.GeorgeBush.password";
-//    public static final String MR_BEAST_USERNAME = "MrBeast";
-//    public static final String MR_BEAST_PASSWORD = "Abv123!";
+    public static final String MR_BEAST_USERNAME = "WEare.MrBeast.username";
+    public static final String MR_BEAST_PASSWORD = "WEare.MrBeast.password";
 //    public static final String JACK_NICHOLSON_USERNAME = "JackNicholson";
 //    public static final String JACK_NICHOLSON_PASSWORD = "TheJack123";
 //    public static final String TOM_CRUISE_USERNAME = "TomCruise";
@@ -28,18 +28,21 @@ public class Constants {
 //    public static final String FOR_EDIT_FIRST_NAME = "Ryan";
 //    public static final String FOR_EDIT_LAST_NAME = "Gosling";
 //    public static final int INVALID_ID = 800;
+    public static final String INVALID_USERNAME = "Barbie";
 
     //################ X-PATHS #################
-    public static final String LOGIN_USERNAME_FIELD = "loginPage.usernameField";
-    public static final String LOGIN_PASSWORD_FIELD = "loginPage.passwordField";
-    public static final String LOGIN_BUTTON = "loginPage.loginButton";
-    public static final String SIGN_IN_BUTTON = "homePage.signInButton";
-    public static final String LOGOUT_BUTTON = "homePage.logOutButton";
-    public static final String PERSONAL_PROFILE_BUTTON = "homePage.personalProfileButton";
-    public static final String ADD_NEW_POST_BUTTON = "homePage.addNewPostButton";
-    public static final String SEARCH_FORM = "homePage.searchForm";
-    public static final String HOME_BUTTON = "loginPage.homeButton";
-    public static final String LOG_OUT_BUTTON = "homePage.logOutButton";
+    public static final String LOGIN_USERNAME_FIELD_PATH = "loginPage.usernameField";
+    public static final String LOGIN_PASSWORD_FIELD_PATH = "loginPage.passwordField";
+    public static final String LOGIN_BUTTON_PATH = "loginPage.loginButton";
+    public static final String SIGN_IN_BUTTON_PATH = "homePage.signInButton";
+    public static final String LOGOUT_BUTTON_PATH = "homePage.logOutButton";
+    public static final String PERSONAL_PROFILE_BUTTON_PATH = "homePage.personalProfileButton";
+    public static final String ADD_NEW_POST_BUTTON_PATH = "homePage.addNewPostButton";
+    public static final String SEARCH_FORM_PATH = "homePage.searchForm";
+    public static final String HOME_BUTTON_PATH = "loginPage.homeButton";
+    public static final String LOG_OUT_BUTTON_PATH = "homePage.logOutButton";
+    public static final String LOGIN_ERROR_MESSAGE_PATH = "loginPage.errorMessage";
+    public static final String LOGIN_PAGE_TITLE_PATH = "loginPage.title";
 
 
     //##############  Admin user part #################
@@ -51,4 +54,7 @@ public class Constants {
 
 
     //############## DESCRIPTIONS #################
+
+    public static final String LOGIN_ERROR_MESSAGE = "Wrong username or password.";
+    public static final String EMPTY_STRING = "";
 }

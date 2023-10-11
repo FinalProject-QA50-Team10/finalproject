@@ -21,17 +21,17 @@ public class AdminTests {
         loginPage.navigateToPage();
         loginPage.assertPageNavigated();
         loginPage.login("WEare.admin.username", "WEare.admin.password");
-        actions.assertElementPresent(LOGOUT_BUTTON);
-        actions.assertElementPresent(PERSONAL_PROFILE_BUTTON);
+        actions.assertElementPresent(LOGOUT_BUTTON_PATH);
+        actions.assertElementPresent(PERSONAL_PROFILE_BUTTON_PATH);
         actions.assertElementPresent(ADMIN_ZONE_BUTTON);
     }
 
     @AfterEach
     public void returnHome() {
-        actions.waitForElementClickable(HOME_BUTTON);
-        actions.clickElement(HOME_BUTTON);
-        actions.waitForElementClickable(LOG_OUT_BUTTON);
-        actions.clickElement(LOG_OUT_BUTTON);
+        actions.waitForElementClickable(HOME_BUTTON_PATH);
+        actions.clickElement(HOME_BUTTON_PATH);
+        actions.waitForElementClickable(LOG_OUT_BUTTON_PATH);
+        actions.clickElement(LOG_OUT_BUTTON_PATH);
     }
 
     @Test

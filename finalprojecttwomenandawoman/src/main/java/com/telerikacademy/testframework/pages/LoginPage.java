@@ -11,10 +11,17 @@ public class LoginPage extends BasePage{
     }
 
     public void login(String username, String password){
-        actions.typeValueInField(Utils.getConfigPropertyByKey(username), LOGIN_USERNAME_FIELD);
-        actions.typeValueInField(Utils.getConfigPropertyByKey(password), LOGIN_PASSWORD_FIELD);
-        actions.clickElement(LOGIN_BUTTON);
+        actions.typeValueInField(Utils.getConfigPropertyByKey(username), LOGIN_USERNAME_FIELD_PATH);
+        actions.typeValueInField(Utils.getConfigPropertyByKey(password), LOGIN_PASSWORD_FIELD_PATH);
+        actions.clickElement(LOGIN_BUTTON_PATH);
     }
 
+    public void navigateToHomePage(){
+        actions.waitForElementClickable(HOME_BUTTON_PATH);
+        actions.clickElement(HOME_BUTTON_PATH);
+    }
 
+    public void logout(){
+        actions.clickElement(LOGOUT_BUTTON_PATH);
+    }
 }
