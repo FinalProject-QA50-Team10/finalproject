@@ -3,7 +3,7 @@ package com.telerikacademy.testframework.pages;
 public class Constants {
 
     //########### URL ################
-    public static final String HOME_PAGE = "config.properties";
+    public static final String HOME_PAGE = "WEare.homePage";
     public static final String LOGIN_PAGE = "WEare.loginPage";
 
     //############### USER DATA ###############
@@ -39,7 +39,7 @@ public class Constants {
     public static final String ADD_NEW_POST_BUTTON = "homePage.addNewPostButton";
     public static final String SEARCH_FORM = "homePage.searchForm";
     public static final String HOME_BUTTON = "loginPage.homeButton";
-    public static final String LOG_OUT_BUTTON = "logOutButton";
+    public static final String LOG_OUT_BUTTON = "homePage.logOutButton";
 
 
     //##############  Admin user part #################

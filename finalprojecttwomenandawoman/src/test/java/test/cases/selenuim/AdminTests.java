@@ -11,7 +11,6 @@ import static com.telerikacademy.testframework.pages.Constants.*;
 
 public class AdminTests {
 
-
     LoginPage loginPage = new LoginPage(actions.getDriver());
     AdminHomePage adminHomePage = new AdminHomePage(actions.getDriver());
     static UserActions actions = new UserActions();
@@ -19,6 +18,7 @@ public class AdminTests {
 
     @BeforeEach
     public void loginUserAdmin() {
+        loginPage.navigateToPage();
         loginPage.login("WEare.admin.username", "WEare.admin.password");
         actions.assertElementPresent(LOGOUT_BUTTON);
         actions.assertElementPresent(PERSONAL_PROFILE_BUTTON);
@@ -37,7 +37,7 @@ public class AdminTests {
     //FPT1-58 [See Profile] Disable User Profile as Admin
     public void when_adminDisableUsers_expected_userIsDisable() {
         adminHomePage.validateAdminCanDisableUser();
-        actions.waitForElementPresent(DISABLE_USER_BUTTON);
-        actions.assertElementPresent(DISABLE_USER_BUTTON);
+        actions.waitForElementPresent(ENABLE_USER_BUTTON);
+        actions.assertElementPresent(ENABLE_USER_BUTTON);
     }
 }
