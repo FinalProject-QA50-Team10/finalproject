@@ -9,9 +9,9 @@ public class Constants {
     //############### USER DATA ###############
     public static final String ADMIN_NAME = "WEare.admin.username";
     public static final String ADMIN_PASSWORD = "WEare.admin.password";
-//    public static final String GEORGE_BUSH_NAME = "George Bush";
+    //    public static final String GEORGE_BUSH_NAME = "George Bush";
     public static final String GEORGE_BUSH_USERNAME = "WEare.GeorgeBush.username";
-//    public static final String GEORGE_BUSH_FIRST_NAME = "George";
+    //    public static final String GEORGE_BUSH_FIRST_NAME = "George";
 //    public static final String GEORGE_BUSH_LAST_NAME = " Bush";
     public static final String GEORGE_BUSH_PASSWORD = "WEare.GeorgeBush.password";
 //    public static final String MR_BEAST_USERNAME = "MrBeast";
@@ -39,6 +39,9 @@ public class Constants {
     public static final String ADD_NEW_POST_BUTTON = "homePage.addNewPostButton";
     public static final String SEARCH_FORM = "homePage.searchForm";
     public static final String ADMIN_DASHBOARD_BUTTON = "loginPage.adminDashBoardButton";
+    public static final String HOME_BUTTON = "loginPage.homeButton";
+    public static final String LOG_OUT_BUTTON = "logOutButton";
+
 
 
     //############## DESCRIPTIONS #################

@@ -3,6 +3,7 @@ package test.cases.selenuim;
 import com.telerikacademy.testframework.UserActions;
 import com.telerikacademy.testframework.pages.LoginPage;
 import com.telerikacademy.testframework.pages.UnauthenticatedUserHomePage;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 import static com.telerikacademy.testframework.pages.Constants.*;
@@ -22,5 +23,11 @@ public class AdminTests {
         actions.assertElementPresent(ADMIN_DASHBOARD_BUTTON);
     }
 
-
+    @AfterEach
+    public void returnHome() {
+        actions.waitForElementClickable(HOME_BUTTON);
+        actions.clickElement(HOME_BUTTON);
+        actions.waitForElementClickable(LOG_OUT_BUTTON);
+        actions.clickElement(LOG_OUT_BUTTON);
+    }
 }
