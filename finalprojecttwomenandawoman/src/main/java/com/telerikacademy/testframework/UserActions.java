@@ -90,7 +90,6 @@ public class UserActions {
         waitForElementToBeClickableUntilTimeout(locatorKey, defaultTimeout, arguments);
     }
 
-    //############# WAITS #########
     public void waitForElementPresent(String locator, Object... arguments) {
         // TODO: Implement the method
         // 1. Initialize Wait utility with default timeout from properties
@@ -100,6 +99,40 @@ public class UserActions {
         waitForElementPresenceUntilTimeout(locator, defaultTimeout, arguments);
     }
 
+    private void waitForElementVisibleUntilTimeout(String locator, int seconds, Object... locatorArguments) {
+        Duration timeout = Duration.ofSeconds(seconds);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        String xpath = getLocatorValueByKey(locator, locatorArguments);
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+        } catch (Exception exception) {
+            Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+        }
+    }
+
+    private void waitForElementToBeClickableUntilTimeout(String locator, int seconds, Object... locatorArguments) {
+        Duration timeout = Duration.ofSeconds(seconds);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        String xpath = getLocatorValueByKey(locator, locatorArguments);
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+        } catch (Exception exception) {
+            Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+        }
+    }
+
+    private void waitForElementPresenceUntilTimeout(String locator, int seconds, Object... locatorArguments) {
+        Duration timeout = Duration.ofSeconds(seconds);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        String xpath = getLocatorValueByKey(locator, locatorArguments);
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+        } catch (Exception exception) {
+            Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+        }
+    }
+
+    //###################### Asserts ##################
     public void assertElementPresent(String locator) {
         Assertions.assertNotNull(driver.findElement(By.xpath(getUIMappingByKey(locator))),
                 format("Element with %s doesn't present.", locator));
@@ -152,36 +185,7 @@ public class UserActions {
         return format(getUIMappingByKey(locator), arguments);
     }
 
-    private void waitForElementVisibleUntilTimeout(String locator, int seconds, Object... locatorArguments) {
-        Duration timeout = Duration.ofSeconds(seconds);
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
-        String xpath = getLocatorValueByKey(locator, locatorArguments);
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
-        } catch (Exception exception) {
-            Assertions.fail("Element with locator: '" + xpath + "' was not found.");
-        }
-    }
 
-    private void waitForElementToBeClickableUntilTimeout(String locator, int seconds, Object... locatorArguments) {
-        Duration timeout = Duration.ofSeconds(seconds);
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
-        String xpath = getLocatorValueByKey(locator, locatorArguments);
-        try {
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
-        } catch (Exception exception) {
-            Assertions.fail("Element with locator: '" + xpath + "' was not found.");
-        }
-    }
 
-    private void waitForElementPresenceUntilTimeout(String locator, int seconds, Object... locatorArguments) {
-        Duration timeout = Duration.ofSeconds(seconds);
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
-        String xpath = getLocatorValueByKey(locator, locatorArguments);
-        try {
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
-        } catch (Exception exception) {
-            Assertions.fail("Element with locator: '" + xpath + "' was not found.");
-        }
-    }
+
 }

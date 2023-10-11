@@ -1,4 +1,29 @@
 package test.cases.selenuim;
 
-public class LoginTests {
+import com.telerikacademy.testframework.pages.AuthenticatedUserHomePage;
+import com.telerikacademy.testframework.pages.UnauthenticatedUserHomePage;
+import com.telerikacademy.testframework.pages.LoginPage;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static com.telerikacademy.testframework.pages.Constants.*;
+
+public class LoginTests extends BaseTestSetup{
+    LoginPage loginPage = new LoginPage(actions.getDriver());
+    UnauthenticatedUserHomePage homePage = new UnauthenticatedUserHomePage(actions.getDriver());
+    AuthenticatedUserHomePage authenticateHomePage = new AuthenticatedUserHomePage(actions.getDriver());
+
+    @BeforeEach
+    public void navigateToLoginPage()
+    {
+        homePage.clickSignInButton();
+        loginPage.navigateToPage();
+    }
+
+    @Test
+    public void when_unauthenticatedUserLoginWithValidCredentials_expect_successLoginUser()
+    {
+        loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
+        authenticateHomePage.assertLogOutButtonIsVisible();
+    }
 }
