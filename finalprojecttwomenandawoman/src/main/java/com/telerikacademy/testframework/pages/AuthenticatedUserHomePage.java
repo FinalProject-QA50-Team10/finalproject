@@ -9,8 +9,4 @@ public class AuthenticatedUserHomePage extends BasePage{
         super(driver, HOME_PAGE);
     }
 
-    public void assertLogOutButtonIsVisible()
-    {
-        actions.waitForElementVisible(LOGOUT_BUTTON);
-    }
 }

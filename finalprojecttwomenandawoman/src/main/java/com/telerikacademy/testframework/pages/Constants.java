@@ -35,6 +35,8 @@ public class Constants {
     public static final String LOGIN_BUTTON = "loginPage.loginButton";
     public static final String SIGN_IN_BUTTON = "homePage.signInButton";
     public static final String LOGOUT_BUTTON = "homePage.logOutButton";
+    public static final String PERSONAL_PROFILE_BUTTON = "homePage.personalProfileButton";
+    public static final String ADD_NEW_POST_BUTTON = "homePage.addNewPostButton";
     public static final String SEARCH_FORM = "homePage.searchForm";
 
     //############## DESCRIPTIONS #################
