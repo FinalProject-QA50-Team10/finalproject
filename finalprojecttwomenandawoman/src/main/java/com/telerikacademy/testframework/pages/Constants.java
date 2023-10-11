@@ -38,6 +38,8 @@ public class Constants {
     public static final String PERSONAL_PROFILE_BUTTON = "homePage.personalProfileButton";
     public static final String ADD_NEW_POST_BUTTON = "homePage.addNewPostButton";
     public static final String SEARCH_FORM = "homePage.searchForm";
+    public static final String ADMIN_DASHBOARD_BUTTON = "loginPage.adminDashBoardButton";
+
 
     //############## DESCRIPTIONS #################
 }
