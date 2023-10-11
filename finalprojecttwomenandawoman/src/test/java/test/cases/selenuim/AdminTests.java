@@ -19,6 +19,7 @@ public class AdminTests {
     @BeforeEach
     public void loginUserAdmin() {
         loginPage.navigateToPage();
+        loginPage.assertPageNavigated();
         loginPage.login("WEare.admin.username", "WEare.admin.password");
         actions.assertElementPresent(LOGOUT_BUTTON);
         actions.assertElementPresent(PERSONAL_PROFILE_BUTTON);
