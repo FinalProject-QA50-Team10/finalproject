@@ -38,10 +38,16 @@ public class Constants {
     public static final String PERSONAL_PROFILE_BUTTON = "homePage.personalProfileButton";
     public static final String ADD_NEW_POST_BUTTON = "homePage.addNewPostButton";
     public static final String SEARCH_FORM = "homePage.searchForm";
-    public static final String ADMIN_DASHBOARD_BUTTON = "loginPage.adminDashBoardButton";
     public static final String HOME_BUTTON = "loginPage.homeButton";
     public static final String LOG_OUT_BUTTON = "logOutButton";
 
+
+    //##############  Admin user part #################
+    public static final String ADMIN_ZONE_BUTTON = "admin.adminZoneButton";
+    public static final String VIEW_USERS_BUTTON = "admin.viewUsersButton";
+    public static final String SEE_USER_PROFILE_BUTTON = "admin.seeUserProfileButton";
+    public static final String ENABLE_USER_BUTTON = "admin.enableUserButton";
+    public static final String DISABLE_USER_BUTTON = "admin.disableUserButton";
 
 
     //############## DESCRIPTIONS #################
