@@ -20,7 +20,7 @@ public class LoginTests extends BaseTestSetup{
     }
 
     @Test
-    public void when_unauthenticatedUserLoginWithValidCredentials_expect_successHomePageElementsAreVisible()
+    public void when_unauthenticatedUserLoginWithValidCredentials_expect_successfulHomePageElementsAreVisible()
     {
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         actions.assertElementPresent(LOGOUT_BUTTON);

@@ -14,9 +14,7 @@ public class UnauthenticatedUserHomePage extends BasePage{
         actions.waitForElementClickable(SIGN_IN_BUTTON);
         actions.clickElement(SIGN_IN_BUTTON);
     }
-    public void assertSearchFormVisible() {
-        actions.assertElementPresent(SEARCH_FORM);
-    }
+
 
 
 }
