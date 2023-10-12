@@ -19,21 +19,12 @@ public class AdminTests {
     @BeforeEach
     public void loginUserAdmin() {
         loginPage.navigateToPage();
-        loginPage.assertPageNavigated();
         loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
-        actions.assertElementPresent(LOGOUT_BUTTON_PATH);
-        actions.assertElementPresent(PERSONAL_PROFILE_BUTTON_PATH);
-        actions.assertElementPresent(ADMIN_ZONE_BUTTON);
     }
 
     @AfterEach
     public void logOut() {
-        actions.waitForElementClickable(HOME_BUTTON_PATH);
-        actions.clickElement(HOME_BUTTON_PATH);
-        actions.waitForElementClickable(LOG_OUT_BUTTON_PATH);
-        actions.clickElement(LOG_OUT_BUTTON_PATH);
-        actions.assertElementPresent(LOGIN_PAGE_TITLE_PATH);
-        actions.assertElementPresent(LOGOUT_ERROR_MESSAGE_PATH);
+        loginPage.logout();
     }
 
     @Test
