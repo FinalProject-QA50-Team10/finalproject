@@ -10,12 +10,15 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.List;
+import java.util.Objects;
 
 import static com.telerikacademy.testframework.Utils.LOGGER;
 import static com.telerikacademy.testframework.Utils.getConfigPropertyByKey;
 import static com.telerikacademy.testframework.Utils.getUIMappingByKey;
 import static com.telerikacademy.testframework.Utils.getWebDriver;
 import static com.telerikacademy.testframework.Utils.tearDownWebDriver;
+import static com.telerikacademy.testframework.pages.Constants.*;
 import static java.lang.String.format;
 
 public class UserActions {
@@ -136,6 +139,7 @@ public class UserActions {
     public void assertElementPresent(String locator) {
         Assertions.assertNotNull(driver.findElement(By.xpath(getUIMappingByKey(locator))),
                 format("Element with %s doesn't present.", locator));
+        System.out.println("Elements are present.");
     }
 
     public void assertElementAttribute(String locator, String attributeName, String attributeValue) {
@@ -149,11 +153,47 @@ public class UserActions {
         Assertions.assertEquals(format("Element with locator %s doesn't match", attributeName), getLocatorValueByKey(attributeValue), value);
     }
 
+//    public void assertUsersJobTitle(String jobTitle){
+//        var users = getElements(SEARCH_RESULTS_JOB_TITLE_PATH);
+//        for (var user : users) {
+//            String jobTitleResult = user.getText();
+//            if(!Objects.equals(jobTitleResult, jobTitle))
+//            {
+//                throw new IllegalArgumentException(format("Expected job title is different than actual. " +
+//                        "Actual is %s, expected is %s.", jobTitleResult, jobTitle));
+//            }
+//        }
+//        System.out.println("Job titles are correct.");
+//    }
+
+    public void assertUsersAttribute(String name, String path){
+        var users = getElements(path);
+        for (var user : users) {
+            String result = user.getText();
+            if(!Objects.equals(result, name))
+            {
+                throw new IllegalArgumentException(format("Expected attribute is different than actual. " +
+                        "Actual is %s, expected is %s.", result, name));
+            }
+        }
+        System.out.println("Attributes are correct.");
+    }
+    public void assertUsersListIsNotEmpty(String searchResultsPath){
+        var users = getElements(searchResultsPath);
+        Assertions.assertFalse(users.isEmpty());
+        System.out.println("Users list in not empty.");
+    }
+
     public WebElement getElement(String key, Object... arguments) {
         String locator = getLocatorValueByKey(key, arguments);
         LOGGER.info("Hovering on element " + key);
-        WebElement element = driver.findElement(By.xpath(locator));
-        return element;
+        return driver.findElement(By.xpath(locator));
+    }
+
+    public List<WebElement> getElements(String key, Object... arguments) {
+        String locator = getLocatorValueByKey(key, arguments);
+        LOGGER.info("Hovering on element " + key);
+        return driver.findElements(By.xpath(locator));
     }
 
     public String getElementAttribute(String locator, String attributeName) { // attributeName = po id, x-path..

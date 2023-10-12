@@ -5,11 +5,12 @@ public class Constants {
     //########### URL ################
     public static final String HOME_PAGE = "WEare.homePage";
     public static final String LOGIN_PAGE = "WEare.loginPage";
+    public static final String SEARCHED_USERS_PAGE = "WEare.searchedUsersPage";
 
     //############### USER DATA ###############
     public static final String ADMIN_NAME = "WEare.admin.username";
     public static final String ADMIN_PASSWORD = "WEare.admin.password";
-    //    public static final String GEORGE_BUSH_NAME = "George Bush";
+    public static final String GEORGE_BUSH_NAME = "George Bush";
     public static final String GEORGE_BUSH_USERNAME = "WEare.GeorgeBush.username";
     //    public static final String GEORGE_BUSH_FIRST_NAME = "George";
 //    public static final String GEORGE_BUSH_LAST_NAME = " Bush";
@@ -29,6 +30,7 @@ public class Constants {
 //    public static final String FOR_EDIT_LAST_NAME = "Gosling";
 //    public static final int INVALID_ID = 800;
     public static final String INVALID_USERNAME = "Barbie";
+    public static final String VALID_JOB_TITLE = "Actor";
 
     //################ X-PATHS #################
     public static final String LOGIN_USERNAME_FIELD_PATH = "loginPage.usernameField";
@@ -44,6 +46,12 @@ public class Constants {
     public static final String LOGIN_ERROR_MESSAGE_PATH = "loginPage.errorMessage";
     public static final String LOGOUT_ERROR_MESSAGE_PATH = "logoutPage.errorMessage";
     public static final String LOGIN_PAGE_TITLE_PATH = "loginPage.title";
+    public static final String SEARCH_JOB_FIELD_PATH = "searchForm.jobTitleField";
+    public static final String SEARCH_NAME_FIELD_PATH = "searchForm.nameField";
+    public static final String SEARCH_BUTTON_PATH = "searchForm.searchButton";
+    public static final String SEARCH_RESULTS_PATH = "searchForm.searchResults";
+    public static final String SEARCH_RESULTS_JOB_TITLE_PATH = "searchForm.searchResults.jobTitle";
+    public static final String SEARCH_RESULTS_NAME_PATH = "searchForm.searchResults.name";
 
 
     //##############  Admin user part #################
