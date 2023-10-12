@@ -4,57 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6adba18-4fcf-4f89-9626-a98384c9dc73" name="Changes" comment="Add assertPageNavigated method in AdminTests">
+    <list default="true" id="d6adba18-4fcf-4f89-9626-a98384c9dc73" name="Changes" comment="Add Constructor to RegistrationPage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/CustomWebDriverManager$CustomWebDriverManagerEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/CustomWebDriverManager$CustomWebDriverManagerEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/CustomWebDriverManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/CustomWebDriverManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/Driver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/PropertiesManager$PropertiesManagerEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/PropertiesManager$PropertiesManagerEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/PropertiesManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/PropertiesManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/UserActionNonImplemented.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/UserActionNonImplemented.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/UserActions.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/UserActions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/Utils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/ApiTestAssertions.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/ApiTestAssertions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/BaseSetupMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/BaseSetupMethods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/CategoryModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/CategoryModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/CommentModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/CommentModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/EditProfileModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/EditProfileModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/ErrorModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/ErrorModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/FriendsRequestModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/FriendsRequestModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/PostsModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/PostsModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/SearchModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/SearchModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/UserInformationModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/models/UserInformationModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/utils/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/utils/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/utils/Endpoints.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/api/utils/Endpoints.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/AuthenticatedUserHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/AuthenticatedUserHomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/BasePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/BasePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/LoginPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/RegistrationPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/RegistrationPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/classes/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/base/BaseCommentTestSetupBeforeAfter.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/base/BaseCommentTestSetupBeforeAfter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/base/BasePostTestSetupBeforeAfter.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/base/BasePostTestSetupBeforeAfter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/comments/AdminCommentEditDeleteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/comments/AdminCommentEditDeleteTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/comments/CommentInvalidCreationTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/comments/CommentInvalidCreationTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/comments/CommentLikeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/comments/CommentLikeTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/comments/CommentManipulationTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/comments/CommentManipulationTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/posts/AdminPostEditDeletePostTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/posts/AdminPostEditDeletePostTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/posts/PrivatePostLikePostTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/posts/PrivatePostLikePostTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/posts/PrivatePostPostTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/posts/PrivatePostPostTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/posts/PublicPostLikePostTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/posts/PublicPostLikePostTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/posts/PublicPostPostTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/posts/PublicPostPostTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/useractions/EditUserProfileTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/useractions/EditUserProfileTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/useractions/LoginTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/useractions/LoginTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/useractions/RegistrationTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/useractions/RegistrationTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/useractions/SendFriendRequestTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/useractions/SendFriendRequestTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/useractions/UnregisteredUserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/useractions/UnregisteredUserTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/useractions/UserInformationTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/restassured/useractions/UserInformationTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/test/cases/selenuim/AdminTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/test/cases/selenuim/AdminTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/test/cases/selenuim/BaseTestSetup.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/test/cases/selenuim/BaseTestSetup.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/test/cases/selenuim/HomeTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/test/cases/selenuim/HomeTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/test/cases/selenuim/LoginTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/test/cases/selenuim/LoginTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/test/cases/selenuim/RegistrationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/target/test-classes/test/cases/selenuim/RegistrationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/src/main/java/com/telerikacademy/testframework/pages/RegistrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/src/main/java/com/telerikacademy/testframework/pages/RegistrationPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +146,7 @@
       <workItem from="1697046127007" duration="104000" />
       <workItem from="1697095434155" duration="74000" />
       <workItem from="1697095523396" duration="14000" />
-      <workItem from="1697095546122" duration="1122000" />
+      <workItem from="1697095546122" duration="2071000" />
     </task>
     <task id="LOCAL-00001" summary="Add Postman Report">
       <option name="closed" value="true" />
@@ -260,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697035104808</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add Constructor to RegistrationPage">
+      <option name="closed" value="true" />
+      <created>1697097384459</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1697097384459</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,6 +252,7 @@
     <MESSAGE value="Update Disable User Profile as Admin" />
     <MESSAGE value="Update AdminHomePage class" />
     <MESSAGE value="Add assertPageNavigated method in AdminTests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add assertPageNavigated method in AdminTests" />
+    <MESSAGE value="Add Constructor to RegistrationPage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Constructor to RegistrationPage" />
   </component>
 </project>
