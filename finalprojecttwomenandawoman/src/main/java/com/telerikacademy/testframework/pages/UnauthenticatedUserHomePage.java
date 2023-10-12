@@ -16,6 +16,11 @@ public class UnauthenticatedUserHomePage extends BasePage{
         actions.clickElement(SIGN_IN_BUTTON_PATH);
     }
 
+    public void clickRegisterButton()
+    {
+        actions.waitForElementClickable(REGISTER_BUTTON_PATH);
+        actions.clickElement(REGISTER_BUTTON_PATH);
+    }
     public void searchForm(String jobTitle, String names){
         actions.waitForElementClickable(SEARCH_JOB_FIELD_PATH);
         actions.typeValueInField(Utils.getConfigPropertyByKey(jobTitle), SEARCH_JOB_FIELD_PATH);

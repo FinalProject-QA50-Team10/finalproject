@@ -5,6 +5,7 @@ public class Constants {
     //########### URL ################
     public static final String HOME_PAGE = "WEare.homePage";
     public static final String LOGIN_PAGE = "WEare.loginPage";
+    public static final String REGISTER_PAGE = "WEare.registerPage";
     public static final String SEARCHED_USERS_PAGE = "WEare.searchedUsersPage";
 
     //############### USER DATA ###############
@@ -32,6 +33,8 @@ public class Constants {
 //    public static final int INVALID_ID = 800;
     public static final String INVALID_USERNAME = "Barbie";
     public static final String VALID_JOB_TITLE = "Actor";
+    public static String RANDOM_USERNAME;
+    public static String RANDOM_EMAIL;
 
     //##############  Registration #################
     public static final String USERNAME_FIELD = "registrationPage.username";
@@ -47,6 +50,7 @@ public class Constants {
     public static final String LOGIN_PASSWORD_FIELD_PATH = "loginPage.passwordField";
     public static final String LOGIN_BUTTON_PATH = "loginPage.loginButton";
     public static final String SIGN_IN_BUTTON_PATH = "homePage.signInButton";
+    public static final String REGISTER_BUTTON_PATH = "homePage.registerButton";
     public static final String LOGOUT_BUTTON_PATH = "homePage.logOutButton";
     public static final String PERSONAL_PROFILE_BUTTON_PATH = "homePage.personalProfileButton";
     public static final String ADD_NEW_POST_BUTTON_PATH = "homePage.addNewPostButton";
@@ -106,4 +110,5 @@ public class Constants {
     public static final String EMPTY_STRING = "";
     public static final int MIN_LENGTH_USERNAME = 2;
     public static final int MAX_LENGTH_USERNAME = 20;
+    public static final String EMAIL_END = "user@abv.com";
 }
