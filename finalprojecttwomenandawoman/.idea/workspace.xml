@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05823fbe-a222-492b-af08-4835ea6eb1b7" name="Changes" comment="Add [Login Page] Verify the Logout button functionality">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM__Changes_.xml" afterDir="false" />
+    <list default="true" id="05823fbe-a222-492b-af08-4835ea6eb1b7" name="Changes" comment="Add LoginPage tests and some changes in Constants class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/UserActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/UserActions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/HomeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/HomeTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/mappings/ui_map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/mappings/ui_map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/LoginTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,28 +23,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="2WcHShAFjhq3R5XTCDKc38W5Y8A" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
+}]]></component>
+  <component name="RunManager" selected="JUnit.AdminTests">
+    <configuration name="AdminTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
 }</component>
   <component name="RunManager" selected="JUnit.HomeTests.when_unauthenticatedUserSearchUsersByValidName_Expect_SearchedUsersAreVisible">
     <configuration name="HomeTests.when_unauthenticatedUserSearchUsersByValidJobTitle_Expect_SearchedUsersAreVisible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -67,10 +56,13 @@
       <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.HomeTests" />
       <option name="METHOD_NAME" value="when_unauthenticatedUserSearchUsersByValidJobTitle_Expect_SearchedUsersAreVisible" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.AdminTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
     <configuration name="HomeTests.when_unauthenticatedUserSearchUsersByValidName_Expect_SearchedUsersAreVisible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-automation-framework" />
       <extension name="coverage">
@@ -83,11 +75,14 @@
       <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.HomeTests" />
       <option name="METHOD_NAME" value="when_unauthenticatedUserSearchUsersByValidName_Expect_SearchedUsersAreVisible" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginTests.when_AuthenticatedUserClickLogoutButton_Expect_SuccessfulLogout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-automation-framework" />
       <extension name="coverage">
         <pattern>
@@ -98,6 +93,8 @@
       <option name="PACKAGE_NAME" value="test.cases.selenuim" />
       <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="when_AuthenticatedUserClickLogoutButton_Expect_SuccessfulLogout" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -138,9 +135,11 @@
       <list>
         <item itemvalue="JUnit.HomeTests.when_unauthenticatedUserSearchUsersByValidName_Expect_SearchedUsersAreVisible" />
         <item itemvalue="JUnit.HomeTests.when_unauthenticatedUserSearchUsersByValidJobTitle_Expect_SearchedUsersAreVisible" />
+        <item itemvalue="JUnit.AdminTests" />
         <item itemvalue="JUnit.LoginTests.when_AuthenticatedUserClickLogoutButton_Expect_SuccessfulLogout" />
         <item itemvalue="JUnit.LoginTests" />
         <item itemvalue="JUnit.LoginTests.when_UnauthenticatedUserNavigateToLoginPage_Expect_LoginPageElementsAreVisible" />
+        <item itemvalue="JUnit.LoginTests.when_UnauthenticatedUserLoginWithInvalidUsernameAndValidPassword_Expect_ErrorMessage" />
       </list>
     </recent_temporary>
   </component>
@@ -164,6 +163,47 @@
       <option name="project" value="LOCAL" />
       <updated>1697056785350</updated>
     </task>
+    <task id="LOCAL-00002" summary="Update LoginPage tests and loginUser as Admin">
+      <option name="closed" value="true" />
+      <created>1697091871150</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697091871150</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add Enable User Profile as Admin">
+      <option name="closed" value="true" />
+      <created>1697095040608</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1697095040608</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add PostPage and update AdminTests">
+      <option name="closed" value="true" />
+      <created>1697096025874</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1697096025874</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add PostTest and update AdminTests">
+      <option name="closed" value="true" />
+      <created>1697096852079</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1697096852079</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add login and logout in PostTests">
+      <option name="closed" value="true" />
+      <created>1697098193882</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1697098193882</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <task id="LOCAL-00002" summary="Add [Login Page] Verify the Logout button functionality">
       <option name="closed" value="true" />
       <created>1697090561547</created>
@@ -203,6 +243,12 @@
     <MESSAGE value="Add LoginPage tests and some changes in Constants class" />
     <MESSAGE value="Add [Login Page] Verify the Logout button functionality" />
     <option name="LAST_COMMIT_MESSAGE" value="Add [Login Page] Verify the Logout button functionality" />
+    <MESSAGE value="Update LoginPage tests and loginUser as Admin" />
+    <MESSAGE value="Add Enable User Profile as Admin" />
+    <MESSAGE value="Add PostPage and update AdminTests" />
+    <MESSAGE value="Add PostTest and update AdminTests" />
+    <MESSAGE value="Add login and logout in PostTests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add login and logout in PostTests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

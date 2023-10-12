@@ -32,6 +32,10 @@ public class Constants {
     public static final String INVALID_USERNAME = "Barbie";
     public static final String VALID_JOB_TITLE = "Actor";
 
+    //##############  Registration #################
+
+
+
     //################ X-PATHS #################
     public static final String LOGIN_USERNAME_FIELD_PATH = "loginPage.usernameField";
     public static final String LOGIN_PASSWORD_FIELD_PATH = "loginPage.passwordField";
@@ -60,6 +64,15 @@ public class Constants {
     public static final String SEE_USER_PROFILE_BUTTON = "admin.seeUserProfileButton";
     public static final String ENABLE_USER_BUTTON = "admin.enableUserButton";
     public static final String DISABLE_USER_BUTTON = "admin.disableUserButton";
+
+
+    //##############  POSTS #################
+
+    public static final String ADD_NEW_POST_BUTTON = "posts.addNewPost";
+    public static final String VISIBILITY_BUTTON = "posts.visibility";
+    public static final String VISIBILITY_PUBLIC = "posts.publicVisibility";
+    public static final String POST_MESSAGE_FIELD = "posts.messageField";
+    
 
 
     //############## DESCRIPTIONS #################

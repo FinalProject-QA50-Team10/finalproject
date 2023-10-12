@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6adba18-4fcf-4f89-9626-a98384c9dc73" name="Changes" comment="Add assertPageNavigated method in AdminTests" />
+    <list default="true" id="d6adba18-4fcf-4f89-9626-a98384c9dc73" name="Changes" comment="Add methods to RegistrationPage">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/src/main/java/com/telerikacademy/testframework/pages/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/src/main/java/com/telerikacademy/testframework/pages/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/src/test/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/src/test/resources/mappings/ui_map.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +31,7 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2WbdHZvJO6jVthOsVIiYrhsVSKr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -43,7 +48,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.AdminTests.when_adminDisableUsers_expected_userIsDisable">
+  <component name="RunManager" selected="JUnit.restassured.comments in test-automation-framework">
     <configuration name="AdminTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-automation-framework" />
       <extension name="coverage">
@@ -91,8 +96,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="restassured.comments in test-automation-framework" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test-automation-framework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="restassured.comments.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="restassured.comments" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.restassured.comments in test-automation-framework" />
         <item itemvalue="JUnit.AdminTests.when_adminDisableUsers_expected_userIsDisable" />
         <item itemvalue="JUnit.AdminTests" />
         <item itemvalue="JUnit.LoginTests.when_unauthenticatedUserLoginWithValidCredentials_expect_successfulHomePageElementsAreVisible" />
@@ -114,6 +145,9 @@
       <workItem from="1697039964203" duration="10000" />
       <workItem from="1697039987412" duration="713000" />
       <workItem from="1697046127007" duration="104000" />
+      <workItem from="1697095434155" duration="74000" />
+      <workItem from="1697095523396" duration="14000" />
+      <workItem from="1697095546122" duration="3737000" />
     </task>
     <task id="LOCAL-00001" summary="Add Postman Report">
       <option name="closed" value="true" />
@@ -179,11 +213,39 @@
       <option name="project" value="LOCAL" />
       <updated>1697035104808</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add Constructor to RegistrationPage">
+      <option name="closed" value="true" />
+      <created>1697097384459</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1697097384459</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add generateRandomText to RegistrationPage">
+      <option name="closed" value="true" />
+      <created>1697098308425</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1697098308425</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add methods to RegistrationPage">
+      <option name="closed" value="true" />
+      <created>1697099041919</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1697099041919</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -207,6 +269,9 @@
     <MESSAGE value="Update Disable User Profile as Admin" />
     <MESSAGE value="Update AdminHomePage class" />
     <MESSAGE value="Add assertPageNavigated method in AdminTests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add assertPageNavigated method in AdminTests" />
+    <MESSAGE value="Add Constructor to RegistrationPage" />
+    <MESSAGE value="Add generateRandomText to RegistrationPage" />
+    <MESSAGE value="Add methods to RegistrationPage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add methods to RegistrationPage" />
   </component>
 </project>
