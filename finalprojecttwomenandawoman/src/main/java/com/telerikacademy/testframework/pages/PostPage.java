@@ -31,5 +31,16 @@ public class PostPage extends BasePage {
         actions.clickElement(POST_SAVE_BUTTON);
     }
 
-
+    public void deletePost() {
+        actions.waitForElementClickable(LATEST_POST_BUTTON);
+        actions.clickElement(LATEST_POST_BUTTON);
+        actions.waitForElementClickable(EXPLORE_POST_BUTTON);
+        actions.clickElement(EXPLORE_POST_BUTTON);
+        actions.waitForElementClickable(DELETE_POST_BUTTON);
+        actions.clickElement(DELETE_POST_BUTTON);
+        actions.waitForElementClickable(DELETE_DROP_DOWN_MENU);
+        actions.clickElement(DELETE_DROP_DOWN_MENU);
+        actions.waitForElementClickable(DELETE_BUTTON_SUBMIT);
+        actions.clickElement(DELETE_BUTTON_SUBMIT);
+    }
 }

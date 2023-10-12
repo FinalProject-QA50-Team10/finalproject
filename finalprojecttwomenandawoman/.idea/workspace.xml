@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e94da0cd-1e2c-4827-938e-b0de7b91aea3" name="Changes" comment="Add Create Private Post in PostTests and createPrivatePost in PostPage">
+    <list default="true" id="e94da0cd-1e2c-4827-938e-b0de7b91aea3" name="Changes" comment="Update Create Private/Public Post in PostTests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/PostPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/PostPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/mappings/ui_map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class" afterDir="false" />
     </list>
@@ -35,7 +37,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.PostTests.when_UserCreatePublicPost_expect_PublicPostIsCreated">
+  <component name="RunManager" selected="JUnit.PostTests.when_UserCreatePrivatePost_expect_PrivatePostIsCreated">
     <configuration name="AdminTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-automation-framework" />
       <extension name="coverage">
@@ -117,8 +119,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PostTests.when_UserCreatePublicPost_expect_PublicPostIsCreated" />
         <item itemvalue="JUnit.PostTests.when_UserCreatePrivatePost_expect_PrivatePostIsCreated" />
+        <item itemvalue="JUnit.PostTests.when_UserCreatePublicPost_expect_PublicPostIsCreated" />
         <item itemvalue="JUnit.RegistrationTests.test" />
         <item itemvalue="JUnit.AdminTests" />
         <item itemvalue="JUnit.HomeTests.when_unauthenticatedUserSearchUsersByValidLastName_Expect_SearchedUsersAreVisible" />
@@ -151,16 +153,27 @@
       <option name="project" value="LOCAL" />
       <updated>1697115770395</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update Create Private/Public Post in PostTests">
+      <option name="closed" value="true" />
+      <created>1697117263426</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1697117263426</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Add login method changes in Login page" />
     <MESSAGE value="Add Create Private Post in PostTests and createPrivatePost in PostPage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Create Private Post in PostTests and createPrivatePost in PostPage" />
+    <MESSAGE value="Update Create Private/Public Post in PostTests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Create Private/Public Post in PostTests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
