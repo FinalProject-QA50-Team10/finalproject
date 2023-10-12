@@ -9,7 +9,7 @@ public abstract class BasePage {
 
     protected String url;
     protected WebDriver driver;
-    public UserActions actions;
+    public static UserActions actions;
 
     public BasePage(WebDriver driver, String urlKey) {
         String pageUrl = Utils.getConfigPropertyByKey(urlKey);
