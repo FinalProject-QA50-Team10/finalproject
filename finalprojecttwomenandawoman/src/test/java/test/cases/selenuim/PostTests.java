@@ -2,7 +2,6 @@ package test.cases.selenuim;
 
 import com.telerikacademy.testframework.pages.LoginPage;
 import com.telerikacademy.testframework.pages.PostPage;
-import groovy.util.logging.Log;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,18 +25,20 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-25 [Add New Post] Create Public Post
+// FPT1-25 [Add New Post] Create Public Post
     public void when_UserCreatePublicPost_expect_PublicPostIsCreated() {
-        post.createPublicPost();
+        post.createPost("public");
         actions.assertElementPresent(POST_TEXT);
         actions.assertElementPresent(POST_IS_PUBLIC);
     }
 
     @Test
-    //FTP1-25 [Add New Post] Create Private Post
+// FTP1-26 [Add New Post] Create Private Post
     public void when_UserCreatePrivatePost_expect_PrivatePostIsCreated() {
-        post.createPrivatePost();
+        post.createPost("private");
         actions.assertElementPresent(POST_PRIVATE_TEXT);
         actions.assertElementPresent(POST_IS_PRIVATE);
     }
+
+
 }
