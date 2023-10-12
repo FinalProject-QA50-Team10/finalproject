@@ -17,8 +17,9 @@ public class Constants {
     public static final String GEORGE_BUSH_PASSWORD = "WEare.GeorgeBush.password";
     public static final String MR_BEAST_USERNAME = "WEare.MrBeast.username";
     public static final String MR_BEAST_PASSWORD = "WEare.MrBeast.password";
-//    public static final String JACK_NICHOLSON_USERNAME = "JackNicholson";
-//    public static final String JACK_NICHOLSON_PASSWORD = "TheJack123";
+    public static final String JACK_NICHOLSON_USERNAME = "WEare.JackNicholson.username";
+    public static final String JACK_NICHOLSON_PASSWORD = "WEare.JackNicholson.password";
+
 //    public static final String TOM_CRUISE_USERNAME = "TomCruise";
 //    public static final String TOM_CRUISE_PASSWORD = "HaHaHa123!";
 //    public static final int TOM_CRUISE_ID = 188;
@@ -92,6 +93,12 @@ public class Constants {
     public static final String POST_PRIVATE_TEXT = "posts.postTextPrivate";
     public static final String POST_IS_PUBLIC = "posts.postIsPublic";
     public static final String POST_IS_PRIVATE = "posts.postIsPrivate";
+    public static final String BROWSE_POST_SELECTION_BUTTON = "posts.browsePublicPostsButton";
+
+    //COMMENTS
+
+    public static final String COMMENT_TEXT_FIELD = "comments.commentTextField";
+    public static final String COMMENT_SUBMIT_BUTTON= "comments.submitCommentButton";
 
     //############## DESCRIPTIONS #################
 
