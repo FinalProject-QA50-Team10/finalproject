@@ -31,7 +31,12 @@ public class Constants {
     public static final String INVALID_USERNAME = "Barbie";
 
     //##############  Registration #################
-
+    public static final String USERNAME_FIELD = "registrationPage.username";
+    public static final String EMAIL_FIELD = "registrationPage.email";
+    public static final String PASSWORD_FIELD = "registrationPage.password";
+    public static final String CONFIRM_PASSWORD_FIELD = "registrationPage.confirmPassword";
+    public static final String REGISTRATION_BUTTON = "registrationPage.registerButton";
+    public static final String WELCOME_MESSAGE = "registrationPage.welcomeMessage";
 
 
     //################ X-PATHS #################
