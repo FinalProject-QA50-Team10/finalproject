@@ -2,22 +2,20 @@ package test.cases.selenuim;
 
 import com.telerikacademy.testframework.pages.UnauthenticatedUserHomePage;
 import com.telerikacademy.testframework.pages.LoginPage;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static com.telerikacademy.testframework.Utils.getUIMappingByKey;
 import static com.telerikacademy.testframework.pages.Constants.*;
 
 public class LoginTests extends BaseTestSetup{
     LoginPage loginPage = new LoginPage(actions.getDriver());
-    UnauthenticatedUserHomePage homePage = new UnauthenticatedUserHomePage(actions.getDriver());
+    UnauthenticatedUserHomePage unauthenticatedUser = new UnauthenticatedUserHomePage(actions.getDriver());
 
     @BeforeEach
     public void navigateToLoginPage()
     {
-        homePage.clickSignInButton();
+        unauthenticatedUser.clickSignInButton();
         loginPage.navigateToPage();
     }
 
@@ -72,5 +70,18 @@ public class LoginTests extends BaseTestSetup{
         loginPage.login(INVALID_USERNAME, MR_BEAST_PASSWORD);
         actions.assertElementPresent(LOGIN_ERROR_MESSAGE_PATH);
         actions.assertElementPresent(LOGIN_PAGE_TITLE_PATH);
+    }
+
+    @Test
+    //[Login Page] Verify the Logout button functionality
+    public void when_AuthenticatedUserClickLogoutButton_Expect_SuccessfulLogout()
+    {
+        loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
+        actions.assertElementPresent(LOGOUT_BUTTON_PATH);
+        actions.assertElementPresent(PERSONAL_PROFILE_BUTTON_PATH);
+        actions.assertElementPresent(ADD_NEW_POST_BUTTON_PATH);
+        loginPage.logout();
+        actions.assertElementPresent(LOGIN_PAGE_TITLE_PATH);
+        actions.assertElementPresent(LOGOUT_ERROR_MESSAGE_PATH);
     }
 }

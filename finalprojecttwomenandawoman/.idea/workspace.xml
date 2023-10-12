@@ -4,32 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05823fbe-a222-492b-af08-4835ea6eb1b7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/finalproject.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/HomeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/HomeTests.java" afterDir="false" />
+    <list default="true" id="05823fbe-a222-492b-af08-4835ea6eb1b7" name="Changes" comment="Add LoginPage tests and some changes in Constants class">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/LoginTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/mappings/ui_map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/LoginPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/mappings/ui_map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/LoginTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/LoginTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +39,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.LoginTests">
+  <component name="RunManager" selected="JUnit.LoginTests.when_AuthenticatedUserClickLogoutButton_Expect_SuccessfulLogout">
     <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-automation-framework" />
       <extension name="coverage">
@@ -78,6 +55,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LoginTests.when_AuthenticatedUserClickLogoutButton_Expect_SuccessfulLogout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test-automation-framework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.cases.selenuim.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.cases.selenuim" />
+      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
+      <option name="METHOD_NAME" value="when_AuthenticatedUserClickLogoutButton_Expect_SuccessfulLogout" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LoginTests.when_UnauthenticatedUserLoginWithEmptyUsernameAndEmptyPassword_Expect_ErrorMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-automation-framework" />
       <extension name="coverage">
@@ -89,22 +82,6 @@
       <option name="PACKAGE_NAME" value="test.cases.selenuim" />
       <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
       <option name="METHOD_NAME" value="when_UnauthenticatedUserLoginWithEmptyUsernameAndEmptyPassword_Expect_ErrorMessage" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginTests.when_UnauthenticatedUserLoginWithInvalidPassword_Expect_" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="test-automation-framework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.cases.selenuim.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.cases.selenuim" />
-      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
-      <option name="METHOD_NAME" value="when_UnauthenticatedUserLoginWithInvalidPassword_Expect_" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -144,11 +121,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LoginTests.when_AuthenticatedUserClickLogoutButton_Expect_SuccessfulLogout" />
         <item itemvalue="JUnit.LoginTests" />
         <item itemvalue="JUnit.LoginTests.when_UnauthenticatedUserNavigateToLoginPage_Expect_LoginPageElementsAreVisible" />
         <item itemvalue="JUnit.LoginTests.when_UnauthenticatedUserLoginWithInvalidUsernameAndValidPassword_Expect_ErrorMessage" />
         <item itemvalue="JUnit.LoginTests.when_UnauthenticatedUserLoginWithEmptyUsernameAndEmptyPassword_Expect_ErrorMessage" />
-        <item itemvalue="JUnit.LoginTests.when_UnauthenticatedUserLoginWithInvalidPassword_Expect_" />
       </list>
     </recent_temporary>
   </component>
@@ -161,24 +138,51 @@
       <option name="presentableId" value="Default" />
       <updated>1697024956420</updated>
       <workItem from="1697024959198" duration="1598000" />
-      <workItem from="1697026729912" duration="10748000" />
+      <workItem from="1697026729912" duration="11057000" />
+      <workItem from="1697089245455" duration="1061000" />
     </task>
+    <task id="LOCAL-00001" summary="Add LoginPage tests and some changes in Constants class">
+      <option name="closed" value="true" />
+      <created>1697056785350</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1697056785350</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Add LoginPage tests and some changes in Constants class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add LoginPage tests and some changes in Constants class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/test/cases/selenuim/LoginTests.java</url>
-          <line>65</line>
+          <line>63</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/test/cases/selenuim/LoginTests.java</url>
-          <line>33</line>
+          <line>31</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

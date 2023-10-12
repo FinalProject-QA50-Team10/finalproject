@@ -42,6 +42,7 @@ public class Constants {
     public static final String HOME_BUTTON_PATH = "loginPage.homeButton";
     public static final String LOG_OUT_BUTTON_PATH = "homePage.logOutButton";
     public static final String LOGIN_ERROR_MESSAGE_PATH = "loginPage.errorMessage";
+    public static final String LOGOUT_ERROR_MESSAGE_PATH = "logoutPage.errorMessage";
     public static final String LOGIN_PAGE_TITLE_PATH = "loginPage.title";
 
 
