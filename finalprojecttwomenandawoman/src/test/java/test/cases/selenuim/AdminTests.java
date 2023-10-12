@@ -20,7 +20,7 @@ public class AdminTests {
     public void loginUserAdmin() {
         loginPage.navigateToPage();
         loginPage.assertPageNavigated();
-        LoginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
+        loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
         actions.assertElementPresent(LOGOUT_BUTTON_PATH);
         actions.assertElementPresent(PERSONAL_PROFILE_BUTTON_PATH);
         actions.assertElementPresent(ADMIN_ZONE_BUTTON);

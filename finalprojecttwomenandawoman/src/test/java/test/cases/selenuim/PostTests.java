@@ -18,7 +18,7 @@ public class PostTests extends BaseTestSetup {
     public void login() {
         loginPage.navigateToPage();
         loginPage.assertPageNavigated();
-        LoginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
+        loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         actions.assertElementPresent(LOGOUT_BUTTON_PATH);
         actions.assertElementPresent(PERSONAL_PROFILE_BUTTON_PATH);
         actions.assertElementPresent(ADD_NEW_POST_BUTTON_PATH);

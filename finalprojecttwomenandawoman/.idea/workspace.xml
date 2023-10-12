@@ -4,26 +4,79 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05823fbe-a222-492b-af08-4835ea6eb1b7" name="Changes" comment="Add LoginPage tests and some changes in Constants class">
+    <list default="true" id="e94da0cd-1e2c-4827-938e-b0de7b91aea3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/SearchedUsersPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_11_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_11_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/AdminPostEditDeleteTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/BaseSetupMethods.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/PrivatePostLikeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/PrivatePostTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/PublicPostLikeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/PublicPostTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_17_AM_[Changes]/BasePage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_17_AM_[Changes]/LoginPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_17_AM_[Changes]/LoginTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_17_AM_[Changes]/UnauthenticatedUserHomePage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_17_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_17_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_49_AM_[Changes]/AdminTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_49_AM_[Changes]/AuthenticatedUserHomePage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_49_AM_[Changes]/Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_49_AM_[Changes]/HomeTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_49_AM_[Changes]/RegistrationPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_49_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_11_49_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_12_06_PM_[Changes]/AdminTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_12_06_PM_[Changes]/AuthenticatedUserHomePage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_12_06_PM_[Changes]/Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_12_06_PM_[Changes]/HomeTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_12_06_PM_[Changes]/RegistrationPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_12_06_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_12_06_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/LoginTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/UserActions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/UserActions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AuthenticatedUserHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AuthenticatedUserHomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/BasePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/BasePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/LoginPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/RegistrationPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/RegistrationPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/mappings/ui_map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/LoginTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/LoginTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="2WcHShAFjhq3R5XTCDKc38W5Y8A" />
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2Wer8CFMKYylG4sgW46ToTDiRDO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -31,7 +84,6 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -40,49 +92,8 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.AdminTests">
-    <configuration name="AdminTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-}</component>
-  <component name="RunManager" selected="JUnit.HomeTests.when_unauthenticatedUserSearchUsersByValidName_Expect_SearchedUsersAreVisible">
-    <configuration name="HomeTests.when_unauthenticatedUserSearchUsersByValidJobTitle_Expect_SearchedUsersAreVisible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="test-automation-framework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.cases.selenuim.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.cases.selenuim" />
-      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.HomeTests" />
-      <option name="METHOD_NAME" value="when_unauthenticatedUserSearchUsersByValidJobTitle_Expect_SearchedUsersAreVisible" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.AdminTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.LoginTests">
     <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-    <configuration name="HomeTests.when_unauthenticatedUserSearchUsersByValidName_Expect_SearchedUsersAreVisible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="test-automation-framework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.cases.selenuim.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.cases.selenuim" />
-      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.HomeTests" />
-      <option name="METHOD_NAME" value="when_unauthenticatedUserSearchUsersByValidName_Expect_SearchedUsersAreVisible" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-    <configuration name="LoginTests.when_AuthenticatedUserClickLogoutButton_Expect_SuccessfulLogout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-automation-framework" />
       <extension name="coverage">
         <pattern>
@@ -93,13 +104,11 @@
       <option name="PACKAGE_NAME" value="test.cases.selenuim" />
       <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="METHOD_NAME" value="when_AuthenticatedUserClickLogoutButton_Expect_SuccessfulLogout" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginTests.when_AuthenticatedUserClickLogoutButton_Expect_SuccessfulLogout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginTests.when_UnauthenticatedUserLoginWithEmptyUsernameAndEmptyPassword_Expect_ErrorMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-automation-framework" />
       <extension name="coverage">
         <pattern>
@@ -109,23 +118,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="test.cases.selenuim" />
       <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
-      <option name="METHOD_NAME" value="when_AuthenticatedUserClickLogoutButton_Expect_SuccessfulLogout" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginTests.when_UnauthenticatedUserNavigateToLoginPage_Expect_LoginPageElementsAreVisible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="test-automation-framework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.cases.selenuim.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.cases.selenuim" />
-      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
-      <option name="METHOD_NAME" value="when_UnauthenticatedUserNavigateToLoginPage_Expect_LoginPageElementsAreVisible" />
+      <option name="METHOD_NAME" value="when_UnauthenticatedUserLoginWithEmptyUsernameAndEmptyPassword_Expect_ErrorMessage" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -133,137 +126,24 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HomeTests.when_unauthenticatedUserSearchUsersByValidName_Expect_SearchedUsersAreVisible" />
-        <item itemvalue="JUnit.HomeTests.when_unauthenticatedUserSearchUsersByValidJobTitle_Expect_SearchedUsersAreVisible" />
-        <item itemvalue="JUnit.AdminTests" />
-        <item itemvalue="JUnit.LoginTests.when_AuthenticatedUserClickLogoutButton_Expect_SuccessfulLogout" />
         <item itemvalue="JUnit.LoginTests" />
-        <item itemvalue="JUnit.LoginTests.when_UnauthenticatedUserNavigateToLoginPage_Expect_LoginPageElementsAreVisible" />
-        <item itemvalue="JUnit.LoginTests.when_UnauthenticatedUserLoginWithInvalidUsernameAndValidPassword_Expect_ErrorMessage" />
+        <item itemvalue="JUnit.LoginTests.when_UnauthenticatedUserLoginWithEmptyUsernameAndEmptyPassword_Expect_ErrorMessage" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="05823fbe-a222-492b-af08-4835ea6eb1b7" name="Changes" comment="" />
-      <created>1697024956420</created>
+      <changelist id="e94da0cd-1e2c-4827-938e-b0de7b91aea3" name="Changes" comment="" />
+      <created>1697103728380</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1697024956420</updated>
-      <workItem from="1697024959198" duration="1598000" />
-      <workItem from="1697026729912" duration="11057000" />
-      <workItem from="1697089245455" duration="10368000" />
+      <updated>1697103728380</updated>
+      <workItem from="1697103731309" duration="698000" />
     </task>
-    <task id="LOCAL-00001" summary="Add LoginPage tests and some changes in Constants class">
-      <option name="closed" value="true" />
-      <created>1697056785350</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1697056785350</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Update LoginPage tests and loginUser as Admin">
-      <option name="closed" value="true" />
-      <created>1697091871150</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1697091871150</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Add Enable User Profile as Admin">
-      <option name="closed" value="true" />
-      <created>1697095040608</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1697095040608</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Add PostPage and update AdminTests">
-      <option name="closed" value="true" />
-      <created>1697096025874</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1697096025874</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Add PostTest and update AdminTests">
-      <option name="closed" value="true" />
-      <created>1697096852079</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1697096852079</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Add login and logout in PostTests">
-      <option name="closed" value="true" />
-      <created>1697098193882</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1697098193882</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
-    <task id="LOCAL-00002" summary="Add [Login Page] Verify the Logout button functionality">
-      <option name="closed" value="true" />
-      <created>1697090561547</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1697090561548</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Add [Login Page] Verify the Logout button functionality">
-      <option name="closed" value="true" />
-      <created>1697090749590</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1697090749590</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Add LoginPage tests and some changes in Constants class" />
-    <MESSAGE value="Add [Login Page] Verify the Logout button functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add [Login Page] Verify the Logout button functionality" />
-    <MESSAGE value="Update LoginPage tests and loginUser as Admin" />
-    <MESSAGE value="Add Enable User Profile as Admin" />
-    <MESSAGE value="Add PostPage and update AdminTests" />
-    <MESSAGE value="Add PostTest and update AdminTests" />
-    <MESSAGE value="Add login and logout in PostTests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add login and logout in PostTests" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/test/cases/selenuim/LoginTests.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/test/cases/selenuim/LoginTests.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

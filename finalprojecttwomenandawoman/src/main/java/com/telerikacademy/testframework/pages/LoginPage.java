@@ -10,7 +10,7 @@ public class LoginPage extends BasePage{
         super(driver, LOGIN_PAGE);
     }
 
-    public static void login(String username, String password){
+    public void login(String username, String password){
         actions.typeValueInField(Utils.getConfigPropertyByKey(username), LOGIN_USERNAME_FIELD_PATH);
         actions.typeValueInField(Utils.getConfigPropertyByKey(password), LOGIN_PASSWORD_FIELD_PATH);
         actions.clickElement(LOGIN_BUTTON_PATH);
