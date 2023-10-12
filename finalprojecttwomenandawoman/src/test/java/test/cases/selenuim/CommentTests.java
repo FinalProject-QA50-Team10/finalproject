@@ -1,5 +1,6 @@
 package test.cases.selenuim;
 
+import com.telerikacademy.testframework.UserActions;
 import com.telerikacademy.testframework.pages.CommentPage;
 import com.telerikacademy.testframework.pages.LoginPage;
 import com.telerikacademy.testframework.pages.PostPage;
@@ -32,11 +33,28 @@ public class CommentTests extends BaseTestSetup {
     }
 
     @Test
-    public void testCreateCommentSuccessfully() {
+    public void testCreateCommentSuccessfully() { //change test name
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment("This is a comment.");
         actions.assertElementPresent(COMMENT_TEXT_FIELD);
+        //add more assertions
         loginPage.logout();
     }
+
+    @Test
+    public void testCreateCommentUnsuccessfully() { //change test name
+        UserActions utils = new UserActions();
+        String commentText = utils.generateRandomTextExactLength(1001);
+
+        loginPage.navigateToPage();
+        loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
+        commentPage.createComment(commentText);
+
+        //Assert invalid message
+
+        utils.assertElementPresent(COMMENT_TEXT_FIELD); //refactor actions
+        loginPage.logout();
+    }
+
 }

@@ -30,4 +30,5 @@ public class CommentPage extends BasePage {
         actions.waitForElementClickable(COMMENT_SUBMIT_BUTTON);
         actions.clickElement(COMMENT_SUBMIT_BUTTON);
     }
+
 }

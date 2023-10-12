@@ -8,6 +8,6 @@ public class RegistrationTests extends BaseTestSetup{
 
     @Test
     public void test(){
-        var t = actions.generateRandomText(MIN_LENGTH_USERNAME,MAX_LENGTH_USERNAME);
+        var t = actions.generateRandomTextwithMinandMaxLength(MIN_LENGTH_USERNAME,MAX_LENGTH_USERNAME);
     }
 }

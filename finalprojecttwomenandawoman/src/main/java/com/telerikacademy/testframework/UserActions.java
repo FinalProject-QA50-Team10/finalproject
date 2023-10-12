@@ -143,6 +143,11 @@ public class UserActions {
         System.out.println("Elements are present.");
     }
 
+    public void assertElementTextEquals(String locator, String expectedText) {
+        String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
+        Assertions.assertEquals(expectedText, actualText, "Text does not match for element: " + locator);
+    }
+
     public void assertElementAttribute(String locator, String attributeName, String attributeValue) {
         // TODO: Implement the method
         // 1. Find Element using the locator value from Properties
@@ -231,7 +236,7 @@ public class UserActions {
         actions.perform();
     }
 
-    public String generateRandomText(int minLength, int maxLength) {
+    public String generateRandomTextwithMinandMaxLength(int minLength, int maxLength) {
         int length = generateRandomNumber(minLength, maxLength);
 
         char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
@@ -244,6 +249,19 @@ public class UserActions {
         }
         return randomText.toString();
     }
+
+    public static String generateRandomTextExactLength(int length) {
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        Random random = new Random();
+        StringBuilder builder = new StringBuilder(length);
+
+        for (int i = 0; i < length; i++) {
+            builder.append(chars.charAt(random.nextInt(chars.length())));
+
+        }
+        return builder.toString();
+    }
+
     private int generateRandomNumber(int min, int max){
         Random number = new Random();
         return number.nextInt(max - min) + min;
