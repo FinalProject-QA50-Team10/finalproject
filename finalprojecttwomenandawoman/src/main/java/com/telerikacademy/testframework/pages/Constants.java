@@ -54,6 +54,15 @@ public class Constants {
     public static final String DISABLE_USER_BUTTON = "admin.disableUserButton";
 
 
+    //##############  POSTS #################
+
+    public static final String ADD_NEW_POST_BUTTON = "posts.addNewPost";
+    public static final String VISIBILITY_BUTTON = "posts.visibility";
+    public static final String VISIBILITY_PUBLIC = "posts.publicVisibility";
+    public static final String POST_MESSAGE_FIELD = "posts.messageField";
+    
+
+
     //############## DESCRIPTIONS #################
 
     public static final String LOGIN_ERROR_MESSAGE = "Wrong username or password.";

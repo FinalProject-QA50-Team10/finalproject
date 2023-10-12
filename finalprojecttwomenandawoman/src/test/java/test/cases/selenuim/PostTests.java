@@ -4,6 +4,7 @@ import com.telerikacademy.testframework.pages.LoginPage;
 import com.telerikacademy.testframework.pages.PostPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static com.telerikacademy.testframework.pages.Constants.*;
 
@@ -31,5 +32,8 @@ public class PostTests extends BaseTestSetup {
         actions.assertElementPresent(LOGOUT_ERROR_MESSAGE_PATH);
     }
 
+    @Test
+    public void createPublicPost() {
 
+    }
 }
