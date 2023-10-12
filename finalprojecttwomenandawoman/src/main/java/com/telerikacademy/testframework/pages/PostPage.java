@@ -24,4 +24,8 @@ public class PostPage extends BasePage {
         actions.clickElement(POST_SAVE_BUTTON);
     }
 
+    public void createPrivatePost() {
+
+    }
+
 }
