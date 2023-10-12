@@ -10,7 +10,7 @@ public class AdminHomePage extends BasePage{
         super(driver, HOME_PAGE);
     }
 
-    public void validateAdminCanDisableUser() {
+    public void disableUserWithAdminAccess() {
         actions.waitForElementClickable(ADMIN_ZONE_BUTTON);
         actions.clickElement(ADMIN_ZONE_BUTTON);
         actions.waitForElementClickable(VIEW_USERS_BUTTON);
@@ -20,5 +20,18 @@ public class AdminHomePage extends BasePage{
         actions.waitForElementClickable(DISABLE_USER_BUTTON);
         actions.clickElement(DISABLE_USER_BUTTON);
     }
+
+    public void enableUserWithAdminAccess() {
+        actions.waitForElementClickable(ADMIN_ZONE_BUTTON);
+        actions.clickElement(ADMIN_ZONE_BUTTON);
+        actions.waitForElementClickable(VIEW_USERS_BUTTON);
+        actions.clickElement(VIEW_USERS_BUTTON);
+        actions.waitForElementClickable(SEE_USER_PROFILE_BUTTON);
+        actions.clickElement(SEE_USER_PROFILE_BUTTON);
+        actions.waitForElementVisible(ENABLE_USER_BUTTON);
+        actions.clickElement(ENABLE_USER_BUTTON);
+    }
+
+
 
 }
