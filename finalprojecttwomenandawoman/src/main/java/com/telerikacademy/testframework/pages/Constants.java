@@ -76,11 +76,15 @@ public class Constants {
     public static final String POSTS_ADD_NEW_POST = "posts.addNewPost";
     public static final String POSTS_VISIBILITY = "posts.visibility";
     public static final String POSTS_PUBLIC_VISIBILITY = "posts.publicVisibility";
+    public static final String POSTS_PRIVATE_VISIBILITY = "posts.privateVisibility";
     public static final String POST_MESSAGE_FIELD = "posts.messageField";
     public static final String POST_MESSAGE = "This is my first post with Selenium WebDriver";
+    public static final String POST_MESSAGE_PRIVATE = "This is my first private post with Selenium WebDriver";
     public static final String POST_SAVE_BUTTON = "posts.savePostButton";
     public static final String POST_TEXT = "posts.postText";
+    public static final String POST_PRIVATE_TEXT = "posts.postTextPrivate";
     public static final String POST_IS_PUBLIC = "posts.postIsPublic";
+    public static final String POST_IS_PRIVATE = "posts.postIsPrivate";
 
     //############## DESCRIPTIONS #################
 

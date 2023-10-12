@@ -25,7 +25,17 @@ public class PostPage extends BasePage {
     }
 
     public void createPrivatePost() {
-
+        actions.waitForElementClickable(POSTS_ADD_NEW_POST);
+        actions.clickElement(POSTS_ADD_NEW_POST);
+        actions.waitForElementClickable(POSTS_VISIBILITY);
+        actions.clickElement(POSTS_VISIBILITY);
+        actions.waitForElementClickable(POSTS_PRIVATE_VISIBILITY);
+        actions.clickElement(POSTS_PRIVATE_VISIBILITY);
+        actions.waitForElementClickable(POST_MESSAGE_FIELD);
+        actions.typeValueInField(POST_MESSAGE_PRIVATE, POST_MESSAGE_FIELD);
+        actions.waitForElementClickable(POST_SAVE_BUTTON);
+        actions.clickElement(POST_SAVE_BUTTON);
     }
+
 
 }

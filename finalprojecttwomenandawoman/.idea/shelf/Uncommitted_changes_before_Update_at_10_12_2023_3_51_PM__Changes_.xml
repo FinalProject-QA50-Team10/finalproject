@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Update_at_10_12_2023_3_51_PM_[Changes]" date="1697115106714" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_3_51_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 10/12/2023 3:51 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/telerikacademy/testframework/pages/Constants.class" />
+    <option name="AFTER_PATH" value="target/classes/com/telerikacademy/testframework/pages/Constants.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_3_51_PM_[Changes]/Constants.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/test/cases/selenuim/PostTests.class" />
+    <option name="AFTER_PATH" value="target/test-classes/test/cases/selenuim/PostTests.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_3_51_PM_[Changes]/PostTests.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/telerikacademy/testframework/pages/PostPage.class" />
+    <option name="AFTER_PATH" value="target/classes/com/telerikacademy/testframework/pages/PostPage.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_3_51_PM_[Changes]/PostPage.class" />
+  </binary>
+</changelist>

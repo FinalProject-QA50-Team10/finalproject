@@ -1,0 +1,234 @@
+Index: src/test/resources/mappings/ui_map.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>homePage.searchForm=//div[@class='ftco-search col-md-12']\r\nhomePage.signInButton=//div[@class='collapse navbar-collapse']//a[contains(.,'SIGN')]\r\nhomePage.logOutButton=//div[@class='collapse navbar-collapse']//a[contains(.,'LOGOUT')]\r\nhomePage.personalProfileButton=//div[@class='collapse navbar-collapse']//a[contains(.,'Personal')]\r\nhomePage.addNewPostButton=//div[@class='collapse navbar-collapse']//a[contains(.,'Add New')]\r\nhomePage.registerButton=//div[@id=\"ftco-nav\"]//a[contains(.,\"REGISTER\")]\r\n\r\nregistrationPage.username=//input[@id=\"name\"]\r\nregistrationPage.email=//input[@id=\"email\"]\r\nregistrationPage.password=//input[@id=\"password\"]\r\nregistrationPage.confirmPassword=//input[@id=\"confirm\"]\r\nregistrationPage.registerButton =//input[@value=\"Register\"]\r\nregistrationPage.welcomeMessage=//div[@class=\"container\"]//h1[contains(.,\"Welcome to our community.\")]\r\n\r\n\r\nloginPage.usernameField=//input[@id='username']\r\nloginPage.passwordField=//input[@id='password']\r\nloginPage.loginButton=//input[@type='submit']\r\nloginPage.homeButton=//div[@id=\"ftco-nav\"]//a[contains(.,\"Home\")]\r\nloginPage.title=//h1[contains(.,'Login Page')]\r\nloginPage.errorMessage=//i[contains(.,' Wrong username or password. ')]\r\nlogoutPage.errorMessage=//i[contains(.,' You have been logged out. ')]\r\n\r\nsearchForm.jobTitleField=//form[@class='search-job']//input[@id='searchParam1']\r\nsearchForm.nameField=//form[@class='search-job']//input[@id='searchParam2']\r\nsearchForm.searchButton=//button[@type='submit']\r\n//searchForm.searchResults=//div[@class='container' and (descendant::a[@class='btn btn-primary'])]\r\nsearchForm.searchResults=//div[@class='team d-md-flex p-4 bg-white' and (descendant::a[@class='btn btn-primary'])]\r\nsearchForm.searchResults.jobTitle=//div[@class='team d-md-flex p-4 bg-white']//span[@class='position']\r\nsearchForm.searchResults.name=//div[@class='team d-md-flex p-4 bg-white']//h2\r\n\r\n\r\n\r\nadmin.adminZoneButton=//a[@href='/admin']\r\nadmin.viewUsersButton=//input[@value='View Users']\r\nadmin.seeUserProfileButton=//a[contains(@class, 'btn-primary')]\r\nadmin.enableUserButton=//input[@value='enable']\r\nadmin.disableUserButton=//input[@value='disable']\r\n\r\n\r\nposts.addNewPost=//a[@href='/posts/auth/newPost']\r\nposts.visibility=//select[@id='StringListId']\r\nposts.publicVisibility=//option[text()='Public post']\r\nposts.messageField=//textarea[@id='message']\r\nposts.savePostButton=//input[@value='Save post']\r\nposts.postText=//p[text()='This is my first post with Selenium WebDriver']\r\nposts.postIsPublic=//div[contains(span, \"true\")]
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/src/test/resources/mappings/ui_map.properties b/src/test/resources/mappings/ui_map.properties
+--- a/src/test/resources/mappings/ui_map.properties	(revision e4c6c66622f7c7cf93a40c1d77b6ec791f11472d)
++++ b/src/test/resources/mappings/ui_map.properties	(date 1697115063448)
+@@ -41,7 +41,10 @@
+ posts.addNewPost=//a[@href='/posts/auth/newPost']
+ posts.visibility=//select[@id='StringListId']
+ posts.publicVisibility=//option[text()='Public post']
++posts.privateVisibility=//option[text()='Private post']
+ posts.messageField=//textarea[@id='message']
+ posts.savePostButton=//input[@value='Save post']
+ posts.postText=//p[text()='This is my first post with Selenium WebDriver']
+-posts.postIsPublic=//div[contains(span, "true")]
+\ No newline at end of file
++posts.postTextPrivate=//p[text()='This is my first private post with Selenium WebDriver']
++posts.postIsPublic=//div[contains(span, "true")]
++posts.postIsPrivate=//div[contains(span, "false")]
+Index: src/test/java/test/cases/selenuim/PostTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package test.cases.selenuim;\r\n\r\nimport com.telerikacademy.testframework.pages.LoginPage;\r\nimport com.telerikacademy.testframework.pages.PostPage;\r\nimport groovy.util.logging.Log;\r\nimport org.junit.jupiter.api.AfterEach;\r\nimport org.junit.jupiter.api.BeforeEach;\r\nimport org.junit.jupiter.api.Test;\r\n\r\nimport static com.telerikacademy.testframework.pages.Constants.*;\r\n\r\npublic class PostTests extends BaseTestSetup {\r\n\r\n    PostPage post = new PostPage(actions.getDriver());\r\n    LoginPage loginPage = new LoginPage(actions.getDriver());\r\n\r\n    @BeforeEach\r\n    public void login() {\r\n        loginPage.navigateToPage();\r\n        loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);\r\n    }\r\n\r\n    @AfterEach\r\n    public void logOut() {\r\n        loginPage.logout();\r\n    }\r\n\r\n    @Test\r\n    public void when_UserCreatePublicPost_expect_PublicPostIsCreated() {\r\n        post.createPublicPost();\r\n        actions.assertElementPresent(POST_TEXT);\r\n        actions.assertElementPresent(POST_IS_PUBLIC);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/test/cases/selenuim/PostTests.java b/src/test/java/test/cases/selenuim/PostTests.java
+--- a/src/test/java/test/cases/selenuim/PostTests.java	(revision e4c6c66622f7c7cf93a40c1d77b6ec791f11472d)
++++ b/src/test/java/test/cases/selenuim/PostTests.java	(date 1697114881578)
+@@ -31,4 +31,11 @@
+         actions.assertElementPresent(POST_TEXT);
+         actions.assertElementPresent(POST_IS_PUBLIC);
+     }
++
++    @Test
++    public void when_UserCreatePrivatePost_expect_PrivatePostIsCreated() {
++        post.createPrivatePost();
++        actions.assertElementPresent(POST_PRIVATE_TEXT);
++        actions.assertElementPresent(POST_IS_PRIVATE);
++    }
+ }
+Index: src/main/java/com/telerikacademy/testframework/pages/Constants.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.telerikacademy.testframework.pages;\r\n\r\npublic class Constants {\r\n\r\n    //########### URL ################\r\n    public static final String HOME_PAGE = \"WEare.homePage\";\r\n    public static final String LOGIN_PAGE = \"WEare.loginPage\";\r\n    public static final String SEARCHED_USERS_PAGE = \"WEare.searchedUsersPage\";\r\n\r\n    //############### USER DATA ###############\r\n    public static final String ADMIN_NAME = \"WEare.admin.username\";\r\n    public static final String ADMIN_PASSWORD = \"WEare.admin.password\";\r\n    public static final String GEORGE_BUSH_NAME = \"George Bush\";\r\n    public static final String GEORGE_BUSH_USERNAME = \"WEare.GeorgeBush.username\";\r\n    public static final String GEORGE_BUSH_FIRST_NAME = \"George\";\r\n    public static final String GEORGE_BUSH_LAST_NAME = \" Bush\";\r\n    public static final String GEORGE_BUSH_PASSWORD = \"WEare.GeorgeBush.password\";\r\n    public static final String MR_BEAST_USERNAME = \"WEare.MrBeast.username\";\r\n    public static final String MR_BEAST_PASSWORD = \"WEare.MrBeast.password\";\r\n//    public static final String JACK_NICHOLSON_USERNAME = \"JackNicholson\";\r\n//    public static final String JACK_NICHOLSON_PASSWORD = \"TheJack123\";\r\n//    public static final String TOM_CRUISE_USERNAME = \"TomCruise\";\r\n//    public static final String TOM_CRUISE_PASSWORD = \"HaHaHa123!\";\r\n//    public static final int TOM_CRUISE_ID = 188;\r\n//    public static final String FOR_EDIT_USERNAME = \"telerikdani\";\r\n//    public static final String FOR_EDIT_PASSWORD = \"123456\";\r\n//    public static final int FOR_EDIT_ID = 39;\r\n//    public static final String FOR_EDIT_BIRTHDAY = \"1955-07-17\";\r\n//    public static final String FOR_EDIT_FIRST_NAME = \"Ryan\";\r\n//    public static final String FOR_EDIT_LAST_NAME = \"Gosling\";\r\n//    public static final int INVALID_ID = 800;\r\n    public static final String INVALID_USERNAME = \"Barbie\";\r\n    public static final String VALID_JOB_TITLE = \"Actor\";\r\n\r\n    //##############  Registration #################\r\n    public static final String USERNAME_FIELD = \"registrationPage.username\";\r\n    public static final String EMAIL_FIELD = \"registrationPage.email\";\r\n    public static final String PASSWORD_FIELD = \"registrationPage.password\";\r\n    public static final String CONFIRM_PASSWORD_FIELD = \"registrationPage.confirmPassword\";\r\n    public static final String REGISTRATION_BUTTON = \"registrationPage.registerButton\";\r\n    public static final String WELCOME_MESSAGE = \"registrationPage.welcomeMessage\";\r\n\r\n\r\n    //################ X-PATHS #################\r\n    public static final String LOGIN_USERNAME_FIELD_PATH = \"loginPage.usernameField\";\r\n    public static final String LOGIN_PASSWORD_FIELD_PATH = \"loginPage.passwordField\";\r\n    public static final String LOGIN_BUTTON_PATH = \"loginPage.loginButton\";\r\n    public static final String SIGN_IN_BUTTON_PATH = \"homePage.signInButton\";\r\n    public static final String LOGOUT_BUTTON_PATH = \"homePage.logOutButton\";\r\n    public static final String PERSONAL_PROFILE_BUTTON_PATH = \"homePage.personalProfileButton\";\r\n    public static final String ADD_NEW_POST_BUTTON_PATH = \"homePage.addNewPostButton\";\r\n    public static final String SEARCH_FORM_PATH = \"homePage.searchForm\";\r\n    public static final String HOME_BUTTON_PATH = \"loginPage.homeButton\";\r\n    public static final String LOG_OUT_BUTTON_PATH = \"homePage.logOutButton\";\r\n    public static final String LOGIN_ERROR_MESSAGE_PATH = \"loginPage.errorMessage\";\r\n    public static final String LOGOUT_ERROR_MESSAGE_PATH = \"logoutPage.errorMessage\";\r\n    public static final String LOGIN_PAGE_TITLE_PATH = \"loginPage.title\";\r\n    public static final String SEARCH_JOB_FIELD_PATH = \"searchForm.jobTitleField\";\r\n    public static final String SEARCH_NAME_FIELD_PATH = \"searchForm.nameField\";\r\n    public static final String SEARCH_BUTTON_PATH = \"searchForm.searchButton\";\r\n    public static final String SEARCH_RESULTS_PATH = \"searchForm.searchResults\";\r\n    public static final String SEARCH_RESULTS_JOB_TITLE_PATH = \"searchForm.searchResults.jobTitle\";\r\n    public static final String SEARCH_RESULTS_NAME_PATH = \"searchForm.searchResults.name\";\r\n\r\n\r\n    //##############  Admin user part #################\r\n    public static final String ADMIN_ZONE_BUTTON = \"admin.adminZoneButton\";\r\n    public static final String VIEW_USERS_BUTTON = \"admin.viewUsersButton\";\r\n    public static final String SEE_USER_PROFILE_BUTTON = \"admin.seeUserProfileButton\";\r\n    public static final String ENABLE_USER_BUTTON = \"admin.enableUserButton\";\r\n    public static final String DISABLE_USER_BUTTON = \"admin.disableUserButton\";\r\n\r\n\r\n    //##############  POSTS #################\r\n\r\n    public static final String POSTS_ADD_NEW_POST = \"posts.addNewPost\";\r\n    public static final String POSTS_VISIBILITY = \"posts.visibility\";\r\n    public static final String POSTS_PUBLIC_VISIBILITY = \"posts.publicVisibility\";\r\n    public static final String POST_MESSAGE_FIELD = \"posts.messageField\";\r\n    public static final String POST_MESSAGE = \"This is my first post with Selenium WebDriver\";\r\n    public static final String POST_SAVE_BUTTON = \"posts.savePostButton\";\r\n    public static final String POST_TEXT = \"posts.postText\";\r\n    public static final String POST_IS_PUBLIC = \"posts.postIsPublic\";\r\n\r\n    //############## DESCRIPTIONS #################\r\n\r\n    public static final String LOGIN_ERROR_MESSAGE = \"Wrong username or password.\";\r\n    public static final String EMPTY_STRING = \"\";\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/telerikacademy/testframework/pages/Constants.java b/src/main/java/com/telerikacademy/testframework/pages/Constants.java
+--- a/src/main/java/com/telerikacademy/testframework/pages/Constants.java	(revision e4c6c66622f7c7cf93a40c1d77b6ec791f11472d)
++++ b/src/main/java/com/telerikacademy/testframework/pages/Constants.java	(date 1697114881593)
+@@ -76,11 +76,15 @@
+     public static final String POSTS_ADD_NEW_POST = "posts.addNewPost";
+     public static final String POSTS_VISIBILITY = "posts.visibility";
+     public static final String POSTS_PUBLIC_VISIBILITY = "posts.publicVisibility";
++    public static final String POSTS_PRIVATE_VISIBILITY = "posts.privateVisibility";
+     public static final String POST_MESSAGE_FIELD = "posts.messageField";
+     public static final String POST_MESSAGE = "This is my first post with Selenium WebDriver";
++    public static final String POST_MESSAGE_PRIVATE = "This is my first private post with Selenium WebDriver";
+     public static final String POST_SAVE_BUTTON = "posts.savePostButton";
+     public static final String POST_TEXT = "posts.postText";
++    public static final String POST_PRIVATE_TEXT = "posts.postText";
+     public static final String POST_IS_PUBLIC = "posts.postIsPublic";
++    public static final String POST_IS_PRIVATE = "posts.postIsPrivate";
+ 
+     //############## DESCRIPTIONS #################
+ 
+Index: src/main/java/com/telerikacademy/testframework/pages/PostPage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.telerikacademy.testframework.pages;\r\n\r\nimport org.junit.jupiter.api.BeforeEach;\r\nimport org.openqa.selenium.WebDriver;\r\n\r\nimport static com.telerikacademy.testframework.pages.Constants.*;\r\nimport static com.telerikacademy.testframework.pages.Constants.ADMIN_ZONE_BUTTON;\r\n\r\npublic class PostPage extends BasePage {\r\n    public PostPage(WebDriver driver) {\r\n        super(driver, HOME_PAGE);\r\n    }\r\n\r\n    public void createPublicPost() {\r\n        actions.waitForElementClickable(POSTS_ADD_NEW_POST);\r\n        actions.clickElement(POSTS_ADD_NEW_POST);\r\n        actions.waitForElementClickable(POSTS_VISIBILITY);\r\n        actions.clickElement(POSTS_VISIBILITY);\r\n        actions.waitForElementClickable(POSTS_PUBLIC_VISIBILITY);\r\n        actions.clickElement(POSTS_PUBLIC_VISIBILITY);\r\n        actions.waitForElementClickable(POST_MESSAGE_FIELD);\r\n        actions.typeValueInField(POST_MESSAGE, POST_MESSAGE_FIELD);\r\n        actions.waitForElementClickable(POST_SAVE_BUTTON);\r\n        actions.clickElement(POST_SAVE_BUTTON);\r\n    }\r\n\r\n    public void createPrivatePost() {\r\n\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/telerikacademy/testframework/pages/PostPage.java b/src/main/java/com/telerikacademy/testframework/pages/PostPage.java
+--- a/src/main/java/com/telerikacademy/testframework/pages/PostPage.java	(revision e4c6c66622f7c7cf93a40c1d77b6ec791f11472d)
++++ b/src/main/java/com/telerikacademy/testframework/pages/PostPage.java	(date 1697114797496)
+@@ -25,7 +25,17 @@
+     }
+ 
+     public void createPrivatePost() {
+-
++        actions.waitForElementClickable(POSTS_ADD_NEW_POST);
++        actions.clickElement(POSTS_ADD_NEW_POST);
++        actions.waitForElementClickable(POSTS_VISIBILITY);
++        actions.clickElement(POSTS_VISIBILITY);
++        actions.waitForElementClickable(POSTS_PRIVATE_VISIBILITY);
++        actions.clickElement(POSTS_PRIVATE_VISIBILITY);
++        actions.waitForElementClickable(POST_MESSAGE_FIELD);
++        actions.typeValueInField(POST_MESSAGE_PRIVATE, POST_MESSAGE_FIELD);
++        actions.waitForElementClickable(POST_SAVE_BUTTON);
++        actions.clickElement(POST_SAVE_BUTTON);
+     }
++
+ 
+ }
+Index: target/test-classes/mappings/ui_map.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>homePage.searchForm=//div[@class='ftco-search col-md-12']\r\nhomePage.signInButton=//div[@class='collapse navbar-collapse']//a[contains(.,'SIGN')]\r\nhomePage.logOutButton=//div[@class='collapse navbar-collapse']//a[contains(.,'LOGOUT')]\r\nhomePage.personalProfileButton=//div[@class='collapse navbar-collapse']//a[contains(.,'Personal')]\r\nhomePage.addNewPostButton=//div[@class='collapse navbar-collapse']//a[contains(.,'Add New')]\r\nhomePage.registerButton=//div[@id=\"ftco-nav\"]//a[contains(.,\"REGISTER\")]\r\n\r\nregistrationPage.username=//input[@id=\"name\"]\r\nregistrationPage.email=//input[@id=\"email\"]\r\nregistrationPage.password=//input[@id=\"password\"]\r\nregistrationPage.confirmPassword=//input[@id=\"confirm\"]\r\nregistrationPage.registerButton =//input[@value=\"Register\"]\r\nregistrationPage.welcomeMessage=//div[@class=\"container\"]//h1[contains(.,\"Welcome to our community.\")]\r\n\r\n\r\nloginPage.usernameField=//input[@id='username']\r\nloginPage.passwordField=//input[@id='password']\r\nloginPage.loginButton=//input[@type='submit']\r\nloginPage.homeButton=//div[@id=\"ftco-nav\"]//a[contains(.,\"Home\")]\r\nloginPage.title=//h1[contains(.,'Login Page')]\r\nloginPage.errorMessage=//i[contains(.,' Wrong username or password. ')]\r\nlogoutPage.errorMessage=//i[contains(.,' You have been logged out. ')]\r\n\r\nsearchForm.jobTitleField=//form[@class='search-job']//input[@id='searchParam1']\r\nsearchForm.nameField=//form[@class='search-job']//input[@id='searchParam2']\r\nsearchForm.searchButton=//button[@type='submit']\r\n//searchForm.searchResults=//div[@class='container' and (descendant::a[@class='btn btn-primary'])]\r\nsearchForm.searchResults=//div[@class='team d-md-flex p-4 bg-white' and (descendant::a[@class='btn btn-primary'])]\r\nsearchForm.searchResults.jobTitle=//div[@class='team d-md-flex p-4 bg-white']//span[@class='position']\r\nsearchForm.searchResults.name=//div[@class='team d-md-flex p-4 bg-white']//h2\r\n\r\n\r\n\r\nadmin.adminZoneButton=//a[@href='/admin']\r\nadmin.viewUsersButton=//input[@value='View Users']\r\nadmin.seeUserProfileButton=//a[contains(@class, 'btn-primary')]\r\nadmin.enableUserButton=//input[@value='enable']\r\nadmin.disableUserButton=//input[@value='disable']\r\n\r\n\r\nposts.addNewPost=//a[@href='/posts/auth/newPost']\r\nposts.visibility=//select[@id='StringListId']\r\nposts.publicVisibility=//option[text()='Public post']\r\nposts.messageField=//textarea[@id='message']\r\nposts.savePostButton=//input[@value='Save post']\r\nposts.postText=//p[text()='This is my first post with Selenium WebDriver']\r\nposts.postIsPublic=//div[contains(span, \"true\")]
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/target/test-classes/mappings/ui_map.properties b/target/test-classes/mappings/ui_map.properties
+--- a/target/test-classes/mappings/ui_map.properties	(revision e4c6c66622f7c7cf93a40c1d77b6ec791f11472d)
++++ b/target/test-classes/mappings/ui_map.properties	(date 1697114797508)
+@@ -41,7 +41,10 @@
+ posts.addNewPost=//a[@href='/posts/auth/newPost']
+ posts.visibility=//select[@id='StringListId']
+ posts.publicVisibility=//option[text()='Public post']
++posts.privateVisibility=//option[text()='Private post']
+ posts.messageField=//textarea[@id='message']
+ posts.savePostButton=//input[@value='Save post']
+ posts.postText=//p[text()='This is my first post with Selenium WebDriver']
+-posts.postIsPublic=//div[contains(span, "true")]
+\ No newline at end of file
++posts.postTextPrivate=//p[text()='This is my first private post with Selenium WebDriver']
++posts.postIsPublic=//div[contains(span, "true")]
++posts.postIsPrivate=//div[contains(span, "false")]
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e94da0cd-1e2c-4827-938e-b0de7b91aea3\" name=\"Changes\" comment=\"Add login method changes in Login page\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/LoginPage.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/LoginPage.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/UserActions.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/UserActions.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AuthenticatedUserHomePage.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AuthenticatedUserHomePage.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/LoginPage.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/LoginPage.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/SearchedUsersPage.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/SearchedUsersPage.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/test-classes/test/cases/selenuim/HomeTests.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/test-classes/test/cases/selenuim/HomeTests.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/test-classes/test/cases/selenuim/LoginTests.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/test-classes/test/cases/selenuim/LoginTests.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2Wer8CFMKYylG4sgW46ToTDiRDO\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\" selected=\"JUnit.AdminTests\">\r\n    <configuration name=\"AdminTests\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"test-automation-framework\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.cases.selenuim.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"test.cases.selenuim\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.cases.selenuim.AdminTests\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"HomeTests.when_unauthenticatedUserSearchUsersByValidFirstName_Expect_SearchedUsersAreVisible\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"test-automation-framework\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.cases.selenuim.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"test.cases.selenuim\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.cases.selenuim.HomeTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"when_unauthenticatedUserSearchUsersByValidFirstName_Expect_SearchedUsersAreVisible\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"HomeTests.when_unauthenticatedUserSearchUsersByValidLastName_Expect_SearchedUsersAreVisible\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"test-automation-framework\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.cases.selenuim.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"test.cases.selenuim\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.cases.selenuim.HomeTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"when_unauthenticatedUserSearchUsersByValidLastName_Expect_SearchedUsersAreVisible\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"LoginTests\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"test-automation-framework\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.cases.selenuim.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"test.cases.selenuim\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.cases.selenuim.LoginTests\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"PostTests.when_UserCreatePublicPost_expect_PublicPostIsCreated\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"test-automation-framework\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.cases.selenuim.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"test.cases.selenuim\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.cases.selenuim.PostTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"when_UserCreatePublicPost_expect_PublicPostIsCreated\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.AdminTests\" />\r\n        <item itemvalue=\"JUnit.PostTests.when_UserCreatePublicPost_expect_PublicPostIsCreated\" />\r\n        <item itemvalue=\"JUnit.HomeTests.when_unauthenticatedUserSearchUsersByValidLastName_Expect_SearchedUsersAreVisible\" />\r\n        <item itemvalue=\"JUnit.HomeTests.when_unauthenticatedUserSearchUsersByValidFirstName_Expect_SearchedUsersAreVisible\" />\r\n        <item itemvalue=\"JUnit.LoginTests\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e94da0cd-1e2c-4827-938e-b0de7b91aea3\" name=\"Changes\" comment=\"\" />\r\n      <created>1697103728380</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1697103728380</updated>\r\n      <workItem from=\"1697103731309\" duration=\"2569000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Add login method changes in Login page\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1697104615444</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1697104615444</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Add login method changes in Login page\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Add login method changes in Login page\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision e4c6c66622f7c7cf93a40c1d77b6ec791f11472d)
++++ b/.idea/workspace.xml	(date 1697114937173)
+@@ -4,23 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e94da0cd-1e2c-4827-938e-b0de7b91aea3" name="Changes" comment="Add login method changes in Login page">
++    <list default="true" id="e94da0cd-1e2c-4827-938e-b0de7b91aea3" name="Changes" comment="Add log out method in AdminTests and PostTests">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/LoginPage.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/Constants.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/PostPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/PostPage.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/UserActions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/UserActions.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AuthenticatedUserHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AuthenticatedUserHomePage.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/LoginPage.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/SearchedUsersPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/SearchedUsersPage.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/HomeTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/HomeTests.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/LoginTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/LoginTests.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/mappings/ui_map.properties" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -46,7 +35,7 @@
+     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+ }</component>
+-  <component name="RunManager" selected="JUnit.AdminTests">
++  <component name="RunManager" selected="JUnit.PostTests.when_UserCreatePrivatePost_expect_PrivatePostIsCreated">
+     <configuration name="AdminTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="test-automation-framework" />
+       <extension name="coverage">
+@@ -94,7 +83,7 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="PostTests.when_UserCreatePrivatePost_expect_PrivatePostIsCreated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="test-automation-framework" />
+       <extension name="coverage">
+         <pattern>
+@@ -103,8 +92,9 @@
+         </pattern>
+       </extension>
+       <option name="PACKAGE_NAME" value="test.cases.selenuim" />
+-      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.PostTests" />
++      <option name="METHOD_NAME" value="when_UserCreatePrivatePost_expect_PrivatePostIsCreated" />
++      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+@@ -127,11 +117,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="JUnit.PostTests.when_UserCreatePrivatePost_expect_PrivatePostIsCreated" />
+         <item itemvalue="JUnit.AdminTests" />
+         <item itemvalue="JUnit.PostTests.when_UserCreatePublicPost_expect_PublicPostIsCreated" />
+         <item itemvalue="JUnit.HomeTests.when_unauthenticatedUserSearchUsersByValidLastName_Expect_SearchedUsersAreVisible" />
+         <item itemvalue="JUnit.HomeTests.when_unauthenticatedUserSearchUsersByValidFirstName_Expect_SearchedUsersAreVisible" />
+-        <item itemvalue="JUnit.LoginTests" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -153,14 +143,25 @@
+       <option name="project" value="LOCAL" />
+       <updated>1697104615444</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Add log out method in AdminTests and PostTests">
++      <option name="closed" value="true" />
++      <created>1697112436001</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1697112436002</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
+   <component name="VcsManagerConfiguration">
++    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
++    <option name="CHECK_NEW_TODO" value="false" />
+     <MESSAGE value="Add login method changes in Login page" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Add login method changes in Login page" />
++    <MESSAGE value="Add log out method in AdminTests and PostTests" />
++    <option name="LAST_COMMIT_MESSAGE" value="Add log out method in AdminTests and PostTests" />
+   </component>
+ </project>
+\ No newline at end of file

@@ -22,6 +22,8 @@ public class LoginPage extends BasePage{
     }
 
     public void logout(){
+        actions.waitForElementClickable(HOME_BUTTON_PATH);
+        actions.clickElement(HOME_BUTTON_PATH);
         actions.waitForElementClickable(LOG_OUT_BUTTON_PATH);
         actions.clickElement(LOG_OUT_BUTTON_PATH);
     }
