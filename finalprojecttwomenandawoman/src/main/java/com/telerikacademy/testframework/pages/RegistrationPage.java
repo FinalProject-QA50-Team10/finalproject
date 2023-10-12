@@ -11,6 +11,26 @@ public class RegistrationPage extends BasePage {
         super(driver, HOME_PAGE);
     }
 
+    public void successfulRegistration() {
+
+    }
+
+    public void attemptRegistrationWithEmptyFields() {
+
+    }
+
+    public void attemptRegistrationWithCyrillicCharactersInUsername() {
+
+    }
+
+    public void attemptRegistrationWithEmptyPasswordField() {
+
+    }
+
+    public void attemptRegistrationWithEmailContainingSpaces() {
+
+    }
+
     public static String generateRandomText(int length) {
         char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
         StringBuilder randomText = new StringBuilder(length);
