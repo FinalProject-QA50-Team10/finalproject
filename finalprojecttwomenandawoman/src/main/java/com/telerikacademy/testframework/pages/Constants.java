@@ -30,6 +30,10 @@ public class Constants {
 //    public static final int INVALID_ID = 800;
     public static final String INVALID_USERNAME = "Barbie";
 
+    //##############  Registration #################
+
+
+
     //################ X-PATHS #################
     public static final String LOGIN_USERNAME_FIELD_PATH = "loginPage.usernameField";
     public static final String LOGIN_PASSWORD_FIELD_PATH = "loginPage.passwordField";

@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6adba18-4fcf-4f89-9626-a98384c9dc73" name="Changes" comment="Add generateRandomText to RegistrationPage">
+    <list default="true" id="d6adba18-4fcf-4f89-9626-a98384c9dc73" name="Changes" comment="Add methods to RegistrationPage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/src/main/java/com/telerikacademy/testframework/pages/RegistrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/src/main/java/com/telerikacademy/testframework/pages/RegistrationPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/src/main/java/com/telerikacademy/testframework/pages/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/src/main/java/com/telerikacademy/testframework/pages/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/finalprojecttwomenandawoman/src/test/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/finalprojecttwomenandawoman/src/test/resources/mappings/ui_map.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +147,7 @@
       <workItem from="1697046127007" duration="104000" />
       <workItem from="1697095434155" duration="74000" />
       <workItem from="1697095523396" duration="14000" />
-      <workItem from="1697095546122" duration="2941000" />
+      <workItem from="1697095546122" duration="3737000" />
     </task>
     <task id="LOCAL-00001" summary="Add Postman Report">
       <option name="closed" value="true" />
@@ -228,7 +229,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697098308425</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add methods to RegistrationPage">
+      <option name="closed" value="true" />
+      <created>1697099041919</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1697099041919</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,6 +271,7 @@
     <MESSAGE value="Add assertPageNavigated method in AdminTests" />
     <MESSAGE value="Add Constructor to RegistrationPage" />
     <MESSAGE value="Add generateRandomText to RegistrationPage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add generateRandomText to RegistrationPage" />
+    <MESSAGE value="Add methods to RegistrationPage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add methods to RegistrationPage" />
   </component>
 </project>
