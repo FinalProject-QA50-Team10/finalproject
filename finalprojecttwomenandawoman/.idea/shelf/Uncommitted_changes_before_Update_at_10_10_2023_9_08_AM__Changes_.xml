@@ -1,0 +1,34 @@
+<changelist name="Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]" date="1696918119666" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 10/10/2023 9:08 AM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/telerikacademy/testframework/api/BaseSetupMethods.class" />
+    <option name="AFTER_PATH" value="target/classes/com/telerikacademy/testframework/api/BaseSetupMethods.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/BaseSetupMethods.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/restassured/posts/PrivatePostLikeTest.class" />
+    <option name="AFTER_PATH" value="target/test-classes/restassured/posts/PrivatePostLikeTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/PrivatePostLikeTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/restassured/posts/AdminPostEditDeleteTest.class" />
+    <option name="AFTER_PATH" value="target/test-classes/restassured/posts/AdminPostEditDeleteTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/AdminPostEditDeleteTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/restassured/posts/PublicPostLikeTest.class" />
+    <option name="AFTER_PATH" value="target/test-classes/restassured/posts/PublicPostLikeTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/PublicPostLikeTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/restassured/posts/PrivatePostTest.class" />
+    <option name="AFTER_PATH" value="target/test-classes/restassured/posts/PrivatePostTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/PrivatePostTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/restassured/posts/PublicPostTest.class" />
+    <option name="AFTER_PATH" value="target/test-classes/restassured/posts/PublicPostTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_10_2023_9_08_AM_[Changes]/PublicPostTest.class" />
+  </binary>
+</changelist>
