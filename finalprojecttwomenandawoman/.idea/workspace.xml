@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e94da0cd-1e2c-4827-938e-b0de7b91aea3" name="Changes" comment="Add login method changes in Login page">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_2_06_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_2_06_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_2_48_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_12_2023_2_48_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/UserActions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/UserActions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AuthenticatedUserHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AuthenticatedUserHomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/LoginPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/SearchedUsersPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/SearchedUsersPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/UnauthenticatedUserHomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/HomeTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/HomeTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/LoginTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/LoginTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/UserActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/UserActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/RegistrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/RegistrationPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/RegistrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/RegistrationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +37,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.AdminTests">
+  <component name="RunManager" selected="JUnit.RegistrationTests.test">
     <configuration name="AdminTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-automation-framework" />
       <extension name="coverage">
@@ -94,21 +85,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="test-automation-framework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.cases.selenuim.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.cases.selenuim" />
-      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PostTests.when_UserCreatePublicPost_expect_PublicPostIsCreated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-automation-framework" />
       <extension name="coverage">
@@ -125,13 +101,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RegistrationTests.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test-automation-framework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.cases.selenuim.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.cases.selenuim" />
+      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.RegistrationTests" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RegistrationTests.test" />
         <item itemvalue="JUnit.AdminTests" />
         <item itemvalue="JUnit.PostTests.when_UserCreatePublicPost_expect_PublicPostIsCreated" />
         <item itemvalue="JUnit.HomeTests.when_unauthenticatedUserSearchUsersByValidLastName_Expect_SearchedUsersAreVisible" />
         <item itemvalue="JUnit.HomeTests.when_unauthenticatedUserSearchUsersByValidFirstName_Expect_SearchedUsersAreVisible" />
-        <item itemvalue="JUnit.LoginTests" />
       </list>
     </recent_temporary>
   </component>
@@ -162,5 +154,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add login method changes in Login page" />
     <option name="LAST_COMMIT_MESSAGE" value="Add login method changes in Login page" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/test/cases/selenuim/RegistrationTests.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -86,4 +86,6 @@ public class Constants {
 
     public static final String LOGIN_ERROR_MESSAGE = "Wrong username or password.";
     public static final String EMPTY_STRING = "";
+    public static final int MIN_LENGTH_USERNAME = 2;
+    public static final int MAX_LENGTH_USERNAME = 20;
 }
