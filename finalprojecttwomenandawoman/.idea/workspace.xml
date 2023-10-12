@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05823fbe-a222-492b-af08-4835ea6eb1b7" name="Changes" comment="Update LoginPage tests and loginUser as Admin">
+    <list default="true" id="05823fbe-a222-492b-af08-4835ea6eb1b7" name="Changes" comment="Add Enable User Profile as Admin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/AdminHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/AdminHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697091871150</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add Enable User Profile as Admin">
+      <option name="closed" value="true" />
+      <created>1697095040608</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1697095040608</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,7 +180,8 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Add LoginPage tests and some changes in Constants class" />
     <MESSAGE value="Update LoginPage tests and loginUser as Admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update LoginPage tests and loginUser as Admin" />
+    <MESSAGE value="Add Enable User Profile as Admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Enable User Profile as Admin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
