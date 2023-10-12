@@ -52,5 +52,9 @@ public class AdminTests {
         actions.assertElementPresent(DISABLE_USER_BUTTON);
     }
 
+    @Test
+    //FTP1-60 [Edit Post] Edit an Existing Post as Admin
+    public void when_AdminEditsPost_expect_PostIsEdited() {
 
+    }
 }
