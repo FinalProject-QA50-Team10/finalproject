@@ -10,6 +10,10 @@ public class AdminHomePage extends BasePage{
         super(driver, HOME_PAGE);
     }
 
+    public void deletePostWithAdminAccess() {
+
+    }
+
     public void disableUserWithAdminAccess() {
         actions.waitForElementClickable(ADMIN_ZONE_BUTTON);
         actions.clickElement(ADMIN_ZONE_BUTTON);
