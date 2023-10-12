@@ -40,6 +40,8 @@ public class PostPage extends BasePage {
         actions.clickElement(DELETE_POST_BUTTON);
         actions.waitForElementClickable(DELETE_DROP_DOWN_MENU);
         actions.clickElement(DELETE_DROP_DOWN_MENU);
+        actions.waitForElementClickable(DELETE_BUTTON_SELECT);
+        actions.clickElement(DELETE_BUTTON_SELECT);
         actions.waitForElementClickable(DELETE_BUTTON_SUBMIT);
         actions.clickElement(DELETE_BUTTON_SUBMIT);
     }
