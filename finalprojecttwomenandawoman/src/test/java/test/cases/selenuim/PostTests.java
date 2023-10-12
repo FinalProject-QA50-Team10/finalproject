@@ -25,7 +25,7 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-// FPT1-25 [Add New Post] Create Public Post
+    // FPT1-25 [Add New Post] Create Public Post
     public void when_UserCreatePublicPost_expect_PublicPostIsCreated() {
         post.createPost("public");
         actions.assertElementPresent(POST_TEXT);
@@ -33,13 +33,30 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-// FTP1-26 [Add New Post] Create Private Post
+    // FTP1-26 [Add New Post] Create Private Post
     public void when_UserCreatePrivatePost_expect_PrivatePostIsCreated() {
         post.createPost("private");
         actions.assertElementPresent(POST_PRIVATE_TEXT);
         actions.assertElementPresent(POST_IS_PRIVATE);
     }
 
+    @Test
+    //FPT1-55 [Delete Post] Delete an Existing Public Post
+    public void when_UserCreatePublicPost_expect_PublicPostIsDeleted() {
+        post.createPost("public");
+        actions.assertElementPresent(POST_TEXT);
+        actions.assertElementPresent(POST_IS_PUBLIC);
+        post.deletePost();
+        actions.assertElementPresent(DELETE_POST_MESSAGE);
+    }
 
-
+    @Test
+    //FPT1-56 [Delete Post] Delete an Existing Private Post
+    public void when_UserCreatePrivatePost_expect_PrivatePostIsDeleted() {
+        post.createPost("private");
+        actions.assertElementPresent(POST_PRIVATE_TEXT);
+        actions.assertElementPresent(POST_IS_PRIVATE);
+        post.deletePost();
+        actions.assertElementPresent(DELETE_POST_MESSAGE);
+    }
 }
