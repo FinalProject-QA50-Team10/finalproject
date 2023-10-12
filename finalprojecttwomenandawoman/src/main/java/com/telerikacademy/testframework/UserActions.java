@@ -18,7 +18,6 @@ import static com.telerikacademy.testframework.Utils.getConfigPropertyByKey;
 import static com.telerikacademy.testframework.Utils.getUIMappingByKey;
 import static com.telerikacademy.testframework.Utils.getWebDriver;
 import static com.telerikacademy.testframework.Utils.tearDownWebDriver;
-import static com.telerikacademy.testframework.pages.Constants.*;
 import static java.lang.String.format;
 
 public class UserActions {
@@ -177,6 +176,19 @@ public class UserActions {
             }
         }
         System.out.println("Attributes are correct.");
+    }
+
+    public void assertSearchedUsersContainsName(String name, String path){
+        var users = getElements(path);
+        for (var user : users) {
+            String result = user.getText();
+            if(!result.contains(name))
+            {
+                throw new IllegalArgumentException(format("Expected name is different than actual. " +
+                        "Actual is %s, expected is %s.", result, name));
+            }
+        }
+        System.out.println("Name is correct.");
     }
     public void assertUsersListIsNotEmpty(String searchResultsPath){
         var users = getElements(searchResultsPath);

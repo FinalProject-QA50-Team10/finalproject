@@ -41,6 +41,26 @@ public class HomeTests extends BaseTestSetup {
         actions.assertUsersAttribute(GEORGE_BUSH_NAME, SEARCH_RESULTS_NAME_PATH);
 
     }
+
+    @Test
+    //[Search Form] Search users with a valid first name as a guest
+    public void when_unauthenticatedUserSearchUsersByValidFirstName_Expect_SearchedUsersAreVisible()
+    {
+        home.searchForm(EMPTY_STRING, GEORGE_BUSH_FIRST_NAME);
+        actions.assertElementPresent(SEARCH_RESULTS_PATH);
+        actions.assertUsersListIsNotEmpty(SEARCH_RESULTS_PATH);
+        actions.assertSearchedUsersContainsName(GEORGE_BUSH_FIRST_NAME, SEARCH_RESULTS_NAME_PATH);
+    }
+
+    @Test
+    //[Search Form] Search users with a valid last name as a guest
+    public void when_unauthenticatedUserSearchUsersByValidLastName_Expect_SearchedUsersAreVisible()
+    {
+        home.searchForm(EMPTY_STRING, GEORGE_BUSH_LAST_NAME);
+        actions.assertElementPresent(SEARCH_RESULTS_PATH);
+        actions.assertUsersListIsNotEmpty(SEARCH_RESULTS_PATH);
+        actions.assertSearchedUsersContainsName(GEORGE_BUSH_LAST_NAME, SEARCH_RESULTS_NAME_PATH);
+    }
     @Test
     //[Login Page] Verify Sing in button functionality and Login page elements
     public void when_unauthenticatedUserClickOnSignInButton_expect_successfulLoginPageElementsAreVisible()
