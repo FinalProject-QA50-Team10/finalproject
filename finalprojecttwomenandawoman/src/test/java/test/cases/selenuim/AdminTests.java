@@ -1,8 +1,5 @@
 package test.cases.selenuim;
 
-import com.telerikacademy.testframework.UserActions;
-import com.telerikacademy.testframework.pages.AdminHomePage;
-import com.telerikacademy.testframework.pages.LoginPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -50,7 +47,23 @@ public class AdminTests extends BaseTestSetup{
         loginPage.navigateToPage();
         postPage.assertPageNavigated();
         loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
-        adminHomePage.editPostAsAdmin();
+        adminHomePage.editPostWithAdminAccess();
         actions.assertElementPresent(EDIT_POST_TEXT);
+    }
+
+    @Test
+    //FTP1-61 [Delete Post] Delete an Existing Post as Admin
+    public void when_AdminDeletePost_expect_PostIsDeleted() {
+        loginPage.navigateToPage();
+        postPage.assertPageNavigated();
+        loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
+        postPage.createPost("public");
+        actions.assertElementPresent(POST_TEXT);
+        actions.assertElementPresent(POST_IS_PUBLIC);
+        loginPage.navigateToPage();
+        postPage.assertPageNavigated();
+        loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
+        adminHomePage.deletePostWithAdminAccess();
+        actions.assertElementPresent(DELETE_POST_MESSAGE);
     }
 }

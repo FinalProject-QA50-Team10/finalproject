@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e94da0cd-1e2c-4827-938e-b0de7b91aea3" name="Changes" comment="Add Dislike a public post of another user">
+    <list default="true" id="e94da0cd-1e2c-4827-938e-b0de7b91aea3" name="Changes" comment="Add Edit an Existing Post as Admin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/AdminHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/AdminHomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" afterDir="false" />
@@ -35,7 +35,23 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.AdminTests.when_AdminEditsPost_expect_PostIsEdited">
+  <component name="RunManager" selected="JUnit.AdminTests.when_AdminDeletePost_expect_PostIsDeleted">
+    <configuration name="AdminTests.when_AdminDeletePost_expect_PostIsDeleted" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test-automation-framework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.cases.selenuim.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.cases.selenuim" />
+      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.AdminTests" />
+      <option name="METHOD_NAME" value="when_AdminDeletePost_expect_PostIsDeleted" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AdminTests.when_AdminEditsPost_expect_PostIsEdited" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-automation-framework" />
       <extension name="coverage">
@@ -84,22 +100,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostTests.when_UserEditPublicPost_expect_PublicPostIsEdited" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="test-automation-framework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.cases.selenuim.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.cases.selenuim" />
-      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.PostTests" />
-      <option name="METHOD_NAME" value="when_UserEditPublicPost_expect_PublicPostIsEdited" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PostTests.when_UserLikePublicPost_expected_PostIsLiked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-automation-framework" />
       <extension name="coverage">
@@ -118,11 +118,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AdminTests.when_AdminDeletePost_expect_PostIsDeleted" />
         <item itemvalue="JUnit.AdminTests.when_AdminEditsPost_expect_PostIsEdited" />
         <item itemvalue="JUnit.PostTests.when_UserDislikePublicPost_expected_PostIsDisliked" />
         <item itemvalue="JUnit.PostTests.when_UserLikePublicPost_expected_PostIsLiked" />
         <item itemvalue="JUnit.PostTests.when_UserEditPrivatePost_expect_PrivatePostIsEdited" />
-        <item itemvalue="JUnit.PostTests.when_UserEditPublicPost_expect_PublicPostIsEdited" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697202131971</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add Edit an Existing Post as Admin">
+      <option name="closed" value="true" />
+      <created>1697203845478</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1697203845478</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +252,8 @@
     <MESSAGE value="Add Edit an Existing Private Post" />
     <MESSAGE value="Add Like a public post of another user" />
     <MESSAGE value="Add Dislike a public post of another user" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Dislike a public post of another user" />
+    <MESSAGE value="Add Edit an Existing Post as Admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Edit an Existing Post as Admin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -256,7 +265,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/test/cases/selenuim/CommentTests.java</url>
-          <line>37</line>
+          <line>34</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
