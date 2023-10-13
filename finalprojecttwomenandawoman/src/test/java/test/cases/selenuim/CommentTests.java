@@ -74,14 +74,26 @@ public class CommentTests extends BaseTestSetup {
         authenticatedUserHomePage.logout();
     }
 
-//    @Test
-//    public void testLikeComment() {
+    @Test
+    //FPT1-125 [Like] Verify comments Like button
+    public void when_UserLikesComment_expect_CommentIsLikedSuccessfully() {
+        loginPage.navigateToPage();
+        loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
+        commentPage.createComment("This is a comment.");
+        commentPage.likeComment();
+        authenticatedUserHomePage.logout();
+    }
 
-//    }
+    @Test
+    //FPT1-126 [Like] Verify comments Dislike button
+    public void when_UserDislikesComment_expect_CommentIsDislikedSuccessfully() {
+        loginPage.navigateToPage();
+        loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
+        commentPage.createComment("This is a comment.");
+        commentPage.likeComment();
+        commentPage.dislikeComment();
+        authenticatedUserHomePage.logout();
 
-//    @Test
-//    public void testDislikeComment() {
-
-//    }
+    }
 
 }
