@@ -40,15 +40,14 @@ public class CommentTests extends BaseTestSetup {
     @Test
     //FPT1-170 [Comment] Create Comment With 1001 Characters as Registered User
     public void when_UserCreatesCommentWithInvalidData_expect_CommentCreationFails() {
-        UserActions utils = new UserActions();
-        String commentText = UserActions.generateRandomTextExactLength(1001);
+        String commentText = UserActions.generateRandomTextExactLength(INVALID_COMMENT_LENGTH);
 
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment(commentText);
 
         //assert invalid message
-        utils.assertElementPresent(COMMENT_TEXT_FIELD); //refactor actions
+        actions.assertElementPresent(COMMENT_TEXT_FIELD);
         authenticatedUserHomePage.logout();
     }
 
@@ -93,7 +92,6 @@ public class CommentTests extends BaseTestSetup {
         commentPage.likeComment();
         commentPage.dislikeComment();
         authenticatedUserHomePage.logout();
-
     }
 
 }
