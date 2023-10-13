@@ -1,3 +1,24 @@
-/testframework/target/
-/testframework/.idea/
-output.log
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# IntelliJ IDEA
+/**/out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# User-specific stuff
+/**/.idea/**/workspace.xml
+/**/.idea/**/tasks.xml
+/**/.idea/**/usage.statistics.xml
+/**/.idea/**/dictionaries
+/**/.idea/**/shelf
+/**/target/
+
+# Generated files
+/**/.idea/**/contentModel.xml
+/**/.idea/**/uiDesigner.xml
+
+# Mac OS
+.DS_Store
+
+*.idea
