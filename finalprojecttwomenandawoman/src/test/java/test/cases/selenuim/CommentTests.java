@@ -1,9 +1,6 @@
 package test.cases.selenuim;
 
 import com.telerikacademy.testframework.UserActions;
-import com.telerikacademy.testframework.pages.CommentPage;
-import com.telerikacademy.testframework.pages.LoginPage;
-import com.telerikacademy.testframework.pages.PostPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,9 +8,6 @@ import org.junit.jupiter.api.Test;
 import static com.telerikacademy.testframework.pages.Constants.*;
 
 public class CommentTests extends BaseTestSetup {
-
-    CommentPage commentPage = new CommentPage(actions.getDriver());
-    LoginPage loginPage = new LoginPage(actions.getDriver());
 
     @BeforeEach
     public void setup() {
@@ -32,17 +26,20 @@ public class CommentTests extends BaseTestSetup {
     }
 
     @Test
-    public void testCreateCommentSuccessfully() { //change test name
+    //FPT1-167 [Comment] Create Comment Successfully as Registered User
+    public void when_UserCreatesComment_expect_CommentIsCreatedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment("This is a comment.");
         actions.assertElementPresent(COMMENT_TEXT_FIELD);
+
         //add more assertions
         authenticatedUserHomePage.logout();
     }
 
     @Test
-    public void testCreateCommentUnsuccessfully() { //change test name
+    //FPT1-170 [Comment] Create Comment With 1001 Characters as Registered User
+    public void when_UserCreatesCommentWithInvalidData_expect_CommentCreationFails() {
         UserActions utils = new UserActions();
         String commentText = UserActions.generateRandomTextExactLength(1001);
 
@@ -51,13 +48,13 @@ public class CommentTests extends BaseTestSetup {
         commentPage.createComment(commentText);
 
         //assert invalid message
-
         utils.assertElementPresent(COMMENT_TEXT_FIELD); //refactor actions
         authenticatedUserHomePage.logout();
     }
 
     @Test
-    public void testEditCommentSuccessfully() {
+    //FPT1-178 [Comment] Edit Comment Successfully as Registered User
+    public void when_UserEditsComment_expect_CommentIsEditedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment("This is a comment.");
@@ -67,19 +64,24 @@ public class CommentTests extends BaseTestSetup {
         authenticatedUserHomePage.logout();
     }
 
-//    @Test
-//    public void testDeleteCommentSuccessfully() {
-//
-//    }
-//
+    @Test
+    //FPT1-182 [Comment] Delete Comment Successfully as Registered User
+    public void when_UserDeletesComment_expect_CommentIsDeletedSuccessfully() {
+        loginPage.navigateToPage();
+        loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
+        commentPage.createComment("This is a comment.");
+        commentPage.deleteComment();
+        authenticatedUserHomePage.logout();
+    }
+
 //    @Test
 //    public void testLikeComment() {
-//
+
 //    }
-//
+
 //    @Test
 //    public void testDislikeComment() {
-//
+
 //    }
 
 }
