@@ -12,9 +12,6 @@ import static com.telerikacademy.testframework.pages.Constants.*;
 
 public class CommentTests extends BaseTestSetup {
 
-    CommentPage commentPage = new CommentPage(actions.getDriver());
-    LoginPage loginPage = new LoginPage(actions.getDriver());
-
     @BeforeEach
     public void setup() {
         loginPage.navigateToPage();
@@ -67,10 +64,14 @@ public class CommentTests extends BaseTestSetup {
         authenticatedUserHomePage.logout();
     }
 
-//    @Test
-//    public void testDeleteCommentSuccessfully() {
-//
-//    }
+    @Test
+    public void testDeleteCommentSuccessfully() {
+        loginPage.navigateToPage();
+        loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
+        commentPage.createComment("This is a comment.");
+        commentPage.deleteComment();
+        authenticatedUserHomePage.logout();
+    }
 //
 //    @Test
 //    public void testLikeComment() {
