@@ -1,15 +1,76 @@
-2023-10-14 00:07:25,250 INFO  [main] Initializing WebDriver
-2023-10-14 00:07:29,989 INFO  [main] Initializing WebDriver
-2023-10-14 00:07:33,454 INFO  [main] Initializing WebDriver
-2023-10-14 00:07:33,455 INFO  [main] Initializing WebDriver
-2023-10-14 00:07:33,455 INFO  [main] Initializing WebDriver
-2023-10-14 00:07:33,455 INFO  [main] Initializing WebDriver
-2023-10-14 00:07:33,455 INFO  [main] Initializing WebDriver
-2023-10-14 00:07:33,456 INFO  [main] Initializing WebDriver
-2023-10-14 00:07:33,456 INFO  [main] Initializing WebDriver
-2023-10-14 00:07:33,456 INFO  [main] Initializing WebDriver
-2023-10-14 00:07:33,456 INFO  [main] Initializing WebDriver
-2023-10-14 00:07:33,586 INFO  [main] Clicking on element homePage.registerButton
-2023-10-14 00:07:38,381 INFO  [main] Clicking on element registrationPage.registerButton
-2023-10-14 00:07:41,897 INFO  [main] Hovering on element registrationPage.errorMessage
-2023-10-14 00:07:41,942 INFO  [main] Quitting WebDriver
+2023-10-14 00:49:22,806 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:27,174 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:30,717 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:30,719 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:30,719 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:30,719 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:30,720 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:30,720 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:30,720 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:30,720 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:30,721 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:33,675 INFO  [main] Clicking on element loginPage.homeButton
+2023-10-14 00:49:36,611 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:36,611 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:36,611 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:36,612 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:36,612 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:36,612 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:36,612 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:36,612 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:36,612 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:37,050 INFO  [main] Clicking on element searchForm.searchButton
+2023-10-14 00:49:39,615 INFO  [main] Hovering on element searchForm.searchResults
+2023-10-14 00:49:39,647 INFO  [main] Hovering on element searchForm.searchResults.name
+2023-10-14 00:49:39,743 INFO  [main] Clicking on element loginPage.homeButton
+2023-10-14 00:49:42,997 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:42,998 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:42,998 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:42,998 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:42,999 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:42,999 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:42,999 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:43,000 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:43,000 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:43,075 INFO  [main] Clicking on element homePage.signInButton
+2023-10-14 00:49:44,685 INFO  [main] Clicking on element loginPage.homeButton
+2023-10-14 00:49:47,562 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:47,563 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:47,565 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:47,566 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:47,566 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:47,567 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:47,567 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:47,567 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:47,567 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:47,941 INFO  [main] Clicking on element searchForm.searchButton
+2023-10-14 00:49:50,797 INFO  [main] Hovering on element searchForm.searchResults
+2023-10-14 00:49:50,833 INFO  [main] Hovering on element searchForm.searchResults.jobTitle
+2023-10-14 00:49:50,985 INFO  [main] Clicking on element loginPage.homeButton
+2023-10-14 00:49:53,742 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:53,742 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:53,742 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:53,742 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:53,742 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:53,743 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:53,743 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:53,743 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:53,743 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:54,143 INFO  [main] Clicking on element searchForm.searchButton
+2023-10-14 00:49:56,309 INFO  [main] Hovering on element searchForm.searchResults
+2023-10-14 00:49:56,324 INFO  [main] Hovering on element searchForm.searchResults.name
+2023-10-14 00:49:56,390 INFO  [main] Clicking on element loginPage.homeButton
+2023-10-14 00:49:59,272 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:59,273 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:59,274 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:59,274 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:59,274 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:59,274 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:59,274 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:59,274 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:59,275 INFO  [main] Initializing WebDriver
+2023-10-14 00:49:59,657 INFO  [main] Clicking on element searchForm.searchButton
+2023-10-14 00:50:01,863 INFO  [main] Hovering on element searchForm.searchResults
+2023-10-14 00:50:01,880 INFO  [main] Hovering on element searchForm.searchResults.name
+2023-10-14 00:50:01,963 INFO  [main] Clicking on element loginPage.homeButton
+2023-10-14 00:50:04,886 INFO  [main] Quitting WebDriver

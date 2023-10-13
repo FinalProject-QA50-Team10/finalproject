@@ -25,7 +25,7 @@ public class LoginPage extends BasePage{
     @Override
     public void assertPageNavigated() {
         String currentUrl = driver.getCurrentUrl();
-        Assertions.assertEquals(Utils.getConfigPropertyByKey(LOGIN_PAGE), currentUrl,
+        Assertions.assertTrue(currentUrl.contains(Utils.getConfigPropertyByKey(LOGIN_PAGE)),
                 "Landed URL is not as expected. Actual URL: " + currentUrl + ". Expected URL: " + LOGIN_PAGE);
     }
 

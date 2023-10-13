@@ -2,6 +2,7 @@ package test.cases.selenuim;
 
 import com.telerikacademy.testframework.pages.LoginPage;
 import com.telerikacademy.testframework.pages.UnauthenticatedUserHomePage;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,12 +14,13 @@ public class RegistrationTests extends BaseTestSetup {
     public void navigateToLoginPage() {
         unauthenticatedUser.clickRegisterButton();
         registerPage.navigateToPage();
-    }
-
-    @BeforeEach
-    public void generateRandomUser() {
         RANDOM_USERNAME = actions.generateRandomText(MIN_LENGTH_USERNAME, MAX_LENGTH_USERNAME);
         RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
+    }
+
+    @AfterEach
+    public void navigateToHomePage(){
+        unauthenticatedUser.navigateToHomePage();
     }
 
     @Test
@@ -29,7 +31,7 @@ public class RegistrationTests extends BaseTestSetup {
         registeredUserPage.assertWelcomeMessage();
         registeredUserPage.assertUpdateProfileButtonIsVisible();
         registeredUserPage.assertPageNavigated();
-        authenticatedUserHomePage.logout();
+        unauthenticatedUser.assertPageNavigated();
     }
 
     @Test

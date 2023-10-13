@@ -40,6 +40,7 @@ public class LoginTests extends BaseTestSetup {
         authenticatedUserHomePage.assertPersonalProfileButtonIsVisible();
         authenticatedUserHomePage.assertAddNewPostButtonIsVisible();
         authenticatedUserHomePage.logout();
+        unauthenticatedUser.assertPageNavigated();
     }
 
     @Test
@@ -47,6 +48,7 @@ public class LoginTests extends BaseTestSetup {
     public void when_UnauthenticatedUserLoginWithEmptyUsernameAndEmptyPassword_Expect_ErrorMessage() {
         loginPage.assertPageNavigated();
         loginPage.login(EMPTY_STRING, EMPTY_STRING);
+        loginPage.assertPageNavigated();
         loginPage.assertLoginPageTitle();
         loginPage.assertLoginErrorMessage();
     }
@@ -56,6 +58,7 @@ public class LoginTests extends BaseTestSetup {
     public void when_UnauthenticatedUserLoginWithValidUsernameAndInvalidPassword_Expect_ErrorMessage() {
         loginPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, MR_BEAST_PASSWORD);
+        loginPage.assertPageNavigated();
         loginPage.assertLoginErrorMessage();
         loginPage.assertLoginPageTitle();
     }
@@ -65,6 +68,7 @@ public class LoginTests extends BaseTestSetup {
     public void when_UnauthenticatedUserLoginWithInvalidUsernameAndValidPassword_Expect_ErrorMessage() {
         loginPage.assertPageNavigated();
         loginPage.login(INVALID_USERNAME, MR_BEAST_PASSWORD);
+        loginPage.assertPageNavigated();
         loginPage.assertLoginErrorMessage();
         loginPage.assertLoginPageTitle();
     }
@@ -78,6 +82,7 @@ public class LoginTests extends BaseTestSetup {
         authenticatedUserHomePage.assertPersonalProfileButtonIsVisible();
         authenticatedUserHomePage.assertAddNewPostButtonIsVisible();
         authenticatedUserHomePage.logout();
+        unauthenticatedUser.assertPageNavigated();
         loginPage.assertLogoutErrorMessage();
         loginPage.assertLoginPageTitle();
     }
