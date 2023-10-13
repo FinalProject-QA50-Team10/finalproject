@@ -14,14 +14,13 @@ public class CommentTests extends BaseTestSetup {
 
     CommentPage commentPage = new CommentPage(actions.getDriver());
     LoginPage loginPage = new LoginPage(actions.getDriver());
-    PostPage postPage = new PostPage(actions.getDriver());
 
     @BeforeEach
     public void setup() {
         loginPage.navigateToPage();
         loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         postPage.createPost("public");
-        loginPage.logout();
+        authenticatedUserHomePage.logout();
     }
 
     @AfterEach
@@ -29,7 +28,7 @@ public class CommentTests extends BaseTestSetup {
         loginPage.navigateToPage();
         loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         postPage.deletePost();
-        loginPage.logout();
+        authenticatedUserHomePage.logout();
     }
 
     @Test
@@ -39,7 +38,7 @@ public class CommentTests extends BaseTestSetup {
         commentPage.createComment("This is a comment.");
         actions.assertElementPresent(COMMENT_TEXT_FIELD);
         //add more assertions
-        loginPage.logout();
+        authenticatedUserHomePage.logout();
     }
 
     @Test
@@ -54,7 +53,7 @@ public class CommentTests extends BaseTestSetup {
         //assert invalid message
 
         utils.assertElementPresent(COMMENT_TEXT_FIELD); //refactor actions
-        loginPage.logout();
+        authenticatedUserHomePage.logout();
     }
 
     @Test
@@ -65,7 +64,7 @@ public class CommentTests extends BaseTestSetup {
         commentPage.editComment("This is an edited comment.");
         actions.assertElementPresent(COMMENT_TEXT_FIELD);
         //add more assertions
-        loginPage.logout();
+        authenticatedUserHomePage.logout();
     }
 
 }

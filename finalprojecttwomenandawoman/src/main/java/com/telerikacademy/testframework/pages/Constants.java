@@ -62,7 +62,8 @@ public class Constants {
     public static final String PASSWORD_FIELD_PATH = "registrationPage.password";
     public static final String CONFIRM_PASSWORD_FIELD_PATH = "registrationPage.confirmPassword";
     public static final String REGISTRATION_BUTTON_PATH = "registrationPage.registerButton";
-    public static final String WELCOME_MESSAGE_PATH = "registrationPage.welcomeMessage";
+    public static final String WELCOME_MESSAGE_PATH = "registeredUserPage.welcomeMessage";
+    public static final String UPDATE_PROFILE_BUTTON_PATH = "registeredUserPage.updateProfileButton";
 
 
     //##############  Admin user part #################

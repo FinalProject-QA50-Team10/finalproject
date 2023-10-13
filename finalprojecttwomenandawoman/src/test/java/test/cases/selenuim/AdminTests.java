@@ -9,9 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import static com.telerikacademy.testframework.pages.Constants.*;
 
-public class AdminTests {
+public class AdminTests extends BaseTestSetup{
 
-    LoginPage loginPage = new LoginPage(actions.getDriver());
+
     AdminHomePage admin = new AdminHomePage(actions.getDriver());
     static UserActions actions = new UserActions();
 
@@ -24,7 +24,7 @@ public class AdminTests {
 
     @AfterEach
     public void logOut() {
-        loginPage.logout();
+        authenticatedUserHomePage.logout();
     }
 
     @Test

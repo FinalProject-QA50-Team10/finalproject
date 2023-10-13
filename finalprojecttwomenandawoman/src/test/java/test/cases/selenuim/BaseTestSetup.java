@@ -1,10 +1,7 @@
 package test.cases.selenuim;
 
 import com.telerikacademy.testframework.UserActions;
-import com.telerikacademy.testframework.pages.LoginPage;
-import com.telerikacademy.testframework.pages.RegistrationPage;
-import com.telerikacademy.testframework.pages.SearchedUsersPage;
-import com.telerikacademy.testframework.pages.UnauthenticatedUserHomePage;
+import com.telerikacademy.testframework.pages.*;
 import org.junit.jupiter.api.*;
 
 import static com.telerikacademy.testframework.pages.Constants.HOME_PAGE;
@@ -14,7 +11,11 @@ public class BaseTestSetup {
     public LoginPage loginPage = new LoginPage(actions.getDriver());
    public UnauthenticatedUserHomePage unauthenticatedUser = new UnauthenticatedUserHomePage(actions.getDriver());
    public RegistrationPage registerPage = new RegistrationPage(actions.getDriver());
-    SearchedUsersPage searchedUsersPage = new SearchedUsersPage(actions.getDriver());
+    public SearchedUsersPage searchedUsersPage = new SearchedUsersPage(actions.getDriver());
+    public RegisteredUserPage registeredUserPage = new RegisteredUserPage(actions.getDriver());
+    public AuthenticatedUserHomePage authenticatedUserHomePage = new AuthenticatedUserHomePage(actions.getDriver());
+    PostPage postPage = new PostPage(actions.getDriver());
+    AdminHomePage adminHomePage = new AdminHomePage(actions.getDriver());
 
     @BeforeAll
     public static void setUp() {

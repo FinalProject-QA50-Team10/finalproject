@@ -42,7 +42,7 @@ public class LoginTests extends BaseTestSetup{
         actions.assertElementPresent(LOGOUT_BUTTON_PATH);
         actions.assertElementPresent(PERSONAL_PROFILE_BUTTON_PATH);
         actions.assertElementPresent(ADD_NEW_POST_BUTTON_PATH);
-        loginPage.logout();
+        authenticatedUserHomePage.logout();
     }
 
     @Test
@@ -81,10 +81,10 @@ public class LoginTests extends BaseTestSetup{
     {
         loginPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
-        actions.assertElementPresent(LOGOUT_BUTTON_PATH);
-        actions.assertElementPresent(PERSONAL_PROFILE_BUTTON_PATH);
-        actions.assertElementPresent(ADD_NEW_POST_BUTTON_PATH);
-        loginPage.logout();
+        authenticatedUserHomePage.assertLogoutButtonIsVisible();
+        authenticatedUserHomePage.assertPersonalProfileButtonIsVisible();
+        authenticatedUserHomePage.assertAddNewPostButtonIsVisible();
+        authenticatedUserHomePage.logout();
         actions.assertElementPresent(LOGIN_PAGE_TITLE_PATH);
         actions.assertElementPresent(LOGOUT_ERROR_MESSAGE_PATH);
     }

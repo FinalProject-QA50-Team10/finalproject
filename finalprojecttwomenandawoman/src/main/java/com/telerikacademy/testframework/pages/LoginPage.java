@@ -22,13 +22,6 @@ public class LoginPage extends BasePage{
         actions.clickElement(HOME_BUTTON_PATH);
     }
 
-    public void logout(){
-        actions.waitForElementClickable(HOME_BUTTON_PATH);
-        actions.clickElement(HOME_BUTTON_PATH);
-        actions.waitForElementClickable(LOG_OUT_BUTTON_PATH);
-        actions.clickElement(LOG_OUT_BUTTON_PATH);
-    }
-
     @Override
     public void assertPageNavigated() {
         String currentUrl = driver.getCurrentUrl();

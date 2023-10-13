@@ -21,9 +21,13 @@ public class RegistrationTests extends BaseTestSetup{
         RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
     }
     @Test
+    //FPT1-135 [Registration] Successful Registration
     public void when_UnauthenticatedUserFillRegisterFormWithValidData_Expect_SuccessfulMessageIsVisible(){
         registerPage.assertPageNavigated();
         registerPage.fillRegisterForm(RANDOM_USERNAME, RANDOM_EMAIL, GEORGE_BUSH_PASSWORD);
-        actions.assertElementPresent(WELCOME_MESSAGE_PATH);
+        registeredUserPage.assertWelcomeMessage();
+        registeredUserPage.assertUpdateProfileButtonIsVisible();
+        registeredUserPage.assertPageNavigated();
+        authenticatedUserHomePage.logout();
     }
 }
