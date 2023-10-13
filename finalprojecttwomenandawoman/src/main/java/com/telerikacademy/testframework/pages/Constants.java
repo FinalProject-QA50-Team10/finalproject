@@ -36,15 +36,6 @@ public class Constants {
     public static String RANDOM_USERNAME;
     public static String RANDOM_EMAIL;
 
-    //##############  Registration #################
-    public static final String USERNAME_FIELD = "registrationPage.username";
-    public static final String EMAIL_FIELD = "registrationPage.email";
-    public static final String PASSWORD_FIELD = "registrationPage.password";
-    public static final String CONFIRM_PASSWORD_FIELD = "registrationPage.confirmPassword";
-    public static final String REGISTRATION_BUTTON = "registrationPage.registerButton";
-    public static final String WELCOME_MESSAGE = "registrationPage.welcomeMessage";
-
-
     //################ X-PATHS #################
     public static final String LOGIN_USERNAME_FIELD_PATH = "loginPage.usernameField";
     public static final String LOGIN_PASSWORD_FIELD_PATH = "loginPage.passwordField";
@@ -66,6 +57,12 @@ public class Constants {
     public static final String SEARCH_RESULTS_PATH = "searchForm.searchResults";
     public static final String SEARCH_RESULTS_JOB_TITLE_PATH = "searchForm.searchResults.jobTitle";
     public static final String SEARCH_RESULTS_NAME_PATH = "searchForm.searchResults.name";
+    public static final String USERNAME_FIELD_PATH = "registrationPage.username";
+    public static final String EMAIL_FIELD_PATH = "registrationPage.email";
+    public static final String PASSWORD_FIELD_PATH = "registrationPage.password";
+    public static final String CONFIRM_PASSWORD_FIELD_PATH = "registrationPage.confirmPassword";
+    public static final String REGISTRATION_BUTTON_PATH = "registrationPage.registerButton";
+    public static final String WELCOME_MESSAGE_PATH = "registrationPage.welcomeMessage";
 
 
     //##############  Admin user part #################

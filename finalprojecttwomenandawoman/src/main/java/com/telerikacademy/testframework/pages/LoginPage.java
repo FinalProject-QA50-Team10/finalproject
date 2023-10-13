@@ -1,6 +1,7 @@
 package com.telerikacademy.testframework.pages;
 
 import com.telerikacademy.testframework.Utils;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
 import static com.telerikacademy.testframework.pages.Constants.*;
@@ -26,5 +27,12 @@ public class LoginPage extends BasePage{
         actions.clickElement(HOME_BUTTON_PATH);
         actions.waitForElementClickable(LOG_OUT_BUTTON_PATH);
         actions.clickElement(LOG_OUT_BUTTON_PATH);
+    }
+
+    @Override
+    public void assertPageNavigated() {
+        String currentUrl = driver.getCurrentUrl();
+        Assertions.assertEquals(Utils.getConfigPropertyByKey(LOGIN_PAGE), currentUrl,
+                "Landed URL is not as expected. Actual URL: " + currentUrl + ". Expected URL: " + LOGIN_PAGE);
     }
 }

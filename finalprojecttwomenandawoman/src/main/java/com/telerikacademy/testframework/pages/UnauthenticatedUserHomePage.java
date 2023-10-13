@@ -3,7 +3,10 @@ package com.telerikacademy.testframework.pages;
 import com.telerikacademy.testframework.Utils;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Objects;
+
 import static com.telerikacademy.testframework.pages.Constants.*;
+import static java.lang.String.format;
 
 public class UnauthenticatedUserHomePage extends BasePage{
     public UnauthenticatedUserHomePage(WebDriver driver){

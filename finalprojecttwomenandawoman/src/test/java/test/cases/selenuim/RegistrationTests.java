@@ -8,14 +8,12 @@ import org.junit.jupiter.api.Test;
 import static com.telerikacademy.testframework.pages.Constants.*;
 
 public class RegistrationTests extends BaseTestSetup{
-    LoginPage loginPage = new LoginPage(actions.getDriver());
-    UnauthenticatedUserHomePage unauthenticatedUser = new UnauthenticatedUserHomePage(actions.getDriver());
 
     @BeforeEach
     public void navigateToLoginPage()
     {
         unauthenticatedUser.clickRegisterButton();
-        loginPage.navigateToPage();
+        registerPage.navigateToPage();
     }
     @BeforeEach
     public void generateRandomUser(){
@@ -23,7 +21,9 @@ public class RegistrationTests extends BaseTestSetup{
         RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
     }
     @Test
-    public void test(){
-
+    public void when_UnauthenticatedUserFillRegisterFormWithValidData_Expect_SuccessfulMessageIsVisible(){
+        registerPage.assertPageNavigated();
+        registerPage.fillRegisterForm(RANDOM_USERNAME, RANDOM_EMAIL, GEORGE_BUSH_PASSWORD);
+        actions.assertElementPresent(WELCOME_MESSAGE_PATH);
     }
 }

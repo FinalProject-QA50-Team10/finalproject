@@ -159,6 +159,18 @@ public class UserActions {
         Assertions.assertEquals(format("Element with locator %s doesn't match", attributeName), getLocatorValueByKey(attributeValue), value);
     }
 
+
+    public void assertUsersListIsNotEmpty(String searchResultsPath){
+        var users = getElements(searchResultsPath);
+        Assertions.assertFalse(users.isEmpty());
+        System.out.println("Users list in not empty.");
+    }
+
+    public void assertUrlsAreEquals(String expectedUrl, String actualUrl){
+        Assertions.assertEquals(expectedUrl, actualUrl, "Expected URL is different than actual.");
+        System.out.println("URLs are equal.");
+    }
+
     public void assertUsersAttribute(String name, String path){
         var users = getElements(path);
         for (var user : users) {
@@ -172,6 +184,7 @@ public class UserActions {
         System.out.println("Attributes are correct.");
     }
 
+
     public void assertSearchedUsersContainsName(String name, String path){
         var users = getElements(path);
         for (var user : users) {
@@ -183,16 +196,6 @@ public class UserActions {
             }
         }
         System.out.println("Name is correct.");
-    }
-    public void assertUsersListIsNotEmpty(String searchResultsPath){
-        var users = getElements(searchResultsPath);
-        Assertions.assertFalse(users.isEmpty());
-        System.out.println("Users list in not empty.");
-    }
-
-    public void assertUrlsAreEquals(String expectedUrl, String actualUrl){
-        Assertions.assertEquals(expectedUrl, actualUrl, "Expected URL is different than actual.");
-        System.out.println("URLs are equal.");
     }
 
     public WebElement getElement(String key, Object... arguments) {
