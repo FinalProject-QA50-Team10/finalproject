@@ -88,10 +88,32 @@ public class PostTests extends BaseTestSetup {
         actions.assertElementPresent(POST_TEXT);
         actions.assertElementPresent(POST_IS_PUBLIC);
         loginPage.navigateToPage();
+        postPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         postPage.likePost();
         actions.assertElementPresent(POST_DISLIKE_BUTTON);
         loginPage.navigateToPage();
+        postPage.assertPageNavigated();
+        loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
+        postPage.deletePost();
+        actions.assertElementPresent(DELETE_POST_MESSAGE);
+    }
+
+    @Test
+    //FTP1-124 [Like] Dislike a public post of another user
+    public void when_UserDislikePublicPost_expected_PostIsDisliked() {
+        postPage.createPost("public");
+        actions.assertElementPresent(POST_TEXT);
+        actions.assertElementPresent(POST_IS_PUBLIC);
+        loginPage.navigateToPage();
+        postPage.assertPageNavigated();
+        loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
+        postPage.likePost();
+        actions.assertElementPresent(POST_DISLIKE_BUTTON);
+        postPage.dislikePost();
+        actions.assertElementPresent(POST_LIKE_BUTTON);
+        loginPage.navigateToPage();
+        postPage.assertPageNavigated();
         loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         postPage.deletePost();
         actions.assertElementPresent(DELETE_POST_MESSAGE);
