@@ -6,7 +6,7 @@ import static com.telerikacademy.testframework.pages.Constants.*;
 
 public class CommentPage extends BasePage {
     public CommentPage(WebDriver driver) {
-        super(driver, HOME_PAGE);
+        super(driver, POSTS_URL);
     }
 
     public void createComment(String commentText) {

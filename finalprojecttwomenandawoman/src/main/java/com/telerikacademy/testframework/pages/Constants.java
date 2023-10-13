@@ -77,7 +77,7 @@ public class Constants {
 
 
     //##############  POSTS #################
-
+    public static final String POSTS_URL = "WEare.latestPostPage";
     public static final String POSTS_ADD_NEW_POST = "posts.addNewPost";
     public static final String LATEST_POST_BUTTON = "posts.latestPost";
     public static final String EXPLORE_POST_BUTTON = "posts.explorePost";

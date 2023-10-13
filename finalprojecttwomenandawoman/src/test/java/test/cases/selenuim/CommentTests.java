@@ -45,7 +45,7 @@ public class CommentTests extends BaseTestSetup {
     @Test
     public void testCreateCommentUnsuccessfully() { //change test name
         UserActions utils = new UserActions();
-        String commentText = utils.generateRandomTextExactLength(1001);
+        String commentText = UserActions.generateRandomTextExactLength(1001);
 
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
