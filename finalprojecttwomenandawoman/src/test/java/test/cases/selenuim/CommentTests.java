@@ -45,15 +45,26 @@ public class CommentTests extends BaseTestSetup {
     @Test
     public void testCreateCommentUnsuccessfully() { //change test name
         UserActions utils = new UserActions();
-        String commentText = utils.generateRandomTextExactLength(1001);
+        String commentText = UserActions.generateRandomTextExactLength(1001);
 
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment(commentText);
 
-        //Assert invalid message
+        //assert invalid message
 
         utils.assertElementPresent(COMMENT_TEXT_FIELD); //refactor actions
+        loginPage.logout();
+    }
+
+    @Test
+    public void testEditCommentSuccessfully() {
+        loginPage.navigateToPage();
+        loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
+        commentPage.createComment("This is a comment.");
+        commentPage.editComment("This is an edited comment.");
+        actions.assertElementPresent(COMMENT_TEXT_FIELD);
+        //add more assertions
         loginPage.logout();
     }
 

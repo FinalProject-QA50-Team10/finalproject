@@ -74,7 +74,7 @@ public class Constants {
 
 
     //##############  POSTS #################
-
+    public static final String POSTS_URL = "WEare.latestPostPage";
     public static final String POSTS_ADD_NEW_POST = "posts.addNewPost";
     public static final String LATEST_POST_BUTTON = "posts.latestPost";
     public static final String EXPLORE_POST_BUTTON = "posts.explorePost";
@@ -85,6 +85,8 @@ public class Constants {
     public static final String DELETE_BUTTON_SELECT = "posts.selectDeleteDropDown";
     public static final String DELETE_BUTTON_SUBMIT = "posts.submitButton";
     public static final String DELETE_POST_MESSAGE = "post.deleteMessage";
+    public static final String POST_LIKE_BUTTON = "posts.likePost";
+    public static final String POST_DISLIKE_BUTTON = "posts.dislikePostButton";
     public static final String POSTS_VISIBILITY = "posts.visibility";
     public static final String POSTS_PUBLIC_VISIBILITY = "posts.publicVisibility";
     public static final String POSTS_PRIVATE_VISIBILITY = "posts.privateVisibility";
@@ -103,6 +105,9 @@ public class Constants {
 
     public static final String COMMENT_TEXT_FIELD = "comments.commentTextField";
     public static final String COMMENT_SUBMIT_BUTTON= "comments.submitCommentButton";
+    public static final String COMMENT_SHOW_COMMENTS_BUTTON= "comments.showCommentsButton";
+    public static final String EDIT_COMMENT_BUTTON= "comments.editCommentButton";
+    public static final String EDIT_COMMENT_SUBMIT_BUTTON= "comments.submitEditedCommentButton";
 
     //############## DESCRIPTIONS #################
 

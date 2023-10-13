@@ -1,0 +1,278 @@
+Index: src/main/java/com/telerikacademy/testframework/pages/PostPage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.telerikacademy.testframework.pages;\r\n\r\nimport org.openqa.selenium.WebDriver;\r\n\r\nimport static com.telerikacademy.testframework.pages.Constants.*;\r\n\r\npublic class PostPage extends BasePage {\r\n    public PostPage(WebDriver driver) {\r\n        super(driver, HOME_PAGE);\r\n    }\r\n\r\n    public void createPost(String postType) {\r\n        actions.waitForElementClickable(POSTS_ADD_NEW_POST);\r\n        actions.clickElement(POSTS_ADD_NEW_POST);\r\n        actions.waitForElementClickable(POSTS_VISIBILITY);\r\n        actions.clickElement(POSTS_VISIBILITY);\r\n\r\n        if (postType.equalsIgnoreCase(\"public\")) {\r\n            actions.waitForElementClickable(POSTS_PUBLIC_VISIBILITY);\r\n            actions.clickElement(POSTS_PUBLIC_VISIBILITY);\r\n            actions.waitForElementClickable(POST_MESSAGE_FIELD);\r\n            actions.typeValueInField(POST_MESSAGE, POST_MESSAGE_FIELD);\r\n        } else if (postType.equalsIgnoreCase(\"private\")) {\r\n            actions.waitForElementClickable(POSTS_PRIVATE_VISIBILITY);\r\n            actions.clickElement(POSTS_PRIVATE_VISIBILITY);\r\n            actions.waitForElementClickable(POST_MESSAGE_FIELD);\r\n            actions.typeValueInField(POST_MESSAGE_PRIVATE, POST_MESSAGE_FIELD);\r\n        }\r\n\r\n        actions.waitForElementClickable(POST_SAVE_BUTTON);\r\n        actions.clickElement(POST_SAVE_BUTTON);\r\n    }\r\n\r\n    public void deletePost() {\r\n        actions.waitForElementClickable(LATEST_POST_BUTTON);\r\n        actions.clickElement(LATEST_POST_BUTTON);\r\n        actions.waitForElementClickable(EXPLORE_POST_BUTTON);\r\n        actions.clickElement(EXPLORE_POST_BUTTON);\r\n        actions.waitForElementClickable(DELETE_POST_BUTTON);\r\n        actions.clickElement(DELETE_POST_BUTTON);\r\n        actions.waitForElementClickable(DELETE_DROP_DOWN_MENU);\r\n        actions.clickElement(DELETE_DROP_DOWN_MENU);\r\n        actions.waitForElementClickable(DELETE_BUTTON_SELECT);\r\n        actions.clickElement(DELETE_BUTTON_SELECT);\r\n        actions.waitForElementClickable(DELETE_BUTTON_SUBMIT);\r\n        actions.clickElement(DELETE_BUTTON_SUBMIT);\r\n    }\r\n\r\n    public void editPublicPost() {\r\n        actions.waitForElementClickable(LATEST_POST_BUTTON);\r\n        actions.clickElement(LATEST_POST_BUTTON);\r\n        actions.waitForElementClickable(EXPLORE_POST_BUTTON);\r\n        actions.clickElement(EXPLORE_POST_BUTTON);\r\n        actions.waitForElementClickable(EDIT_POST_BUTTON);\r\n        actions.clickElement(EDIT_POST_BUTTON);\r\n        actions.waitForElementClickable(POSTS_VISIBILITY);\r\n        actions.clickElement(POSTS_VISIBILITY);\r\n        actions.waitForElementClickable(POSTS_PUBLIC_VISIBILITY);\r\n        actions.clickElement(POSTS_PUBLIC_VISIBILITY);\r\n        actions.waitForElementClickable(POST_MESSAGE_FIELD);\r\n        actions.typeValueInField(POST_EDIT_MESSAGE, POST_MESSAGE_FIELD);\r\n        actions.waitForElementClickable(POST_SAVE_BUTTON);\r\n        actions.clickElement(POST_SAVE_BUTTON);\r\n    }\r\n\r\n    public void editPrivatePost() {\r\n        actions.waitForElementClickable(LATEST_POST_BUTTON);\r\n        actions.clickElement(LATEST_POST_BUTTON);\r\n        actions.waitForElementClickable(EXPLORE_POST_BUTTON);\r\n        actions.clickElement(EXPLORE_POST_BUTTON);\r\n        actions.waitForElementClickable(EDIT_POST_BUTTON);\r\n        actions.clickElement(EDIT_POST_BUTTON);\r\n        actions.waitForElementClickable(POSTS_VISIBILITY);\r\n        actions.clickElement(POSTS_VISIBILITY);\r\n        actions.waitForElementClickable(POSTS_PRIVATE_VISIBILITY);\r\n        actions.clickElement(POSTS_PRIVATE_VISIBILITY);\r\n        actions.waitForElementClickable(POST_MESSAGE_FIELD);\r\n        actions.typeValueInField(POST_EDIT_MESSAGE, POST_MESSAGE_FIELD);\r\n        actions.waitForElementClickable(POST_SAVE_BUTTON);\r\n        actions.clickElement(POST_SAVE_BUTTON);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/telerikacademy/testframework/pages/PostPage.java b/src/main/java/com/telerikacademy/testframework/pages/PostPage.java
+--- a/src/main/java/com/telerikacademy/testframework/pages/PostPage.java	(revision b66c8cddea7dd3ed0fef1f8d9ce2af81c3b8a6b2)
++++ b/src/main/java/com/telerikacademy/testframework/pages/PostPage.java	(date 1697192389977)
+@@ -31,6 +31,14 @@
+         actions.clickElement(POST_SAVE_BUTTON);
+     }
+ 
++    public void likePost() {
++        actions.waitForElementClickable(LATEST_POST_BUTTON);
++        actions.clickElement(LATEST_POST_BUTTON);
++        actions.waitForElementClickable(POST_LIKE_BUTTON);
++        actions.clickElement(POST_LIKE_BUTTON);
++        actions.waitForElementPresent(POST_DISLIKE_BUTTON);
++    }
++
+     public void deletePost() {
+         actions.waitForElementClickable(LATEST_POST_BUTTON);
+         actions.clickElement(LATEST_POST_BUTTON);
+Index: src/test/resources/mappings/ui_map.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>homePage.searchForm=//div[@class='ftco-search col-md-12']\r\nhomePage.signInButton=//div[@class='collapse navbar-collapse']//a[contains(.,'SIGN')]\r\nhomePage.logOutButton=//div[@class='collapse navbar-collapse']//a[contains(.,'LOGOUT')]\r\nhomePage.personalProfileButton=//div[@class='collapse navbar-collapse']//a[contains(.,'Personal')]\r\nhomePage.addNewPostButton=//div[@class='collapse navbar-collapse']//a[contains(.,'Add New')]\r\nhomePage.registerButton=//div[@id=\"ftco-nav\"]//a[contains(.,\"REGISTER\")]\r\n\r\nregistrationPage.username=//input[@id=\"name\"]\r\nregistrationPage.email=//input[@id=\"email\"]\r\nregistrationPage.password=//input[@id=\"password\"]\r\nregistrationPage.confirmPassword=//input[@id=\"confirm\"]\r\nregistrationPage.registerButton =//input[@value=\"Register\"]\r\nregistrationPage.welcomeMessage=//div[@class=\"container\"]//h1[contains(.,\"Welcome to our community.\")]\r\n\r\n\r\nloginPage.usernameField=//input[@id='username']\r\nloginPage.passwordField=//input[@id='password']\r\nloginPage.loginButton=//input[@type='submit']\r\nloginPage.homeButton=//div[@id=\"ftco-nav\"]//a[contains(.,\"Home\")]\r\nloginPage.title=//h1[contains(.,'Login Page')]\r\nloginPage.errorMessage=//i[contains(.,' Wrong username or password. ')]\r\nlogoutPage.errorMessage=//i[contains(.,' You have been logged out. ')]\r\n\r\nsearchForm.jobTitleField=//form[@class='search-job']//input[@id='searchParam1']\r\nsearchForm.nameField=//form[@class='search-job']//input[@id='searchParam2']\r\nsearchForm.searchButton=//button[@type='submit']\r\n//searchForm.searchResults=//div[@class='container' and (descendant::a[@class='btn btn-primary'])]\r\nsearchForm.searchResults=//div[@class='team d-md-flex p-4 bg-white' and (descendant::a[@class='btn btn-primary'])]\r\nsearchForm.searchResults.jobTitle=//div[@class='team d-md-flex p-4 bg-white']//span[@class='position']\r\nsearchForm.searchResults.name=//div[@class='team d-md-flex p-4 bg-white']//h2\r\n\r\n\r\n\r\nadmin.adminZoneButton=//a[@href='/admin']\r\nadmin.viewUsersButton=//input[@value='View Users']\r\nadmin.seeUserProfileButton=//a[contains(@class, 'btn-primary')]\r\nadmin.enableUserButton=//input[@value='enable']\r\nadmin.disableUserButton=//input[@value='disable']\r\n\r\n\r\nposts.addNewPost=//a[@href='/posts/auth/newPost']\r\nposts.latestPost=//a[@href='/posts' and text()='Latest Posts']\r\nposts.explorePost=//*[contains(text(),'Explore this')]\r\nposts.editPostButton=//a[contains(text(), 'Edit post')]\r\nposts.editPostText=//p[text()='Edit Public Post']\r\nposts.deletePostButton=//*[contains(text(),'Delete post')]\r\nposts.deleteDropDownMenu=//select[@id='StringListId']\r\nposts.selectDeleteDropDown=//option[text()='Delete post']\r\nposts.submitButton=//input[@value='Submit']\r\npost.deleteMessage=//h1[@class='mb-3 bread'][text()='Post deleted successfully']\r\nposts.visibility=//select[@id='StringListId']\r\nposts.publicVisibility=//option[text()='Public post']\r\nposts.privateVisibility=//option[text()='Private post']\r\nposts.messageField=//textarea[@id='message']\r\nposts.savePostButton=//input[@value='Save post']\r\nposts.postText=//p[text()='This is my first post with Selenium WebDriver']\r\nposts.postTextPrivate=//p[text()='This is my first private post with Selenium WebDriver']\r\nposts.postIsPublic=//div[contains(span, \"true\")]\r\nposts.postIsPrivate=//div[contains(span, \"false\")]\r\nposts.browsePublicPostsButton= //input[@value='Browse' and @class='btn py-3 px-4 btn-primary'][1]\r\n\r\ncomments.commentTextField=//textarea[@id='message']\r\ncomments.submitCommentButton=//input[@value='Post Comment']\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/src/test/resources/mappings/ui_map.properties b/src/test/resources/mappings/ui_map.properties
+--- a/src/test/resources/mappings/ui_map.properties	(revision b66c8cddea7dd3ed0fef1f8d9ce2af81c3b8a6b2)
++++ b/src/test/resources/mappings/ui_map.properties	(date 1697192317169)
+@@ -41,6 +41,8 @@
+ posts.addNewPost=//a[@href='/posts/auth/newPost']
+ posts.latestPost=//a[@href='/posts' and text()='Latest Posts']
+ posts.explorePost=//*[contains(text(),'Explore this')]
++posts.likePost=//input[@value="Like"]
++posts.dislikePostButton=//input[@value="Dislike"]
+ posts.editPostButton=//a[contains(text(), 'Edit post')]
+ posts.editPostText=//p[text()='Edit Public Post']
+ posts.deletePostButton=//*[contains(text(),'Delete post')]
+Index: src/test/java/test/cases/selenuim/PostTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package test.cases.selenuim;\r\n\r\nimport com.telerikacademy.testframework.pages.LoginPage;\r\nimport com.telerikacademy.testframework.pages.PostPage;\r\nimport org.junit.jupiter.api.AfterEach;\r\nimport org.junit.jupiter.api.BeforeEach;\r\nimport org.junit.jupiter.api.Test;\r\n\r\nimport static com.telerikacademy.testframework.pages.Constants.*;\r\n\r\npublic class PostTests extends BaseTestSetup {\r\n\r\n    PostPage post = new PostPage(actions.getDriver());\r\n    LoginPage loginPage = new LoginPage(actions.getDriver());\r\n\r\n    @BeforeEach\r\n    public void login() {\r\n        loginPage.navigateToPage();\r\n        loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);\r\n    }\r\n\r\n    @AfterEach\r\n    public void logOut() {\r\n        loginPage.logout();\r\n    }\r\n\r\n    @Test\r\n    // FPT1-25 [Add New Post] Create Public Post\r\n    public void when_UserCreatePublicPost_expect_PublicPostIsCreated() {\r\n        post.createPost(\"public\");\r\n        actions.assertElementPresent(POST_TEXT);\r\n        actions.assertElementPresent(POST_IS_PUBLIC);\r\n    }\r\n\r\n    @Test\r\n    // FTP1-26 [Add New Post] Create Private Post\r\n    public void when_UserCreatePrivatePost_expect_PrivatePostIsCreated() {\r\n        post.createPost(\"private\");\r\n        actions.assertElementPresent(POST_PRIVATE_TEXT);\r\n        actions.assertElementPresent(POST_IS_PRIVATE);\r\n    }\r\n\r\n    @Test\r\n    //FPT1-55 [Delete Post] Delete an Existing Public Post\r\n    public void when_UserCreatePublicPost_expect_PublicPostIsDeleted() {\r\n        post.createPost(\"public\");\r\n        actions.assertElementPresent(POST_TEXT);\r\n        actions.assertElementPresent(POST_IS_PUBLIC);\r\n        post.deletePost();\r\n        actions.assertElementPresent(DELETE_POST_MESSAGE);\r\n    }\r\n\r\n    @Test\r\n    //FPT1-56 [Delete Post] Delete an Existing Private Post\r\n    public void when_UserCreatePrivatePost_expect_PrivatePostIsDeleted() {\r\n        post.createPost(\"private\");\r\n        actions.assertElementPresent(POST_PRIVATE_TEXT);\r\n        actions.assertElementPresent(POST_IS_PRIVATE);\r\n        post.deletePost();\r\n        actions.assertElementPresent(DELETE_POST_MESSAGE);\r\n    }\r\n\r\n    @Test\r\n    //FPT1-45 [Edit Post] Edit an Existing Public Post\r\n    public void when_UserEditPublicPost_expect_PublicPostIsEdited() {\r\n        post.createPost(\"public\");\r\n        actions.assertElementPresent(POST_TEXT);\r\n        actions.assertElementPresent(POST_IS_PUBLIC);\r\n        post.editPublicPost();\r\n        actions.assertElementPresent(EDIT_POST_TEXT);\r\n    }\r\n\r\n    @Test\r\n    //FPT1-46 [Edit Post]  Edit an Existing Private Post\r\n    public void when_UserEditPrivatePost_expect_PrivatePostIsEdited() {\r\n        post.createPost(\"private\");\r\n        actions.assertElementPresent(POST_PRIVATE_TEXT);\r\n        actions.assertElementPresent(POST_IS_PRIVATE);\r\n        post.editPrivatePost();\r\n        actions.assertElementPresent(EDIT_POST_TEXT);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/test/cases/selenuim/PostTests.java b/src/test/java/test/cases/selenuim/PostTests.java
+--- a/src/test/java/test/cases/selenuim/PostTests.java	(revision b66c8cddea7dd3ed0fef1f8d9ce2af81c3b8a6b2)
++++ b/src/test/java/test/cases/selenuim/PostTests.java	(date 1697193684820)
+@@ -68,6 +68,8 @@
+         actions.assertElementPresent(POST_IS_PUBLIC);
+         post.editPublicPost();
+         actions.assertElementPresent(EDIT_POST_TEXT);
++        post.deletePost();
++        actions.assertElementPresent(DELETE_POST_MESSAGE);
+     }
+ 
+     @Test
+@@ -78,5 +80,20 @@
+         actions.assertElementPresent(POST_IS_PRIVATE);
+         post.editPrivatePost();
+         actions.assertElementPresent(EDIT_POST_TEXT);
++        post.deletePost();
++        actions.assertElementPresent(DELETE_POST_MESSAGE);
++    }
++
++    @Test
++    //FPT1-123 [Like] Like a public post of another user
++    //FTP1-124 [Like] Dislike a public post
++    public void when_UserLikePublicPost_expected_PostIsLiked() {
++        post.createPost("public");
++        actions.assertElementPresent(POST_TEXT);
++        actions.assertElementPresent(POST_IS_PUBLIC);
++        loginPage.navigateToPage();
++        loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
++        post.likePost();
++        actions.assertElementPresent(POST_DISLIKE_BUTTON);
+     }
+ }
+Index: src/main/java/com/telerikacademy/testframework/pages/Constants.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.telerikacademy.testframework.pages;\r\n\r\npublic class Constants {\r\n\r\n    //########### URL ################\r\n    public static final String HOME_PAGE = \"WEare.homePage\";\r\n    public static final String LOGIN_PAGE = \"WEare.loginPage\";\r\n    public static final String REGISTER_PAGE = \"WEare.registerPage\";\r\n    public static final String SEARCHED_USERS_PAGE = \"WEare.searchedUsersPage\";\r\n\r\n    //############### USER DATA ###############\r\n    public static final String ADMIN_NAME = \"WEare.admin.username\";\r\n    public static final String ADMIN_PASSWORD = \"WEare.admin.password\";\r\n    public static final String GEORGE_BUSH_NAME = \"George Bush\";\r\n    public static final String GEORGE_BUSH_USERNAME = \"WEare.GeorgeBush.username\";\r\n    public static final String GEORGE_BUSH_FIRST_NAME = \"George\";\r\n    public static final String GEORGE_BUSH_LAST_NAME = \" Bush\";\r\n    public static final String GEORGE_BUSH_PASSWORD = \"WEare.GeorgeBush.password\";\r\n    public static final String MR_BEAST_USERNAME = \"WEare.MrBeast.username\";\r\n    public static final String MR_BEAST_PASSWORD = \"WEare.MrBeast.password\";\r\n    public static final String JACK_NICHOLSON_USERNAME = \"WEare.JackNicholson.username\";\r\n    public static final String JACK_NICHOLSON_PASSWORD = \"WEare.JackNicholson.password\";\r\n\r\n//    public static final String TOM_CRUISE_USERNAME = \"TomCruise\";\r\n//    public static final String TOM_CRUISE_PASSWORD = \"HaHaHa123!\";\r\n//    public static final int TOM_CRUISE_ID = 188;\r\n//    public static final String FOR_EDIT_USERNAME = \"telerikdani\";\r\n//    public static final String FOR_EDIT_PASSWORD = \"123456\";\r\n//    public static final int FOR_EDIT_ID = 39;\r\n//    public static final String FOR_EDIT_BIRTHDAY = \"1955-07-17\";\r\n//    public static final String FOR_EDIT_FIRST_NAME = \"Ryan\";\r\n//    public static final String FOR_EDIT_LAST_NAME = \"Gosling\";\r\n//    public static final int INVALID_ID = 800;\r\n    public static final String INVALID_USERNAME = \"Barbie\";\r\n    public static final String VALID_JOB_TITLE = \"Actor\";\r\n    public static String RANDOM_USERNAME;\r\n    public static String RANDOM_EMAIL;\r\n\r\n    //##############  Registration #################\r\n    public static final String USERNAME_FIELD = \"registrationPage.username\";\r\n    public static final String EMAIL_FIELD = \"registrationPage.email\";\r\n    public static final String PASSWORD_FIELD = \"registrationPage.password\";\r\n    public static final String CONFIRM_PASSWORD_FIELD = \"registrationPage.confirmPassword\";\r\n    public static final String REGISTRATION_BUTTON = \"registrationPage.registerButton\";\r\n    public static final String WELCOME_MESSAGE = \"registrationPage.welcomeMessage\";\r\n\r\n\r\n    //################ X-PATHS #################\r\n    public static final String LOGIN_USERNAME_FIELD_PATH = \"loginPage.usernameField\";\r\n    public static final String LOGIN_PASSWORD_FIELD_PATH = \"loginPage.passwordField\";\r\n    public static final String LOGIN_BUTTON_PATH = \"loginPage.loginButton\";\r\n    public static final String SIGN_IN_BUTTON_PATH = \"homePage.signInButton\";\r\n    public static final String REGISTER_BUTTON_PATH = \"homePage.registerButton\";\r\n    public static final String LOGOUT_BUTTON_PATH = \"homePage.logOutButton\";\r\n    public static final String PERSONAL_PROFILE_BUTTON_PATH = \"homePage.personalProfileButton\";\r\n    public static final String ADD_NEW_POST_BUTTON_PATH = \"homePage.addNewPostButton\";\r\n    public static final String SEARCH_FORM_PATH = \"homePage.searchForm\";\r\n    public static final String HOME_BUTTON_PATH = \"loginPage.homeButton\";\r\n    public static final String LOG_OUT_BUTTON_PATH = \"homePage.logOutButton\";\r\n    public static final String LOGIN_ERROR_MESSAGE_PATH = \"loginPage.errorMessage\";\r\n    public static final String LOGOUT_ERROR_MESSAGE_PATH = \"logoutPage.errorMessage\";\r\n    public static final String LOGIN_PAGE_TITLE_PATH = \"loginPage.title\";\r\n    public static final String SEARCH_JOB_FIELD_PATH = \"searchForm.jobTitleField\";\r\n    public static final String SEARCH_NAME_FIELD_PATH = \"searchForm.nameField\";\r\n    public static final String SEARCH_BUTTON_PATH = \"searchForm.searchButton\";\r\n    public static final String SEARCH_RESULTS_PATH = \"searchForm.searchResults\";\r\n    public static final String SEARCH_RESULTS_JOB_TITLE_PATH = \"searchForm.searchResults.jobTitle\";\r\n    public static final String SEARCH_RESULTS_NAME_PATH = \"searchForm.searchResults.name\";\r\n\r\n\r\n    //##############  Admin user part #################\r\n    public static final String ADMIN_ZONE_BUTTON = \"admin.adminZoneButton\";\r\n    public static final String VIEW_USERS_BUTTON = \"admin.viewUsersButton\";\r\n    public static final String SEE_USER_PROFILE_BUTTON = \"admin.seeUserProfileButton\";\r\n    public static final String ENABLE_USER_BUTTON = \"admin.enableUserButton\";\r\n    public static final String DISABLE_USER_BUTTON = \"admin.disableUserButton\";\r\n\r\n\r\n    //##############  POSTS #################\r\n\r\n    public static final String POSTS_ADD_NEW_POST = \"posts.addNewPost\";\r\n    public static final String LATEST_POST_BUTTON = \"posts.latestPost\";\r\n    public static final String EXPLORE_POST_BUTTON = \"posts.explorePost\";\r\n    public static final String EDIT_POST_BUTTON = \"posts.editPostButton\";\r\n    public static final String EDIT_POST_TEXT = \"posts.editPostText\";\r\n    public static final String DELETE_POST_BUTTON = \"posts.deletePostButton\";\r\n    public static final String DELETE_DROP_DOWN_MENU = \"posts.deleteDropDownMenu\";\r\n    public static final String DELETE_BUTTON_SELECT = \"posts.selectDeleteDropDown\";\r\n    public static final String DELETE_BUTTON_SUBMIT = \"posts.submitButton\";\r\n    public static final String DELETE_POST_MESSAGE = \"post.deleteMessage\";\r\n    public static final String POSTS_VISIBILITY = \"posts.visibility\";\r\n    public static final String POSTS_PUBLIC_VISIBILITY = \"posts.publicVisibility\";\r\n    public static final String POSTS_PRIVATE_VISIBILITY = \"posts.privateVisibility\";\r\n    public static final String POST_MESSAGE_FIELD = \"posts.messageField\";\r\n    public static final String POST_MESSAGE = \"This is my first post with Selenium WebDriver\";\r\n    public static final String POST_MESSAGE_PRIVATE = \"This is my first private post with Selenium WebDriver\";\r\n    public static final String POST_EDIT_MESSAGE = \"Edit Public Post\";\r\n    public static final String POST_SAVE_BUTTON = \"posts.savePostButton\";\r\n    public static final String POST_TEXT = \"posts.postText\";\r\n    public static final String POST_PRIVATE_TEXT = \"posts.postTextPrivate\";\r\n    public static final String POST_IS_PUBLIC = \"posts.postIsPublic\";\r\n    public static final String POST_IS_PRIVATE = \"posts.postIsPrivate\";\r\n    public static final String BROWSE_POST_SELECTION_BUTTON = \"posts.browsePublicPostsButton\";\r\n\r\n    //COMMENTS\r\n\r\n    public static final String COMMENT_TEXT_FIELD = \"comments.commentTextField\";\r\n    public static final String COMMENT_SUBMIT_BUTTON= \"comments.submitCommentButton\";\r\n\r\n    //############## DESCRIPTIONS #################\r\n\r\n    public static final String LOGIN_ERROR_MESSAGE = \"Wrong username or password.\";\r\n    public static final String EMPTY_STRING = \"\";\r\n    public static final int MIN_LENGTH_USERNAME = 2;\r\n    public static final int MAX_LENGTH_USERNAME = 20;\r\n    public static final String EMAIL_END = \"user@abv.com\";\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/telerikacademy/testframework/pages/Constants.java b/src/main/java/com/telerikacademy/testframework/pages/Constants.java
+--- a/src/main/java/com/telerikacademy/testframework/pages/Constants.java	(revision b66c8cddea7dd3ed0fef1f8d9ce2af81c3b8a6b2)
++++ b/src/main/java/com/telerikacademy/testframework/pages/Constants.java	(date 1697192317195)
+@@ -88,6 +88,8 @@
+     public static final String DELETE_BUTTON_SELECT = "posts.selectDeleteDropDown";
+     public static final String DELETE_BUTTON_SUBMIT = "posts.submitButton";
+     public static final String DELETE_POST_MESSAGE = "post.deleteMessage";
++    public static final String POST_LIKE_BUTTON = "posts.likePost";
++    public static final String POST_DISLIKE_BUTTON = "posts.dislikePostButton";
+     public static final String POSTS_VISIBILITY = "posts.visibility";
+     public static final String POSTS_PUBLIC_VISIBILITY = "posts.publicVisibility";
+     public static final String POSTS_PRIVATE_VISIBILITY = "posts.privateVisibility";
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e94da0cd-1e2c-4827-938e-b0de7b91aea3\" name=\"Changes\" comment=\"Update Edit an Existing Public Post\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/PostPage.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/PostPage.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2Wer8CFMKYylG4sgW46ToTDiRDO\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\" selected=\"JUnit.PostTests.when_UserEditPublicPost_expect_PublicPostIsEdited\">\r\n    <configuration name=\"CommentTests.testCreateCommentSuccessfully\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"test-automation-framework\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.cases.selenuim.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"test.cases.selenuim\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.cases.selenuim.CommentTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"testCreateCommentSuccessfully\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"LoginTests.when_UnauthenticatedUserLoginWithValidCredentials_Expect_SuccessfulHomePageElementsAreVisible\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"test-automation-framework\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.cases.selenuim.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"test.cases.selenuim\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.cases.selenuim.LoginTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"when_UnauthenticatedUserLoginWithValidCredentials_Expect_SuccessfulHomePageElementsAreVisible\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"LoginTests.when_UnauthenticatedUserNavigateToLoginPage_Expect_LoginPageElementsAreVisible\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"test-automation-framework\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.cases.selenuim.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"test.cases.selenuim\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.cases.selenuim.LoginTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"when_UnauthenticatedUserNavigateToLoginPage_Expect_LoginPageElementsAreVisible\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"PostTests.when_UserEditPrivatePost_expect_PrivatePostIsEdited\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"test-automation-framework\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.cases.selenuim.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"test.cases.selenuim\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.cases.selenuim.PostTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"when_UserEditPrivatePost_expect_PrivatePostIsEdited\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"PostTests.when_UserEditPublicPost_expect_PublicPostIsEdited\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"test-automation-framework\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.cases.selenuim.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"test.cases.selenuim\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.cases.selenuim.PostTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"when_UserEditPublicPost_expect_PublicPostIsEdited\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.PostTests.when_UserEditPublicPost_expect_PublicPostIsEdited\" />\r\n        <item itemvalue=\"JUnit.PostTests.when_UserEditPrivatePost_expect_PrivatePostIsEdited\" />\r\n        <item itemvalue=\"JUnit.LoginTests.when_UnauthenticatedUserLoginWithValidCredentials_Expect_SuccessfulHomePageElementsAreVisible\" />\r\n        <item itemvalue=\"JUnit.LoginTests.when_UnauthenticatedUserNavigateToLoginPage_Expect_LoginPageElementsAreVisible\" />\r\n        <item itemvalue=\"JUnit.CommentTests.testCreateCommentSuccessfully\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e94da0cd-1e2c-4827-938e-b0de7b91aea3\" name=\"Changes\" comment=\"\" />\r\n      <created>1697103728380</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1697103728380</updated>\r\n      <workItem from=\"1697103731309\" duration=\"2569000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Add login method changes in Login page\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1697104615444</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1697104615444</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Add Create Private Post in PostTests and createPrivatePost in PostPage\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1697115770395</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1697115770395</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Update Create Private/Public Post in PostTests\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1697117263426</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1697117263426</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Add delete post method in Post Page\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1697120128020</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1697120128020</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Add Delete an Existing Public/Private Post in PostTests\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1697123269781</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1697123269781</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Update Delete an Existing Public/Private Post in PostTests\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1697126237226</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1697126237226</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Add Edit an Existing Public Post\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1697183111667</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1697183111667</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Update Edit an Existing Public Post\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1697184425918</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1697184425918</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"9\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT\" value=\"false\" />\r\n    <option name=\"CHECK_NEW_TODO\" value=\"false\" />\r\n    <MESSAGE value=\"Add login method changes in Login page\" />\r\n    <MESSAGE value=\"Add Create Private Post in PostTests and createPrivatePost in PostPage\" />\r\n    <MESSAGE value=\"Update Create Private/Public Post in PostTests\" />\r\n    <MESSAGE value=\"Add delete post method in Post Page\" />\r\n    <MESSAGE value=\"Add Delete an Existing Public/Private Post in PostTests\" />\r\n    <MESSAGE value=\"Update Delete an Existing Public/Private Post in PostTests\" />\r\n    <MESSAGE value=\"Add Edit an Existing Public Post\" />\r\n    <MESSAGE value=\"Update Edit an Existing Public Post\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Update Edit an Existing Public Post\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/test/java/test/cases/selenuim/RegistrationTests.java</url>\r\n          <line>27</line>\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/test/java/test/cases/selenuim/CommentTests.java</url>\r\n          <line>38</line>\r\n          <option name=\"timeStamp\" value=\"4\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b66c8cddea7dd3ed0fef1f8d9ce2af81c3b8a6b2)
++++ b/.idea/workspace.xml	(date 1697193697933)
+@@ -4,11 +4,15 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e94da0cd-1e2c-4827-938e-b0de7b91aea3" name="Changes" comment="Update Edit an Existing Public Post">
++    <list default="true" id="e94da0cd-1e2c-4827-938e-b0de7b91aea3" name="Changes" comment="Add Edit an Existing Private Post">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/Constants.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/PostPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/PostPage.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/resources/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/mappings/ui_map.properties" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/mappings/ui_map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/mappings/ui_map.properties" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -35,8 +39,8 @@
+     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+ }</component>
+-  <component name="RunManager" selected="JUnit.PostTests.when_UserEditPublicPost_expect_PublicPostIsEdited">
+-    <configuration name="CommentTests.testCreateCommentSuccessfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++  <component name="RunManager" selected="JUnit.PostTests.when_UserLikePublicPost_expected_PostIsLiked">
++    <configuration name="LoginTests.when_UnauthenticatedUserLoginWithValidCredentials_Expect_SuccessfulHomePageElementsAreVisible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="test-automation-framework" />
+       <extension name="coverage">
+         <pattern>
+@@ -45,14 +49,14 @@
+         </pattern>
+       </extension>
+       <option name="PACKAGE_NAME" value="test.cases.selenuim" />
+-      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.CommentTests" />
+-      <option name="METHOD_NAME" value="testCreateCommentSuccessfully" />
++      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
++      <option name="METHOD_NAME" value="when_UnauthenticatedUserLoginWithValidCredentials_Expect_SuccessfulHomePageElementsAreVisible" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="LoginTests.when_UnauthenticatedUserLoginWithValidCredentials_Expect_SuccessfulHomePageElementsAreVisible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="LoginTests.when_UnauthenticatedUserNavigateToLoginPage_Expect_LoginPageElementsAreVisible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="test-automation-framework" />
+       <extension name="coverage">
+         <pattern>
+@@ -62,13 +66,13 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="test.cases.selenuim" />
+       <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
+-      <option name="METHOD_NAME" value="when_UnauthenticatedUserLoginWithValidCredentials_Expect_SuccessfulHomePageElementsAreVisible" />
++      <option name="METHOD_NAME" value="when_UnauthenticatedUserNavigateToLoginPage_Expect_LoginPageElementsAreVisible" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="LoginTests.when_UnauthenticatedUserNavigateToLoginPage_Expect_LoginPageElementsAreVisible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="PostTests.when_UserEditPrivatePost_expect_PrivatePostIsEdited" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="test-automation-framework" />
+       <extension name="coverage">
+         <pattern>
+@@ -77,14 +81,14 @@
+         </pattern>
+       </extension>
+       <option name="PACKAGE_NAME" value="test.cases.selenuim" />
+-      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
+-      <option name="METHOD_NAME" value="when_UnauthenticatedUserNavigateToLoginPage_Expect_LoginPageElementsAreVisible" />
++      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.PostTests" />
++      <option name="METHOD_NAME" value="when_UserEditPrivatePost_expect_PrivatePostIsEdited" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="PostTests.when_UserEditPrivatePost_expect_PrivatePostIsEdited" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="PostTests.when_UserEditPublicPost_expect_PublicPostIsEdited" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="test-automation-framework" />
+       <extension name="coverage">
+         <pattern>
+@@ -94,13 +98,13 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="test.cases.selenuim" />
+       <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.PostTests" />
+-      <option name="METHOD_NAME" value="when_UserEditPrivatePost_expect_PrivatePostIsEdited" />
++      <option name="METHOD_NAME" value="when_UserEditPublicPost_expect_PublicPostIsEdited" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="PostTests.when_UserEditPublicPost_expect_PublicPostIsEdited" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="PostTests.when_UserLikePublicPost_expected_PostIsLiked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="test-automation-framework" />
+       <extension name="coverage">
+         <pattern>
+@@ -110,7 +114,7 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="test.cases.selenuim" />
+       <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.PostTests" />
+-      <option name="METHOD_NAME" value="when_UserEditPublicPost_expect_PublicPostIsEdited" />
++      <option name="METHOD_NAME" value="when_UserLikePublicPost_expected_PostIsLiked" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -118,11 +122,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="JUnit.PostTests.when_UserLikePublicPost_expected_PostIsLiked" />
++        <item itemvalue="JUnit.PostTests.when_UserEditPrivatePost_expect_PrivatePostIsEdited" />
+         <item itemvalue="JUnit.PostTests.when_UserEditPublicPost_expect_PublicPostIsEdited" />
+-        <item itemvalue="JUnit.PostTests.when_UserEditPrivatePost_expect_PrivatePostIsEdited" />
+         <item itemvalue="JUnit.LoginTests.when_UnauthenticatedUserLoginWithValidCredentials_Expect_SuccessfulHomePageElementsAreVisible" />
+         <item itemvalue="JUnit.LoginTests.when_UnauthenticatedUserNavigateToLoginPage_Expect_LoginPageElementsAreVisible" />
+-        <item itemvalue="JUnit.CommentTests.testCreateCommentSuccessfully" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -200,7 +204,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1697184425918</updated>
+     </task>
+-    <option name="localTasksCounter" value="9" />
++    <task id="LOCAL-00009" summary="Add Edit an Existing Private Post">
++      <option name="closed" value="true" />
++      <created>1697188031329</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1697188031329</updated>
++    </task>
++    <option name="localTasksCounter" value="10" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -217,7 +229,8 @@
+     <MESSAGE value="Update Delete an Existing Public/Private Post in PostTests" />
+     <MESSAGE value="Add Edit an Existing Public Post" />
+     <MESSAGE value="Update Edit an Existing Public Post" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Update Edit an Existing Public Post" />
++    <MESSAGE value="Add Edit an Existing Private Post" />
++    <option name="LAST_COMMIT_MESSAGE" value="Add Edit an Existing Private Post" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+Index: target/test-classes/mappings/ui_map.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>homePage.searchForm=//div[@class='ftco-search col-md-12']\r\nhomePage.signInButton=//div[@class='collapse navbar-collapse']//a[contains(.,'SIGN')]\r\nhomePage.logOutButton=//div[@class='collapse navbar-collapse']//a[contains(.,'LOGOUT')]\r\nhomePage.personalProfileButton=//div[@class='collapse navbar-collapse']//a[contains(.,'Personal')]\r\nhomePage.addNewPostButton=//div[@class='collapse navbar-collapse']//a[contains(.,'Add New')]\r\nhomePage.registerButton=//div[@id=\"ftco-nav\"]//a[contains(.,\"REGISTER\")]\r\n\r\nregistrationPage.username=//input[@id=\"name\"]\r\nregistrationPage.email=//input[@id=\"email\"]\r\nregistrationPage.password=//input[@id=\"password\"]\r\nregistrationPage.confirmPassword=//input[@id=\"confirm\"]\r\nregistrationPage.registerButton =//input[@value=\"Register\"]\r\nregistrationPage.welcomeMessage=//div[@class=\"container\"]//h1[contains(.,\"Welcome to our community.\")]\r\n\r\n\r\nloginPage.usernameField=//input[@id='username']\r\nloginPage.passwordField=//input[@id='password']\r\nloginPage.loginButton=//input[@type='submit']\r\nloginPage.homeButton=//div[@id=\"ftco-nav\"]//a[contains(.,\"Home\")]\r\nloginPage.title=//h1[contains(.,'Login Page')]\r\nloginPage.errorMessage=//i[contains(.,' Wrong username or password. ')]\r\nlogoutPage.errorMessage=//i[contains(.,' You have been logged out. ')]\r\n\r\nsearchForm.jobTitleField=//form[@class='search-job']//input[@id='searchParam1']\r\nsearchForm.nameField=//form[@class='search-job']//input[@id='searchParam2']\r\nsearchForm.searchButton=//button[@type='submit']\r\n//searchForm.searchResults=//div[@class='container' and (descendant::a[@class='btn btn-primary'])]\r\nsearchForm.searchResults=//div[@class='team d-md-flex p-4 bg-white' and (descendant::a[@class='btn btn-primary'])]\r\nsearchForm.searchResults.jobTitle=//div[@class='team d-md-flex p-4 bg-white']//span[@class='position']\r\nsearchForm.searchResults.name=//div[@class='team d-md-flex p-4 bg-white']//h2\r\n\r\n\r\n\r\nadmin.adminZoneButton=//a[@href='/admin']\r\nadmin.viewUsersButton=//input[@value='View Users']\r\nadmin.seeUserProfileButton=//a[contains(@class, 'btn-primary')]\r\nadmin.enableUserButton=//input[@value='enable']\r\nadmin.disableUserButton=//input[@value='disable']\r\n\r\n\r\nposts.addNewPost=//a[@href='/posts/auth/newPost']\r\nposts.latestPost=//a[@href='/posts' and text()='Latest Posts']\r\nposts.explorePost=//*[contains(text(),'Explore this')]\r\nposts.editPostButton=//a[contains(text(), 'Edit post')]\r\nposts.editPostText=//p[text()='Edit Public Post']\r\nposts.deletePostButton=//*[contains(text(),'Delete post')]\r\nposts.deleteDropDownMenu=//select[@id='StringListId']\r\nposts.selectDeleteDropDown=//option[text()='Delete post']\r\nposts.submitButton=//input[@value='Submit']\r\npost.deleteMessage=//h1[@class='mb-3 bread'][text()='Post deleted successfully']\r\nposts.visibility=//select[@id='StringListId']\r\nposts.publicVisibility=//option[text()='Public post']\r\nposts.privateVisibility=//option[text()='Private post']\r\nposts.messageField=//textarea[@id='message']\r\nposts.savePostButton=//input[@value='Save post']\r\nposts.postText=//p[text()='This is my first post with Selenium WebDriver']\r\nposts.postTextPrivate=//p[text()='This is my first private post with Selenium WebDriver']\r\nposts.postIsPublic=//div[contains(span, \"true\")]\r\nposts.postIsPrivate=//div[contains(span, \"false\")]\r\nposts.browsePublicPostsButton= //input[@value='Browse' and @class='btn py-3 px-4 btn-primary'][1]\r\n\r\ncomments.commentTextField=//textarea[@id='message']\r\ncomments.submitCommentButton=//input[@value='Post Comment']\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/target/test-classes/mappings/ui_map.properties b/target/test-classes/mappings/ui_map.properties
+--- a/target/test-classes/mappings/ui_map.properties	(revision b66c8cddea7dd3ed0fef1f8d9ce2af81c3b8a6b2)
++++ b/target/test-classes/mappings/ui_map.properties	(date 1697192317169)
+@@ -41,6 +41,8 @@
+ posts.addNewPost=//a[@href='/posts/auth/newPost']
+ posts.latestPost=//a[@href='/posts' and text()='Latest Posts']
+ posts.explorePost=//*[contains(text(),'Explore this')]
++posts.likePost=//input[@value="Like"]
++posts.dislikePostButton=//input[@value="Dislike"]
+ posts.editPostButton=//a[contains(text(), 'Edit post')]
+ posts.editPostText=//p[text()='Edit Public Post']
+ posts.deletePostButton=//*[contains(text(),'Delete post')]
