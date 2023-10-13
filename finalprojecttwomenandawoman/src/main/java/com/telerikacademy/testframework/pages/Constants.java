@@ -106,6 +106,9 @@ public class Constants {
 
     public static final String COMMENT_TEXT_FIELD = "comments.commentTextField";
     public static final String COMMENT_SUBMIT_BUTTON= "comments.submitCommentButton";
+    public static final String COMMENT_SHOW_COMMENTS_BUTTON= "comments.showCommentsButton";
+    public static final String EDIT_COMMENT_BUTTON= "comments.editCommentButton";
+    public static final String EDIT_COMMENT_SUBMIT_BUTTON= "comments.submitEditedCommentButton";
 
     //############## DESCRIPTIONS #################
 
