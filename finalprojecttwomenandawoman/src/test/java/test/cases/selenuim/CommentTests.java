@@ -40,15 +40,14 @@ public class CommentTests extends BaseTestSetup {
     @Test
     //FPT1-170 [Comment] Create Comment With 1001 Characters as Registered User
     public void when_UserCreatesCommentWithInvalidData_expect_CommentCreationFails() {
-        UserActions utils = new UserActions();
-        String commentText = UserActions.generateRandomTextExactLength(1001);
+        String commentText = UserActions.generateRandomTextExactLength(INVALID_COMMENT_LENGTH);
 
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment(commentText);
 
         //assert invalid message
-        utils.assertElementPresent(COMMENT_TEXT_FIELD); //refactor actions
+        actions.assertElementPresent(COMMENT_TEXT_FIELD);
         authenticatedUserHomePage.logout();
     }
 
@@ -74,14 +73,25 @@ public class CommentTests extends BaseTestSetup {
         authenticatedUserHomePage.logout();
     }
 
-//    @Test
-//    public void testLikeComment() {
+    @Test
+    //FPT1-125 [Like] Verify comments Like button
+    public void when_UserLikesComment_expect_CommentIsLikedSuccessfully() {
+        loginPage.navigateToPage();
+        loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
+        commentPage.createComment("This is a comment.");
+        commentPage.likeComment();
+        authenticatedUserHomePage.logout();
+    }
 
-//    }
-
-//    @Test
-//    public void testDislikeComment() {
-
-//    }
+    @Test
+    //FPT1-126 [Like] Verify comments Dislike button
+    public void when_UserDislikesComment_expect_CommentIsDislikedSuccessfully() {
+        loginPage.navigateToPage();
+        loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
+        commentPage.createComment("This is a comment.");
+        commentPage.likeComment();
+        commentPage.dislikeComment();
+        authenticatedUserHomePage.logout();
+    }
 
 }

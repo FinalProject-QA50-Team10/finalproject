@@ -67,6 +67,4 @@ public class AdminHomePage extends BasePage{
         actions.waitForElementClickable(POST_SAVE_BUTTON);
         actions.clickElement(POST_SAVE_BUTTON);
     }
-
-
 }

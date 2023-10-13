@@ -10,6 +10,7 @@ public class PostPage extends BasePage {
     }
 
     public void createPost(String postType) {
+        navigateToLatestPost();
         actions.waitForElementClickable(POSTS_ADD_NEW_POST);
         actions.clickElement(POSTS_ADD_NEW_POST);
         actions.waitForElementClickable(POSTS_VISIBILITY);
@@ -32,26 +33,22 @@ public class PostPage extends BasePage {
     }
 
     public void likePost() {
-        actions.waitForElementClickable(LATEST_POST_BUTTON);
-        actions.clickElement(LATEST_POST_BUTTON);
+        navigateToLatestPost();
         actions.waitForElementClickable(POST_LIKE_BUTTON);
         actions.clickElement(POST_LIKE_BUTTON);
         actions.waitForElementPresent(POST_DISLIKE_BUTTON);
     }
 
     public void dislikePost() {
-        actions.waitForElementClickable(LATEST_POST_BUTTON);
-        actions.clickElement(LATEST_POST_BUTTON);
+        navigateToLatestPost();
         actions.waitForElementClickable(POST_DISLIKE_BUTTON);
         actions.clickElement(POST_DISLIKE_BUTTON);
         actions.waitForElementPresent(POST_LIKE_BUTTON);
     }
 
     public void deletePost() {
-        actions.waitForElementClickable(LATEST_POST_BUTTON);
-        actions.clickElement(LATEST_POST_BUTTON);
-        actions.waitForElementClickable(EXPLORE_POST_BUTTON);
-        actions.clickElement(EXPLORE_POST_BUTTON);
+        navigateToLatestPost();
+        navigateToExplorePost();
         actions.waitForElementClickable(DELETE_POST_BUTTON);
         actions.clickElement(DELETE_POST_BUTTON);
         actions.waitForElementClickable(DELETE_DROP_DOWN_MENU);
@@ -62,37 +59,37 @@ public class PostPage extends BasePage {
         actions.clickElement(DELETE_BUTTON_SUBMIT);
     }
 
-    public void editPublicPost() {
-        actions.waitForElementClickable(LATEST_POST_BUTTON);
-        actions.clickElement(LATEST_POST_BUTTON);
-        actions.waitForElementClickable(EXPLORE_POST_BUTTON);
-        actions.clickElement(EXPLORE_POST_BUTTON);
+    public void editPost(String postType) {
+        navigateToLatestPost();
+        navigateToExplorePost();
         actions.waitForElementClickable(EDIT_POST_BUTTON);
         actions.clickElement(EDIT_POST_BUTTON);
         actions.waitForElementClickable(POSTS_VISIBILITY);
         actions.clickElement(POSTS_VISIBILITY);
-        actions.waitForElementClickable(POSTS_PUBLIC_VISIBILITY);
-        actions.clickElement(POSTS_PUBLIC_VISIBILITY);
-        actions.waitForElementClickable(POST_MESSAGE_FIELD);
-        actions.typeValueInField(POST_EDIT_MESSAGE, POST_MESSAGE_FIELD);
+
+        if (postType.equalsIgnoreCase("public")) {
+            actions.waitForElementClickable(POSTS_PUBLIC_VISIBILITY);
+            actions.clickElement(POSTS_PUBLIC_VISIBILITY);
+            actions.waitForElementClickable(POST_MESSAGE_FIELD);
+            actions.typeValueInField(POST_EDIT_MESSAGE, POST_MESSAGE_FIELD);
+        } else if (postType.equalsIgnoreCase("private")) {
+            actions.waitForElementClickable(POSTS_PRIVATE_VISIBILITY);
+            actions.clickElement(POSTS_PRIVATE_VISIBILITY);
+            actions.waitForElementClickable(POST_MESSAGE_FIELD);
+            actions.typeValueInField(POST_EDIT_MESSAGE, POST_MESSAGE_FIELD);
+        }
+
         actions.waitForElementClickable(POST_SAVE_BUTTON);
         actions.clickElement(POST_SAVE_BUTTON);
     }
 
-    public void editPrivatePost() {
+    private void navigateToLatestPost() {
         actions.waitForElementClickable(LATEST_POST_BUTTON);
         actions.clickElement(LATEST_POST_BUTTON);
+    }
+
+    private void navigateToExplorePost() {
         actions.waitForElementClickable(EXPLORE_POST_BUTTON);
         actions.clickElement(EXPLORE_POST_BUTTON);
-        actions.waitForElementClickable(EDIT_POST_BUTTON);
-        actions.clickElement(EDIT_POST_BUTTON);
-        actions.waitForElementClickable(POSTS_VISIBILITY);
-        actions.clickElement(POSTS_VISIBILITY);
-        actions.waitForElementClickable(POSTS_PRIVATE_VISIBILITY);
-        actions.clickElement(POSTS_PRIVATE_VISIBILITY);
-        actions.waitForElementClickable(POST_MESSAGE_FIELD);
-        actions.typeValueInField(POST_EDIT_MESSAGE, POST_MESSAGE_FIELD);
-        actions.waitForElementClickable(POST_SAVE_BUTTON);
-        actions.clickElement(POST_SAVE_BUTTON);
     }
 }

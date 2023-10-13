@@ -63,7 +63,7 @@ public class PostTests extends BaseTestSetup {
         postPage.createPost("public");
         actions.assertElementPresent(POST_TEXT);
         actions.assertElementPresent(POST_IS_PUBLIC);
-        postPage.editPublicPost();
+        postPage.editPost("public");
         actions.assertElementPresent(EDIT_POST_TEXT);
         postPage.deletePost();
         actions.assertElementPresent(DELETE_POST_MESSAGE);
@@ -75,7 +75,7 @@ public class PostTests extends BaseTestSetup {
         postPage.createPost("private");
         actions.assertElementPresent(POST_PRIVATE_TEXT);
         actions.assertElementPresent(POST_IS_PRIVATE);
-        postPage.editPrivatePost();
+        postPage.editPost("private");
         actions.assertElementPresent(EDIT_POST_TEXT);
         postPage.deletePost();
         actions.assertElementPresent(DELETE_POST_MESSAGE);

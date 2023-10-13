@@ -71,10 +71,24 @@ public class CommentPage extends BasePage {
     }
 
     public void likeComment() {
+        navigateToLatestPublicPost();
+
+        actions.waitForElementClickable(COMMENT_SHOW_COMMENTS_BUTTON);
+        actions.clickElement(COMMENT_SHOW_COMMENTS_BUTTON);
+
+        actions.waitForElementClickable(COMMENT_LIKE_BUTTON);
+        actions.clickElement(COMMENT_LIKE_BUTTON);
+
     }
 
     public void dislikeComment() {
+        navigateToLatestPublicPost();
 
+        actions.waitForElementClickable(COMMENT_SHOW_COMMENTS_BUTTON);
+        actions.clickElement(COMMENT_SHOW_COMMENTS_BUTTON);
+
+        actions.waitForElementClickable(COMMENT_DISLIKE_BUTTON);
+        actions.clickElement(COMMENT_DISLIKE_BUTTON);
     }
 
     @Override

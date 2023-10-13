@@ -105,13 +105,16 @@ public class Constants {
     //COMMENTS
 
     public static final String COMMENT_TEXT_FIELD = "comments.commentTextField";
-    public static final String COMMENT_SUBMIT_BUTTON= "comments.submitCommentButton";
-    public static final String COMMENT_SHOW_COMMENTS_BUTTON= "comments.showCommentsButton";
-    public static final String EDIT_COMMENT_BUTTON= "comments.editCommentButton";
+    public static final String COMMENT_SUBMIT_BUTTON = "comments.submitCommentButton";
+    public static final String COMMENT_SHOW_COMMENTS_BUTTON = "comments.showCommentsButton";
+    public static final String EDIT_COMMENT_BUTTON = "comments.editCommentButton";
+    public static final int INVALID_COMMENT_LENGTH = 1001;
     public static final String EDIT_COMMENT_SUBMIT_BUTTON = "comments.submitEditedCommentButton";
     public static final String DELETE_COMMENT_BUTTON = "comments.deleteCommentButton";
     public static final String DELETE_DROPDOWN_MENU = "comments.deleteCommentDropDownMenu";
     public static final String DELETE_DROPDOWN_SELECT = "comments.selectDeleteDropDown";
+    public static final String COMMENT_LIKE_BUTTON = "comments.likeComment";
+    public static final String COMMENT_DISLIKE_BUTTON = "comments.dislikeComment";
 
     //############## DESCRIPTIONS #################
 
