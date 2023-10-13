@@ -81,6 +81,7 @@ public class Constants {
     public static final String POSTS_ADD_NEW_POST = "posts.addNewPost";
     public static final String LATEST_POST_BUTTON = "posts.latestPost";
     public static final String EXPLORE_POST_BUTTON = "posts.explorePost";
+    public static final String EDIT_POST_BUTTON = "posts.editPostButton";
     public static final String DELETE_POST_BUTTON = "posts.deletePostButton";
     public static final String DELETE_DROP_DOWN_MENU = "posts.deleteDropDownMenu";
     public static final String DELETE_BUTTON_SELECT = "posts.selectDeleteDropDown";
@@ -92,6 +93,7 @@ public class Constants {
     public static final String POST_MESSAGE_FIELD = "posts.messageField";
     public static final String POST_MESSAGE = "This is my first post with Selenium WebDriver";
     public static final String POST_MESSAGE_PRIVATE = "This is my first private post with Selenium WebDriver";
+    public static final String POST_EDIT_MESSAGE = "Edit Public Post";
     public static final String POST_SAVE_BUTTON = "posts.savePostButton";
     public static final String POST_TEXT = "posts.postText";
     public static final String POST_PRIVATE_TEXT = "posts.postTextPrivate";

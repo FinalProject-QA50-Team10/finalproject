@@ -36,6 +36,10 @@ public class AdminHomePage extends BasePage{
         actions.clickElement(ENABLE_USER_BUTTON);
     }
 
+    public void editPostAsAdmin() {
+
+
+    }
 
 
 }

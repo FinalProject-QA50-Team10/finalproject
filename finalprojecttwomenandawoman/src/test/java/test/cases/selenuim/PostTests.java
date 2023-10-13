@@ -59,4 +59,14 @@ public class PostTests extends BaseTestSetup {
         post.deletePost();
         actions.assertElementPresent(DELETE_POST_MESSAGE);
     }
+
+    @Test
+    //FPT1-45 [Edit Post] Edit an Existing Public Post
+    public void when_UserEditPublicPost_expect_PublicPostIsEdited() {
+        post.createPost("public");
+        actions.assertElementPresent(POST_TEXT);
+        actions.assertElementPresent(POST_IS_PUBLIC);
+        post.editPost();
+        actions.assertElementPresent(POST_EDIT_MESSAGE);
+    }
 }
