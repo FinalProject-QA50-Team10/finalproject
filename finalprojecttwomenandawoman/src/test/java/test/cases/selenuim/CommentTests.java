@@ -67,4 +67,19 @@ public class CommentTests extends BaseTestSetup {
         authenticatedUserHomePage.logout();
     }
 
+//    @Test
+//    public void testDeleteCommentSuccessfully() {
+//
+//    }
+//
+//    @Test
+//    public void testLikeComment() {
+//
+//    }
+//
+//    @Test
+//    public void testDislikeComment() {
+//
+//    }
+
 }
