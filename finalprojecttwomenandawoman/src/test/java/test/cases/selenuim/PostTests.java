@@ -67,6 +67,6 @@ public class PostTests extends BaseTestSetup {
         actions.assertElementPresent(POST_TEXT);
         actions.assertElementPresent(POST_IS_PUBLIC);
         post.editPost();
-        actions.assertElementPresent(POST_EDIT_MESSAGE);
+        actions.assertElementPresent(EDIT_POST_TEXT);
     }
 }

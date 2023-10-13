@@ -82,6 +82,7 @@ public class Constants {
     public static final String LATEST_POST_BUTTON = "posts.latestPost";
     public static final String EXPLORE_POST_BUTTON = "posts.explorePost";
     public static final String EDIT_POST_BUTTON = "posts.editPostButton";
+    public static final String EDIT_POST_TEXT = "posts.editPostText";
     public static final String DELETE_POST_BUTTON = "posts.deletePostButton";
     public static final String DELETE_DROP_DOWN_MENU = "posts.deleteDropDownMenu";
     public static final String DELETE_BUTTON_SELECT = "posts.selectDeleteDropDown";
