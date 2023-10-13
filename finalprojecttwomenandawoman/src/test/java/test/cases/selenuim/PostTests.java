@@ -66,7 +66,17 @@ public class PostTests extends BaseTestSetup {
         post.createPost("public");
         actions.assertElementPresent(POST_TEXT);
         actions.assertElementPresent(POST_IS_PUBLIC);
-        post.editPost();
+        post.editPublicPost();
+        actions.assertElementPresent(EDIT_POST_TEXT);
+    }
+
+    @Test
+    //FPT1-46 [Edit Post]  Edit an Existing Private Post
+    public void when_UserEditPrivatePost_expect_PrivatePostIsEdited() {
+        post.createPost("private");
+        actions.assertElementPresent(POST_PRIVATE_TEXT);
+        actions.assertElementPresent(POST_IS_PRIVATE);
+        post.editPrivatePost();
         actions.assertElementPresent(EDIT_POST_TEXT);
     }
 }
