@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e94da0cd-1e2c-4827-938e-b0de7b91aea3" name="Changes" comment="Add Like a public post of another user">
+    <list default="true" id="e94da0cd-1e2c-4827-938e-b0de7b91aea3" name="Changes" comment="Add Dislike a public post of another user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/PostPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/PostPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/PostTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/AdminHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telerikacademy/testframework/pages/AdminHomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/cases/selenuim/AdminTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/AdminHomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/CommentPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/CommentPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/PostPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/SearchedUsersPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/telerikacademy/testframework/pages/SearchedUsersPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/HomeTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/HomeTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/PostTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/cases/selenuim/AdminTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +35,8 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.PostTests.when_UserDislikePublicPost_expected_PostIsDisliked">
-    <configuration name="LoginTests.when_UnauthenticatedUserLoginWithValidCredentials_Expect_SuccessfulHomePageElementsAreVisible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AdminTests.when_AdminEditsPost_expect_PostIsEdited">
+    <configuration name="AdminTests.when_AdminEditsPost_expect_PostIsEdited" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test-automation-framework" />
       <extension name="coverage">
         <pattern>
@@ -50,8 +45,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="test.cases.selenuim" />
-      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.LoginTests" />
-      <option name="METHOD_NAME" value="when_UnauthenticatedUserLoginWithValidCredentials_Expect_SuccessfulHomePageElementsAreVisible" />
+      <option name="MAIN_CLASS_NAME" value="test.cases.selenuim.AdminTests" />
+      <option name="METHOD_NAME" value="when_AdminEditsPost_expect_PostIsEdited" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -123,11 +118,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AdminTests.when_AdminEditsPost_expect_PostIsEdited" />
         <item itemvalue="JUnit.PostTests.when_UserDislikePublicPost_expected_PostIsDisliked" />
         <item itemvalue="JUnit.PostTests.when_UserLikePublicPost_expected_PostIsLiked" />
         <item itemvalue="JUnit.PostTests.when_UserEditPrivatePost_expect_PrivatePostIsEdited" />
         <item itemvalue="JUnit.PostTests.when_UserEditPublicPost_expect_PublicPostIsEdited" />
-        <item itemvalue="JUnit.LoginTests.when_UnauthenticatedUserLoginWithValidCredentials_Expect_SuccessfulHomePageElementsAreVisible" />
       </list>
     </recent_temporary>
   </component>
@@ -221,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697194133873</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add Dislike a public post of another user">
+      <option name="closed" value="true" />
+      <created>1697202131971</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1697202131971</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,7 +243,8 @@
     <MESSAGE value="Update Edit an Existing Public Post" />
     <MESSAGE value="Add Edit an Existing Private Post" />
     <MESSAGE value="Add Like a public post of another user" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Like a public post of another user" />
+    <MESSAGE value="Add Dislike a public post of another user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Dislike a public post of another user" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
