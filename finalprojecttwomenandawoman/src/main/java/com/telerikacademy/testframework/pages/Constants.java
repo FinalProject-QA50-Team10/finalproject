@@ -88,6 +88,8 @@ public class Constants {
     public static final String DELETE_BUTTON_SELECT = "posts.selectDeleteDropDown";
     public static final String DELETE_BUTTON_SUBMIT = "posts.submitButton";
     public static final String DELETE_POST_MESSAGE = "post.deleteMessage";
+    public static final String POST_LIKE_BUTTON = "posts.likePost";
+    public static final String POST_DISLIKE_BUTTON = "posts.dislikePostButton";
     public static final String POSTS_VISIBILITY = "posts.visibility";
     public static final String POSTS_PUBLIC_VISIBILITY = "posts.publicVisibility";
     public static final String POSTS_PRIVATE_VISIBILITY = "posts.privateVisibility";

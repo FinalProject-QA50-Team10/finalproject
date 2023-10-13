@@ -68,6 +68,8 @@ public class PostTests extends BaseTestSetup {
         actions.assertElementPresent(POST_IS_PUBLIC);
         post.editPublicPost();
         actions.assertElementPresent(EDIT_POST_TEXT);
+        post.deletePost();
+        actions.assertElementPresent(DELETE_POST_MESSAGE);
     }
 
     @Test
@@ -78,5 +80,23 @@ public class PostTests extends BaseTestSetup {
         actions.assertElementPresent(POST_IS_PRIVATE);
         post.editPrivatePost();
         actions.assertElementPresent(EDIT_POST_TEXT);
+        post.deletePost();
+        actions.assertElementPresent(DELETE_POST_MESSAGE);
+    }
+
+    @Test
+    //FPT1-123 [Like] Like a public post of another user
+    public void when_UserLikePublicPost_expected_PostIsLiked() {
+        post.createPost("public");
+        actions.assertElementPresent(POST_TEXT);
+        actions.assertElementPresent(POST_IS_PUBLIC);
+        loginPage.navigateToPage();
+        loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
+        post.likePost();
+        actions.assertElementPresent(POST_DISLIKE_BUTTON);
+        loginPage.navigateToPage();
+        loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
+        post.deletePost();
+        actions.assertElementPresent(DELETE_POST_MESSAGE);
     }
 }
