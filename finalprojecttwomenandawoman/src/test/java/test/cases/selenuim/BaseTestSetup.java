@@ -10,8 +10,8 @@ import static com.telerikacademy.testframework.pages.Constants.HOME_PAGE;
 public class BaseTestSetup {
     static UserActions actions = new UserActions();
     public LoginPage loginPage = new LoginPage(actions.getDriver());
-   public UnauthenticatedUserHomePage unauthenticatedUser = new UnauthenticatedUserHomePage(actions.getDriver());
-   public RegistrationPage registerPage = new RegistrationPage(actions.getDriver());
+    public UnauthenticatedUserHomePage unauthenticatedUser = new UnauthenticatedUserHomePage(actions.getDriver());
+    public RegistrationPage registerPage = new RegistrationPage(actions.getDriver());
     public SearchedUsersPage searchedUsersPage = new SearchedUsersPage(actions.getDriver());
     public RegisteredUserPage registeredUserPage = new RegisteredUserPage(actions.getDriver());
     public AuthenticatedUserHomePage authenticatedUserHomePage = new AuthenticatedUserHomePage(actions.getDriver());

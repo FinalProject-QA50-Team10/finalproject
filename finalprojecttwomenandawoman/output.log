@@ -1,78 +1,15 @@
-2023-10-13 17:44:13,851 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:17,216 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:20,464 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:20,464 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:20,464 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:20,464 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:20,475 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:20,475 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:20,475 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:20,476 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:20,476 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:20,581 INFO  [main] Clicking on element homePage.signInButton
-2023-10-13 17:44:23,128 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-13 17:44:26,922 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-13 17:44:30,015 INFO  [main] Clicking on element homePage.logOutButton
-2023-10-13 17:44:31,252 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-13 17:44:34,271 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:34,271 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:34,271 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:34,271 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:34,271 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:34,272 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:34,272 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:34,272 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:34,272 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:34,332 INFO  [main] Clicking on element homePage.signInButton
-2023-10-13 17:44:36,540 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-13 17:44:40,129 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-13 17:44:43,315 INFO  [main] Clicking on element homePage.logOutButton
-2023-10-13 17:44:44,762 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-13 17:44:47,520 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:47,520 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:47,520 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:47,520 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:47,521 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:47,521 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:47,521 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:47,521 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:47,521 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:47,589 INFO  [main] Clicking on element homePage.signInButton
-2023-10-13 17:44:49,968 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-13 17:44:51,458 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-13 17:44:54,437 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:54,438 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:54,438 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:54,438 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:54,438 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:54,438 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:54,438 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:54,439 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:54,439 INFO  [main] Initializing WebDriver
-2023-10-13 17:44:54,504 INFO  [main] Clicking on element homePage.signInButton
-2023-10-13 17:44:57,316 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-13 17:44:58,932 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-13 17:45:01,734 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:01,734 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:01,734 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:01,734 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:01,734 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:01,734 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:01,734 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:01,735 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:01,735 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:01,801 INFO  [main] Clicking on element homePage.signInButton
-2023-10-13 17:45:04,156 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-13 17:45:05,904 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-13 17:45:08,683 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:08,684 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:08,684 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:08,684 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:08,684 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:08,684 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:08,684 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:08,685 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:08,685 INFO  [main] Initializing WebDriver
-2023-10-13 17:45:08,755 INFO  [main] Clicking on element homePage.signInButton
-2023-10-13 17:45:10,898 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-13 17:45:13,768 INFO  [main] Quitting WebDriver
+2023-10-14 00:07:25,250 INFO  [main] Initializing WebDriver
+2023-10-14 00:07:29,989 INFO  [main] Initializing WebDriver
+2023-10-14 00:07:33,454 INFO  [main] Initializing WebDriver
+2023-10-14 00:07:33,455 INFO  [main] Initializing WebDriver
+2023-10-14 00:07:33,455 INFO  [main] Initializing WebDriver
+2023-10-14 00:07:33,455 INFO  [main] Initializing WebDriver
+2023-10-14 00:07:33,455 INFO  [main] Initializing WebDriver
+2023-10-14 00:07:33,456 INFO  [main] Initializing WebDriver
+2023-10-14 00:07:33,456 INFO  [main] Initializing WebDriver
+2023-10-14 00:07:33,456 INFO  [main] Initializing WebDriver
+2023-10-14 00:07:33,456 INFO  [main] Initializing WebDriver
+2023-10-14 00:07:33,586 INFO  [main] Clicking on element homePage.registerButton
+2023-10-14 00:07:38,381 INFO  [main] Clicking on element registrationPage.registerButton
+2023-10-14 00:07:41,897 INFO  [main] Hovering on element registrationPage.errorMessage
+2023-10-14 00:07:41,942 INFO  [main] Quitting WebDriver

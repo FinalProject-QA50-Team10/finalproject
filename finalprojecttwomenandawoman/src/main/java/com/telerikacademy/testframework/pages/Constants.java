@@ -32,7 +32,10 @@ public class Constants {
 //    public static final String FOR_EDIT_LAST_NAME = "Gosling";
 //    public static final int INVALID_ID = 800;
     public static final String INVALID_USERNAME = "Barbie";
+    public static final String CYRILLIC_USERNAME = "Барби";
     public static final String VALID_JOB_TITLE = "Actor";
+    public static final String INVALID_PASSWORD = "12";
+    public static String INVALID_EMAIL = "invalid email@weare.com";
     public static String RANDOM_USERNAME;
     public static String RANDOM_EMAIL;
 
@@ -64,6 +67,7 @@ public class Constants {
     public static final String REGISTRATION_BUTTON_PATH = "registrationPage.registerButton";
     public static final String WELCOME_MESSAGE_PATH = "registeredUserPage.welcomeMessage";
     public static final String UPDATE_PROFILE_BUTTON_PATH = "registeredUserPage.updateProfileButton";
+    public static final String REGISTRATION_ERROR_MESSAGE_PATH = "registrationPage.errorMessage";
 
 
     //##############  Admin user part #################
@@ -123,4 +127,7 @@ public class Constants {
     public static final int MIN_LENGTH_USERNAME = 2;
     public static final int MAX_LENGTH_USERNAME = 20;
     public static final String EMAIL_END = "user@abv.com";
+    public static final String PASSWORD_ERROR_MESSAGE = "password must be minimum 6 characters";
+    public static final String EMAIL_ERROR_MESSAGE = "this doesn't look like valid email";
+    public static final String EXISTING_USERNAME_ERROR_MESSAGE = "User with this username already exist";
 }

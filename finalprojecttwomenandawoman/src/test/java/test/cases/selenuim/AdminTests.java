@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.telerikacademy.testframework.pages.Constants.*;
 
-public class AdminTests extends BaseTestSetup{
+public class AdminTests extends BaseTestSetup {
 
     @BeforeEach
     public void loginUserAdmin() {

@@ -31,4 +31,15 @@ public class RegistrationPage extends BasePage {
         Assertions.assertEquals(Utils.getConfigPropertyByKey(REGISTER_PAGE), currentUrl,
                 "Landed URL is not as expected. Actual URL: " + currentUrl + ". Expected URL: " + REGISTER_PAGE);
     }
+
+    public void assertErrorMessageIsVisible() {
+        actions.waitForElementVisible(REGISTRATION_ERROR_MESSAGE_PATH);
+        actions.assertElementPresent(REGISTRATION_ERROR_MESSAGE_PATH);
+    }
+
+    public void assertErrorMessage(String expectedMessage) {
+        var actualMessage = actions.getElement(REGISTRATION_ERROR_MESSAGE_PATH).getText();
+        Assertions.assertEquals(expectedMessage, actualMessage, String.format("Expected message is different than actual. " +
+                "Expected: %s. Actual: %s", expectedMessage, actualMessage));
+    }
 }
