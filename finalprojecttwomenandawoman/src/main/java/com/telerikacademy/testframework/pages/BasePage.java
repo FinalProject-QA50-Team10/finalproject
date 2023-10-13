@@ -5,6 +5,8 @@ import com.telerikacademy.testframework.Utils;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
+import static com.telerikacademy.testframework.pages.Constants.HOME_BUTTON_PATH;
+
 public abstract class BasePage {
 
     protected String url;
@@ -31,4 +33,5 @@ public abstract class BasePage {
         Assertions.assertTrue(currentUrl.contains(url),
                 "Landed URL is not as expected. Actual URL: " + currentUrl + ". Expected URL: " + url);
     }
+
 }

@@ -16,6 +16,11 @@ public class AuthenticatedUserHomePage extends BasePage {
         actions.clickElement(LOG_OUT_BUTTON_PATH);
     }
 
+    public void navigateToHomePage(){
+        actions.waitForElementClickable(HOME_BUTTON_PATH);
+        actions.clickElement(HOME_BUTTON_PATH);
+    }
+
     public void assertLogoutButtonIsVisible() {
         actions.assertElementPresent(LOGOUT_BUTTON_PATH);
         actions.assertElementPresent(LOGOUT_BUTTON_PATH);

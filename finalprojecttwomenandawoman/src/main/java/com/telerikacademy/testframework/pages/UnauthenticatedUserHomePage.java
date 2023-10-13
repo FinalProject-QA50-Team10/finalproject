@@ -24,6 +24,12 @@ public class UnauthenticatedUserHomePage extends BasePage{
         actions.waitForElementClickable(REGISTER_BUTTON_PATH);
         actions.clickElement(REGISTER_BUTTON_PATH);
     }
+
+    public void navigateToHomePage(){
+        actions.waitForElementClickable(HOME_BUTTON_PATH);
+        actions.clickElement(HOME_BUTTON_PATH);
+    }
+
     public void searchForm(String jobTitle, String names){
         actions.waitForElementClickable(SEARCH_JOB_FIELD_PATH);
         actions.typeValueInField(Utils.getConfigPropertyByKey(jobTitle), SEARCH_JOB_FIELD_PATH);
@@ -31,5 +37,15 @@ public class UnauthenticatedUserHomePage extends BasePage{
         actions.typeValueInField(Utils.getConfigPropertyByKey(names), SEARCH_NAME_FIELD_PATH);
         actions.waitForElementClickable(SEARCH_BUTTON_PATH);
         actions.clickElement(SEARCH_BUTTON_PATH);
+    }
+
+    public void assertSearchFormIsVisible() {
+        actions.assertElementPresent(SEARCH_FORM_PATH);
+    }
+
+    public void assertSearchFormAttributes(){
+        actions.assertElementPresent(SEARCH_JOB_FIELD_PATH);
+        actions.assertElementPresent(SEARCH_NAME_FIELD_PATH);
+        actions.assertElementPresent(SEARCH_BUTTON_PATH);
     }
 }

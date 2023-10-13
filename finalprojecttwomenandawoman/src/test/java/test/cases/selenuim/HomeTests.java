@@ -1,7 +1,7 @@
 package test.cases.selenuim;
 
-import com.telerikacademy.testframework.pages.SearchedUsersPage;
-import com.telerikacademy.testframework.pages.UnauthenticatedUserHomePage;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.telerikacademy.testframework.pages.Constants.*;
@@ -9,11 +9,17 @@ import static com.telerikacademy.testframework.pages.Constants.*;
 
 public class HomeTests extends BaseTestSetup {
 
+    @AfterEach
+    public void clickHomeButton(){
+    unauthenticatedUser.navigateToHomePage();
+    }
+
     @Test
     //[Search Form] Search users by valid job title as a guest
     public void when_NavigateToHomePage_Expect_SearchFormIsVisible(){
         unauthenticatedUser.navigateToPage();
-        actions.assertElementPresent(SEARCH_FORM_PATH);
+        unauthenticatedUser.assertSearchFormIsVisible();
+        unauthenticatedUser.assertSearchFormAttributes();
     }
 
     @Test
@@ -21,10 +27,9 @@ public class HomeTests extends BaseTestSetup {
     public void when_unauthenticatedUserSearchUsersByValidJobTitle_Expect_SearchedUsersAreVisible()
     {
         unauthenticatedUser.searchForm(VALID_JOB_TITLE, EMPTY_STRING);
-        actions.assertElementPresent(SEARCH_RESULTS_PATH);
-        actions.assertUsersListIsNotEmpty(SEARCH_RESULTS_PATH);
-        actions.assertUsersAttribute(VALID_JOB_TITLE, SEARCH_RESULTS_JOB_TITLE_PATH);
-
+        searchedUsersPage.assertUsersAreVisible();
+        searchedUsersPage.assertSearchResultsAreVisible();
+        searchedUsersPage.assertUsersAttributes(VALID_JOB_TITLE, SEARCH_RESULTS_JOB_TITLE_PATH);
     }
 
     @Test
@@ -32,10 +37,9 @@ public class HomeTests extends BaseTestSetup {
     public void when_unauthenticatedUserSearchUsersByValidName_Expect_SearchedUsersAreVisible()
     {
         unauthenticatedUser.searchForm(EMPTY_STRING, GEORGE_BUSH_NAME);
-        actions.assertElementPresent(SEARCH_RESULTS_PATH);
-        actions.assertUsersListIsNotEmpty(SEARCH_RESULTS_PATH);
-        actions.assertUsersAttribute(GEORGE_BUSH_NAME, SEARCH_RESULTS_NAME_PATH);
-
+        searchedUsersPage.assertSearchResultsAreVisible();
+        searchedUsersPage.assertUsersAreVisible();
+        searchedUsersPage.assertUsersAttributes(GEORGE_BUSH_NAME, SEARCH_RESULTS_NAME_PATH);
     }
 
     @Test
@@ -43,9 +47,9 @@ public class HomeTests extends BaseTestSetup {
     public void when_unauthenticatedUserSearchUsersByValidFirstName_Expect_SearchedUsersAreVisible()
     {
         unauthenticatedUser.searchForm(EMPTY_STRING, GEORGE_BUSH_FIRST_NAME);
-        actions.assertElementPresent(SEARCH_RESULTS_PATH);
-        actions.assertUsersListIsNotEmpty(SEARCH_RESULTS_PATH);
-        actions.assertSearchedUsersContainsName(GEORGE_BUSH_FIRST_NAME, SEARCH_RESULTS_NAME_PATH);
+        searchedUsersPage.assertSearchResultsAreVisible();
+        searchedUsersPage.assertUsersAreVisible();
+        searchedUsersPage.assertUsersAttributes(GEORGE_BUSH_FIRST_NAME, SEARCH_RESULTS_NAME_PATH);
     }
 
     @Test
@@ -53,17 +57,18 @@ public class HomeTests extends BaseTestSetup {
     public void when_unauthenticatedUserSearchUsersByValidLastName_Expect_SearchedUsersAreVisible()
     {
         unauthenticatedUser.searchForm(EMPTY_STRING, GEORGE_BUSH_LAST_NAME);
-        actions.assertElementPresent(SEARCH_RESULTS_PATH);
-        actions.assertUsersListIsNotEmpty(SEARCH_RESULTS_PATH);
-        actions.assertSearchedUsersContainsName(GEORGE_BUSH_LAST_NAME, SEARCH_RESULTS_NAME_PATH);
+        searchedUsersPage.assertSearchResultsAreVisible();
+        searchedUsersPage.assertUsersAreVisible();
+        searchedUsersPage.assertUsersAttributes(GEORGE_BUSH_LAST_NAME, SEARCH_RESULTS_NAME_PATH);
     }
     @Test
     //[Login Page] Verify Sing in button functionality and Login page elements
     public void when_unauthenticatedUserClickOnSignInButton_expect_successfulLoginPageElementsAreVisible()
     {
         unauthenticatedUser.clickSignInButton();
-        actions.assertElementPresent(LOGOUT_BUTTON_PATH);
-        actions.assertElementPresent(PERSONAL_PROFILE_BUTTON_PATH);
-        actions.assertElementPresent(ADD_NEW_POST_BUTTON_PATH);
+        loginPage.assertLoginPageTitle();
+        loginPage.assertLoginButtonVisible();
+        loginPage.assertUsernameFieldVisible();
+        loginPage.assertPasswordFieldVisible();
     }
 }

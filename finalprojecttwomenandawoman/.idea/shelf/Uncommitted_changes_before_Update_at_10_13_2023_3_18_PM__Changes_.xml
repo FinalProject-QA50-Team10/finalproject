@@ -1,0 +1,29 @@
+<changelist name="Uncommitted_changes_before_Update_at_10_13_2023_3_18_PM_[Changes]" date="1697199645633" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_13_2023_3_18_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 10/13/2023 3:18 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/telerikacademy/testframework/pages/AuthenticatedUserHomePage.class" />
+    <option name="AFTER_PATH" value="target/classes/com/telerikacademy/testframework/pages/AuthenticatedUserHomePage.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_13_2023_3_18_PM_[Changes]/AuthenticatedUserHomePage.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/telerikacademy/testframework/pages/LoginPage.class" />
+    <option name="AFTER_PATH" value="target/classes/com/telerikacademy/testframework/pages/LoginPage.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_13_2023_3_18_PM_[Changes]/LoginPage.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/test/cases/selenuim/LoginTests.class" />
+    <option name="AFTER_PATH" value="target/test-classes/test/cases/selenuim/LoginTests.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_13_2023_3_18_PM_[Changes]/LoginTests.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/test/cases/selenuim/CommentTests.class" />
+    <option name="AFTER_PATH" value="target/test-classes/test/cases/selenuim/CommentTests.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_13_2023_3_18_PM_[Changes]/CommentTests.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/test/cases/selenuim/AdminTests.class" />
+    <option name="AFTER_PATH" value="target/test-classes/test/cases/selenuim/AdminTests.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_13_2023_3_18_PM_[Changes]/AdminTests.class" />
+  </binary>
+</changelist>

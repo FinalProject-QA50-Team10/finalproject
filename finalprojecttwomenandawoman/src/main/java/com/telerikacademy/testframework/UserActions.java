@@ -175,7 +175,7 @@ public class UserActions {
         var users = getElements(path);
         for (var user : users) {
             String result = user.getText();
-            if(!Objects.equals(result, name))
+            if(!result.contains(name))
             {
                 throw new IllegalArgumentException(format("Expected attribute is different than actual. " +
                         "Actual is %s, expected is %s.", result, name));

@@ -28,4 +28,28 @@ public class LoginPage extends BasePage{
         Assertions.assertEquals(Utils.getConfigPropertyByKey(LOGIN_PAGE), currentUrl,
                 "Landed URL is not as expected. Actual URL: " + currentUrl + ". Expected URL: " + LOGIN_PAGE);
     }
+
+    public void assertLoginPageTitle(){
+        actions.assertElementPresent(LOGIN_PAGE_TITLE_PATH);
+    }
+
+    public void assertPasswordFieldVisible(){
+        actions.assertElementPresent(LOGIN_PASSWORD_FIELD_PATH);
+    }
+
+    public void assertUsernameFieldVisible(){
+        actions.assertElementPresent(LOGIN_USERNAME_FIELD_PATH);
+    }
+
+    public void assertLoginButtonVisible(){
+        actions.assertElementPresent(LOGIN_BUTTON_PATH);
+    }
+
+    public void assertLoginErrorMessage() {
+        actions.assertElementPresent(LOGIN_ERROR_MESSAGE_PATH);
+    }
+
+    public void assertLogoutErrorMessage() {
+        actions.assertElementPresent(LOGOUT_ERROR_MESSAGE_PATH);
+    }
 }

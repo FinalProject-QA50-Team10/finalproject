@@ -4,6 +4,7 @@ import com.telerikacademy.testframework.UserActions;
 import com.telerikacademy.testframework.pages.*;
 import org.junit.jupiter.api.*;
 
+import static com.telerikacademy.testframework.pages.Constants.HOME_BUTTON_PATH;
 import static com.telerikacademy.testframework.pages.Constants.HOME_PAGE;
 
 public class BaseTestSetup {
