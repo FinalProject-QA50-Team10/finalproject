@@ -131,6 +131,10 @@ public class Constants {
     public static final String COMMENT_INVALID_TEXT_MESSAGE = "comments.commentsInvalidTextMessage";
 
 
+    //################ X-PATHS #################
+    public static final String PUBLIC_FEED_TEXT = "public.feedExploreHeader";
+
+
     //############## DESCRIPTIONS #################
     public static final String LOGIN_ERROR_MESSAGE = "Wrong username or password.";
     public static final String EMPTY_STRING = "";

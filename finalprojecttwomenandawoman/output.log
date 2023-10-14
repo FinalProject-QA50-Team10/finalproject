@@ -1,49 +1,31 @@
-2023-10-14 20:42:05,947 INFO  [main] Initializing WebDriver
-2023-10-14 20:42:08,371 INFO  [main] Initializing WebDriver
-2023-10-14 20:42:19,867 INFO  [main] Initializing WebDriver
-2023-10-14 20:42:19,868 INFO  [main] Initializing WebDriver
-2023-10-14 20:42:19,868 INFO  [main] Initializing WebDriver
-2023-10-14 20:42:19,868 INFO  [main] Initializing WebDriver
-2023-10-14 20:42:19,868 INFO  [main] Initializing WebDriver
-2023-10-14 20:42:19,868 INFO  [main] Initializing WebDriver
-2023-10-14 20:42:19,868 INFO  [main] Initializing WebDriver
-2023-10-14 20:42:19,868 INFO  [main] Initializing WebDriver
-2023-10-14 20:42:19,868 INFO  [main] Initializing WebDriver
-2023-10-14 20:42:27,931 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-14 20:42:40,560 INFO  [main] Clicking on element posts.latestPost
-2023-10-14 20:43:00,031 INFO  [main] Clicking on element posts.addNewPost
-2023-10-14 20:43:09,081 INFO  [main] Clicking on element posts.visibility
-2023-10-14 20:43:09,133 INFO  [main] Clicking on element posts.publicVisibility
-2023-10-14 20:43:09,236 INFO  [main] Clicking on element posts.savePostButton
-2023-10-14 20:43:21,139 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-14 20:43:32,999 INFO  [main] Clicking on element homePage.logOutButton
-2023-10-14 20:43:49,501 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-14 20:43:59,545 INFO  [main] Clicking on element posts.latestPost
-2023-10-14 20:44:15,688 INFO  [main] Clicking on element posts.browsePublicPostsButton
-2023-10-14 20:44:24,878 INFO  [main] Clicking on element posts.explorePost
-2023-10-14 20:44:34,437 INFO  [main] Clicking on element comments.submitCommentButton
-2023-10-14 20:44:47,903 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-14 20:45:03,017 INFO  [main] Clicking on element homePage.logOutButton
-2023-10-14 20:45:11,377 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-14 20:45:20,857 INFO  [main] Clicking on element posts.latestPost
-2023-10-14 20:45:36,153 INFO  [main] Clicking on element posts.browsePublicPostsButton
-2023-10-14 20:45:42,046 INFO  [main] Clicking on element posts.explorePost
-2023-10-14 20:45:49,706 INFO  [main] Clicking on element comments.showCommentsButton
-2023-10-14 20:45:50,266 INFO  [main] Clicking on element comments.likeComment
-2023-10-14 20:45:52,912 INFO  [main] Clicking on element posts.latestPost
-2023-10-14 20:46:11,583 INFO  [main] Clicking on element posts.browsePublicPostsButton
-2023-10-14 20:46:23,244 INFO  [main] Clicking on element posts.explorePost
-2023-10-14 20:46:33,616 INFO  [main] Clicking on element comments.showCommentsButton
-2023-10-14 20:46:34,178 INFO  [main] Clicking on element comments.dislikeComment
-2023-10-14 20:46:36,817 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-14 20:46:44,908 INFO  [main] Clicking on element homePage.logOutButton
-2023-10-14 20:46:58,027 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-14 20:47:10,196 INFO  [main] Clicking on element posts.latestPost
-2023-10-14 20:47:29,805 INFO  [main] Clicking on element posts.explorePost
-2023-10-14 20:47:40,867 INFO  [main] Clicking on element posts.deletePostButton
-2023-10-14 20:47:48,875 INFO  [main] Clicking on element posts.deleteDropDownMenu
-2023-10-14 20:47:48,925 INFO  [main] Clicking on element posts.selectDeleteDropDown
-2023-10-14 20:47:48,958 INFO  [main] Clicking on element posts.submitButton
-2023-10-14 20:47:58,880 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-14 20:48:09,048 INFO  [main] Clicking on element homePage.logOutButton
-2023-10-14 20:48:15,037 INFO  [main] Quitting WebDriver
+2023-10-14 21:26:12,516 INFO  [main] Initializing WebDriver
+2023-10-14 21:26:14,344 INFO  [main] Initializing WebDriver
+2023-10-14 21:26:20,439 INFO  [main] Initializing WebDriver
+2023-10-14 21:26:20,439 INFO  [main] Initializing WebDriver
+2023-10-14 21:26:20,439 INFO  [main] Initializing WebDriver
+2023-10-14 21:26:20,439 INFO  [main] Initializing WebDriver
+2023-10-14 21:26:20,439 INFO  [main] Initializing WebDriver
+2023-10-14 21:26:20,439 INFO  [main] Initializing WebDriver
+2023-10-14 21:26:20,439 INFO  [main] Initializing WebDriver
+2023-10-14 21:26:20,439 INFO  [main] Initializing WebDriver
+2023-10-14 21:26:20,439 INFO  [main] Initializing WebDriver
+2023-10-14 21:26:20,439 INFO  [main] Initializing WebDriver
+2023-10-14 21:26:30,814 INFO  [main] Clicking on element loginPage.loginButton
+2023-10-14 21:26:43,979 INFO  [main] Clicking on element posts.latestPost
+2023-10-14 21:27:03,985 INFO  [main] Clicking on element posts.addNewPost
+2023-10-14 21:27:15,368 INFO  [main] Clicking on element posts.visibility
+2023-10-14 21:27:15,423 INFO  [main] Clicking on element posts.publicVisibility
+2023-10-14 21:27:15,526 INFO  [main] Clicking on element posts.savePostButton
+2023-10-14 21:27:32,021 INFO  [main] Clicking on element loginPage.homeButton
+2023-10-14 21:27:46,655 INFO  [main] Clicking on element homePage.logOutButton
+2023-10-14 21:27:55,379 INFO  [main] Clicking on element posts.latestPost
+2023-10-14 21:28:27,648 INFO  [main] Clicking on element loginPage.loginButton
+2023-10-14 21:28:41,577 INFO  [main] Clicking on element posts.latestPost
+2023-10-14 21:29:00,882 INFO  [main] Clicking on element posts.explorePost
+2023-10-14 21:29:14,831 INFO  [main] Clicking on element posts.deletePostButton
+2023-10-14 21:29:27,273 INFO  [main] Clicking on element posts.deleteDropDownMenu
+2023-10-14 21:29:27,325 INFO  [main] Clicking on element posts.selectDeleteDropDown
+2023-10-14 21:29:27,360 INFO  [main] Clicking on element posts.submitButton
+2023-10-14 21:29:38,559 INFO  [main] Clicking on element loginPage.homeButton
+2023-10-14 21:29:54,816 INFO  [main] Clicking on element homePage.logOutButton
+2023-10-14 21:30:10,694 INFO  [main] Quitting WebDriver
