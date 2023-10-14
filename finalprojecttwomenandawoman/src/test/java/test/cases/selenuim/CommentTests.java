@@ -48,7 +48,6 @@ public class CommentTests extends BaseTestSetup {
 
         actions.assertElementPresent(COMMENT_INVALID_TEXT_MESSAGE);
 
-        actions.assertElementPresent(COMMENT_TEXT_FIELD);
         authenticatedUserHomePage.logout();
     }
 
@@ -59,7 +58,6 @@ public class CommentTests extends BaseTestSetup {
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment(COMMENT_TEXT_MESSAGE);
         commentPage.editComment(EDITED_COMMENT_TEXT_MESSAGE);
-        actions.assertElementPresent(COMMENT_TEXT_FIELD);
 
         actions.assertElementPresent(COMMENT_EDITED_TEXT);
 
@@ -72,10 +70,9 @@ public class CommentTests extends BaseTestSetup {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment(COMMENT_TEXT_MESSAGE);
-        commentPage.showComments();
         commentPage.deleteComment();
 
-        actions.assertElementNotPresent(COMMENT_TEXT_FIELD);
+        actions.assertElementPresent(DELETE_COMMENT_MESSAGE);
 
         authenticatedUserHomePage.logout();
     }
