@@ -32,6 +32,7 @@ public class CommentTests extends BaseTestSetup {
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment(COMMENT_TEXT_MESSAGE);
 
+        actions.waitForElementVisible(COMMENT_TEXT);
         actions.assertElementPresent(COMMENT_TEXT);
 
         authenticatedUserHomePage.logout();
@@ -46,6 +47,7 @@ public class CommentTests extends BaseTestSetup {
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment(commentText);
 
+        actions.waitForElementVisible(COMMENT_INVALID_TEXT_MESSAGE);
         actions.assertElementPresent(COMMENT_INVALID_TEXT_MESSAGE);
 
         authenticatedUserHomePage.logout();
@@ -59,6 +61,7 @@ public class CommentTests extends BaseTestSetup {
         commentPage.createComment(COMMENT_TEXT_MESSAGE);
         commentPage.editComment(EDITED_COMMENT_TEXT_MESSAGE);
 
+        actions.waitForElementVisible(COMMENT_EDITED_TEXT);
         actions.assertElementPresent(COMMENT_EDITED_TEXT);
 
         authenticatedUserHomePage.logout();
@@ -72,6 +75,7 @@ public class CommentTests extends BaseTestSetup {
         commentPage.createComment(COMMENT_TEXT_MESSAGE);
         commentPage.deleteComment();
 
+        actions.waitForElementVisible(DELETE_COMMENT_MESSAGE);
         actions.assertElementPresent(DELETE_COMMENT_MESSAGE);
 
         authenticatedUserHomePage.logout();
