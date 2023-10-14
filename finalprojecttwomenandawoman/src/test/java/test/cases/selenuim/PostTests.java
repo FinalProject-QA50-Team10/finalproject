@@ -124,4 +124,12 @@ public class PostTests extends BaseTestSetup {
         postPage.createPostWithLongDescription("public", longDescription);
         actions.assertElementPresent(POST_INVALID_TEXT_MESSAGE);
     }
+
+    @Test
+    //FPT1-36 [Add New Post] Create Private Post with a Description Length of 1001 symbols
+    public void when_UserCreatePrivatePostWithInvalidData_expect_PostNotCreated() {
+        String longDescription = actions.generateLongString();
+        postPage.createPostWithLongDescription("private", longDescription);
+        actions.assertElementPresent(POST_INVALID_TEXT_MESSAGE);
+    }
 }

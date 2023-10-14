@@ -1,20 +1,20 @@
-2023-10-14 16:57:07,421 INFO  [main] Initializing WebDriver
-2023-10-14 16:57:09,882 INFO  [main] Initializing WebDriver
-2023-10-14 16:57:13,359 INFO  [main] Initializing WebDriver
-2023-10-14 16:57:13,359 INFO  [main] Initializing WebDriver
-2023-10-14 16:57:13,360 INFO  [main] Initializing WebDriver
-2023-10-14 16:57:13,360 INFO  [main] Initializing WebDriver
-2023-10-14 16:57:13,361 INFO  [main] Initializing WebDriver
-2023-10-14 16:57:13,361 INFO  [main] Initializing WebDriver
-2023-10-14 16:57:13,361 INFO  [main] Initializing WebDriver
-2023-10-14 16:57:13,362 INFO  [main] Initializing WebDriver
-2023-10-14 16:57:13,362 INFO  [main] Initializing WebDriver
-2023-10-14 16:57:14,684 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-14 16:57:18,502 INFO  [main] Clicking on element posts.latestPost
-2023-10-14 16:57:28,542 INFO  [main] Clicking on element posts.addNewPost
-2023-10-14 16:57:30,290 INFO  [main] Clicking on element posts.visibility
-2023-10-14 16:57:30,435 INFO  [main] Clicking on element posts.publicVisibility
-2023-10-14 16:57:44,934 INFO  [main] Clicking on element posts.savePostButton
-2023-10-14 16:57:47,487 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-14 16:57:51,448 INFO  [main] Clicking on element homePage.logOutButton
-2023-10-14 16:57:52,853 INFO  [main] Quitting WebDriver
+2023-10-14 17:47:04,302 INFO  [main] Initializing WebDriver
+2023-10-14 17:47:06,826 INFO  [main] Initializing WebDriver
+2023-10-14 17:47:10,295 INFO  [main] Initializing WebDriver
+2023-10-14 17:47:10,295 INFO  [main] Initializing WebDriver
+2023-10-14 17:47:10,295 INFO  [main] Initializing WebDriver
+2023-10-14 17:47:10,295 INFO  [main] Initializing WebDriver
+2023-10-14 17:47:10,295 INFO  [main] Initializing WebDriver
+2023-10-14 17:47:10,296 INFO  [main] Initializing WebDriver
+2023-10-14 17:47:10,296 INFO  [main] Initializing WebDriver
+2023-10-14 17:47:10,297 INFO  [main] Initializing WebDriver
+2023-10-14 17:47:10,297 INFO  [main] Initializing WebDriver
+2023-10-14 17:47:11,427 INFO  [main] Clicking on element loginPage.loginButton
+2023-10-14 17:47:15,130 INFO  [main] Clicking on element posts.latestPost
+2023-10-14 17:47:25,843 INFO  [main] Clicking on element posts.addNewPost
+2023-10-14 17:47:27,961 INFO  [main] Clicking on element posts.visibility
+2023-10-14 17:47:28,122 INFO  [main] Clicking on element posts.privateVisibility
+2023-10-14 17:47:42,562 INFO  [main] Clicking on element posts.savePostButton
+2023-10-14 17:47:45,645 INFO  [main] Clicking on element loginPage.homeButton
+2023-10-14 17:47:49,131 INFO  [main] Clicking on element homePage.logOutButton
+2023-10-14 17:47:51,074 INFO  [main] Quitting WebDriver
