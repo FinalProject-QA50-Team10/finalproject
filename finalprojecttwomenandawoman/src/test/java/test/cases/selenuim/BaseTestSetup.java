@@ -2,7 +2,8 @@ package test.cases.selenuim;
 
 import com.telerikacademy.testframework.UserActions;
 import com.telerikacademy.testframework.pages.*;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 
 import static com.telerikacademy.testframework.pages.Constants.HOME_BUTTON_PATH;
 import static com.telerikacademy.testframework.pages.Constants.HOME_PAGE;
@@ -17,6 +18,7 @@ public class BaseTestSetup {
     public AuthenticatedUserHomePage authenticatedUserHomePage = new AuthenticatedUserHomePage(actions.getDriver());
     public UserProfilePage userProfilePage = new UserProfilePage(actions.getDriver());
     public CommentPage commentPage = new CommentPage(actions.getDriver());
+    public FeedPage feedPage = new FeedPage(actions.getDriver());
     PostPage postPage = new PostPage(actions.getDriver());
     AdminHomePage adminHomePage = new AdminHomePage(actions.getDriver());
 
