@@ -11,7 +11,6 @@ public class AdminTests extends BaseTestSetup {
     @BeforeEach
     public void loginUserAdmin() {
         loginPage.navigateToPage();
-        loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
     }
 
     @AfterEach
@@ -21,15 +20,13 @@ public class AdminTests extends BaseTestSetup {
 
     @Test
     //FPT1-58 [See Profile] Disable User Profile as Admin
-    public void when_AdminDisableUsers_expected_UserIsDisable() {
+    //FPT1-59 [See Profile] Enable User Profile as Admin
+    public void when_AdminDisableAndEnableUsers_expected_UserIsDisableAndEnable() {
+        postPage.assertPageNavigated();
+        loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
         adminHomePage.disableUserWithAdminAccess();
         actions.waitForElementPresent(ENABLE_USER_BUTTON);
         actions.assertElementPresent(ENABLE_USER_BUTTON);
-    }
-
-    @Test
-    //FPT1-59 [See Profile] Enable User Profile as Admin
-    public void when_AdminEnableUser_expected_UserIsEnable() {
         adminHomePage.enableUserWithAdminAccess();
         actions.waitForElementPresent(DISABLE_USER_BUTTON);
         actions.assertElementPresent(DISABLE_USER_BUTTON);
@@ -38,7 +35,6 @@ public class AdminTests extends BaseTestSetup {
     @Test
     //FTP1-60 [Edit Post] Edit an Existing Post as Admin
     public void when_AdminEditsPost_expect_PostIsEdited() {
-        loginPage.navigateToPage();
         postPage.assertPageNavigated();
         loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         postPage.createPost("public");
@@ -54,7 +50,6 @@ public class AdminTests extends BaseTestSetup {
     @Test
     //FTP1-61 [Delete Post] Delete an Existing Post as Admin
     public void when_AdminDeletePost_expect_PostIsDeleted() {
-        loginPage.navigateToPage();
         postPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         postPage.createPost("public");
@@ -70,7 +65,6 @@ public class AdminTests extends BaseTestSetup {
     @Test
     //FPT1-62 [Edit Comment] Edit an Existing Comment as Admin
     public void when_AdminEditComment_expect_CommentIsEdited() {
-        loginPage.navigateToPage();
         postPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         postPage.createPost("public");
@@ -93,7 +87,6 @@ public class AdminTests extends BaseTestSetup {
     @Test
     //FPT1-63 [Delete Comment] Delete an Existing Comment as Admin
     public void when_AdminDeleteComment_expect_CommentIsDeleted() {
-        loginPage.navigateToPage();
         loginPage.assertPageNavigated();
         loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         postPage.createPost("public");

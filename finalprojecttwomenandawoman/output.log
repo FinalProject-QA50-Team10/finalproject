@@ -1,35 +1,23 @@
-2023-10-14 10:30:05,867 INFO  [main] Initializing WebDriver
-2023-10-14 10:30:09,453 INFO  [main] Initializing WebDriver
-2023-10-14 10:30:12,969 INFO  [main] Initializing WebDriver
-2023-10-14 10:30:12,970 INFO  [main] Initializing WebDriver
-2023-10-14 10:30:12,970 INFO  [main] Initializing WebDriver
-2023-10-14 10:30:12,971 INFO  [main] Initializing WebDriver
-2023-10-14 10:30:12,971 INFO  [main] Initializing WebDriver
-2023-10-14 10:30:12,971 INFO  [main] Initializing WebDriver
-2023-10-14 10:30:12,972 INFO  [main] Initializing WebDriver
-2023-10-14 10:30:12,972 INFO  [main] Initializing WebDriver
-2023-10-14 10:30:12,973 INFO  [main] Initializing WebDriver
-2023-10-14 10:30:14,470 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-14 10:30:19,792 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-14 10:30:23,735 INFO  [main] Clicking on element posts.latestPost
-2023-10-14 10:30:33,062 INFO  [main] Clicking on element posts.addNewPost
-2023-10-14 10:30:35,261 INFO  [main] Clicking on element posts.visibility
-2023-10-14 10:30:35,401 INFO  [main] Clicking on element posts.publicVisibility
-2023-10-14 10:30:35,583 INFO  [main] Clicking on element posts.savePostButton
-2023-10-14 10:30:42,021 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-14 10:30:45,908 INFO  [main] Clicking on element posts.latestPost
-2023-10-14 10:30:56,644 INFO  [main] Clicking on element posts.browsePublicPostsButton
-2023-10-14 10:31:00,834 INFO  [main] Clicking on element posts.explorePost
-2023-10-14 10:31:05,894 INFO  [main] Clicking on element comments.submitCommentButton
-2023-10-14 10:31:14,943 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-14 10:31:19,244 INFO  [main] Clicking on element posts.latestPost
-2023-10-14 10:31:28,744 INFO  [main] Clicking on element posts.browsePublicPostsButton
-2023-10-14 10:31:33,208 INFO  [main] Clicking on element posts.explorePost
-2023-10-14 10:31:38,367 INFO  [main] Clicking on element comments.showCommentsButton
-2023-10-14 10:31:39,033 INFO  [main] Clicking on element comments.deleteCommentButton
-2023-10-14 10:31:41,243 INFO  [main] Clicking on element comments.deleteCommentDropDownMenu
-2023-10-14 10:31:41,426 INFO  [main] Clicking on element comments.selectDeleteDropDown
-2023-10-14 10:31:41,527 INFO  [main] Clicking on element posts.submitButton
-2023-10-14 10:31:45,441 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-14 10:31:48,874 INFO  [main] Clicking on element homePage.logOutButton
-2023-10-14 10:31:50,935 INFO  [main] Quitting WebDriver
+2023-10-14 11:52:32,758 INFO  [main] Initializing WebDriver
+2023-10-14 11:52:35,282 INFO  [main] Initializing WebDriver
+2023-10-14 11:52:38,777 INFO  [main] Initializing WebDriver
+2023-10-14 11:52:38,777 INFO  [main] Initializing WebDriver
+2023-10-14 11:52:38,777 INFO  [main] Initializing WebDriver
+2023-10-14 11:52:38,777 INFO  [main] Initializing WebDriver
+2023-10-14 11:52:38,777 INFO  [main] Initializing WebDriver
+2023-10-14 11:52:38,777 INFO  [main] Initializing WebDriver
+2023-10-14 11:52:38,778 INFO  [main] Initializing WebDriver
+2023-10-14 11:52:38,778 INFO  [main] Initializing WebDriver
+2023-10-14 11:52:38,778 INFO  [main] Initializing WebDriver
+2023-10-14 11:52:40,765 INFO  [main] Clicking on element loginPage.loginButton
+2023-10-14 11:52:45,236 INFO  [main] Clicking on element admin.adminZoneButton
+2023-10-14 11:52:47,281 INFO  [main] Clicking on element admin.viewUsersButton
+2023-10-14 11:52:52,231 INFO  [main] Clicking on element admin.seeUserProfileButton
+2023-10-14 11:52:55,979 INFO  [main] Clicking on element admin.disableUserButton
+2023-10-14 11:53:01,525 INFO  [main] Clicking on element admin.adminZoneButton
+2023-10-14 11:53:03,720 INFO  [main] Clicking on element admin.viewUsersButton
+2023-10-14 11:53:08,686 INFO  [main] Clicking on element admin.seeUserProfileButton
+2023-10-14 11:53:12,572 INFO  [main] Clicking on element admin.enableUserButton
+2023-10-14 11:53:18,114 INFO  [main] Clicking on element loginPage.homeButton
+2023-10-14 11:53:21,687 INFO  [main] Clicking on element homePage.logOutButton
+2023-10-14 11:53:23,950 INFO  [main] Quitting WebDriver
