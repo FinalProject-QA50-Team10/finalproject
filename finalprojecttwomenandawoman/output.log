@@ -1,23 +1,34 @@
-2023-10-14 11:52:32,758 INFO  [main] Initializing WebDriver
-2023-10-14 11:52:35,282 INFO  [main] Initializing WebDriver
-2023-10-14 11:52:38,777 INFO  [main] Initializing WebDriver
-2023-10-14 11:52:38,777 INFO  [main] Initializing WebDriver
-2023-10-14 11:52:38,777 INFO  [main] Initializing WebDriver
-2023-10-14 11:52:38,777 INFO  [main] Initializing WebDriver
-2023-10-14 11:52:38,777 INFO  [main] Initializing WebDriver
-2023-10-14 11:52:38,777 INFO  [main] Initializing WebDriver
-2023-10-14 11:52:38,778 INFO  [main] Initializing WebDriver
-2023-10-14 11:52:38,778 INFO  [main] Initializing WebDriver
-2023-10-14 11:52:38,778 INFO  [main] Initializing WebDriver
-2023-10-14 11:52:40,765 INFO  [main] Clicking on element loginPage.loginButton
-2023-10-14 11:52:45,236 INFO  [main] Clicking on element admin.adminZoneButton
-2023-10-14 11:52:47,281 INFO  [main] Clicking on element admin.viewUsersButton
-2023-10-14 11:52:52,231 INFO  [main] Clicking on element admin.seeUserProfileButton
-2023-10-14 11:52:55,979 INFO  [main] Clicking on element admin.disableUserButton
-2023-10-14 11:53:01,525 INFO  [main] Clicking on element admin.adminZoneButton
-2023-10-14 11:53:03,720 INFO  [main] Clicking on element admin.viewUsersButton
-2023-10-14 11:53:08,686 INFO  [main] Clicking on element admin.seeUserProfileButton
-2023-10-14 11:53:12,572 INFO  [main] Clicking on element admin.enableUserButton
-2023-10-14 11:53:18,114 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-14 11:53:21,687 INFO  [main] Clicking on element homePage.logOutButton
-2023-10-14 11:53:23,950 INFO  [main] Quitting WebDriver
+2023-10-14 12:05:49,924 INFO  [main] Initializing WebDriver
+2023-10-14 12:05:52,546 INFO  [main] Initializing WebDriver
+2023-10-14 12:05:55,991 INFO  [main] Initializing WebDriver
+2023-10-14 12:05:55,992 INFO  [main] Initializing WebDriver
+2023-10-14 12:05:55,992 INFO  [main] Initializing WebDriver
+2023-10-14 12:05:55,992 INFO  [main] Initializing WebDriver
+2023-10-14 12:05:55,993 INFO  [main] Initializing WebDriver
+2023-10-14 12:05:55,993 INFO  [main] Initializing WebDriver
+2023-10-14 12:05:55,993 INFO  [main] Initializing WebDriver
+2023-10-14 12:05:55,994 INFO  [main] Initializing WebDriver
+2023-10-14 12:05:55,994 INFO  [main] Initializing WebDriver
+2023-10-14 12:05:57,351 INFO  [main] Clicking on element loginPage.loginButton
+2023-10-14 12:06:01,312 INFO  [main] Clicking on element posts.latestPost
+2023-10-14 12:06:10,547 INFO  [main] Clicking on element posts.addNewPost
+2023-10-14 12:06:12,520 INFO  [main] Clicking on element posts.visibility
+2023-10-14 12:06:12,682 INFO  [main] Clicking on element posts.publicVisibility
+2023-10-14 12:06:12,892 INFO  [main] Clicking on element posts.savePostButton
+2023-10-14 12:06:18,953 INFO  [main] Clicking on element loginPage.loginButton
+2023-10-14 12:06:23,046 INFO  [main] Clicking on element posts.latestPost
+2023-10-14 12:06:32,246 INFO  [main] Clicking on element posts.browsePublicPostsButton
+2023-10-14 12:06:36,524 INFO  [main] Clicking on element posts.explorePost
+2023-10-14 12:06:41,537 INFO  [main] Clicking on element posts.editPostButton
+2023-10-14 12:06:44,590 INFO  [main] Clicking on element posts.visibility
+2023-10-14 12:06:44,699 INFO  [main] Clicking on element posts.publicVisibility
+2023-10-14 12:06:44,851 INFO  [main] Clicking on element posts.savePostButton
+2023-10-14 12:06:51,903 INFO  [main] Clicking on element posts.latestPost
+2023-10-14 12:07:01,280 INFO  [main] Clicking on element posts.browsePublicPostsButton
+2023-10-14 12:07:05,551 INFO  [main] Clicking on element posts.explorePost
+2023-10-14 12:07:10,592 INFO  [main] Clicking on element posts.deletePostButton
+2023-10-14 12:07:13,623 INFO  [main] Clicking on element posts.selectDeleteDropDown
+2023-10-14 12:07:13,769 INFO  [main] Clicking on element posts.submitButton
+2023-10-14 12:07:18,189 INFO  [main] Clicking on element loginPage.homeButton
+2023-10-14 12:07:21,849 INFO  [main] Clicking on element homePage.logOutButton
+2023-10-14 12:07:23,721 INFO  [main] Quitting WebDriver

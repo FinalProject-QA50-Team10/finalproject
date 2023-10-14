@@ -45,6 +45,8 @@ public class AdminTests extends BaseTestSetup {
         loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
         adminHomePage.editPostWithAdminAccess();
         actions.assertElementPresent(EDIT_POST_TEXT);
+        adminHomePage.deletePostWithAdminAccess();
+        actions.assertElementPresent(DELETE_POST_MESSAGE);
     }
 
     @Test
