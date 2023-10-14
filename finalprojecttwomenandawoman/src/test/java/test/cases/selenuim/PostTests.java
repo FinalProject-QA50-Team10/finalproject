@@ -1,7 +1,5 @@
 package test.cases.selenuim;
 
-import com.telerikacademy.testframework.pages.LoginPage;
-import com.telerikacademy.testframework.pages.PostPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -117,5 +115,21 @@ public class PostTests extends BaseTestSetup {
         loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         postPage.deletePost();
         actions.assertElementPresent(DELETE_POST_MESSAGE);
+    }
+
+    @Test
+    //FPT1-35 [Add New Post] Create Public Post with a Description Length of 1001 symbols
+    public void when_UserCreatePublicPostWithInvalidData_expect_PostNotCreated() {
+        String longDescription = actions.generateLongString();
+        postPage.createPostWithLongDescription("public", longDescription);
+        actions.assertElementPresent(POST_INVALID_TEXT_MESSAGE);
+    }
+
+    @Test
+    //FPT1-36 [Add New Post] Create Private Post with a Description Length of 1001 symbols
+    public void when_UserCreatePrivatePostWithInvalidData_expect_PostNotCreated() {
+        String longDescription = actions.generateLongString();
+        postPage.createPostWithLongDescription("private", longDescription);
+        actions.assertElementPresent(POST_INVALID_TEXT_MESSAGE);
     }
 }

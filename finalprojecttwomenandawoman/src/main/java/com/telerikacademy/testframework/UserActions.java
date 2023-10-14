@@ -231,6 +231,16 @@ public class UserActions {
         actions.perform();
     }
 
+    public String generateLongString() {
+        StringBuilder longString = new StringBuilder();
+        String charactersToAdd = "BCDERYAWGzbnml";
+        for (int i = 0; i < 1001; i++) {
+            longString.append(charactersToAdd);
+        }
+        return longString.toString();
+    }
+
+
     public String generateRandomText(int minLength, int maxLength) {
         int length = generateRandomNumber(minLength, maxLength);
 
