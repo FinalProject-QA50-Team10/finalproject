@@ -22,6 +22,11 @@ public class CommentPage extends BasePage {
         actions.clickElement(EXPLORE_POST_BUTTON);
     }
 
+    public void showComments() {
+        actions.waitForElementClickable(COMMENT_SHOW_COMMENTS_BUTTON);
+        actions.clickElement(COMMENT_SHOW_COMMENTS_BUTTON);
+    }
+
     public void createComment(String commentText) {
         navigateToLatestPublicPost();
 
@@ -34,9 +39,7 @@ public class CommentPage extends BasePage {
 
     public void editComment(String newCommentText) {
         navigateToLatestPublicPost();
-
-        actions.waitForElementClickable(COMMENT_SHOW_COMMENTS_BUTTON);
-        actions.clickElement(COMMENT_SHOW_COMMENTS_BUTTON);
+        showComments();
 
         actions.waitForElementClickable(EDIT_COMMENT_BUTTON);
         actions.clickElement(EDIT_COMMENT_BUTTON);
@@ -47,17 +50,11 @@ public class CommentPage extends BasePage {
         actions.waitForElementClickable(EDIT_COMMENT_SUBMIT_BUTTON);
         actions.clickElement(EDIT_COMMENT_SUBMIT_BUTTON);
 
-        //click show comments on the post
-        //actions.waitForElementClickable(COMMENT_SHOW_COMMENTS_BUTTON);
-        //actions.clickElement(COMMENT_SHOW_COMMENTS_BUTTON);
-        //assert text
     }
 
     public void deleteComment() {
         navigateToLatestPublicPost();
-
-        actions.waitForElementClickable(COMMENT_SHOW_COMMENTS_BUTTON);
-        actions.clickElement(COMMENT_SHOW_COMMENTS_BUTTON);
+        showComments();
 
         actions.waitForElementClickable(DELETE_COMMENT_BUTTON);
         actions.clickElement(DELETE_COMMENT_BUTTON);
@@ -72,9 +69,7 @@ public class CommentPage extends BasePage {
 
     public void likeComment() {
         navigateToLatestPublicPost();
-
-        actions.waitForElementClickable(COMMENT_SHOW_COMMENTS_BUTTON);
-        actions.clickElement(COMMENT_SHOW_COMMENTS_BUTTON);
+        showComments();
 
         actions.waitForElementClickable(COMMENT_LIKE_BUTTON);
         actions.clickElement(COMMENT_LIKE_BUTTON);
@@ -83,9 +78,7 @@ public class CommentPage extends BasePage {
 
     public void dislikeComment() {
         navigateToLatestPublicPost();
-
-        actions.waitForElementClickable(COMMENT_SHOW_COMMENTS_BUTTON);
-        actions.clickElement(COMMENT_SHOW_COMMENTS_BUTTON);
+        showComments();
 
         actions.waitForElementClickable(COMMENT_DISLIKE_BUTTON);
         actions.clickElement(COMMENT_DISLIKE_BUTTON);

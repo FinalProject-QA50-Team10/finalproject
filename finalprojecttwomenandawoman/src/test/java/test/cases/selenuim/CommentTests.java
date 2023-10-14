@@ -30,10 +30,11 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserCreatesComment_expect_CommentIsCreatedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment("This is a comment.");
-        actions.assertElementPresent(COMMENT_TEXT_FIELD);
+        commentPage.createComment(COMMENT_TEXT_MESSAGE);
 
-        //add more assertions
+        actions.waitForElementVisible(COMMENT_TEXT);
+        actions.assertElementPresent(COMMENT_TEXT);
+
         authenticatedUserHomePage.logout();
     }
 
@@ -46,8 +47,9 @@ public class CommentTests extends BaseTestSetup {
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment(commentText);
 
-        //assert invalid message
-        actions.assertElementPresent(COMMENT_TEXT_FIELD);
+        actions.waitForElementVisible(COMMENT_INVALID_TEXT_MESSAGE);
+        actions.assertElementPresent(COMMENT_INVALID_TEXT_MESSAGE);
+
         authenticatedUserHomePage.logout();
     }
 
@@ -56,10 +58,12 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserEditsComment_expect_CommentIsEditedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment("This is a comment.");
-        commentPage.editComment("This is an edited comment.");
-        actions.assertElementPresent(COMMENT_TEXT_FIELD);
-        //add more assertions
+        commentPage.createComment(COMMENT_TEXT_MESSAGE);
+        commentPage.editComment(EDITED_COMMENT_TEXT_MESSAGE);
+
+        actions.waitForElementVisible(COMMENT_EDITED_TEXT);
+        actions.assertElementPresent(COMMENT_EDITED_TEXT);
+
         authenticatedUserHomePage.logout();
     }
 
@@ -68,8 +72,12 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserDeletesComment_expect_CommentIsDeletedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment("This is a comment.");
+        commentPage.createComment(COMMENT_TEXT_MESSAGE);
         commentPage.deleteComment();
+
+        actions.waitForElementVisible(DELETE_COMMENT_MESSAGE);
+        actions.assertElementPresent(DELETE_COMMENT_MESSAGE);
+
         authenticatedUserHomePage.logout();
     }
 
@@ -78,8 +86,15 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserLikesComment_expect_CommentIsLikedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment("This is a comment.");
+        commentPage.createComment(COMMENT_TEXT_MESSAGE);
+        authenticatedUserHomePage.logout();
+
+        loginPage.login(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
         commentPage.likeComment();
+
+        actions.waitForElementVisible(COMMENT_DISLIKE_BUTTON);
+        actions.assertElementPresent(COMMENT_DISLIKE_BUTTON);
+
         authenticatedUserHomePage.logout();
     }
 
@@ -88,9 +103,20 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserDislikesComment_expect_CommentIsDislikedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment("This is a comment.");
+        commentPage.createComment(COMMENT_TEXT_MESSAGE);
+        authenticatedUserHomePage.logout();
+
+        loginPage.login(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
         commentPage.likeComment();
+
+        actions.waitForElementVisible(COMMENT_DISLIKE_BUTTON);
+        actions.assertElementPresent(COMMENT_DISLIKE_BUTTON);
+
         commentPage.dislikeComment();
+
+        actions.waitForElementVisible(COMMENT_LIKE_BUTTON);
+        actions.assertElementPresent(COMMENT_LIKE_BUTTON);
+
         authenticatedUserHomePage.logout();
     }
 
