@@ -99,6 +99,7 @@ public class Constants {
     public static final String POST_MESSAGE = "This is my first post with Selenium WebDriver";
     public static final String POST_MESSAGE_PRIVATE = "This is my first private post with Selenium WebDriver";
     public static final String POST_EDIT_MESSAGE = "Edit Public Post";
+    public static final String POST_INVALID_TEXT_MESSAGE = "posts.postInvalidTextMessage";
     public static final String POST_SAVE_BUTTON = "posts.savePostButton";
     public static final String POST_TEXT = "posts.postText";
     public static final String POST_PRIVATE_TEXT = "posts.postTextPrivate";

@@ -83,6 +83,29 @@ public class PostPage extends BasePage {
         actions.clickElement(POST_SAVE_BUTTON);
     }
 
+    public void createPostWithLongDescription(String postType, String longDescription) {
+        navigateToLatestPost();
+        actions.waitForElementClickable(POSTS_ADD_NEW_POST);
+        actions.clickElement(POSTS_ADD_NEW_POST);
+        actions.waitForElementClickable(POSTS_VISIBILITY);
+        actions.clickElement(POSTS_VISIBILITY);
+
+        if (postType.equalsIgnoreCase("public")) {
+            actions.waitForElementClickable(POSTS_PUBLIC_VISIBILITY);
+            actions.clickElement(POSTS_PUBLIC_VISIBILITY);
+            actions.waitForElementClickable(POST_MESSAGE_FIELD);
+            actions.typeValueInField(longDescription, POST_MESSAGE_FIELD);
+        } else if (postType.equalsIgnoreCase("private")) {
+            actions.waitForElementClickable(POSTS_PRIVATE_VISIBILITY);
+            actions.clickElement(POSTS_PRIVATE_VISIBILITY);
+            actions.waitForElementClickable(POST_MESSAGE_FIELD);
+            actions.typeValueInField(longDescription, POST_MESSAGE_FIELD);
+        }
+
+        actions.waitForElementClickable(POST_SAVE_BUTTON);
+        actions.clickElement(POST_SAVE_BUTTON);
+    }
+
     private void navigateToLatestPost() {
         actions.waitForElementClickable(LATEST_POST_BUTTON);
         actions.clickElement(LATEST_POST_BUTTON);
