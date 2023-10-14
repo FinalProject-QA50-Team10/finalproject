@@ -62,8 +62,8 @@ public class FriendsRequestTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-117 [Friends Request] Disconnect users
-    public void when_TwoUsersAreConnectedAndOneOfThemClickDisconnectButton_Expect_TheyAreNotConnected() {
+    //FPT1-116 [Friends Request] User sends a request to connect with another user
+    public void when_TwoUsersAreConnectedAndOneOfThemClickDisconnectButton_Expect_DisconnectButtonIsVisible() {
         userProfilePage.assertPageNavigated();
         userProfilePage.clickConnectButton();
         userProfilePage.assertTextMessage();

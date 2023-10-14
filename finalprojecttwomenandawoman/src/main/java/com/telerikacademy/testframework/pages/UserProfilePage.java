@@ -33,6 +33,11 @@ public class UserProfilePage extends BasePage {
         actions.clickElement(APPROVE_NEWEST_FRIEND_REQUESTS_BUTTON_PATH);
     }
 
+    public void clickDisconnectButton(){
+        actions.waitForElementClickable(DISCONNECT_BUTTON_PATH);
+        actions.clickElement(DISCONNECT_BUTTON_PATH);
+    }
+
     @Override
     public void assertPageNavigated() {
         String currentUrl = driver.getCurrentUrl();
