@@ -26,63 +26,63 @@ public class FriendsRequestTests extends BaseTestSetup {
 
     @AfterEach
     public void logOutAndNavigateToHomePage() {
-        userProfilePage.clickLogoutButton();
+        personalProfilePage.clickLogoutButton();
         unauthenticatedUser.navigateToHomePage();
     }
 
     @Test
     //FPT1-116 [Friends Request] User sends a request to connect with another user
     public void when_AuthenticatedUserSendsRequestToConnectWithAnotherUser_Expect_SuccessfulMessageIsVisible() {
-        userProfilePage.assertPageNavigated();
-        userProfilePage.clickConnectButton();
-        userProfilePage.assertTextMessage();
+        personalProfilePage.assertPageNavigated();
+        personalProfilePage.clickConnectButton();
+        personalProfilePage.assertTextMessage();
     }
 
     @Test
     //FPT1-116 [Friends Request] User sends a request to connect with another user
     public void when_AuthenticatedUserSendsRequestToConnectWithAnotherUser_Expect_SuccessfulAcceptedRequest() {
-        userProfilePage.assertPageNavigated();
-        userProfilePage.clickConnectButton();
-        userProfilePage.assertTextMessage();
-        userProfilePage.clickLogoutButton();
+        personalProfilePage.assertPageNavigated();
+        personalProfilePage.clickConnectButton();
+        personalProfilePage.assertTextMessage();
+        personalProfilePage.clickLogoutButton();
         loginPage.navigateToHomePage();
         unauthenticatedUser.clickSignInButton();
         loginPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         authenticatedUserHomePage.assertLogoutButtonIsVisible();
         authenticatedUserHomePage.clickPersonalProfileButton();
-        userProfilePage.clickNewFriendRequestsButton();
-        userProfilePage.assertRequestsAreVisible();
-        userProfilePage.clickNewestRequestApproveButton();
+        personalProfilePage.clickNewFriendRequestsButton();
+        personalProfilePage.assertRequestsAreVisible();
+        personalProfilePage.clickNewestRequestApproveButton();
         if (NUMBER_OF_FRIENDS_REQUESTS == 1) {
-            userProfilePage.assertErrorMessage();
+            personalProfilePage.assertErrorMessage();
         } else {
-            userProfilePage.assertRequestsAreOneLess();
+            personalProfilePage.assertRequestsAreOneLess();
         }
     }
 
     @Test
     //FPT1-116 [Friends Request] User sends a request to connect with another user
     public void when_TwoUsersAreConnectedAndOneOfThemClickDisconnectButton_Expect_DisconnectButtonIsVisible() {
-        userProfilePage.assertPageNavigated();
-        userProfilePage.clickConnectButton();
-        userProfilePage.assertTextMessage();
-        userProfilePage.clickLogoutButton();
+        personalProfilePage.assertPageNavigated();
+        personalProfilePage.clickConnectButton();
+        personalProfilePage.assertTextMessage();
+        personalProfilePage.clickLogoutButton();
         loginPage.navigateToHomePage();
         unauthenticatedUser.clickSignInButton();
         loginPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         authenticatedUserHomePage.assertLogoutButtonIsVisible();
         authenticatedUserHomePage.clickPersonalProfileButton();
-        userProfilePage.clickNewFriendRequestsButton();
-        userProfilePage.assertRequestsAreVisible();
-        userProfilePage.clickNewestRequestApproveButton();
-        userProfilePage.clickLogoutButton();
+        personalProfilePage.clickNewFriendRequestsButton();
+        personalProfilePage.assertRequestsAreVisible();
+        personalProfilePage.clickNewestRequestApproveButton();
+        personalProfilePage.clickLogoutButton();
         loginPage.navigateToHomePage();
         unauthenticatedUser.clickSignInButton();
         loginPage.login(RANDOM_USERNAME, GEORGE_BUSH_PASSWORD);
         authenticatedUserHomePage.fillSearchForm(EMPTY_STRING, GEORGE_BUSH_NAME);
         searchedUsersPage.clickSeeProfileButton();
-        userProfilePage.assertDisconnectButtonVisible();
+        personalProfilePage.assertDisconnectButtonVisible();
     }
 }

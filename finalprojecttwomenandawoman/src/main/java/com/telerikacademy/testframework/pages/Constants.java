@@ -1,5 +1,7 @@
 package com.telerikacademy.testframework.pages;
 
+import java.util.Date;
+
 public class Constants {
 
     //########### URL ################
@@ -21,20 +23,15 @@ public class Constants {
     public static final String MR_BEAST_PASSWORD = "WEare.MrBeast.password";
     public static final String JACK_NICHOLSON_USERNAME = "WEare.JackNicholson.username";
     public static final String JACK_NICHOLSON_PASSWORD = "WEare.JackNicholson.password";
-
     public static final String TOM_CRUISE_USERNAME = "TomCruise";
     public static final String TOM_CRUISE_PASSWORD = "HaHaHa123!";
-
-
-//    public static final int TOM_CRUISE_ID = 188;
-//    public static final String FOR_EDIT_USERNAME = "telerikdani";
-//    public static final String FOR_EDIT_PASSWORD = "123456";
-//    public static final int FOR_EDIT_ID = 39;
-//    public static final String FOR_EDIT_BIRTHDAY = "1955-07-17";
-//    public static final String FOR_EDIT_FIRST_NAME = "Ryan";
-//    public static final String FOR_EDIT_LAST_NAME = "Gosling";
-//    public static final int INVALID_ID = 800;
-
+    public static final String FOR_EDIT_USERNAME = "telerikdani";
+    public static final String FOR_EDIT_PASSWORD = "123456";
+    public static final String FOR_EDIT_EMAIL = "testUser@email.bg";
+    public static final String FOR_EDIT_BIRTHDAY = "17/07/2021";
+    public static final String FOR_EDIT_FIRST_NAME = "Ryan";
+    public static final String FOR_EDIT_LAST_NAME = "Gosling";
+    public static final int INVALID_ID = 800;
     public static final String INVALID_USERNAME = "Barbie";
     public static final String CYRILLIC_USERNAME = "Барби";
     public static final String VALID_JOB_TITLE = "Actor";
@@ -80,7 +77,13 @@ public class Constants {
     public static final String CONNECT_BUTTON_PATH = "personalProfile.connectButton";
     public static final String DISCONNECT_BUTTON_PATH = "personalProfile.disconnectButton";
     public static final String CONNECT_MESSAGE_PATH = "personalProfile.message";
-
+    public static final String EDIT_PROFILE_FORM_TITLE_PATH = "editPersonalProfilePage.editFormTitle";
+    public static final String EDIT_PROFILE_BUTTON_PATH = "personalProfilePage.editProfileButton";
+    public static final String EDIT_FIRST_NAME_PATH = "editPersonalProfilePage.firstNameField";
+    public static final String EDIT_LAST_NAME_PATH = "editPersonalProfilePage.lastNameField";
+    public static final String EDIT_BIRTH_DATE_PATH = "editPersonalProfilePage.birthDateField";
+    public static final String EDIT_EMAIL_PATH = "editPersonalProfilePage.emailField";
+    public static final String EDIT_PROFILE_CHANGES_BUTTON_PATH = "editPersonalProfilePage.updateMyProfileButton";
 
     //##############  Admin user part #################
     public static final String ADMIN_ZONE_BUTTON = "admin.adminZoneButton";
@@ -155,4 +158,5 @@ public class Constants {
     public static final String EXISTING_USERNAME_ERROR_MESSAGE = "User with this username already exist";
     public static final String CONNECT_BUTTON_MESSAGE = "Good job! You have send friend request!";
     public static final String REQUESTS_ERROR_MESSAGE = "There are no requests";
+    public static final String EDIT_PROFILE_FORM_TITLE = "Personal Profile";
 }

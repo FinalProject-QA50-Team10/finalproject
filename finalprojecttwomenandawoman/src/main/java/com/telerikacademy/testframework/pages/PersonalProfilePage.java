@@ -4,12 +4,10 @@ import com.telerikacademy.testframework.Utils;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Objects;
-
 import static com.telerikacademy.testframework.pages.Constants.*;
 
-public class UserProfilePage extends BasePage {
-    public UserProfilePage(WebDriver driver) {
+public class PersonalProfilePage extends BasePage {
+    public PersonalProfilePage(WebDriver driver) {
         super(driver, PERSONAL_PROFILE_PAGE);
     }
 
@@ -36,6 +34,11 @@ public class UserProfilePage extends BasePage {
     public void clickDisconnectButton(){
         actions.waitForElementClickable(DISCONNECT_BUTTON_PATH);
         actions.clickElement(DISCONNECT_BUTTON_PATH);
+    }
+
+    public void clickEditProfileButton() {
+        actions.waitForElementClickable(EDIT_PROFILE_BUTTON_PATH);
+        actions.clickElement(EDIT_PROFILE_BUTTON_PATH);
     }
 
     @Override
@@ -77,4 +80,6 @@ public class UserProfilePage extends BasePage {
         actions.waitForElementVisible(DISCONNECT_BUTTON_PATH);
         actions.assertElementPresent(DISCONNECT_BUTTON_PATH);
     }
+
+
 }

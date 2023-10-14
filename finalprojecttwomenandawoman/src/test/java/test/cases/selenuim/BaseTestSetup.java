@@ -5,18 +5,19 @@ import com.telerikacademy.testframework.pages.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
-import static com.telerikacademy.testframework.pages.Constants.HOME_BUTTON_PATH;
 import static com.telerikacademy.testframework.pages.Constants.HOME_PAGE;
 
 public class BaseTestSetup {
     static UserActions actions = new UserActions();
+
     public LoginPage loginPage = new LoginPage(actions.getDriver());
     public UnauthenticatedUserHomePage unauthenticatedUser = new UnauthenticatedUserHomePage(actions.getDriver());
     public RegistrationPage registerPage = new RegistrationPage(actions.getDriver());
     public SearchedUsersPage searchedUsersPage = new SearchedUsersPage(actions.getDriver());
     public RegisteredUserPage registeredUserPage = new RegisteredUserPage(actions.getDriver());
     public AuthenticatedUserHomePage authenticatedUserHomePage = new AuthenticatedUserHomePage(actions.getDriver());
-    public UserProfilePage userProfilePage = new UserProfilePage(actions.getDriver());
+    public PersonalProfilePage personalProfilePage = new PersonalProfilePage(actions.getDriver());
+    public EditPersonalProfilePage editProfilePage = new EditPersonalProfilePage(actions.getDriver());
     public CommentPage commentPage = new CommentPage(actions.getDriver());
     public FeedPage feedPage = new FeedPage(actions.getDriver());
     PostPage postPage = new PostPage(actions.getDriver());
