@@ -21,6 +21,7 @@ public class Constants {
     public static final String JACK_NICHOLSON_USERNAME = "WEare.JackNicholson.username";
     public static final String JACK_NICHOLSON_PASSWORD = "WEare.JackNicholson.password";
 
+
 //    public static final String TOM_CRUISE_USERNAME = "TomCruise";
 //    public static final String TOM_CRUISE_PASSWORD = "HaHaHa123!";
 //    public static final int TOM_CRUISE_ID = 188;
@@ -31,6 +32,7 @@ public class Constants {
 //    public static final String FOR_EDIT_FIRST_NAME = "Ryan";
 //    public static final String FOR_EDIT_LAST_NAME = "Gosling";
 //    public static final int INVALID_ID = 800;
+
     public static final String INVALID_USERNAME = "Barbie";
     public static final String CYRILLIC_USERNAME = "Барби";
     public static final String VALID_JOB_TITLE = "Actor";
@@ -121,8 +123,12 @@ public class Constants {
     public static final String DELETE_COMMENT_MESSAGE = "comments.deleteMessage";
     public static final String COMMENT_LIKE_BUTTON = "comments.likeComment";
     public static final String COMMENT_DISLIKE_BUTTON = "comments.dislikeComment";
+
+    public static final String COMMENT_TEXT_MESSAGE = "This is a comment.";
+    public static final String EDITED_COMMENT_TEXT_MESSAGE = "This is an edited comment.";
     public static final String COMMENT_TEXT = "comments.commentText";
     public static final String COMMENT_EDITED_TEXT = "comments.commentEditedText";
+    public static final String COMMENT_INVALID_TEXT_MESSAGE = "comments.commentsInvalidTextMessage";
 
 
     //############## DESCRIPTIONS #################

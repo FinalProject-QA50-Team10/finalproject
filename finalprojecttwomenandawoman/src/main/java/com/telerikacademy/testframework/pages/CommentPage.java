@@ -50,10 +50,6 @@ public class CommentPage extends BasePage {
         actions.waitForElementClickable(EDIT_COMMENT_SUBMIT_BUTTON);
         actions.clickElement(EDIT_COMMENT_SUBMIT_BUTTON);
 
-        //click show comments on the post
-        //actions.waitForElementClickable(COMMENT_SHOW_COMMENTS_BUTTON);
-        //actions.clickElement(COMMENT_SHOW_COMMENTS_BUTTON);
-        //assert text
     }
 
     public void deleteComment() {

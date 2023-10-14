@@ -30,10 +30,10 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserCreatesComment_expect_CommentIsCreatedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment(COMMENT_TEXT);
-        actions.assertElementPresent(COMMENT_TEXT_FIELD);
+        commentPage.createComment(COMMENT_TEXT_MESSAGE);
 
-        //add more assertions
+        actions.assertElementPresent(COMMENT_TEXT);
+
         authenticatedUserHomePage.logout();
     }
 
@@ -46,7 +46,8 @@ public class CommentTests extends BaseTestSetup {
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment(commentText);
 
-        //assert invalid message
+        actions.assertElementPresent(COMMENT_INVALID_TEXT_MESSAGE);
+
         actions.assertElementPresent(COMMENT_TEXT_FIELD);
         authenticatedUserHomePage.logout();
     }
@@ -56,10 +57,12 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserEditsComment_expect_CommentIsEditedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment(COMMENT_TEXT);
-        commentPage.editComment(COMMENT_EDITED_TEXT);
+        commentPage.createComment(COMMENT_TEXT_MESSAGE);
+        commentPage.editComment(EDITED_COMMENT_TEXT_MESSAGE);
         actions.assertElementPresent(COMMENT_TEXT_FIELD);
-        //add more assertions
+
+        actions.assertElementPresent(COMMENT_EDITED_TEXT);
+
         authenticatedUserHomePage.logout();
     }
 
@@ -68,8 +71,12 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserDeletesComment_expect_CommentIsDeletedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment(COMMENT_TEXT);
+        commentPage.createComment(COMMENT_TEXT_MESSAGE);
+        commentPage.showComments();
         commentPage.deleteComment();
+
+        actions.assertElementNotPresent(COMMENT_TEXT_FIELD);
+
         authenticatedUserHomePage.logout();
     }
 
@@ -78,8 +85,11 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserLikesComment_expect_CommentIsLikedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment(COMMENT_TEXT);
+        commentPage.createComment(COMMENT_TEXT_MESSAGE);
         commentPage.likeComment();
+
+        //actions.assertElementAttributeEquals(LIKE_BUTTON_LOCATOR, "class", "liked");
+
         authenticatedUserHomePage.logout();
     }
 
@@ -88,9 +98,12 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserDislikesComment_expect_CommentIsDislikedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment(COMMENT_TEXT);
+        commentPage.createComment(COMMENT_TEXT_MESSAGE);
         commentPage.likeComment();
         commentPage.dislikeComment();
+
+        //actions.assertElementAttributeEquals(DISLIKE_BUTTON_LOCATOR, "class", "disliked");
+
         authenticatedUserHomePage.logout();
     }
 

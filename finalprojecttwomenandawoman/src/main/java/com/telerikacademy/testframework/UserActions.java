@@ -9,17 +9,14 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.util.List;
-import java.util.Objects;
+import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.telerikacademy.testframework.Utils.LOGGER;
-import static com.telerikacademy.testframework.Utils.getConfigPropertyByKey;
-import static com.telerikacademy.testframework.Utils.getUIMappingByKey;
-import static com.telerikacademy.testframework.Utils.getWebDriver;
-import static com.telerikacademy.testframework.Utils.tearDownWebDriver;
+import static com.telerikacademy.testframework.Utils.*;
 import static java.lang.String.format;
 
 public class UserActions {
@@ -143,6 +140,15 @@ public class UserActions {
         System.out.println("Elements are present.");
     }
 
+    public void assertElementNotPresent(String locator) {
+        try {
+            driver.findElement(By.xpath(getUIMappingByKey(locator)));
+            Assertions.fail(format("Element with %s is present but should not be.", locator));
+        } catch (NoSuchElementException e) {
+            System.out.println("Element is not present.");
+        }
+    }
+
     public void assertElementTextEquals(String locator, String expectedText) {
         String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
         Assertions.assertEquals(expectedText, actualText, "Text does not match for element: " + locator);
@@ -160,23 +166,22 @@ public class UserActions {
     }
 
 
-    public void assertUsersListIsNotEmpty(String searchResultsPath){
+    public void assertUsersListIsNotEmpty(String searchResultsPath) {
         var users = getElements(searchResultsPath);
         Assertions.assertFalse(users.isEmpty());
         System.out.println("Users list in not empty.");
     }
 
-    public void assertUrlsAreEquals(String expectedUrl, String actualUrl){
+    public void assertUrlsAreEquals(String expectedUrl, String actualUrl) {
         Assertions.assertEquals(expectedUrl, actualUrl, "Expected URL is different than actual.");
         System.out.println("URLs are equal.");
     }
 
-    public void assertUsersAttribute(String name, String path){
+    public void assertUsersAttribute(String name, String path) {
         var users = getElements(path);
         for (var user : users) {
             String result = user.getText();
-            if(!result.contains(name))
-            {
+            if (!result.contains(name)) {
                 throw new IllegalArgumentException(format("Expected attribute is different than actual. " +
                         "Actual is %s, expected is %s.", result, name));
             }
@@ -185,12 +190,11 @@ public class UserActions {
     }
 
 
-    public void assertSearchedUsersContainsName(String name, String path){
+    public void assertSearchedUsersContainsName(String name, String path) {
         var users = getElements(path);
         for (var user : users) {
             String result = user.getText();
-            if(!result.contains(name))
-            {
+            if (!result.contains(name)) {
                 throw new IllegalArgumentException(format("Expected name is different than actual. " +
                         "Actual is %s, expected is %s.", result, name));
             }
@@ -220,8 +224,7 @@ public class UserActions {
         return element.getAttribute(attributeName);
     }
 
-    public void scrollDown(String locator)
-    {
+    public void scrollDown(String locator) {
         String xpath = getLocatorValueByKey(locator);
         WebElement element = driver.findElement(By.xpath(xpath));
 
@@ -267,10 +270,11 @@ public class UserActions {
         return builder.toString();
     }
 
-    private int generateRandomNumber(int min, int max){
+    private int generateRandomNumber(int min, int max) {
         Random number = new Random();
         return number.nextInt(max - min) + min;
     }
+
     private String getLocatorValueByKey(String locator) {
         return format(getUIMappingByKey(locator));
     }
