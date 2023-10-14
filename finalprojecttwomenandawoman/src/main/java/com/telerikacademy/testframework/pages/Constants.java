@@ -7,6 +7,7 @@ public class Constants {
     public static final String LOGIN_PAGE = "WEare.loginPage";
     public static final String REGISTER_PAGE = "WEare.registerPage";
     public static final String SEARCHED_USERS_PAGE = "WEare.searchedUsersPage";
+    public static final String PERSONAL_PROFILE_PAGE = "WEare.personalProfilePage";
 
     //############### USER DATA ###############
     public static final String ADMIN_NAME = "WEare.admin.username";
@@ -47,10 +48,14 @@ public class Constants {
     public static final String REGISTER_BUTTON_PATH = "homePage.registerButton";
     public static final String LOGOUT_BUTTON_PATH = "homePage.logOutButton";
     public static final String PERSONAL_PROFILE_BUTTON_PATH = "homePage.personalProfileButton";
+    public static final String NEW_FRIEND_REQUESTS_BUTTON_PATH = "personalProfile.newFriendRequestsButton";
+    public static final String APPROVE_FRIEND_REQUESTS_BUTTON_PATH = "personalProfile.newFriendRequests.approveButtons";
+    public static final String APPROVE_NEWEST_FRIEND_REQUESTS_BUTTON_PATH = "personalProfile.newFriendRequests.lastApproveButtons";
     public static final String ADD_NEW_POST_BUTTON_PATH = "homePage.addNewPostButton";
+    public static int NUMBER_OF_FRIENDS_REQUESTS;
+    public static String ERROR_MESSAGE_FRIENDS_REQUESTS = "personalProfile.newFriendRequests.errorMessage";
     public static final String SEARCH_FORM_PATH = "homePage.searchForm";
     public static final String HOME_BUTTON_PATH = "loginPage.homeButton";
-    public static final String LOG_OUT_BUTTON_PATH = "homePage.logOutButton";
     public static final String LOGIN_ERROR_MESSAGE_PATH = "loginPage.errorMessage";
     public static final String LOGOUT_ERROR_MESSAGE_PATH = "logoutPage.errorMessage";
     public static final String LOGIN_PAGE_TITLE_PATH = "loginPage.title";
@@ -60,6 +65,7 @@ public class Constants {
     public static final String SEARCH_RESULTS_PATH = "searchForm.searchResults";
     public static final String SEARCH_RESULTS_JOB_TITLE_PATH = "searchForm.searchResults.jobTitle";
     public static final String SEARCH_RESULTS_NAME_PATH = "searchForm.searchResults.name";
+    public static final String SEE_PROFILE_BUTTON_PATH = "searchForm.seeProfileButton";
     public static final String USERNAME_FIELD_PATH = "registrationPage.username";
     public static final String EMAIL_FIELD_PATH = "registrationPage.email";
     public static final String PASSWORD_FIELD_PATH = "registrationPage.password";
@@ -68,6 +74,9 @@ public class Constants {
     public static final String WELCOME_MESSAGE_PATH = "registeredUserPage.welcomeMessage";
     public static final String UPDATE_PROFILE_BUTTON_PATH = "registeredUserPage.updateProfileButton";
     public static final String REGISTRATION_ERROR_MESSAGE_PATH = "registrationPage.errorMessage";
+    public static final String CONNECT_BUTTON_PATH = "personalProfile.connectButton";
+    public static final String DISCONNECT_BUTTON_PATH = "personalProfile.disconnectButton";
+    public static final String CONNECT_MESSAGE_PATH = "personalProfile.message";
 
 
     //##############  Admin user part #################
@@ -131,4 +140,6 @@ public class Constants {
     public static final String PASSWORD_ERROR_MESSAGE = "password must be minimum 6 characters";
     public static final String EMAIL_ERROR_MESSAGE = "this doesn't look like valid email";
     public static final String EXISTING_USERNAME_ERROR_MESSAGE = "User with this username already exist";
+    public static final String CONNECT_BUTTON_MESSAGE = "Good job! You have send friend request!";
+    public static final String REQUESTS_ERROR_MESSAGE = "There are no requests";
 }

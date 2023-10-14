@@ -1,5 +1,6 @@
 package com.telerikacademy.testframework.pages;
 
+import com.telerikacademy.testframework.Utils;
 import org.openqa.selenium.WebDriver;
 
 import static com.telerikacademy.testframework.pages.Constants.*;
@@ -12,13 +13,27 @@ public class AuthenticatedUserHomePage extends BasePage {
     public void logout(){
         actions.waitForElementClickable(HOME_BUTTON_PATH);
         actions.clickElement(HOME_BUTTON_PATH);
-        actions.waitForElementClickable(LOG_OUT_BUTTON_PATH);
-        actions.clickElement(LOG_OUT_BUTTON_PATH);
+        actions.waitForElementClickable(LOGOUT_BUTTON_PATH);
+        actions.clickElement(LOGOUT_BUTTON_PATH);
     }
 
     public void navigateToHomePage(){
         actions.waitForElementClickable(HOME_BUTTON_PATH);
         actions.clickElement(HOME_BUTTON_PATH);
+    }
+
+    public void clickPersonalProfileButton(){
+        actions.waitForElementClickable(PERSONAL_PROFILE_BUTTON_PATH);
+        actions.clickElement(PERSONAL_PROFILE_BUTTON_PATH);
+    }
+
+    public void fillSearchForm(String jobTitle, String names){
+        actions.waitForElementClickable(SEARCH_JOB_FIELD_PATH);
+        actions.typeValueInField(Utils.getConfigPropertyByKey(jobTitle), SEARCH_JOB_FIELD_PATH);
+        actions.waitForElementClickable(SEARCH_NAME_FIELD_PATH);
+        actions.typeValueInField(Utils.getConfigPropertyByKey(names), SEARCH_NAME_FIELD_PATH);
+        actions.waitForElementClickable(SEARCH_BUTTON_PATH);
+        actions.clickElement(SEARCH_BUTTON_PATH);
     }
 
     public void assertLogoutButtonIsVisible() {

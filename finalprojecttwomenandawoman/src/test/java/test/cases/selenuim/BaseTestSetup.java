@@ -15,7 +15,7 @@ public class BaseTestSetup {
     public SearchedUsersPage searchedUsersPage = new SearchedUsersPage(actions.getDriver());
     public RegisteredUserPage registeredUserPage = new RegisteredUserPage(actions.getDriver());
     public AuthenticatedUserHomePage authenticatedUserHomePage = new AuthenticatedUserHomePage(actions.getDriver());
-
+    public UserProfilePage userProfilePage = new UserProfilePage(actions.getDriver());
     public CommentPage commentPage = new CommentPage(actions.getDriver());
     PostPage postPage = new PostPage(actions.getDriver());
     AdminHomePage adminHomePage = new AdminHomePage(actions.getDriver());

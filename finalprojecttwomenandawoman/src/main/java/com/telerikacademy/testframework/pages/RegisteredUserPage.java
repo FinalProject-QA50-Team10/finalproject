@@ -11,6 +11,11 @@ public class RegisteredUserPage extends BasePage {
         super(driver, REGISTER_PAGE);
     }
 
+    public void navigateToHomePage(){
+        actions.waitForElementClickable(HOME_BUTTON_PATH);
+        actions.clickElement(HOME_BUTTON_PATH);
+    }
+
     public void assertUpdateProfileButtonIsVisible() {
         actions.waitForElementVisible(UPDATE_PROFILE_BUTTON_PATH);
     }

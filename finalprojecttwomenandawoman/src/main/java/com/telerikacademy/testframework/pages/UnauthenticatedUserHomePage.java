@@ -3,8 +3,6 @@ package com.telerikacademy.testframework.pages;
 import com.telerikacademy.testframework.Utils;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Objects;
-
 import static com.telerikacademy.testframework.pages.Constants.*;
 import static java.lang.String.format;
 
@@ -30,7 +28,7 @@ public class UnauthenticatedUserHomePage extends BasePage{
         actions.clickElement(HOME_BUTTON_PATH);
     }
 
-    public void searchForm(String jobTitle, String names){
+    public void fillSearchForm(String jobTitle, String names){
         actions.waitForElementClickable(SEARCH_JOB_FIELD_PATH);
         actions.typeValueInField(Utils.getConfigPropertyByKey(jobTitle), SEARCH_JOB_FIELD_PATH);
         actions.waitForElementClickable(SEARCH_NAME_FIELD_PATH);
