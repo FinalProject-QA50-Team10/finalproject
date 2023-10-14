@@ -89,4 +89,27 @@ public class AdminTests extends BaseTestSetup {
         adminHomePage.deletePostWithAdminAccess();
         actions.assertElementPresent(DELETE_POST_MESSAGE);
     }
+
+    @Test
+    //FPT1-63 [Delete Comment] Delete an Existing Comment as Admin
+    public void when_AdminDeleteComment_expect_CommentIsDeleted() {
+        loginPage.navigateToPage();
+        loginPage.assertPageNavigated();
+        loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
+        postPage.createPost("public");
+        actions.assertElementPresent(POST_TEXT);
+        actions.assertElementPresent(POST_IS_PUBLIC);
+        loginPage.navigateToPage();
+        loginPage.assertPageNavigated();
+        loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
+        commentPage.createComment("This is a comment.");
+        actions.assertElementPresent(COMMENT_TEXT_FIELD);
+        loginPage.navigateToPage();
+        postPage.assertPageNavigated();
+        loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
+        commentPage.deleteComment();
+        actions.assertElementPresent(DELETE_COMMENT_MESSAGE);
+        adminHomePage.deletePostWithAdminAccess();
+        actions.assertElementPresent(DELETE_POST_MESSAGE);
+    }
 }

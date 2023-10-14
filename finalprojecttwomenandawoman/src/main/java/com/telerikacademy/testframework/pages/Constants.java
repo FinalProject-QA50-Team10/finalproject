@@ -117,6 +117,7 @@ public class Constants {
     public static final String DELETE_COMMENT_BUTTON = "comments.deleteCommentButton";
     public static final String DELETE_DROPDOWN_MENU = "comments.deleteCommentDropDownMenu";
     public static final String DELETE_DROPDOWN_SELECT = "comments.selectDeleteDropDown";
+    public static final String DELETE_COMMENT_MESSAGE = "comments.deleteMessage";
     public static final String COMMENT_LIKE_BUTTON = "comments.likeComment";
     public static final String COMMENT_DISLIKE_BUTTON = "comments.dislikeComment";
 

@@ -1,76 +1,35 @@
-2023-10-14 00:49:22,806 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:27,174 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:30,717 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:30,719 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:30,719 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:30,719 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:30,720 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:30,720 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:30,720 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:30,720 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:30,721 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:33,675 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-14 00:49:36,611 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:36,611 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:36,611 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:36,612 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:36,612 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:36,612 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:36,612 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:36,612 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:36,612 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:37,050 INFO  [main] Clicking on element searchForm.searchButton
-2023-10-14 00:49:39,615 INFO  [main] Hovering on element searchForm.searchResults
-2023-10-14 00:49:39,647 INFO  [main] Hovering on element searchForm.searchResults.name
-2023-10-14 00:49:39,743 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-14 00:49:42,997 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:42,998 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:42,998 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:42,998 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:42,999 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:42,999 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:42,999 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:43,000 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:43,000 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:43,075 INFO  [main] Clicking on element homePage.signInButton
-2023-10-14 00:49:44,685 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-14 00:49:47,562 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:47,563 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:47,565 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:47,566 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:47,566 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:47,567 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:47,567 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:47,567 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:47,567 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:47,941 INFO  [main] Clicking on element searchForm.searchButton
-2023-10-14 00:49:50,797 INFO  [main] Hovering on element searchForm.searchResults
-2023-10-14 00:49:50,833 INFO  [main] Hovering on element searchForm.searchResults.jobTitle
-2023-10-14 00:49:50,985 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-14 00:49:53,742 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:53,742 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:53,742 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:53,742 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:53,742 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:53,743 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:53,743 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:53,743 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:53,743 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:54,143 INFO  [main] Clicking on element searchForm.searchButton
-2023-10-14 00:49:56,309 INFO  [main] Hovering on element searchForm.searchResults
-2023-10-14 00:49:56,324 INFO  [main] Hovering on element searchForm.searchResults.name
-2023-10-14 00:49:56,390 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-14 00:49:59,272 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:59,273 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:59,274 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:59,274 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:59,274 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:59,274 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:59,274 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:59,274 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:59,275 INFO  [main] Initializing WebDriver
-2023-10-14 00:49:59,657 INFO  [main] Clicking on element searchForm.searchButton
-2023-10-14 00:50:01,863 INFO  [main] Hovering on element searchForm.searchResults
-2023-10-14 00:50:01,880 INFO  [main] Hovering on element searchForm.searchResults.name
-2023-10-14 00:50:01,963 INFO  [main] Clicking on element loginPage.homeButton
-2023-10-14 00:50:04,886 INFO  [main] Quitting WebDriver
+2023-10-14 10:30:05,867 INFO  [main] Initializing WebDriver
+2023-10-14 10:30:09,453 INFO  [main] Initializing WebDriver
+2023-10-14 10:30:12,969 INFO  [main] Initializing WebDriver
+2023-10-14 10:30:12,970 INFO  [main] Initializing WebDriver
+2023-10-14 10:30:12,970 INFO  [main] Initializing WebDriver
+2023-10-14 10:30:12,971 INFO  [main] Initializing WebDriver
+2023-10-14 10:30:12,971 INFO  [main] Initializing WebDriver
+2023-10-14 10:30:12,971 INFO  [main] Initializing WebDriver
+2023-10-14 10:30:12,972 INFO  [main] Initializing WebDriver
+2023-10-14 10:30:12,972 INFO  [main] Initializing WebDriver
+2023-10-14 10:30:12,973 INFO  [main] Initializing WebDriver
+2023-10-14 10:30:14,470 INFO  [main] Clicking on element loginPage.loginButton
+2023-10-14 10:30:19,792 INFO  [main] Clicking on element loginPage.loginButton
+2023-10-14 10:30:23,735 INFO  [main] Clicking on element posts.latestPost
+2023-10-14 10:30:33,062 INFO  [main] Clicking on element posts.addNewPost
+2023-10-14 10:30:35,261 INFO  [main] Clicking on element posts.visibility
+2023-10-14 10:30:35,401 INFO  [main] Clicking on element posts.publicVisibility
+2023-10-14 10:30:35,583 INFO  [main] Clicking on element posts.savePostButton
+2023-10-14 10:30:42,021 INFO  [main] Clicking on element loginPage.loginButton
+2023-10-14 10:30:45,908 INFO  [main] Clicking on element posts.latestPost
+2023-10-14 10:30:56,644 INFO  [main] Clicking on element posts.browsePublicPostsButton
+2023-10-14 10:31:00,834 INFO  [main] Clicking on element posts.explorePost
+2023-10-14 10:31:05,894 INFO  [main] Clicking on element comments.submitCommentButton
+2023-10-14 10:31:14,943 INFO  [main] Clicking on element loginPage.loginButton
+2023-10-14 10:31:19,244 INFO  [main] Clicking on element posts.latestPost
+2023-10-14 10:31:28,744 INFO  [main] Clicking on element posts.browsePublicPostsButton
+2023-10-14 10:31:33,208 INFO  [main] Clicking on element posts.explorePost
+2023-10-14 10:31:38,367 INFO  [main] Clicking on element comments.showCommentsButton
+2023-10-14 10:31:39,033 INFO  [main] Clicking on element comments.deleteCommentButton
+2023-10-14 10:31:41,243 INFO  [main] Clicking on element comments.deleteCommentDropDownMenu
+2023-10-14 10:31:41,426 INFO  [main] Clicking on element comments.selectDeleteDropDown
+2023-10-14 10:31:41,527 INFO  [main] Clicking on element posts.submitButton
+2023-10-14 10:31:45,441 INFO  [main] Clicking on element loginPage.homeButton
+2023-10-14 10:31:48,874 INFO  [main] Clicking on element homePage.logOutButton
+2023-10-14 10:31:50,935 INFO  [main] Quitting WebDriver
