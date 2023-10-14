@@ -107,8 +107,8 @@ public class Constants {
     public static final String POST_IS_PRIVATE = "posts.postIsPrivate";
     public static final String BROWSE_POST_SELECTION_BUTTON = "posts.browsePublicPostsButton";
 
-    //COMMENTS
 
+    //############## COMMENTS #################
     public static final String COMMENT_TEXT_FIELD = "comments.commentTextField";
     public static final String COMMENT_SUBMIT_BUTTON = "comments.submitCommentButton";
     public static final String COMMENT_SHOW_COMMENTS_BUTTON = "comments.showCommentsButton";
@@ -121,9 +121,11 @@ public class Constants {
     public static final String DELETE_COMMENT_MESSAGE = "comments.deleteMessage";
     public static final String COMMENT_LIKE_BUTTON = "comments.likeComment";
     public static final String COMMENT_DISLIKE_BUTTON = "comments.dislikeComment";
+    public static final String COMMENT_TEXT = "comments.commentText";
+    public static final String COMMENT_EDITED_TEXT = "comments.commentEditedText";
+
 
     //############## DESCRIPTIONS #################
-
     public static final String LOGIN_ERROR_MESSAGE = "Wrong username or password.";
     public static final String EMPTY_STRING = "";
     public static final int MIN_LENGTH_USERNAME = 2;

@@ -30,7 +30,7 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserCreatesComment_expect_CommentIsCreatedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment("This is a comment.");
+        commentPage.createComment(COMMENT_TEXT);
         actions.assertElementPresent(COMMENT_TEXT_FIELD);
 
         //add more assertions
@@ -56,8 +56,8 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserEditsComment_expect_CommentIsEditedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment("This is a comment.");
-        commentPage.editComment("This is an edited comment.");
+        commentPage.createComment(COMMENT_TEXT);
+        commentPage.editComment(COMMENT_EDITED_TEXT);
         actions.assertElementPresent(COMMENT_TEXT_FIELD);
         //add more assertions
         authenticatedUserHomePage.logout();
@@ -68,7 +68,7 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserDeletesComment_expect_CommentIsDeletedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment("This is a comment.");
+        commentPage.createComment(COMMENT_TEXT);
         commentPage.deleteComment();
         authenticatedUserHomePage.logout();
     }
@@ -78,7 +78,7 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserLikesComment_expect_CommentIsLikedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment("This is a comment.");
+        commentPage.createComment(COMMENT_TEXT);
         commentPage.likeComment();
         authenticatedUserHomePage.logout();
     }
@@ -88,7 +88,7 @@ public class CommentTests extends BaseTestSetup {
     public void when_UserDislikesComment_expect_CommentIsDislikedSuccessfully() {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
-        commentPage.createComment("This is a comment.");
+        commentPage.createComment(COMMENT_TEXT);
         commentPage.likeComment();
         commentPage.dislikeComment();
         authenticatedUserHomePage.logout();
