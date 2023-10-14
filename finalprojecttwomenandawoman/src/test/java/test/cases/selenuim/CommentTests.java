@@ -83,9 +83,13 @@ public class CommentTests extends BaseTestSetup {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment(COMMENT_TEXT_MESSAGE);
+        authenticatedUserHomePage.logout();
+
+        loginPage.login(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
         commentPage.likeComment();
 
-        //actions.assertElementAttributeEquals(LIKE_BUTTON_LOCATOR, "class", "liked");
+        actions.waitForElementVisible(COMMENT_DISLIKE_BUTTON);
+        actions.assertElementPresent(COMMENT_DISLIKE_BUTTON);
 
         authenticatedUserHomePage.logout();
     }
@@ -96,10 +100,18 @@ public class CommentTests extends BaseTestSetup {
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
         commentPage.createComment(COMMENT_TEXT_MESSAGE);
+        authenticatedUserHomePage.logout();
+
+        loginPage.login(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
         commentPage.likeComment();
+
+        actions.waitForElementVisible(COMMENT_DISLIKE_BUTTON);
+        actions.assertElementPresent(COMMENT_DISLIKE_BUTTON);
+
         commentPage.dislikeComment();
 
-        //actions.assertElementAttributeEquals(DISLIKE_BUTTON_LOCATOR, "class", "disliked");
+        actions.waitForElementVisible(COMMENT_LIKE_BUTTON);
+        actions.assertElementPresent(COMMENT_LIKE_BUTTON);
 
         authenticatedUserHomePage.logout();
     }
