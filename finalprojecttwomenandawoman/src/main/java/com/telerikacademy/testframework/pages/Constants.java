@@ -79,6 +79,9 @@ public class Constants {
     public static final String CONNECT_MESSAGE_PATH = "personalProfile.message";
     public static final String EDIT_PROFILE_FORM_TITLE_PATH = "editPersonalProfilePage.editFormTitle";
     public static final String EDIT_PROFILE_BUTTON_PATH = "personalProfilePage.editProfileButton";
+    public static final String PROFILE_NAME_INFO_PATH = "personalProfilePage.nameInfo";
+    public static final String PROFILE_EMAIL_INFO_PATH = "personalProfilePage.emailInfo";
+    public static final String PROFILE_BIRTHDAY_INFO_PATH = "personalProfilePage.birthdayInfo";
     public static final String EDIT_FIRST_NAME_PATH = "editPersonalProfilePage.firstNameField";
     public static final String EDIT_LAST_NAME_PATH = "editPersonalProfilePage.lastNameField";
     public static final String EDIT_BIRTH_DATE_PATH = "editPersonalProfilePage.birthDateField";

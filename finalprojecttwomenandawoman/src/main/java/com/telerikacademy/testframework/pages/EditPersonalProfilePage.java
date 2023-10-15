@@ -20,6 +20,7 @@ public class EditPersonalProfilePage extends BasePage {
         actions.typeValueInField(Utils.getConfigPropertyByKey(lastName), EDIT_LAST_NAME_PATH);
         actions.waitForElementClickable(EDIT_BIRTH_DATE_PATH);
         actions.clearValueInField(EDIT_BIRTH_DATE_PATH);
+        actions.clickElement(EDIT_BIRTH_DATE_PATH);
         actions.typeValueInField(Utils.getConfigPropertyByKey(birthday), EDIT_BIRTH_DATE_PATH);
         actions.waitForElementClickable(EDIT_EMAIL_PATH);
         actions.clearValueInField(EDIT_EMAIL_PATH);
@@ -31,6 +32,11 @@ public class EditPersonalProfilePage extends BasePage {
     public void clickLogoutButton() {
         actions.waitForElementClickable(LOGOUT_BUTTON_PATH);
         actions.clickElement(LOGOUT_BUTTON_PATH);
+    }
+
+    public void clickPersonalProfileButton(){
+        actions.waitForElementClickable(PERSONAL_PROFILE_BUTTON_PATH);
+        actions.clickElement(PERSONAL_PROFILE_BUTTON_PATH);
     }
 
     @Override
@@ -48,29 +54,24 @@ public class EditPersonalProfilePage extends BasePage {
                         EDIT_PROFILE_FORM_TITLE, actualTitle));
     }
 
-    public void assertFirstNameEdited(String expectedFirstName) {
-        actions.waitForElementVisible(EDIT_FIRST_NAME_PATH);
-        var actualFirstName = actions.getElement(EDIT_FIRST_NAME_PATH).getText();
-        Assertions.assertEquals(expectedFirstName, actualFirstName,
+    public void asserUserNameEdited(String expectedFirstName, String expectedLastName) {
+        actions.waitForElementVisible(PROFILE_NAME_INFO_PATH);
+        String expectedName = expectedFirstName + " " + expectedLastName;
+        var actualFirstName = actions.getElement(PROFILE_NAME_INFO_PATH).getText();
+        Assertions.assertEquals(expectedName, actualFirstName,
                 "Expected first name is different than actual.");
     }
 
-    public void assertLastNameEdited(String expectedLastName) {
-        actions.waitForElementVisible(EDIT_LAST_NAME_PATH);
-        var actualLastName = actions.getElement(EDIT_LAST_NAME_PATH).getText();
-        Assertions.assertEquals(expectedLastName, actualLastName,
-                "Expected last name is different than actual.");
-    }
-
     public void assertBirthDateEdited(String expectedBirthday) {
-        actions.waitForElementVisible(EDIT_BIRTH_DATE_PATH);
-        Assertions.assertEquals(expectedBirthday, EDIT_BIRTH_DATE_PATH,
+        actions.waitForElementVisible(PROFILE_BIRTHDAY_INFO_PATH);
+        String actualBirthday = actions.getElement(PROFILE_BIRTHDAY_INFO_PATH).getText();
+        Assertions.assertEquals(expectedBirthday, actualBirthday,
                 "Expected birthday is different than actual.");
     }
 
     public void assertEmailEdited(String expectedEmail) {
-        actions.waitForElementVisible(EDIT_EMAIL_PATH);
-        var actualEmail = actions.getElement(EDIT_EMAIL_PATH).getText();
+        actions.waitForElementVisible(PROFILE_EMAIL_INFO_PATH);
+        var actualEmail = actions.getElement(PROFILE_EMAIL_INFO_PATH).getText();
         Assertions.assertEquals(expectedEmail, actualEmail,
                 "Expected email is different than actual.");
     }
