@@ -8,7 +8,7 @@ import restassured.base.BasePostTestSetupBeforeAfter;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
 
-public class AdminPostEditDeletePostTest extends BasePostTestSetupBeforeAfter {
+public class AdminEditDeletePostTest extends BasePostTestSetupBeforeAfter {
 
     @BeforeEach
     public void setup() {
@@ -35,7 +35,7 @@ public class AdminPostEditDeletePostTest extends BasePostTestSetupBeforeAfter {
 
     @Test
     //FPT1-60 [Edit Post] Edit existing public post as Admin
-    public void when_adminEditsPost_expect_postIsEdited() {
+    public void when_AdminEditsPost_expect_PostIsEdited() {
         Response editPostAsAdmin = apiMethods.editPublicPost(ADMIN_NAME, ADMIN_PASSWORD, EDIT_POST_AS_ADMIN,
                 lastPostId);
 
@@ -45,7 +45,7 @@ public class AdminPostEditDeletePostTest extends BasePostTestSetupBeforeAfter {
 
     @Test
     //FPT1-61 [Delete Post] Delete an Existing Post as Admin
-    public void when_adminUserDeletePost_expect_lastPublicPostDeleted() {
+    public void when_AdminUserDeletePost_expect_LastPublicPostDeleted() {
         Response lastPublicPostDeleted = apiMethods.getLastPost(lastPostId);
 
         // Assert that the HTTP status code is 404 (Not Found)
