@@ -41,7 +41,7 @@ public class CommentTests extends BaseTestSetup {
     @Test
     //FPT1-170 [Comment] Create Comment With 1001 Characters as Registered User
     public void when_UserCreatesCommentWithInvalidData_expect_CommentCreationFails() {
-        String commentText = UserActions.generateRandomTextExactLength(INVALID_COMMENT_LENGTH);
+        String commentText = UserActions.generateLongString();
 
         loginPage.navigateToPage();
         loginPage.login(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
