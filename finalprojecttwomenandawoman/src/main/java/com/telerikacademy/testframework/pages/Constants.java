@@ -18,8 +18,11 @@ public class Constants {
     public static final String GEORGE_BUSH_USERNAME = "WEare.GeorgeBush.username";
     public static final String GEORGE_BUSH_FIRST_NAME = "George";
     public static final String GEORGE_BUSH_LAST_NAME = " Bush";
+
     public static final String GEORGE_BUSH_PASSWORD = "WEare.GeorgeBush.password";
+
     public static final String MR_BEAST_USERNAME = "WEare.MrBeast.username";
+
     public static final String MR_BEAST_PASSWORD = "WEare.MrBeast.password";
     public static final String JACK_NICHOLSON_USERNAME = "WEare.JackNicholson.username";
     public static final String JACK_NICHOLSON_PASSWORD = "WEare.JackNicholson.password";
@@ -152,6 +155,7 @@ public class Constants {
 
     //############## DESCRIPTIONS #################
     public static final String LOGIN_ERROR_MESSAGE = "Wrong username or password.";
+
     public static final String EMPTY_STRING = "";
     public static final int MIN_LENGTH_USERNAME = 2;
     public static final int MAX_LENGTH_USERNAME = 20;

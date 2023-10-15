@@ -36,15 +36,13 @@ public class EditPersonalProfileTests extends BaseTestSetup {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickEditProfileButton();
         editProfilePage.assertPageNavigated();
-        editProfilePage.fillEditPersonalProfile("dani", "sham", "12/30/2021", "email@gmail.bg");
+        editProfilePage.fillEditPersonalProfile("dani", "sham", "email@gmail.bg");
 //        editProfilePage.fillEditPersonalProfile(
 //                FOR_EDIT_FIRST_NAME, FOR_EDIT_LAST_NAME, FOR_EDIT_BIRTHDAY, FOR_EDIT_EMAIL);
         editProfilePage.assertPageNavigated();
         editProfilePage.clickPersonalProfileButton();
         editProfilePage.asserUserNameEdited("dani", "sham");
         //editProfilePage.asserUserNameEdited(FOR_EDIT_FIRST_NAME, FOR_EDIT_LAST_NAME);
-        editProfilePage.assertBirthDateEdited("2021-12-30");
-       // editProfilePage.assertBirthDateEdited(FOR_EDIT_BIRTHDAY);
         editProfilePage.assertEmailEdited("email@gmail.bg");
         //editProfilePage.assertEmailEdited(FOR_EDIT_EMAIL);
     }

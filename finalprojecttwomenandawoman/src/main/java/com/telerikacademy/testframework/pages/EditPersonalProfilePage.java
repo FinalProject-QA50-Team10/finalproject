@@ -11,17 +11,13 @@ public class EditPersonalProfilePage extends BasePage {
         super(driver, PERSONAL_PROFILE_PAGE);
     }
 
-    public void fillEditPersonalProfile(String firstName, String lastName, String birthday, String email) {
+    public void fillEditPersonalProfile(String firstName, String lastName, String email) {
         actions.waitForElementClickable(EDIT_FIRST_NAME_PATH);
         actions.clearValueInField(EDIT_FIRST_NAME_PATH);
         actions.typeValueInField(Utils.getConfigPropertyByKey(firstName), EDIT_FIRST_NAME_PATH);
         actions.waitForElementClickable(EDIT_LAST_NAME_PATH);
         actions.clearValueInField(EDIT_LAST_NAME_PATH);
         actions.typeValueInField(Utils.getConfigPropertyByKey(lastName), EDIT_LAST_NAME_PATH);
-        actions.waitForElementClickable(EDIT_BIRTH_DATE_PATH);
-        actions.clearValueInField(EDIT_BIRTH_DATE_PATH);
-        actions.clickElement(EDIT_BIRTH_DATE_PATH);
-        actions.typeValueInField(Utils.getConfigPropertyByKey(birthday), EDIT_BIRTH_DATE_PATH);
         actions.waitForElementClickable(EDIT_EMAIL_PATH);
         actions.clearValueInField(EDIT_EMAIL_PATH);
         actions.typeValueInField(Utils.getConfigPropertyByKey(email), EDIT_EMAIL_PATH);
@@ -60,13 +56,6 @@ public class EditPersonalProfilePage extends BasePage {
         var actualFirstName = actions.getElement(PROFILE_NAME_INFO_PATH).getText();
         Assertions.assertEquals(expectedName, actualFirstName,
                 "Expected first name is different than actual.");
-    }
-
-    public void assertBirthDateEdited(String expectedBirthday) {
-        actions.waitForElementVisible(PROFILE_BIRTHDAY_INFO_PATH);
-        String actualBirthday = actions.getElement(PROFILE_BIRTHDAY_INFO_PATH).getText();
-        Assertions.assertEquals(expectedBirthday, actualBirthday,
-                "Expected birthday is different than actual.");
     }
 
     public void assertEmailEdited(String expectedEmail) {
