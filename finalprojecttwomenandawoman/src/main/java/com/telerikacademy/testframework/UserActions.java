@@ -240,7 +240,7 @@ public class UserActions {
         actions.perform();
     }
 
-    public String generateLongString() {
+    public static String generateLongString() {
         StringBuilder longString = new StringBuilder();
         String charactersToAdd = "BCDERYAWGzbnml";
         for (int i = 0; i < 1001; i++) {
