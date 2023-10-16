@@ -1,7 +1,5 @@
 package com.telerikacademy.testframework.pages;
 
-import java.util.Date;
-
 public class Constants {
 
     //########### URL ################
