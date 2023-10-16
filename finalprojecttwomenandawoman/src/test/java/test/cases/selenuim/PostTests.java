@@ -40,10 +40,10 @@ public class PostTests extends BaseTestSetup {
     //FPT1-55 [Delete Post] Delete an Existing Public Post
     public void when_UserCreatePublicPost_expect_PublicPostIsDeleted() {
         postPage.createPost("public");
-        actions.assertElementPresent(POST_TEXT);
-        actions.assertElementPresent(POST_IS_PUBLIC);
+        postPage.assertPostText();
+        postPage.assertPostIsPublic();
         postPage.deletePost();
-        actions.assertElementPresent(DELETE_POST_MESSAGE);
+        postPage.assertDeletePostMessage();
     }
 
     @Test
