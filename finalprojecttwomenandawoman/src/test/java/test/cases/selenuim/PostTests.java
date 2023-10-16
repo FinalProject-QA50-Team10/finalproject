@@ -50,10 +50,10 @@ public class PostTests extends BaseTestSetup {
     //FPT1-56 [Delete Post] Delete an Existing Private Post
     public void when_UserCreatePrivatePost_expect_PrivatePostIsDeleted() {
         postPage.createPost("private");
-        actions.assertElementPresent(POST_PRIVATE_TEXT);
-        actions.assertElementPresent(POST_IS_PRIVATE);
+        postPage.assertPostPrivateText();
+        postPage.assertPostIsPrivate();
         postPage.deletePost();
-        actions.assertElementPresent(DELETE_POST_MESSAGE);
+        postPage.assertDeletePostMessage();
     }
 
     @Test
