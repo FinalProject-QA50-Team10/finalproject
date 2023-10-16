@@ -24,7 +24,7 @@ public class CommentManipulationTest extends BaseCommentTestSetupBeforeAfter {
 
     @Test
     //FPT1-178 [Comment] Edit Comment Successfully as Registered User
-    public void when_userEditsComment_expect_commentIsEdited() {
+    public void when_UserEditsComment_expect_CommentIsEdited() {
         Response editCommentResponse = apiMethods.editComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD,
                 EDIT_COMMENT_CONTENT,
                 lastCommentId);

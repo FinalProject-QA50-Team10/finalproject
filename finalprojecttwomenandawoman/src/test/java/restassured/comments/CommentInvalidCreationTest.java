@@ -6,7 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import restassured.base.BaseCommentTestSetupBeforeAfter;
 
-import static com.telerikacademy.testframework.api.utils.Constants.*;
+import static com.telerikacademy.testframework.api.utils.Constants.TOM_CRUISE_PASSWORD;
+import static com.telerikacademy.testframework.api.utils.Constants.TOM_CRUISE_USERNAME;
 
 public class CommentInvalidCreationTest extends BaseCommentTestSetupBeforeAfter {
 
@@ -22,7 +23,7 @@ public class CommentInvalidCreationTest extends BaseCommentTestSetupBeforeAfter 
 
     @Test
     //FPT1-170 [Comment] Create Comment With 1001 Characters as Registered User
-    public void when_userCreatesInvalidComment_expect_errorStatusCode() {
+    public void when_UserCreatesInvalidComment_expect_ErrorStatusCode() {
         String invalidComment = apiMethods.generateInvalidComment();
 
         Response signInWithUserTomCruise = apiMethods.signInUser(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);

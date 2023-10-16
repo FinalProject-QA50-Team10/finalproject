@@ -24,7 +24,7 @@ public class CommentLikeTest extends BaseCommentTestSetupBeforeAfter {
     }
 
     @Test
-    public void when_userLikesComment_expect_commentIsLiked() {
+    public void when_UserLikesAndDislikesComment_expect_CommentIsLikedAndDisliked() {
         //FPT1-125 [Like] Verify comments Like button
         Response signInWithUserJackNicholson = apiMethods.signInUser(JACK_NICHOLSON_USERNAME, JACK_NICHOLSON_PASSWORD);
 
