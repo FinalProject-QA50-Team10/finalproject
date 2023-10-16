@@ -14,7 +14,7 @@ public class RegistrationTest {
 
     @Test
     //FPT1-135 [Registration] Successful Registration
-    public void when_unregisteredUserFillRegisterFormWithValidData_expect_successRegistration() {
+    public void when_UnregisteredUserRegistersWithValidData_expect_SuccessfulRegistration() {
         registrationAPI.generateRandomUsername();
         registerResponse = registrationAPI.registerUser(VALID_JOB_TITLE, TOM_CRUISE_PASSWORD, RANDOM_EMAIL, RANDOM_USERNAME);
 
@@ -23,7 +23,7 @@ public class RegistrationTest {
 
     @Test
     //FPT1-136 [Registration] Empty Fields
-    public void when_unregisteredUserFillRegisterFormWithEmptyData_expect_badRequest() {
+    public void when_UnregisteredUserRegistersWithEmptyData_expect_BadRequest() {
         registerResponse = registrationAPI.registerUser(EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING);
         var errorBody = registrationAPI.convertErrorBody(registerResponse);
 
@@ -34,7 +34,7 @@ public class RegistrationTest {
 
     @Test
     //FPT1-149 [Registration] Attempt Registration With Cyrillic Characters in Username
-    public void when_unregisteredUserFillRegisterFormWithInvalidData_expect_badRequest() {
+    public void when_UnregisteredUserRegistersWithInvalidData_expect_BadRequest() {
         registrationAPI.generateRandomUsername();
         registerResponse = registrationAPI.registerUser(VALID_JOB_TITLE, TOM_CRUISE_PASSWORD, RANDOM_EMAIL, INVALID_NAME);
         var errorBody = registrationAPI.convertErrorBody(registerResponse);
@@ -46,7 +46,7 @@ public class RegistrationTest {
 
     @Test
     //FPT1-150 [Registration] Attempt Registration With Empty Password Field
-    public void when_unregisteredUserFillRegisterFormWithEmptyPassword_expect_badRequest() {
+    public void when_UnregisteredUserRegistersWithEmptyPassword_expect_BadRequest() {
         registrationAPI.generateRandomUsername();
         registerResponse = registrationAPI.registerUser(VALID_JOB_TITLE, EMPTY_STRING, RANDOM_EMAIL, RANDOM_USERNAME);
         var errorBody = registrationAPI.convertErrorBody(registerResponse);
@@ -58,7 +58,7 @@ public class RegistrationTest {
 
     @Test
     //FPT1-162 [Registration] Attempt Registration With Email Containing Spaces
-    public void when_unregisteredUserFillRegisterFormWithInvalidEmail_expect_badRequest() {
+    public void when_UnregisteredUserRegistersWithInvalidEmail_expect_BadRequest() {
         registrationAPI.generateRandomUsername();
         registerResponse = registrationAPI.registerUser(VALID_JOB_TITLE, TOM_CRUISE_PASSWORD, INVALID_EMAIL, RANDOM_USERNAME);
         var errorBody = registrationAPI.convertErrorBody(registerResponse);

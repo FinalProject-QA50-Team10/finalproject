@@ -15,7 +15,7 @@ public class LoginTest {
 
     @Test
     //FPT1-85 [Login Page] Login with valid username and valid password
-    public void when_unauthenticatedUserLoginWithValidCredentials_expect_successLoginUser() {
+    public void when_UnauthenticatedUserLogsInWithValidCredentials_expect_SuccessfulLogin() {
         loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
 
         assertions.assertStatusCode302(loginResponse.statusCode());
@@ -23,7 +23,7 @@ public class LoginTest {
 
     @Test
     //FPT1-89 [Login Page] Try to log in with a valid username and invalid password
-    public void when_unauthenticatedUserLoginWithValidUsernameAndInvalidPassword_expect_unsuccessfulLogin() {
+    public void when_UnauthenticatedUserLogsInWithValidUsernameAndInvalidPassword_expect_UnsuccessfulLogin() {
         loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, GEORGE_BUSH_PASSWORD);
 
         assertions.assertStatusCode302(loginResponse.statusCode());

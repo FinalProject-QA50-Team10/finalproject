@@ -20,7 +20,7 @@ public class UnregisteredUserTest {
 
     @Test
     //FPT1-189 [Feed] Verify Unauthenticated Users Can Access Public Feed
-    public void when_guestUserBrowsePublicPosts_expected_allPostsArePublic() {
+    public void when_GuestUserBrowsesPublicPosts_expect_AllPostsArePublic() {
         unregisteredUser = userActionsAPI.browseAllPublicPosts();
         List<PostsModel> posts = userActionsAPI.getListOfPosts(unregisteredUser);
 
@@ -31,7 +31,7 @@ public class UnregisteredUserTest {
 
     @Test
     //FPT1-103 [Search Form] Search users with a valid first and valid second name as a guest
-    public void when_guestUserSearchForUserWithValidName_expected_success() {
+    public void when_GuestUserSearchesForUserWithValidName_expect_Success() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_NAME);
         List<SearchModel> users = assertions.getListOfUsers(unregisteredUser);
 
@@ -42,7 +42,7 @@ public class UnregisteredUserTest {
 
     @Test
     //FPT1-101 [Search Form] Search users with empty name and empty job title as a guest
-    public void when_guestUserSearchForUserWithEmptyNameAndEmptyJobTitle_expected_success() {
+    public void when_GuestUserSearchForUserWithEmptyNameAndEmptyJobTitle_expected_Success() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, EMPTY_STRING);
         List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
 
@@ -52,7 +52,7 @@ public class UnregisteredUserTest {
 
     @Test
     //FPT1-104 [Search Form] Search for users with valid first name as a guest
-    public void when_guestUserSearchForUserWithValidFirstName_expected_success() {
+    public void when_GuestUserSearchesForUserWithValidFirstName_expect_Success() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_FIRST_NAME);
         List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
 
@@ -63,7 +63,7 @@ public class UnregisteredUserTest {
 
     @Test
     //FPT1-105 [Search Form] Search users with valid last name as a guest
-    public void when_guestUserSearchForUserWithValidLastName_expected_success() {
+    public void when_GuestUserSearchesForUserWithValidLastName_expect_Success() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_LAST_NAME);
         List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
 
@@ -74,7 +74,7 @@ public class UnregisteredUserTest {
 
     @Test
     //FPT1-226 [Search Form] Search users by invalid first and last name as a guest
-    public void when_guestUserSearchForUserWithInvalidName_expected_notFound() {
+    public void when_GuestUserSearchesForUserWithInvalidName_expect_NotFound() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, INVALID_NAME);
         var errorModel = unregisteredUser.as(ErrorModel.class);
 

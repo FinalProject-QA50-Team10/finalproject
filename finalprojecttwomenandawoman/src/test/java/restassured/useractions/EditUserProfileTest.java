@@ -17,7 +17,7 @@ public class EditUserProfileTest {
 
     @Test
     //FPT1-1 [Edit Profile] Edit User Profile with Personal Information
-    public void when_userEditHisUserProfile_expect_successfullyEditedProfile() {
+    public void when_UserEditsHisProfile_expect_ProfileIsSuccessfullyEdited() {
         userResponse = userAPI.editUserProfile(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD,
                 FOR_EDIT_BIRTHDAY, FOR_EDIT_FIRST_NAME, FOR_EDIT_ID, FOR_EDIT_LAST_NAME);
         var editedProfileModel = userResponse.as(EditProfileModel.class);
@@ -31,7 +31,7 @@ public class EditUserProfileTest {
 
     @Test
     //FPT1-1 [Edit Profile] Edit User Profile with Personal Information
-    public void when_userEditHisFirstName_expect_successfullyEditedProfile() {
+    public void when_UserEditsHisFirstName_expect_FirstNameIsSuccessfullyEdited() {
         var unchangedUser = userAPI.getUserInformation(FOR_EDIT_USERNAME, FOR_EDIT_ID).as(UserInformationModel.class);
         userResponse = userAPI.editUserProfile(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD,
                 EMPTY_STRING, GEORGE_BUSH_FIRST_NAME, FOR_EDIT_ID, EMPTY_STRING);
@@ -44,7 +44,7 @@ public class EditUserProfileTest {
 
     @Test
     //FPT1-1 [Edit Profile] Edit User Profile with Personal Information
-    public void when_userEditHisLastName_expect_successfullyEditedProfile() {
+    public void when_UserEditsHisLastName_expect_LastNameIsSuccessfullyEdited() {
         var unchangedUser = userAPI.getUserInformation(FOR_EDIT_USERNAME, FOR_EDIT_ID).as(UserInformationModel.class);
         userResponse = userAPI.editUserProfile(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD,
                 EMPTY_STRING, EMPTY_STRING, FOR_EDIT_ID, GEORGE_BUSH_LAST_NAME);
@@ -57,7 +57,7 @@ public class EditUserProfileTest {
 
     @Test
     //FPT1-23 [Edit Profile] Edit User Profile with Empty Data and Verify Error Handling
-    public void when_userEditHisPersonalProfileWithEmptyData_expect_notFound() {
+    public void when_UserEditsProfileWithEmptyData_expect_ProfileIsNotFound() {
         var unchangedUser = userAPI.getUserInformation(FOR_EDIT_USERNAME, FOR_EDIT_ID).as(UserInformationModel.class);
         userResponse = userAPI.editUserProfile(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD,
                 EMPTY_STRING, EMPTY_STRING, EMPTY_INTEGER, EMPTY_STRING);

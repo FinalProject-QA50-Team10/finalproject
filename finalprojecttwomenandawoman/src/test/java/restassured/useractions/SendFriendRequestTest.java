@@ -25,7 +25,7 @@ public class SendFriendRequestTest {
 
     @Test
     //FPT1-116 [Friends Request] User sends request to connect with another user
-    public void when_sendFriendRequestToAnotherUserWhoIsNotYourFriend_expect_successfulSentRequest() {
+    public void when_UserSendsFriendRequestToAnotherUser_expect_RequestSuccessfullySent() {
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
         userResponse = userAPI.sendFriendRequest(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD, userAccepting.id, RANDOM_USERNAME);
@@ -36,7 +36,7 @@ public class SendFriendRequestTest {
 
     @Test
     //FPT1-116 [Friends Request] User sends request to connect with another user
-    public void when_sendFriendRequestToAnotherUserWhoIsNotYourFriend_expect_successfulRequestsAreVisible() {
+    public void when_UserSendsFriendRequest_expect_RequestsAreVisible() {
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
         userResponse = userAPI.sendFriendRequest(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD, userAccepting.id, RANDOM_USERNAME);
@@ -50,7 +50,7 @@ public class SendFriendRequestTest {
 
     @Test
     //FPT1-116 [Friends Request] User sends request to connect with another user
-    public void when_sendFriendRequestToAnotherUserWhoIsNotYourFriend_expect_successfulAcceptIt() {
+    public void when_UserSendsFriendRequestToAnotherUser_expect_RequestSuccessfullyAccepted() {
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
         var userSending = userAPI.getUserInformation(FOR_EDIT_USERNAME, FOR_EDIT_ID).as(UserInformationModel.class);
@@ -66,7 +66,7 @@ public class SendFriendRequestTest {
     }
 
     @Test
-    public void when_sendTwiceFriendRequestToAnotherUserWhoIsNotYourFriend_expect_errorMessage() {
+    public void when_UserSendsDuplicateFriendRequest_expect_ErrorMessage() {
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
         userResponse = userAPI.sendFriendRequest(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD, userAccepting.id, RANDOM_USERNAME);
@@ -77,7 +77,7 @@ public class SendFriendRequestTest {
     }
 
     @Test
-    public void when_sendFriendRequestToAnotherUserWhoIsAlreadyYourFriend_expect_errorMessage() {
+    public void when_UserSendsFriendRequestToAlreadyFriend_expect_ErrorMessage() {
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
         var userSending = userAPI.getUserInformation(FOR_EDIT_USERNAME, FOR_EDIT_ID).as(UserInformationModel.class);
