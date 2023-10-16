@@ -7,8 +7,11 @@ public class Constants {
     public static final String GEORGE_BUSH_USERNAME = "GeorgeBush";
     public static final String GEORGE_BUSH_FIRST_NAME = "George";
     public static final String GEORGE_BUSH_LAST_NAME = " Bush";
+
     public static final String GEORGE_BUSH_PASSWORD = "Abv123*";
+
     public static final String MR_BEAST_USERNAME = "MrBeast";
+
     public static final String MR_BEAST_PASSWORD = "Abv123!";
     public static final String JACK_NICHOLSON_USERNAME = "JackNicholson";
     public static final String JACK_NICHOLSON_PASSWORD = "TheJack123";
@@ -36,7 +39,6 @@ public class Constants {
     public static final String REGISTRATION_ERROR_MESSAGE = "Validation failed for object";
     public static final String NOT_FOUND_ERROR_MESSAGE = "USER not found";
     public static final String UNAUTHORIZED_ERROR_MESSAGE = "User is not authorised";
-
     public static final String POST_DESCRIPTION_VALID = "Valid Post";
     public static final String EDIT_POST_DESCRIPTION_VALID = "Edit Valid Post";
     public static final String EDIT_POST_AS_ADMIN = "Edit Post as Admin";

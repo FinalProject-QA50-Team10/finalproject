@@ -324,7 +324,6 @@ public class BaseSetupMethods {
                 .asString();
     }
 
-
     public void generateRandomUsername() {
         String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "abcdefghijklmnopqrstuvxyz";
