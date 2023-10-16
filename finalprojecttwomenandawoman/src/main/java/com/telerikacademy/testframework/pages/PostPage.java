@@ -111,9 +111,19 @@ public class PostPage extends BasePage {
         actions.assertElementPresent(POST_TEXT);
     }
 
+    public void assertPostPrivateText() {
+        actions.waitForElementClickable(POST_PRIVATE_TEXT);
+        actions.assertElementPresent(POST_PRIVATE_TEXT);
+    }
+
     public void assertPostIsPublic() {
         actions.waitForElementClickable(POST_IS_PUBLIC);
         actions.assertElementPresent(POST_IS_PUBLIC);
+    }
+
+    public void assertPostIsPrivate() {
+        actions.waitForElementClickable(POST_IS_PRIVATE);
+        actions.assertElementPresent(POST_IS_PRIVATE);
     }
 
     public void assertEditedPostText() {

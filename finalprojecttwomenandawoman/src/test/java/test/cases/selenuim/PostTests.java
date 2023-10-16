@@ -24,16 +24,16 @@ public class PostTests extends BaseTestSetup {
     // FPT1-25 [Add New Post] Create Public Post
     public void when_UserCreatePublicPost_expect_PublicPostIsCreated() {
         postPage.createPost("public");
-        actions.assertElementPresent(POST_TEXT);
-        actions.assertElementPresent(POST_IS_PUBLIC);
+        postPage.assertPostText();
+        postPage.assertPostIsPublic();
     }
 
     @Test
     // FTP1-26 [Add New Post] Create Private Post
     public void when_UserCreatePrivatePost_expect_PrivatePostIsCreated() {
         postPage.createPost("private");
-        actions.assertElementPresent(POST_PRIVATE_TEXT);
-        actions.assertElementPresent(POST_IS_PRIVATE);
+        postPage.assertPostPrivateText();
+        postPage.assertPostIsPrivate();
     }
 
     @Test
