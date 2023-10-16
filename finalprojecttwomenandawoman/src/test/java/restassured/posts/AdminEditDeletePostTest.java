@@ -20,16 +20,12 @@ public class AdminEditDeletePostTest extends BasePostTestSetupBeforeAfter {
         //FPT1-224 [Login Form] Login with a valid username and a valid password as an admin user
         Response signInResponse = apiMethods.signInUser(ADMIN_NAME, ADMIN_PASSWORD);
 
-        // Assert that the HTTP status code is 302 (Found/Redirect)
         assertions.assertStatusCode302(signInResponse.statusCode());
 
         //FPT1-61 [Delete Post] Delete an Existing Post as Admin
         Response deletePublicPost = apiMethods.deletePost(ADMIN_NAME, ADMIN_PASSWORD, lastPostId);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(deletePublicPost.statusCode());
-
-        // Assert that the response body is empty
         assertions.assertResponseBodyIsEmpty(deletePublicPost);
     }
 
@@ -39,7 +35,6 @@ public class AdminEditDeletePostTest extends BasePostTestSetupBeforeAfter {
         Response editPostAsAdmin = apiMethods.editPublicPost(ADMIN_NAME, ADMIN_PASSWORD, EDIT_POST_AS_ADMIN,
                 lastPostId);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(editPostAsAdmin.statusCode());
     }
 
@@ -48,7 +43,6 @@ public class AdminEditDeletePostTest extends BasePostTestSetupBeforeAfter {
     public void when_AdminUserDeletePost_expect_LastPublicPostDeleted() {
         Response lastPublicPostDeleted = apiMethods.getLastPost(lastPostId);
 
-        // Assert that the HTTP status code is 404 (Not Found)
         assertions.assertStatusCode404(lastPublicPostDeleted.statusCode());
     }
 }

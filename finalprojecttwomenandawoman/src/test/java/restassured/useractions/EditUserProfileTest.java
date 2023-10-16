@@ -22,15 +22,10 @@ public class EditUserProfileTest {
                 FOR_EDIT_BIRTHDAY, FOR_EDIT_FIRST_NAME, FOR_EDIT_ID, FOR_EDIT_LAST_NAME);
         var editedProfileModel = userResponse.as(EditProfileModel.class);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(userResponse.statusCode());
-        // Assert that the User ID matches
         assertions.assertUserId(editedProfileModel, FOR_EDIT_ID);
-        // Assert that the First Name matches
         assertions.assertFirstName(editedProfileModel, FOR_EDIT_FIRST_NAME);
-        // Assert that the Last Name matches
         assertions.assertLastName(editedProfileModel, FOR_EDIT_LAST_NAME);
-        // Assert that the Birth Date matches
         assertions.assertBirthDate(editedProfileModel, FOR_EDIT_BIRTHDAY);
     }
 
@@ -42,11 +37,8 @@ public class EditUserProfileTest {
                 EMPTY_STRING, GEORGE_BUSH_FIRST_NAME, FOR_EDIT_ID, EMPTY_STRING);
         var editedProfileModel = userResponse.as(EditProfileModel.class);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(userResponse.statusCode());
-        // Assert that the First Name matches
         assertions.assertFirstName(editedProfileModel, GEORGE_BUSH_FIRST_NAME);
-        // Assert that the First Name has been changed
         assertions.assertNotEqual(unchangedUser.firstName, editedProfileModel.firstName);
     }
 
@@ -58,11 +50,8 @@ public class EditUserProfileTest {
                 EMPTY_STRING, EMPTY_STRING, FOR_EDIT_ID, GEORGE_BUSH_LAST_NAME);
         var editedProfileModel = userResponse.as(EditProfileModel.class);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(userResponse.statusCode());
-        // Assert that the Last Name matches
         assertions.assertLastName(editedProfileModel, GEORGE_BUSH_LAST_NAME);
-        // Assert that the Last Name has been changed
         assertions.assertNotEqual(unchangedUser.lastNAme, editedProfileModel.lastName);
     }
 
@@ -75,11 +64,8 @@ public class EditUserProfileTest {
         var editedProfileModel = userResponse.as(ErrorModel.class);
         var userProfile = userAPI.getUserInformation(FOR_EDIT_USERNAME, FOR_EDIT_ID).as(UserInformationModel.class);
 
-        // Assert that the HTTP status code is 404 (Not Found)
         assertions.assertStatusCode404(userResponse.statusCode());
-        // Assert that the response is "Not Found"
         assertions.assertNotFound(editedProfileModel);
-        // Assert that the profile has not been changed
         assertions.assertEquals(unchangedUser, userProfile);
     }
 }

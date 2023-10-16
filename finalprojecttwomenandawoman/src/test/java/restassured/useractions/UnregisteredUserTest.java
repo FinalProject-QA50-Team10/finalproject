@@ -24,11 +24,8 @@ public class UnregisteredUserTest {
         unregisteredUser = userActionsAPI.browseAllPublicPosts();
         List<PostsModel> posts = userActionsAPI.getListOfPosts(unregisteredUser);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(unregisteredUser.statusCode());
-        // Assert that the list of posts is not empty
         assertions.assertListIsNotEmpty(Collections.singletonList(posts));
-        // Assert that all posts are public
         assertions.assertPostsArePublic(posts);
     }
 
@@ -38,11 +35,8 @@ public class UnregisteredUserTest {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_NAME);
         List<SearchModel> users = assertions.getListOfUsers(unregisteredUser);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(unregisteredUser.statusCode());
-        // Assert that the list of users is not empty
         assertions.assertListIsNotEmpty(Collections.singletonList(users));
-        // Assert that the searched name appears in the user list
         assertions.assertUsersContainSearchedName(users, GEORGE_BUSH_USERNAME);
     }
 
@@ -52,9 +46,7 @@ public class UnregisteredUserTest {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, EMPTY_STRING);
         List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(unregisteredUser.statusCode());
-        // Assert that the list of users is not empty
         assertions.assertListIsNotEmpty(Collections.singletonList(users));
     }
 
@@ -64,11 +56,8 @@ public class UnregisteredUserTest {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_FIRST_NAME);
         List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(unregisteredUser.statusCode());
-        // Assert that the list of users is not empty
         assertions.assertListIsNotEmpty(Collections.singletonList(users));
-        // Assert that the first name appears in the user profiles
         assertions.assertSearchedFirstNameContainsInUserProfile(users, GEORGE_BUSH_FIRST_NAME);
     }
 
@@ -78,11 +67,8 @@ public class UnregisteredUserTest {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_LAST_NAME);
         List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(unregisteredUser.statusCode());
-        // Assert that the list of users is not empty
         assertions.assertListIsNotEmpty(Collections.singletonList(users));
-        // Assert that the last name appears in the user profiles
         assertions.assertSearchedLastNameContainsInUserProfile(users, GEORGE_BUSH_LAST_NAME);
     }
 
@@ -92,11 +78,8 @@ public class UnregisteredUserTest {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, INVALID_NAME);
         var errorModel = unregisteredUser.as(ErrorModel.class);
 
-        // Assert that the HTTP status code is 404 (Not Found)
         assertions.assertStatusCode404(unregisteredUser.statusCode());
-        // Assert that the error model indicates "Not Found"
         assertions.assertNotFound(errorModel);
-        // Assert that the error message indicates "Not Found"
         assertions.assertNotFoundMessage(errorModel);
     }
 }

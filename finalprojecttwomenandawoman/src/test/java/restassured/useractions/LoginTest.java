@@ -18,7 +18,6 @@ public class LoginTest {
     public void when_unauthenticatedUserLoginWithValidCredentials_expect_successLoginUser() {
         loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
 
-        // Assert that the HTTP status code is 302 (Found)
         assertions.assertStatusCode302(loginResponse.statusCode());
     }
 
@@ -27,7 +26,6 @@ public class LoginTest {
     public void when_unauthenticatedUserLoginWithValidUsernameAndInvalidPassword_expect_unsuccessfulLogin() {
         loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, GEORGE_BUSH_PASSWORD);
 
-        // Assert that the HTTP status code is 302 (Found)
         assertions.assertStatusCode302(loginResponse.statusCode());
     }
 }

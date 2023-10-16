@@ -27,14 +27,10 @@ public class PrivatePostPostTest extends BasePostTestSetupBeforeAfter {
         Response createNewInvalidPrivatePost = apiMethods.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
                 POST_DESCRIPTION_INVALID);
 
-        // Assert that the HTTP status code is 400 (Bad Request)
         assertions.assertStatusCode400(createNewInvalidPrivatePost.statusCode());
 
-        // Assert that the body contains the expected error model
         var registrationErrorModel = createNewInvalidPrivatePost.as(ErrorModel.class);
         assertions.assertBadRequest(registrationErrorModel);
-
-        // Assert that the post content is invalid
         assertions.assertInvalidPostContent(createNewInvalidPrivatePost);
     }
 
@@ -45,14 +41,11 @@ public class PrivatePostPostTest extends BasePostTestSetupBeforeAfter {
         //FPT1-85 [Login Page] Login with valid username and valid password
         Response signInResponse = apiMethods.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
 
-        // Assert that the HTTP status code is 302 (Found/Redirect)
         assertions.assertStatusCode302(signInResponse.statusCode());
 
-        // Edit the existing private post
         Response editPrivatePost = apiMethods.editPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
                 EDIT_POST_DESCRIPTION_VALID, lastPostId);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(editPrivatePost.statusCode());
     }
 
@@ -61,7 +54,6 @@ public class PrivatePostPostTest extends BasePostTestSetupBeforeAfter {
     public void when_userDeletePost_expect_lastPrivatePostDeleted() {
         Response lastPrivatePostDeleted = apiMethods.getLastPost(lastPostId);
 
-        // Assert that the HTTP status code is 404 (Not Found)
         assertions.assertStatusCode404(lastPrivatePostDeleted.statusCode());
     }
 }

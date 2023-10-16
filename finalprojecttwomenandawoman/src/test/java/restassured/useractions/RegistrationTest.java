@@ -18,7 +18,6 @@ public class RegistrationTest {
         registrationAPI.generateRandomUsername();
         registerResponse = registrationAPI.registerUser(VALID_JOB_TITLE, TOM_CRUISE_PASSWORD, RANDOM_EMAIL, RANDOM_USERNAME);
 
-        // Assert that the registration message indicates success
         assertions.assertRegistrationMessage(registerResponse);
     }
 
@@ -28,11 +27,8 @@ public class RegistrationTest {
         registerResponse = registrationAPI.registerUser(EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING);
         var errorBody = registrationAPI.convertErrorBody(registerResponse);
 
-        // Assert that the HTTP status code is 400 (Bad Request)
         assertions.assertStatusCode400(registerResponse.statusCode());
-        // Assert that the error body indicates a bad request
         assertions.assertBadRequest(errorBody);
-        // Assert that the error message in the error body indicates a bad request
         assertions.assertBadRequestMessage(errorBody);
     }
 
@@ -43,11 +39,8 @@ public class RegistrationTest {
         registerResponse = registrationAPI.registerUser(VALID_JOB_TITLE, TOM_CRUISE_PASSWORD, RANDOM_EMAIL, INVALID_NAME);
         var errorBody = registrationAPI.convertErrorBody(registerResponse);
 
-        // Assert that the HTTP status code is 400 (Bad Request)
         assertions.assertStatusCode400(registerResponse.statusCode());
-        // Assert that the error body indicates a bad request
         assertions.assertBadRequest(errorBody);
-        // Assert that the error message in the error body indicates a bad request
         assertions.assertBadRequestMessage(errorBody);
     }
 
@@ -58,11 +51,8 @@ public class RegistrationTest {
         registerResponse = registrationAPI.registerUser(VALID_JOB_TITLE, EMPTY_STRING, RANDOM_EMAIL, RANDOM_USERNAME);
         var errorBody = registrationAPI.convertErrorBody(registerResponse);
 
-        // Assert that the HTTP status code is 400 (Bad Request)
         assertions.assertStatusCode400(registerResponse.statusCode());
-        // Assert that the error body indicates a bad request
         assertions.assertBadRequest(errorBody);
-        // Assert that the error message in the error body indicates a bad request
         assertions.assertBadRequestMessage(errorBody);
     }
 
@@ -73,11 +63,8 @@ public class RegistrationTest {
         registerResponse = registrationAPI.registerUser(VALID_JOB_TITLE, TOM_CRUISE_PASSWORD, INVALID_EMAIL, RANDOM_USERNAME);
         var errorBody = registrationAPI.convertErrorBody(registerResponse);
 
-        // Assert that the HTTP status code is 400 (Bad Request)
         assertions.assertStatusCode400(registerResponse.statusCode());
-        // Assert that the error body indicates a bad request
         assertions.assertBadRequest(errorBody);
-        // Assert that the error message in the error body indicates a bad request
         assertions.assertBadRequestMessage(errorBody);
     }
 }
