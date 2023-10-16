@@ -32,18 +32,26 @@ public class EditPersonalProfileTests extends BaseTestSetup {
 
     @Test
     //[Edit Profile] Edit User Profile with Personal Information
-    public void when_AuthenticatedUserClickEditProfileButton_Expect_PersonalProfileIsUpdated() {
+    public void when_AuthenticatedUserEditPersonalProfileWithValidNewNameAndValidNewEmail_Expect_PersonalProfileIsUpdated() {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickEditProfileButton();
         editProfilePage.assertPageNavigated();
-        editProfilePage.fillEditPersonalProfile("dani", "sham", "email@gmail.bg");
-//        editProfilePage.fillEditPersonalProfile(
-//                FOR_EDIT_FIRST_NAME, FOR_EDIT_LAST_NAME, FOR_EDIT_BIRTHDAY, FOR_EDIT_EMAIL);
+        editProfilePage.fillEditPersonalProfile(
+                FOR_EDIT_FIRST_NAME, FOR_EDIT_LAST_NAME, FOR_EDIT_EMAIL);
         editProfilePage.assertPageNavigated();
         editProfilePage.clickPersonalProfileButton();
-        editProfilePage.asserUserNameEdited("dani", "sham");
-        //editProfilePage.asserUserNameEdited(FOR_EDIT_FIRST_NAME, FOR_EDIT_LAST_NAME);
-        editProfilePage.assertEmailEdited("email@gmail.bg");
-        //editProfilePage.assertEmailEdited(FOR_EDIT_EMAIL);
+        editProfilePage.asserUserNameEdited(FOR_EDIT_FIRST_NAME, FOR_EDIT_LAST_NAME);
+        editProfilePage.assertEmailEdited(FOR_EDIT_EMAIL);
+    }
+
+    @Test
+    //[Edit Profile] Edit User Profile with Empty Data in First Name and Verify Error Handling
+    public void when_AuthenticatedUserEditPersonalProfileWithEmptyFirstName_Expect_ErrorMessageIsVisible() {
+        personalProfilePage.assertPageNavigated();
+        personalProfilePage.clickEditProfileButton();
+        editProfilePage.assertPageNavigated();
+        editProfilePage.fillEditPersonalProfile(
+                EMPTY_STRING, FOR_EDIT_LAST_NAME, FOR_EDIT_EMAIL);
+        editProfilePage.assertErrorMessage();
     }
 }

@@ -30,7 +30,7 @@ public class EditPersonalProfilePage extends BasePage {
         actions.clickElement(LOGOUT_BUTTON_PATH);
     }
 
-    public void clickPersonalProfileButton(){
+    public void clickPersonalProfileButton() {
         actions.waitForElementClickable(PERSONAL_PROFILE_BUTTON_PATH);
         actions.clickElement(PERSONAL_PROFILE_BUTTON_PATH);
     }
@@ -63,5 +63,12 @@ public class EditPersonalProfilePage extends BasePage {
         var actualEmail = actions.getElement(PROFILE_EMAIL_INFO_PATH).getText();
         Assertions.assertEquals(expectedEmail, actualEmail,
                 "Expected email is different than actual.");
+    }
+
+    public void assertErrorMessage() {
+        actions.assertElementPresent(EDIT_ERROR_MESSAGE_PATH);
+        var actualMessage = actions.getElement(EDIT_ERROR_MESSAGE_PATH).getText();
+        Assertions.assertEquals(ERROR_MESSAGE_EDIT_FIRST_NAME, actualMessage,
+                "Expected error message is different than actual.");
     }
 }

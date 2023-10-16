@@ -87,7 +87,7 @@ public class Constants {
     public static final String PROFILE_BIRTHDAY_INFO_PATH = "personalProfilePage.birthdayInfo";
     public static final String EDIT_FIRST_NAME_PATH = "editPersonalProfilePage.firstNameField";
     public static final String EDIT_LAST_NAME_PATH = "editPersonalProfilePage.lastNameField";
-    public static final String EDIT_BIRTH_DATE_PATH = "editPersonalProfilePage.birthDateField";
+    public static final String EDIT_ERROR_MESSAGE_PATH = "editPersonalProfilePage.errorMessage";
     public static final String EDIT_EMAIL_PATH = "editPersonalProfilePage.emailField";
     public static final String EDIT_PROFILE_CHANGES_BUTTON_PATH = "editPersonalProfilePage.updateMyProfileButton";
 
@@ -166,4 +166,5 @@ public class Constants {
     public static final String CONNECT_BUTTON_MESSAGE = "Good job! You have send friend request!";
     public static final String REQUESTS_ERROR_MESSAGE = "There are no requests";
     public static final String EDIT_PROFILE_FORM_TITLE = "Personal Profile";
+    public static final String ERROR_MESSAGE_EDIT_FIRST_NAME = "first name must have at least 3 symbols!";
 }
