@@ -136,6 +136,10 @@ public class PostPage extends BasePage {
         actions.assertElementPresent(POST_LIKE_BUTTON);
     }
 
+    public void assertPostInvalidTextMessage() {
+        actions.waitForElementClickable(POST_INVALID_TEXT_MESSAGE);
+        actions.assertElementPresent(POST_INVALID_TEXT_MESSAGE);
+    }
     public void assertEditedPostText() {
         actions.waitForElementClickable(EDIT_POST_TEXT);
         actions.assertElementPresent(EDIT_POST_TEXT);

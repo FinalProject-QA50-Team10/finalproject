@@ -123,7 +123,7 @@ public class PostTests extends BaseTestSetup {
     public void when_UserCreatePublicPostWithInvalidData_expect_PostNotCreated() {
         String longDescription = UserActions.generateLongString();
         postPage.createPostWithLongDescription("public", longDescription);
-        actions.assertElementPresent(POST_INVALID_TEXT_MESSAGE);
+        postPage.assertPostInvalidTextMessage();
     }
 
     @Test
@@ -131,6 +131,6 @@ public class PostTests extends BaseTestSetup {
     public void when_UserCreatePrivatePostWithInvalidData_expect_PostNotCreated() {
         String longDescription = UserActions.generateLongString();
         postPage.createPostWithLongDescription("private", longDescription);
-        actions.assertElementPresent(POST_INVALID_TEXT_MESSAGE);
+        postPage.assertPostInvalidTextMessage();
     }
 }
