@@ -72,12 +72,12 @@ public class PostTests extends BaseTestSetup {
     //FPT1-46 [Edit Post]  Edit an Existing Private Post
     public void when_UserEditPrivatePost_expect_PrivatePostIsEdited() {
         postPage.createPost("private");
-        actions.assertElementPresent(POST_PRIVATE_TEXT);
-        actions.assertElementPresent(POST_IS_PRIVATE);
+        postPage.assertPostPrivateText();
+        postPage.assertPostIsPrivate();
         postPage.editPost("private");
-        actions.assertElementPresent(EDIT_POST_TEXT);
+        postPage.assertEditedPostText();
         postPage.deletePost();
-        actions.assertElementPresent(DELETE_POST_MESSAGE);
+        postPage.assertDeletePostMessage();
     }
 
     @Test
