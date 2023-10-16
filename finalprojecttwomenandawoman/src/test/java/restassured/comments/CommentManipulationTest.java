@@ -29,7 +29,6 @@ public class CommentManipulationTest extends BaseCommentTestSetupBeforeAfter {
                 EDIT_COMMENT_CONTENT,
                 lastCommentId);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(editCommentResponse.statusCode());
     }
 }

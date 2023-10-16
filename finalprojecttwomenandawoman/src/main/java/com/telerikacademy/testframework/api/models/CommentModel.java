@@ -1,7 +1,5 @@
 package com.telerikacademy.testframework.api.models;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 
 public class CommentModel {

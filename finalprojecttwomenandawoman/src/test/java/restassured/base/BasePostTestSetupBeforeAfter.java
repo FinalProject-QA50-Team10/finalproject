@@ -17,18 +17,12 @@ public class BasePostTestSetupBeforeAfter {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(createNewPublicPost.statusCode());
-
-        // Assert the post content is valid
         assertions.assertPostContent("Valid Post");
-
-        // Assert the post is public
         assertions.assertPostIsPublic(createNewPublicPost);
 
         int postId = createNewPublicPost.jsonPath().getInt("postId");
 
-        // Assert the post ID is positive
         assertions.assertPostIdIsPositive(postId);
 
         lastPostId = createNewPublicPost.jsonPath().getInt("postId");
@@ -39,18 +33,12 @@ public class BasePostTestSetupBeforeAfter {
         Response createNewPrivatePost = apiMethods.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
                 POST_DESCRIPTION_VALID);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(createNewPrivatePost.statusCode());
-
-        // Assert the post content is valid
         assertions.assertPostContent("Valid Post");
-
-        // Assert the post is not public
         assertions.assertPostIsNotPublic(createNewPrivatePost);
 
         int postId = createNewPrivatePost.jsonPath().getInt("postId");
 
-        // Assert the post ID is positive
         assertions.assertPostIdIsPositive(postId);
 
         lastPostId = createNewPrivatePost.jsonPath().getInt("postId");
@@ -60,16 +48,12 @@ public class BasePostTestSetupBeforeAfter {
         //FPT1-85 [Login Page] Login with valid username and valid password
         Response signInResponse = apiMethods.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
 
-        // Assert that the HTTP status code is 302 (Found/Redirect)
         assertions.assertStatusCode302(signInResponse.statusCode());
 
         //FPT1-55 [Delete Post] Delete an Existing Public Post
         Response deletePublicPost = apiMethods.deletePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(deletePublicPost.statusCode());
-
-        // Assert that the response body is empty
         assertions.assertResponseBodyIsEmpty(deletePublicPost);
     }
 
@@ -77,16 +61,12 @@ public class BasePostTestSetupBeforeAfter {
         //FPT1-85 [Login Page] Login with valid username and valid password
         Response signInResponse = apiMethods.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
 
-        // Assert that the HTTP status code is 302 (Found/Redirect)
         assertions.assertStatusCode302(signInResponse.statusCode());
 
         //FPT1-56 [Delete Post] Delete an Existing Private Post
         Response deletePrivatePost = apiMethods.deletePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(deletePrivatePost.statusCode());
-
-        // Assert that the response body is empty
         assertions.assertResponseBodyIsEmpty(deletePrivatePost);
     }
 }

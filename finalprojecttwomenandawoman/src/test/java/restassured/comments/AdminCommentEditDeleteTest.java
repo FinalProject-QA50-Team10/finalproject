@@ -25,8 +25,6 @@ public class AdminCommentEditDeleteTest extends BaseCommentTestSetupBeforeAfter 
     //FPT1-62 [Edit Comment] Edit an Existing Comment as Admin
     public void when_adminEditsComment_expect_commentIsEdited() {
         Response editCommentResponse = apiMethods.editComment(ADMIN_NAME, ADMIN_PASSWORD, EDIT_COMMENT_CONTENT, lastCommentId);
-
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(editCommentResponse.statusCode());
     }
 
@@ -35,10 +33,7 @@ public class AdminCommentEditDeleteTest extends BaseCommentTestSetupBeforeAfter 
     public void when_adminDeletesComment_expect_commentIsDeleted() {
         Response deleteCommentResponse = apiMethods.deleteComment(ADMIN_NAME, ADMIN_PASSWORD, lastCommentId);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(deleteCommentResponse.statusCode());
-
-        // Assert that the response body is empty
         assertions.assertResponseBodyIsEmpty(deleteCommentResponse);
     }
 }

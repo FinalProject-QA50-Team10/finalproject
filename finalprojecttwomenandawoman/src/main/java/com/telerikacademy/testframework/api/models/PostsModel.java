@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class PostsModel extends Object{
+public class PostsModel extends Object {
     public int postId;
     public String content;
     public String picture;

@@ -28,30 +28,22 @@ public class PublicPostPostTest extends BasePostTestSetupBeforeAfter {
                 POST_DESCRIPTION_INVALID);
         var registrationErrorModel = createNewInvalidPublicPost.as(ErrorModel.class);
 
-        // Assert that the HTTP status code is 400 (Bad Request)
         assertions.assertStatusCode400(createNewInvalidPublicPost.statusCode());
-
-        // Assert that the error model indicates a bad request
         assertions.assertBadRequest(registrationErrorModel);
-
-        // Assert that the post content is invalid
         assertions.assertInvalidPostContent(createNewInvalidPublicPost);
     }
 
     @Test
     //FTP1-45 [Edit Post] Edit existing public post
     public void when_userEditPublicPost_expect_postIsEdited() {
-
         //FPT1-85 [Login Page] Login with valid username and valid password
         Response signInResponse = apiMethods.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
 
-        // Assert that the HTTP status code is 302 (Found/Redirect)
         assertions.assertStatusCode302(signInResponse.statusCode());
 
         Response editPublicPost = apiMethods.editPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 EDIT_POST_DESCRIPTION_VALID, lastPostId);
 
-        // Assert that the HTTP status code is 200 (OK)
         assertions.assertStatusCode200(editPublicPost.statusCode());
     }
 
@@ -60,7 +52,6 @@ public class PublicPostPostTest extends BasePostTestSetupBeforeAfter {
     public void when_userDeletePost_expect_lastPublicPostDeleted() {
         Response lastPublicPostDeleted = apiMethods.getLastPost(lastPostId);
 
-        // Assert that the HTTP status code is 404 (Not Found)
         assertions.assertStatusCode404(lastPublicPostDeleted.statusCode());
     }
 }
