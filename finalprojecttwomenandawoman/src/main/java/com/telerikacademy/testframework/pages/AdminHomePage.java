@@ -47,6 +47,16 @@ public class AdminHomePage extends BasePage {
         actions.clickElement(POST_SAVE_BUTTON);
     }
 
+    public void assertEnableUserButton() {
+        actions.waitForElementPresent(ENABLE_USER_BUTTON);
+        actions.assertElementPresent(ENABLE_USER_BUTTON);
+    }
+
+    public void assertDisableUserButton() {
+        actions.waitForElementPresent(DISABLE_USER_BUTTON);
+        actions.assertElementPresent(DISABLE_USER_BUTTON);
+    }
+
     private void navigateToLatestPost() {
         actions.waitForElementClickable(LATEST_POST_BUTTON);
         actions.clickElement(LATEST_POST_BUTTON);
