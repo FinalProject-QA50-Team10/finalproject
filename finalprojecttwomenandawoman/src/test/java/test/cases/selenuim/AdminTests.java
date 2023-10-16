@@ -81,7 +81,7 @@ public class AdminTests extends BaseTestSetup {
         postPage.assertPageNavigated();
         loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
         commentPage.editComment("This is an edited comment.");
-        actions.assertElementPresent(COMMENT_TEXT_FIELD);
+        actions.assertElementPresent(COMMENT_EDITED_TEXT);
         adminHomePage.deletePostWithAdminAccess();
         actions.assertElementPresent(DELETE_POST_MESSAGE);
     }
