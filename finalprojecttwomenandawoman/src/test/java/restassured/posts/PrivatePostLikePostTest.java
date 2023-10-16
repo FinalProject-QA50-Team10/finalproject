@@ -22,7 +22,7 @@ public class PrivatePostLikePostTest extends BasePostTestSetupBeforeAfter {
     }
 
     @Test
-    public void when_userLikePrivatePost_expected_likeAnotherUserPrivatePost() {
+    public void when_UserLikesPrivatePost_expect_PrivatePostIsLiked() {
 
         //FPT1-85 [Login Page] Login with valid username and valid password
         Response signInWithUserMrBeast = apiMethods.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
@@ -44,7 +44,7 @@ public class PrivatePostLikePostTest extends BasePostTestSetupBeforeAfter {
 
     @Test
     //FPT1-56 [Delete Post] Delete an Existing Private Post
-    public void when_userDeletePost_expect_lastPrivatePostDeleted() {
+    public void when_UserDeletesPrivatePost_expect_LastPrivatePostIsDeleted() {
         Response lastPrivatePostDeleted = apiMethods.getLastPost(lastPostId);
 
         assertions.assertStatusCode404(lastPrivatePostDeleted.statusCode());

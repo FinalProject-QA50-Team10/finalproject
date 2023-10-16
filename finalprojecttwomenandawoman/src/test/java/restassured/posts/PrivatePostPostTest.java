@@ -23,7 +23,7 @@ public class PrivatePostPostTest extends BasePostTestSetupBeforeAfter {
 
     @Test
     //FTP1-36 [Add New Post] Generate new invalid private post
-    public void when_userCreateInvalidPrivatePost_expect_invalidPrivatePostNotBeCreated() {
+    public void when_UserCreatesInvalidPrivatePost_expect_InvalidPrivatePostIsNotCreated() {
         Response createNewInvalidPrivatePost = apiMethods.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
                 POST_DESCRIPTION_INVALID);
 
@@ -36,7 +36,7 @@ public class PrivatePostPostTest extends BasePostTestSetupBeforeAfter {
 
     @Test
     //FTP1-46 [Edit Post] Edit existing private post
-    public void when_userEditPrivatePost_expect_postIsEdited() {
+    public void when_UserEditsPrivatePost_expect_PrivatePostIsEdited() {
 
         //FPT1-85 [Login Page] Login with valid username and valid password
         Response signInResponse = apiMethods.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
@@ -51,7 +51,7 @@ public class PrivatePostPostTest extends BasePostTestSetupBeforeAfter {
 
     @Test
     //FPT1-56 [Delete Post] Delete an Existing Private Post
-    public void when_userDeletePost_expect_lastPrivatePostDeleted() {
+    public void when_UserDeletesPrivatePost_expect_LastPrivatePostIsDeleted() {
         Response lastPrivatePostDeleted = apiMethods.getLastPost(lastPostId);
 
         assertions.assertStatusCode404(lastPrivatePostDeleted.statusCode());

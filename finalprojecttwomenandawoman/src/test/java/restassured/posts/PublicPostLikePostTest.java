@@ -22,7 +22,7 @@ public class PublicPostLikePostTest extends BasePostTestSetupBeforeAfter {
     }
 
     @Test
-    public void when_userLikeAndDislikePublicPost_expected_likeAndDislikeAnotherUserPublicPost() {
+    public void when_UserLikesAndDislikesPublicPost_expect_PublicPostIsLikedAndDisliked() {
 
         //FPT1-85 [Login Page] Login with valid username and valid password
         Response signInWithUserGeorgeBush = apiMethods.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
@@ -44,7 +44,7 @@ public class PublicPostLikePostTest extends BasePostTestSetupBeforeAfter {
 
     @Test
     //FPT1-55 [Delete Post] Delete an Existing Public Post
-    public void when_userDeletePost_expect_lastPublicPostDeleted() {
+    public void when_UserDeletesPublicPost_expect_LastPublicPostIsDeleted() {
         Response lastPublicPostDeleted = apiMethods.getLastPost(lastPostId);
 
         assertions.assertStatusCode404(lastPublicPostDeleted.statusCode());
