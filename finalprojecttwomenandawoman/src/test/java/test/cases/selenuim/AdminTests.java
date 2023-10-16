@@ -25,11 +25,9 @@ public class AdminTests extends BaseTestSetup {
         postPage.assertPageNavigated();
         loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
         adminHomePage.disableUserWithAdminAccess();
-        actions.waitForElementPresent(ENABLE_USER_BUTTON);
-        actions.assertElementPresent(ENABLE_USER_BUTTON);
+        adminHomePage.assertEnableUserButton();
         adminHomePage.enableUserWithAdminAccess();
-        actions.waitForElementPresent(DISABLE_USER_BUTTON);
-        actions.assertElementPresent(DISABLE_USER_BUTTON);
+        adminHomePage.assertDisableUserButton();
     }
 
     @Test
@@ -38,15 +36,15 @@ public class AdminTests extends BaseTestSetup {
         postPage.assertPageNavigated();
         loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         postPage.createPost("public");
-        actions.assertElementPresent(POST_TEXT);
-        actions.assertElementPresent(POST_IS_PUBLIC);
+        postPage.assertPostText();
+        postPage.assertPostIsPublic();
         loginPage.navigateToPage();
         postPage.assertPageNavigated();
         loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
         adminHomePage.editPostWithAdminAccess();
-        actions.assertElementPresent(EDIT_POST_TEXT);
+        postPage.assertEditedPostText();
         adminHomePage.deletePostWithAdminAccess();
-        actions.assertElementPresent(DELETE_POST_MESSAGE);
+        postPage.assertDeletePostMessage();
     }
 
     @Test
@@ -55,13 +53,13 @@ public class AdminTests extends BaseTestSetup {
         postPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         postPage.createPost("public");
-        actions.assertElementPresent(POST_TEXT);
-        actions.assertElementPresent(POST_IS_PUBLIC);
+        postPage.assertPostText();
+        postPage.assertPostIsPublic();
         loginPage.navigateToPage();
         postPage.assertPageNavigated();
         loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
         adminHomePage.deletePostWithAdminAccess();
-        actions.assertElementPresent(DELETE_POST_MESSAGE);
+        postPage.assertDeletePostMessage();
     }
 
     @Test
@@ -70,8 +68,8 @@ public class AdminTests extends BaseTestSetup {
         postPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         postPage.createPost("public");
-        actions.assertElementPresent(POST_TEXT);
-        actions.assertElementPresent(POST_IS_PUBLIC);
+        postPage.assertPostText();
+        postPage.assertPostIsPublic();
         loginPage.navigateToPage();
         postPage.assertPageNavigated();
         loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
@@ -81,9 +79,9 @@ public class AdminTests extends BaseTestSetup {
         postPage.assertPageNavigated();
         loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
         commentPage.editComment("This is an edited comment.");
-        actions.assertElementPresent(COMMENT_EDITED_TEXT);
+        commentPage.assertCommentEdited();
         adminHomePage.deletePostWithAdminAccess();
-        actions.assertElementPresent(DELETE_POST_MESSAGE);
+        postPage.assertDeletePostMessage();
     }
 
     @Test
@@ -92,8 +90,8 @@ public class AdminTests extends BaseTestSetup {
         loginPage.assertPageNavigated();
         loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         postPage.createPost("public");
-        actions.assertElementPresent(POST_TEXT);
-        actions.assertElementPresent(POST_IS_PUBLIC);
+        postPage.assertPostText();
+        postPage.assertPostIsPublic();
         loginPage.navigateToPage();
         loginPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
@@ -103,8 +101,8 @@ public class AdminTests extends BaseTestSetup {
         postPage.assertPageNavigated();
         loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
         commentPage.deleteComment();
-        actions.assertElementPresent(DELETE_COMMENT_MESSAGE);
+        commentPage.assertCommentDeleted();
         adminHomePage.deletePostWithAdminAccess();
-        actions.assertElementPresent(DELETE_POST_MESSAGE);
+        postPage.assertDeletePostMessage();
     }
 }

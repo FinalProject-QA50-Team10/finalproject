@@ -106,6 +106,26 @@ public class PostPage extends BasePage {
         actions.clickElement(POST_SAVE_BUTTON);
     }
 
+    public void assertPostText() {
+        actions.waitForElementClickable(POST_TEXT);
+        actions.assertElementPresent(POST_TEXT);
+    }
+
+    public void assertPostIsPublic() {
+        actions.waitForElementClickable(POST_IS_PUBLIC);
+        actions.assertElementPresent(POST_IS_PUBLIC);
+    }
+
+    public void assertEditedPostText() {
+        actions.waitForElementClickable(EDIT_POST_TEXT);
+        actions.assertElementPresent(EDIT_POST_TEXT);
+    }
+
+    public void assertDeletePostMessage() {
+        actions.waitForElementClickable(DELETE_POST_MESSAGE);
+        actions.assertElementPresent(DELETE_POST_MESSAGE);
+    }
+
     private void navigateToLatestPost() {
         actions.waitForElementClickable(LATEST_POST_BUTTON);
         actions.clickElement(LATEST_POST_BUTTON);
