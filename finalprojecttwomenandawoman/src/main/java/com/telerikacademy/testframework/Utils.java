@@ -3,6 +3,7 @@ package com.telerikacademy.testframework;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+
 import java.util.Properties;
 
 public class Utils {
