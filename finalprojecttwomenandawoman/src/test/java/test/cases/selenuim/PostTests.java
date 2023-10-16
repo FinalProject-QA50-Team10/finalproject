@@ -82,7 +82,7 @@ public class PostTests extends BaseTestSetup {
 
     @Test
     //FPT1-123 [Like] Like a public post of another user
-    public void when_UserLikePublicPost_expected_PostIsLiked() {
+    public void when_UserLikePublicPost_expect_PostIsLiked() {
         postPage.createPost("public");
         actions.assertElementPresent(POST_TEXT);
         actions.assertElementPresent(POST_IS_PUBLIC);
@@ -100,7 +100,7 @@ public class PostTests extends BaseTestSetup {
 
     @Test
     //FTP1-124 [Like] Dislike a public post of another user
-    public void when_UserDislikePublicPost_expected_PostIsDisliked() {
+    public void when_UserDislikePublicPost_expect_PostIsDisliked() {
         postPage.createPost("public");
         actions.assertElementPresent(POST_TEXT);
         actions.assertElementPresent(POST_IS_PUBLIC);

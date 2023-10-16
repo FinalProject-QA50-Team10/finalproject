@@ -11,7 +11,7 @@ public class RegisteredUserPage extends BasePage {
         super(driver, REGISTER_PAGE);
     }
 
-    public void navigateToHomePage(){
+    public void navigateToHomePage() {
         actions.waitForElementClickable(HOME_BUTTON_PATH);
         actions.clickElement(HOME_BUTTON_PATH);
     }

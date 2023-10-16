@@ -1,7 +1,5 @@
 package test.cases.selenuim;
 
-import com.telerikacademy.testframework.pages.LoginPage;
-import com.telerikacademy.testframework.pages.UnauthenticatedUserHomePage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,13 +17,13 @@ public class RegistrationTests extends BaseTestSetup {
     }
 
     @AfterEach
-    public void navigateToHomePage(){
+    public void navigateToHomePage() {
         unauthenticatedUser.navigateToHomePage();
     }
 
     @Test
     //FPT1-135 [Registration] Successful Registration
-    public void when_UnauthenticatedUserFillRegisterFormWithValidData_Expect_SuccessfulMessageIsVisible() {
+    public void when_UnauthenticatedUserFillRegisterFormWithValidData_expect_SuccessfulMessageIsVisible() {
         registerPage.assertPageNavigated();
         registerPage.fillRegisterForm(RANDOM_USERNAME, RANDOM_EMAIL, GEORGE_BUSH_PASSWORD);
         registeredUserPage.assertWelcomeMessage();
@@ -36,7 +34,7 @@ public class RegistrationTests extends BaseTestSetup {
 
     @Test
     //FPT1-136 [Registration] Attempt Registration with Empty Fields
-    public void when_UnauthenticatedUserFillRegisterFormWithEmptyData_Expect_Error() {
+    public void when_UnauthenticatedUserFillRegisterFormWithEmptyData_expect_Error() {
         registerPage.assertPageNavigated();
         registerPage.fillRegisterForm(EMPTY_STRING, EMPTY_STRING, EMPTY_STRING);
         registerPage.assertPageNavigated();
@@ -44,16 +42,17 @@ public class RegistrationTests extends BaseTestSetup {
 
     @Test
     //FPT1-158 [Registration] Attempt Registration With Mismatched Passwords
-    public void when_UnauthenticatedUserFillRegisterFormWithInvalidPassword_Expect_ErrorMessageIsVisible() {
+    public void when_UnauthenticatedUserFillRegisterFormWithInvalidPassword_expect_ErrorMessageIsVisible() {
         registerPage.assertPageNavigated();
         registerPage.fillRegisterForm(RANDOM_USERNAME, RANDOM_EMAIL, INVALID_PASSWORD);
         registerPage.assertPageNavigated();
         registerPage.assertErrorMessageIsVisible();
         registerPage.assertErrorMessage(PASSWORD_ERROR_MESSAGE);
     }
+
     @Test
     //FPT1-162 [Registration] Attempt Registration With Email Containing Spaces
-    public void when_UnauthenticatedUserFillRegisterFormWithInvalidEmail_Expect_ErrorMessageIsVisible() {
+    public void when_UnauthenticatedUserFillRegisterFormWithInvalidEmail_expect_ErrorMessageIsVisible() {
         registerPage.assertPageNavigated();
         registerPage.fillRegisterForm(RANDOM_USERNAME, INVALID_EMAIL, MR_BEAST_PASSWORD);
         registerPage.assertPageNavigated();
@@ -63,7 +62,7 @@ public class RegistrationTests extends BaseTestSetup {
 
     @Test
     //FPT1-143 [Registration] Attempt Registration With Already Existing Username
-    public void when_UnauthenticatedUserFillRegisterFormWithAlreadyExistingUsername_Expect_ErrorMessageIsVisible() {
+    public void when_UnauthenticatedUserFillRegisterFormWithAlreadyExistingUsername_expect_ErrorMessageIsVisible() {
         registerPage.assertPageNavigated();
         registerPage.fillRegisterForm(MR_BEAST_USERNAME, RANDOM_EMAIL, MR_BEAST_PASSWORD);
         registerPage.assertPageNavigated();

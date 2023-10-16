@@ -23,7 +23,7 @@ public class EditPersonalProfileTests extends BaseTestSetup {
 
     @Test
     //[Edit Profile] Edit User Profile with Personal Information
-    public void when_AuthenticatedUserClickEditProfileButton_Expect_PersonalProfileFormIsVisible() {
+    public void when_AuthenticatedUserClickEditProfileButton_expect_PersonalProfileFormIsVisible() {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickEditProfileButton();
         editProfilePage.assertPageNavigated();
@@ -32,7 +32,7 @@ public class EditPersonalProfileTests extends BaseTestSetup {
 
     @Test
     //[Edit Profile] Edit User Profile with Personal Information
-    public void when_AuthenticatedUserEditPersonalProfileWithValidNewNameAndValidNewEmail_Expect_PersonalProfileIsUpdated() {
+    public void when_AuthenticatedUserEditPersonalProfileWithValidNewNameAndValidNewEmail_expect_PersonalProfileIsUpdated() {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickEditProfileButton();
         editProfilePage.assertPageNavigated();
@@ -46,7 +46,7 @@ public class EditPersonalProfileTests extends BaseTestSetup {
 
     @Test
     //[Edit Profile] Edit User Profile with Empty Data in First Name and Verify Error Handling
-    public void when_AuthenticatedUserEditPersonalProfileWithEmptyFirstName_Expect_ErrorMessageIsVisible() {
+    public void when_AuthenticatedUserEditPersonalProfileWithEmptyFirstName_expect_ErrorMessageIsVisible() {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickEditProfileButton();
         editProfilePage.assertPageNavigated();

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.telerikacademy.testframework.pages.Constants.*;
-import static com.telerikacademy.testframework.pages.Constants.EMAIL_END;
 
 public class FriendsRequestTests extends BaseTestSetup {
 
@@ -32,7 +31,7 @@ public class FriendsRequestTests extends BaseTestSetup {
 
     @Test
     //FPT1-116 [Friends Request] User sends a request to connect with another user
-    public void when_AuthenticatedUserSendsRequestToConnectWithAnotherUser_Expect_SuccessfulMessageIsVisible() {
+    public void when_AuthenticatedUserSendsRequestToConnectWithAnotherUser_expect_SuccessfulMessageIsVisible() {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickConnectButton();
         personalProfilePage.assertTextMessage();
@@ -40,7 +39,7 @@ public class FriendsRequestTests extends BaseTestSetup {
 
     @Test
     //FPT1-116 [Friends Request] User sends a request to connect with another user
-    public void when_AuthenticatedUserSendsRequestToConnectWithAnotherUser_Expect_SuccessfulAcceptedRequest() {
+    public void when_AuthenticatedUserSendsRequestToConnectWithAnotherUser_expect_SuccessfulAcceptedRequest() {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickConnectButton();
         personalProfilePage.assertTextMessage();
@@ -63,7 +62,7 @@ public class FriendsRequestTests extends BaseTestSetup {
 
     @Test
     //FPT1-116 [Friends Request] User sends a request to connect with another user
-    public void when_TwoUsersAreConnectedAndOneOfThemClickDisconnectButton_Expect_DisconnectButtonIsVisible() {
+    public void when_TwoUsersAreConnectedAndOneOfThemClickDisconnectButton_expect_DisconnectButtonIsVisible() {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickConnectButton();
         personalProfilePage.assertTextMessage();

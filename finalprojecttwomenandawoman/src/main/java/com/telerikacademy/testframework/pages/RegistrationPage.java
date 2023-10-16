@@ -1,6 +1,5 @@
 package com.telerikacademy.testframework.pages;
 
-import com.telerikacademy.testframework.UserActions;
 import com.telerikacademy.testframework.Utils;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +11,7 @@ public class RegistrationPage extends BasePage {
         super(driver, REGISTER_PAGE);
     }
 
-    public void fillRegisterForm(String username, String email, String password){
+    public void fillRegisterForm(String username, String email, String password) {
         actions.waitForElementClickable(USERNAME_FIELD_PATH);
         actions.typeValueInField(Utils.getConfigPropertyByKey(username), USERNAME_FIELD_PATH);
         actions.waitForElementClickable(EMAIL_FIELD_PATH);

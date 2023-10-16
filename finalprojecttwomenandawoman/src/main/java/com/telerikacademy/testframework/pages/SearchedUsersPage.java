@@ -15,10 +15,11 @@ public class SearchedUsersPage extends BasePage {
         actions.clickElement(SEE_PROFILE_BUTTON_PATH);
     }
 
-    public void navigateToHomePage(){
+    public void navigateToHomePage() {
         actions.waitForElementClickable(HOME_BUTTON_PATH);
         actions.clickElement(HOME_BUTTON_PATH);
     }
+
     public void assertSearchResultsAreVisible() {
         actions.assertElementPresent(SEARCH_RESULTS_PATH);
     }

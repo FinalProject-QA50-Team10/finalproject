@@ -31,7 +31,7 @@ public class PersonalProfilePage extends BasePage {
         actions.clickElement(APPROVE_NEWEST_FRIEND_REQUESTS_BUTTON_PATH);
     }
 
-    public void clickDisconnectButton(){
+    public void clickDisconnectButton() {
         actions.waitForElementClickable(DISCONNECT_BUTTON_PATH);
         actions.clickElement(DISCONNECT_BUTTON_PATH);
     }
