@@ -13,7 +13,7 @@ public class AdminCommentEditDeleteTest extends BaseCommentTestSetupBeforeAfter 
     @BeforeEach
     public void setup() {
         createPublicPost();
-        createComment();
+        createCommentAsRegisteredUser();
     }
 
     @AfterEach

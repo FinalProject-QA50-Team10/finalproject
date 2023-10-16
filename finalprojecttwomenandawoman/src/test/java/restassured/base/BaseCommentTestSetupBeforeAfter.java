@@ -8,7 +8,7 @@ public class BaseCommentTestSetupBeforeAfter extends BasePostTestSetupBeforeAfte
 
     protected static int lastCommentId;
 
-    public void createComment() {
+    public void createCommentAsRegisteredUser() {
         //FPT1-167 [Comment] Create Comment Successfully as Registered User
         Response signInWithUserTomCruise = apiMethods.signInUser(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD);
 
@@ -21,7 +21,7 @@ public class BaseCommentTestSetupBeforeAfter extends BasePostTestSetupBeforeAfte
         lastCommentId = createCommentResponse.jsonPath().getInt("commentId");
     }
 
-    public void deleteComment() {
+    public void deleteCommentAsRegisteredUser() {
         //FPT1-182 [Comment] Delete Comment Successfully as Registered User
         Response deleteCommentResponse = apiMethods.deleteComment(TOM_CRUISE_USERNAME, TOM_CRUISE_PASSWORD,
                 lastCommentId);
