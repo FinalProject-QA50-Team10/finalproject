@@ -5,8 +5,6 @@ import com.telerikacademy.testframework.Utils;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
-import static com.telerikacademy.testframework.pages.Constants.HOME_BUTTON_PATH;
-
 public abstract class BasePage {
 
     protected String url;

@@ -10,24 +10,24 @@ public class AuthenticatedUserHomePage extends BasePage {
         super(driver, HOME_PAGE);
     }
 
-    public void logout(){
+    public void logout() {
         actions.waitForElementClickable(HOME_BUTTON_PATH);
         actions.clickElement(HOME_BUTTON_PATH);
         actions.waitForElementClickable(LOGOUT_BUTTON_PATH);
         actions.clickElement(LOGOUT_BUTTON_PATH);
     }
 
-    public void navigateToHomePage(){
+    public void navigateToHomePage() {
         actions.waitForElementClickable(HOME_BUTTON_PATH);
         actions.clickElement(HOME_BUTTON_PATH);
     }
 
-    public void clickPersonalProfileButton(){
+    public void clickPersonalProfileButton() {
         actions.waitForElementClickable(PERSONAL_PROFILE_BUTTON_PATH);
         actions.clickElement(PERSONAL_PROFILE_BUTTON_PATH);
     }
 
-    public void fillSearchForm(String jobTitle, String names){
+    public void fillSearchForm(String jobTitle, String names) {
         actions.waitForElementClickable(SEARCH_JOB_FIELD_PATH);
         actions.typeValueInField(Utils.getConfigPropertyByKey(jobTitle), SEARCH_JOB_FIELD_PATH);
         actions.waitForElementClickable(SEARCH_NAME_FIELD_PATH);

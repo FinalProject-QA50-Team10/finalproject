@@ -78,8 +78,6 @@ public class CommentPage extends BasePage {
     public void assertCommentCreated() {
         navigateToLatestPublicPost();
         showComments();
-//        actions.waitForElementVisible(COMMENT_TEXT_MESSAGE);
-//        actions.assertElementPresent(COMMENT_TEXT_MESSAGE);
         actions.assertElementPresent(DELETE_COMMENT_BUTTON);
     }
 
