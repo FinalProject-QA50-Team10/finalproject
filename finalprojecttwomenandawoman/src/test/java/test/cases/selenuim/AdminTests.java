@@ -76,7 +76,7 @@ public class AdminTests extends BaseTestSetup {
         postPage.assertPageNavigated();
         loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         commentPage.createComment("This is a comment.");
-        actions.assertElementPresent(COMMENT_TEXT_FIELD);
+        actions.assertElementPresent(COMMENT_TEXT);
         loginPage.navigateToPage();
         postPage.assertPageNavigated();
         loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
@@ -98,7 +98,7 @@ public class AdminTests extends BaseTestSetup {
         loginPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         commentPage.createComment("This is a comment.");
-        actions.assertElementPresent(COMMENT_TEXT_FIELD);
+        actions.assertElementPresent(COMMENT_TEXT);
         loginPage.navigateToPage();
         postPage.assertPageNavigated();
         loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
