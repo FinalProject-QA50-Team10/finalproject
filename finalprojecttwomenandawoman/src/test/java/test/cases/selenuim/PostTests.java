@@ -84,18 +84,18 @@ public class PostTests extends BaseTestSetup {
     //FPT1-123 [Like] Like a public post of another user
     public void when_UserLikePublicPost_expect_PostIsLiked() {
         postPage.createPost("public");
-        actions.assertElementPresent(POST_TEXT);
-        actions.assertElementPresent(POST_IS_PUBLIC);
+        postPage.assertPostText();
+        postPage.assertPostIsPublic();
         loginPage.navigateToPage();
         postPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
         postPage.likePost();
-        actions.assertElementPresent(POST_DISLIKE_BUTTON);
+        postPage.assertPostDislikeButton();
         loginPage.navigateToPage();
         postPage.assertPageNavigated();
         loginPage.login(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
         postPage.deletePost();
-        actions.assertElementPresent(DELETE_POST_MESSAGE);
+        postPage.assertDeletePostMessage();
     }
 
     @Test

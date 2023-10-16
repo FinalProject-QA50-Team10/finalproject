@@ -126,6 +126,11 @@ public class PostPage extends BasePage {
         actions.assertElementPresent(POST_IS_PRIVATE);
     }
 
+    public void assertPostDislikeButton() {
+        actions.waitForElementClickable(POST_DISLIKE_BUTTON);
+        actions.assertElementPresent(POST_DISLIKE_BUTTON);
+    }
+
     public void assertEditedPostText() {
         actions.waitForElementClickable(EDIT_POST_TEXT);
         actions.assertElementPresent(EDIT_POST_TEXT);
