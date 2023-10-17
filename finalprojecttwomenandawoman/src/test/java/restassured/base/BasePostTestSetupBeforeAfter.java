@@ -44,7 +44,7 @@ public class BasePostTestSetupBeforeAfter {
         lastPostId = createNewPrivatePost.jsonPath().getInt("postId");
     }
 
-    public void when_UserDeletsPublicPost_expect_PublicPostIsDeleted() {
+    public void when_UserDeletesPublicPost_expect_PublicPostIsDeleted() {
         //FPT1-85 [Login Page] Login with valid username and valid password
         Response signInResponse = apiMethods.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
 

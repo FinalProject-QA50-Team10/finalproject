@@ -18,7 +18,7 @@ public class CommentInvalidCreationTest extends BaseCommentTestSetupBeforeAfter 
 
     @AfterEach
     public void teardown() {
-        when_UserDeletsPublicPost_expect_PublicPostIsDeleted();
+        when_UserDeletesPublicPost_expect_PublicPostIsDeleted();
     }
 
     @Test

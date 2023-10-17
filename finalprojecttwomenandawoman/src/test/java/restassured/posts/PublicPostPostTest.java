@@ -61,7 +61,7 @@ public class PublicPostPostTest extends BasePostTestSetupBeforeAfter {
 
     @Test
     //FPT1-55 [Delete Post] Delete an Existing Public Post
-    public void when_UserDeletsPublicPost_expect_PublicPostIsDeleted() {
+    public void when_UserDeletesPublicPost_expect_PublicPostIsDeleted() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
         assertions.assertStatusCode200(createNewPublicPost.statusCode());

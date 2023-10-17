@@ -20,7 +20,7 @@ public class CommentLikeTest extends BaseCommentTestSetupBeforeAfter {
     @AfterEach
     public void teardown() {
         deleteCommentAsRegisteredUser();
-        when_UserDeletsPublicPost_expect_PublicPostIsDeleted();
+        when_UserDeletesPublicPost_expect_PublicPostIsDeleted();
     }
 
     @Test
