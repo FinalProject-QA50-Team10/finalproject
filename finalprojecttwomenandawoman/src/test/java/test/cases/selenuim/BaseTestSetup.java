@@ -2,34 +2,50 @@ package test.cases.selenuim;
 
 import com.telerikacademy.testframework.UserActions;
 import com.telerikacademy.testframework.pages.*;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
 import static com.telerikacademy.testframework.pages.Constants.HOME_PAGE;
 
 public class BaseTestSetup {
-    static UserActions actions = new UserActions();
 
-    public LoginPage loginPage = new LoginPage(actions.getDriver());
-    public UnauthenticatedUserHomePage unauthenticatedUser = new UnauthenticatedUserHomePage(actions.getDriver());
-    public RegistrationPage registerPage = new RegistrationPage(actions.getDriver());
-    public SearchedUsersPage searchedUsersPage = new SearchedUsersPage(actions.getDriver());
-    public RegisteredUserPage registeredUserPage = new RegisteredUserPage(actions.getDriver());
-    public AuthenticatedUserHomePage authenticatedUserHomePage = new AuthenticatedUserHomePage(actions.getDriver());
-    public PersonalProfilePage personalProfilePage = new PersonalProfilePage(actions.getDriver());
-    public EditPersonalProfilePage editProfilePage = new EditPersonalProfilePage(actions.getDriver());
-    public CommentPage commentPage = new CommentPage(actions.getDriver());
-    public FeedPage feedPage = new FeedPage(actions.getDriver());
-    PostPage postPage = new PostPage(actions.getDriver());
-    AdminHomePage adminHomePage = new AdminHomePage(actions.getDriver());
+    UserActions actions;
 
-    @BeforeAll
-    public static void setUp() {
-        UserActions.loadBrowser(HOME_PAGE);
+    LoginPage loginPage;
+    UnauthenticatedUserHomePage unauthenticatedUser;
+    RegistrationPage registerPage;
+    SearchedUsersPage searchedUsersPage;
+    RegisteredUserPage registeredUserPage;
+    AuthenticatedUserHomePage authenticatedUserHomePage;
+    PersonalProfilePage personalProfilePage;
+    EditPersonalProfilePage editProfilePage;
+    CommentPage commentPage;
+    FeedPage feedPage;
+    PostPage postPage;
+    AdminHomePage adminHomePage;
+
+    @BeforeEach
+    public void setUp() {
+        actions = new UserActions();
+
+        loginPage = new LoginPage(actions.getDriver());
+        unauthenticatedUser = new UnauthenticatedUserHomePage(actions.getDriver());
+        registerPage = new RegistrationPage(actions.getDriver());
+        searchedUsersPage = new SearchedUsersPage(actions.getDriver());
+        registeredUserPage = new RegisteredUserPage(actions.getDriver());
+        authenticatedUserHomePage = new AuthenticatedUserHomePage(actions.getDriver());
+        personalProfilePage = new PersonalProfilePage(actions.getDriver());
+        editProfilePage = new EditPersonalProfilePage(actions.getDriver());
+        commentPage = new CommentPage(actions.getDriver());
+        feedPage = new FeedPage(actions.getDriver());
+        postPage = new PostPage(actions.getDriver());
+        adminHomePage = new AdminHomePage(actions.getDriver());
+
+        actions.loadBrowser(HOME_PAGE);
     }
 
-    @AfterAll
-    public static void tearDown() {
-        UserActions.quitDriver();
+    @AfterEach
+    public void tearDown() {
+        actions.quitDriver();
     }
 }
