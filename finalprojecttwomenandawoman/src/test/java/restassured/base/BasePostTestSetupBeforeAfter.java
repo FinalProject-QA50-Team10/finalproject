@@ -12,7 +12,7 @@ public class BasePostTestSetupBeforeAfter {
     protected final ApiTestAssertions assertions = new ApiTestAssertions();
     protected static int lastPostId;
 
-    public void createPublicPost() {
+    public void when_UserCreatesValidPublicPost_expect_ValidPublicPostIsCreated() {
         //FPT1-25 [Add New Post] Create Public Post
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
@@ -28,7 +28,7 @@ public class BasePostTestSetupBeforeAfter {
         lastPostId = createNewPublicPost.jsonPath().getInt("postId");
     }
 
-    public void createPrivatePost() {
+    public void when_UserCreatesValidPrivatePost_expect_ValidPrivatePostIsCreated() {
         //FPT1-26 [Add New Post] Create Private Post
         Response createNewPrivatePost = apiMethods.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
                 POST_DESCRIPTION_VALID);
@@ -44,7 +44,7 @@ public class BasePostTestSetupBeforeAfter {
         lastPostId = createNewPrivatePost.jsonPath().getInt("postId");
     }
 
-    public void deletePublicPost() {
+    public void when_UserDeletsPublicPost_expect_PublicPostIsDeleted() {
         //FPT1-85 [Login Page] Login with valid username and valid password
         Response signInResponse = apiMethods.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
 
@@ -57,7 +57,7 @@ public class BasePostTestSetupBeforeAfter {
         assertions.assertResponseBodyIsEmpty(deletePublicPost);
     }
 
-    public void deletePrivatePost() {
+    public void when_UserDeletesPrivatePost_expect_PrivatePostIsDeleted() {
         //FPT1-85 [Login Page] Login with valid username and valid password
         Response signInResponse = apiMethods.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
 

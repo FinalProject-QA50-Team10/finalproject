@@ -13,12 +13,12 @@ public class CommentInvalidCreationTest extends BaseCommentTestSetupBeforeAfter 
 
     @BeforeEach
     public void setup() {
-        createPublicPost();
+        when_UserCreatesValidPublicPost_expect_ValidPublicPostIsCreated();
     }
 
     @AfterEach
     public void teardown() {
-        deletePublicPost();
+        when_UserDeletsPublicPost_expect_PublicPostIsDeleted();
     }
 
     @Test

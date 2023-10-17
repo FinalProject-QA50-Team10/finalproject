@@ -1,52 +1,57 @@
 package restassured.posts;
 
 import io.restassured.response.Response;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import restassured.base.BasePostTestSetupBeforeAfter;
 
-import static com.telerikacademy.testframework.api.utils.Constants.MR_BEAST_PASSWORD;
-import static com.telerikacademy.testframework.api.utils.Constants.MR_BEAST_USERNAME;
+import static com.telerikacademy.testframework.api.utils.Constants.*;
 
 public class PrivatePostLikePostTest extends BasePostTestSetupBeforeAfter {
 
-    @BeforeEach
-    public void setup() {
-        createPrivatePost();
-    }
-
-    @AfterEach
-    public void teardown() {
-        deletePrivatePost();
-    }
-
     @Test
+    //FPT1-123 [Like] Verify posts Like button
     public void when_UserLikesPrivatePost_expect_PrivatePostIsLiked() {
+        Response createNewPrivatePost = apiMethods.createPrivatePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
+                POST_DESCRIPTION_VALID);
+        assertions.assertStatusCode200(createNewPrivatePost.statusCode());
+        assertions.assertPostContent("Valid Post");
+        assertions.assertPostIsNotPublic(createNewPrivatePost);
+        int postId = createNewPrivatePost.jsonPath().getInt("postId");
+        assertions.assertPostIdIsPositive(postId);
+        lastPostId = createNewPrivatePost.jsonPath().getInt("postId");
 
-        //FPT1-85 [Login Page] Login with valid username and valid password
-        Response signInWithUserMrBeast = apiMethods.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
-
-        assertions.assertStatusCode302(signInWithUserMrBeast.statusCode());
-
-        //FPT1-123 [Like] Verify posts Like button
-        Response likePrivatePost = apiMethods.likePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
-
+        Response likePrivatePost = apiMethods.likePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
         assertions.assertStatusCode200(likePrivatePost.statusCode());
         assertions.assertPostIsLiked(likePrivatePost);
 
-        //FPT1-124 [Like] Verify posts Dislike button
-        Response dislikePrivatePost = apiMethods.dislikePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
-
-        assertions.assertStatusCode200(dislikePrivatePost.statusCode());
-        assertions.assertPostIsDisliked(dislikePrivatePost);
+        Response deletePrivatePost = apiMethods.deletePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
+        assertions.assertStatusCode200(deletePrivatePost.statusCode());
+        assertions.assertResponseBodyIsEmpty(deletePrivatePost);
     }
 
     @Test
-    //FPT1-56 [Delete Post] Delete an Existing Private Post
-    public void when_UserDeletesPrivatePost_expect_LastPrivatePostIsDeleted() {
-        Response lastPrivatePostDeleted = apiMethods.getLastPost(lastPostId);
+    //FPT1-124 [Like] Verify posts Dislike button
+    public void when_UserDislikesPrivatePost_expect_PrivatePostIsDisliked() {
+        Response createNewPrivatePost = apiMethods.createPrivatePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
+                POST_DESCRIPTION_VALID);
+        assertions.assertStatusCode200(createNewPrivatePost.statusCode());
+        assertions.assertPostContent("Valid Post");
+        assertions.assertPostIsNotPublic(createNewPrivatePost);
+        int postId = createNewPrivatePost.jsonPath().getInt("postId");
+        assertions.assertPostIdIsPositive(postId);
+        lastPostId = createNewPrivatePost.jsonPath().getInt("postId");
 
-        assertions.assertStatusCode404(lastPrivatePostDeleted.statusCode());
+        Response likePrivatePost = apiMethods.likePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
+        assertions.assertStatusCode200(likePrivatePost.statusCode());
+        assertions.assertPostIsLiked(likePrivatePost);
+
+        Response dislikePrivatePost = apiMethods.dislikePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
+        assertions.assertStatusCode200(dislikePrivatePost.statusCode());
+        assertions.assertPostIsDisliked(dislikePrivatePost);
+
+        Response deletePrivatePost = apiMethods.deletePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
+        assertions.assertStatusCode200(deletePrivatePost.statusCode());
+        assertions.assertResponseBodyIsEmpty(deletePrivatePost);
     }
+
 }

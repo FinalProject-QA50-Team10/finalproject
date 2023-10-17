@@ -2,8 +2,6 @@ package restassured.posts;
 
 import com.telerikacademy.testframework.api.models.ErrorModel;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import restassured.base.BasePostTestSetupBeforeAfter;
 
@@ -11,14 +9,21 @@ import static com.telerikacademy.testframework.api.utils.Constants.*;
 
 public class PublicPostPostTest extends BasePostTestSetupBeforeAfter {
 
-    @BeforeEach
-    public void setup() {
-        createPublicPost();
-    }
+    @Test
+    //FPT1-25 [Add New Post] Create Public Post
+    public void when_UserCreatesValidPublicPost_expect_ValidPublicPostIsCreated() {
+        Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
+                POST_DESCRIPTION_VALID);
+        assertions.assertStatusCode200(createNewPublicPost.statusCode());
+        assertions.assertPostContent("Valid Post");
+        assertions.assertPostIsPublic(createNewPublicPost);
+        int postId = createNewPublicPost.jsonPath().getInt("postId");
+        assertions.assertPostIdIsPositive(postId);
+        lastPostId = createNewPublicPost.jsonPath().getInt("postId");
 
-    @AfterEach
-    public void teardown() {
-        deletePublicPost();
+        Response deletePublicPost = apiMethods.deletePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
+        assertions.assertStatusCode200(deletePublicPost.statusCode());
+        assertions.assertResponseBodyIsEmpty(deletePublicPost);
     }
 
     @Test
@@ -26,32 +31,48 @@ public class PublicPostPostTest extends BasePostTestSetupBeforeAfter {
     public void when_UserCreatesInvalidPublicPost_expect_InvalidPublicPostIsNotCreated() {
         Response createNewInvalidPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_INVALID);
-        var registrationErrorModel = createNewInvalidPublicPost.as(ErrorModel.class);
+        var postModel = createNewInvalidPublicPost.as(ErrorModel.class);
 
         assertions.assertStatusCode400(createNewInvalidPublicPost.statusCode());
-        assertions.assertBadRequest(registrationErrorModel);
+        assertions.assertBadRequest(postModel);
         assertions.assertInvalidPostContent(createNewInvalidPublicPost);
     }
 
     @Test
     //FTP1-45 [Edit Post] Edit existing public post
     public void when_UserEditsPublicPost_expect_PublicPostIsEdited() {
-        //FPT1-85 [Login Page] Login with valid username and valid password
-        Response signInResponse = apiMethods.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
-
-        assertions.assertStatusCode302(signInResponse.statusCode());
+        Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
+                POST_DESCRIPTION_VALID);
+        assertions.assertStatusCode200(createNewPublicPost.statusCode());
+        assertions.assertPostContent("Valid Post");
+        assertions.assertPostIsPublic(createNewPublicPost);
+        int postId = createNewPublicPost.jsonPath().getInt("postId");
+        assertions.assertPostIdIsPositive(postId);
+        lastPostId = createNewPublicPost.jsonPath().getInt("postId");
 
         Response editPublicPost = apiMethods.editPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 EDIT_POST_DESCRIPTION_VALID, lastPostId);
-
         assertions.assertStatusCode200(editPublicPost.statusCode());
+
+        Response deletePublicPost = apiMethods.deletePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
+        assertions.assertStatusCode200(deletePublicPost.statusCode());
+        assertions.assertResponseBodyIsEmpty(deletePublicPost);
     }
 
     @Test
     //FPT1-55 [Delete Post] Delete an Existing Public Post
-    public void when_UserDeletesPublicPost_expect_LastPublicPostIsDeleted() {
-        Response lastPublicPostDeleted = apiMethods.getLastPost(lastPostId);
+    public void when_UserDeletsPublicPost_expect_PublicPostIsDeleted() {
+        Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
+                POST_DESCRIPTION_VALID);
+        assertions.assertStatusCode200(createNewPublicPost.statusCode());
+        assertions.assertPostContent("Valid Post");
+        assertions.assertPostIsPublic(createNewPublicPost);
+        int postId = createNewPublicPost.jsonPath().getInt("postId");
+        assertions.assertPostIdIsPositive(postId);
+        lastPostId = createNewPublicPost.jsonPath().getInt("postId");
 
-        assertions.assertStatusCode404(lastPublicPostDeleted.statusCode());
+        Response deletePublicPost = apiMethods.deletePost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD, lastPostId);
+        assertions.assertStatusCode200(deletePublicPost.statusCode());
+        assertions.assertResponseBodyIsEmpty(deletePublicPost);
     }
 }

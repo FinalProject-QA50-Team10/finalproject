@@ -12,13 +12,13 @@ public class AdminCommentEditDeleteTest extends BaseCommentTestSetupBeforeAfter 
 
     @BeforeEach
     public void setup() {
-        createPublicPost();
+        when_UserCreatesValidPublicPost_expect_ValidPublicPostIsCreated();
         createCommentAsRegisteredUser();
     }
 
     @AfterEach
     public void teardown() {
-        deletePublicPost();
+        when_UserDeletsPublicPost_expect_PublicPostIsDeleted();
     }
 
     @Test

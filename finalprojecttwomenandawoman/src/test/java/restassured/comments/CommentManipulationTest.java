@@ -12,14 +12,14 @@ public class CommentManipulationTest extends BaseCommentTestSetupBeforeAfter {
 
     @BeforeEach
     public void setup() {
-        createPublicPost();
+        when_UserCreatesValidPublicPost_expect_ValidPublicPostIsCreated();
         createCommentAsRegisteredUser();
     }
 
     @AfterEach
     public void teardown() {
         deleteCommentAsRegisteredUser();
-        deletePublicPost();
+        when_UserDeletsPublicPost_expect_PublicPostIsDeleted();
     }
 
     @Test

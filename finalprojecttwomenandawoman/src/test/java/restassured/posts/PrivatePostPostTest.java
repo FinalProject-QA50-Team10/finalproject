@@ -11,14 +11,21 @@ import static com.telerikacademy.testframework.api.utils.Constants.*;
 
 public class PrivatePostPostTest extends BasePostTestSetupBeforeAfter {
 
-    @BeforeEach
-    public void setup() {
-        createPrivatePost();
-    }
+    @Test
+    //FPT1-26 [Add New Post] Create Private Post
+    public void when_UserCreatesValidPrivatePost_expect_ValidPrivatePostIsCreated() {
+        Response createNewPrivatePost = apiMethods.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
+                POST_DESCRIPTION_VALID);
+        assertions.assertStatusCode200(createNewPrivatePost.statusCode());
+        assertions.assertPostContent("Valid Post");
+        assertions.assertPostIsNotPublic(createNewPrivatePost);
+        int postId = createNewPrivatePost.jsonPath().getInt("postId");
+        assertions.assertPostIdIsPositive(postId);
+        lastPostId = createNewPrivatePost.jsonPath().getInt("postId");
 
-    @AfterEach
-    public void teardown() {
-        deletePrivatePost();
+        Response deletePrivatePost = apiMethods.deletePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
+        assertions.assertStatusCode200(deletePrivatePost.statusCode());
+        assertions.assertResponseBodyIsEmpty(deletePrivatePost);
     }
 
     @Test
@@ -26,7 +33,6 @@ public class PrivatePostPostTest extends BasePostTestSetupBeforeAfter {
     public void when_UserCreatesInvalidPrivatePost_expect_InvalidPrivatePostIsNotCreated() {
         Response createNewInvalidPrivatePost = apiMethods.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
                 POST_DESCRIPTION_INVALID);
-
         assertions.assertStatusCode400(createNewInvalidPrivatePost.statusCode());
 
         var registrationErrorModel = createNewInvalidPrivatePost.as(ErrorModel.class);
@@ -37,23 +43,39 @@ public class PrivatePostPostTest extends BasePostTestSetupBeforeAfter {
     @Test
     //FTP1-46 [Edit Post] Edit existing private post
     public void when_UserEditsPrivatePost_expect_PrivatePostIsEdited() {
-
-        //FPT1-85 [Login Page] Login with valid username and valid password
-        Response signInResponse = apiMethods.signInUser(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
-
-        assertions.assertStatusCode302(signInResponse.statusCode());
+        Response createNewPrivatePost = apiMethods.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
+                POST_DESCRIPTION_VALID);
+        assertions.assertStatusCode200(createNewPrivatePost.statusCode());
+        assertions.assertPostContent("Valid Post");
+        assertions.assertPostIsNotPublic(createNewPrivatePost);
+        int postId = createNewPrivatePost.jsonPath().getInt("postId");
+        assertions.assertPostIdIsPositive(postId);
+        lastPostId = createNewPrivatePost.jsonPath().getInt("postId");
 
         Response editPrivatePost = apiMethods.editPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
                 EDIT_POST_DESCRIPTION_VALID, lastPostId);
-
         assertions.assertStatusCode200(editPrivatePost.statusCode());
+
+        Response deletePrivatePost = apiMethods.deletePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
+        assertions.assertStatusCode200(deletePrivatePost.statusCode());
+        assertions.assertResponseBodyIsEmpty(deletePrivatePost);
     }
 
     @Test
     //FPT1-56 [Delete Post] Delete an Existing Private Post
-    public void when_UserDeletesPrivatePost_expect_LastPrivatePostIsDeleted() {
-        Response lastPrivatePostDeleted = apiMethods.getLastPost(lastPostId);
+    public void when_UserDeletesPrivatePost_expect_PrivatePostIsDeleted() {
+        Response createNewPrivatePost = apiMethods.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
+                POST_DESCRIPTION_VALID);
+        assertions.assertStatusCode200(createNewPrivatePost.statusCode());
+        assertions.assertPostContent("Valid Post");
+        assertions.assertPostIsNotPublic(createNewPrivatePost);
+        int postId = createNewPrivatePost.jsonPath().getInt("postId");
+        assertions.assertPostIdIsPositive(postId);
+        lastPostId = createNewPrivatePost.jsonPath().getInt("postId");
 
-        assertions.assertStatusCode404(lastPrivatePostDeleted.statusCode());
+        Response deletePrivatePost = apiMethods.deletePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD, lastPostId);
+        assertions.assertStatusCode200(deletePrivatePost.statusCode());
+        assertions.assertResponseBodyIsEmpty(deletePrivatePost);
     }
+
 }
