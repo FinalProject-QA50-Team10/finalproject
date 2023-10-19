@@ -138,7 +138,7 @@ Postman:
 1. Open and run TwoMenAndWomanPostman.bat file to obtain Postman report.
 2. Open and run TwoMenAndWomanPostman.bash file to obtain Postman report. 
 
-# 7. These documents contain the test results and the summary of test from our execution activities:
+#  7. These documents contain the test results and the summary of test from our execution activities:
 ## Manual Testing Report:
 - URL: https://finalprojectqa50.atlassian.net/plugins/servlet/ac/com.xpandit.plugins.xray/testplans-metrics-report-page?project.key=FPT1&project.id=10004&ac.reportId=652d525dabf4f5e75dff05d2
 ## Postman Report:
