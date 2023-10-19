@@ -134,6 +134,7 @@ https://fast-plains-73661-971f43405213.herokuapp.com/swagger-ui.html#/
 Rest Assured and Selenium:
 1. Open and run run-selenuim-and-rest-tests.bat file to obtain the Rest Assured and Selenium reports.
 2. Open and run run-selenium-and-rest-tests-bash.sh file to obtain the Rest Assured and Selenium reports.
+
 Postman:
 1. Open and run TwoMenAndWomanPostman.bat file to obtain Postman report.
 2. Open and run TwoMenAndWomanPostman.bash file to obtain Postman report. 
