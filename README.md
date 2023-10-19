@@ -104,9 +104,9 @@ Test script defines the various steps as well as instructions that are executed 
 https://fast-plains-73661-971f43405213.herokuapp.com/swagger-ui.html#/
 
 ### Framework:
-1. IDEA IntelliJ project - Rest Assured and Selenium WebDriver framework.
-2. run-selenuim-and-rest-tests.bat file to run the tests.
-3. run-selenium-and-rest-tests-bash.sh file to run the tests.
+- IDEA IntelliJ project - Rest Assured and Selenium WebDriver framework.
+- run-selenuim-and-rest-tests.bat file to run the tests.
+- run-selenium-and-rest-tests-bash.sh file to run the tests.
 
 ### Postman:
 - Postman environment & collection
