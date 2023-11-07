@@ -1,6 +1,7 @@
 package test.cases.selenuim;
 
 import com.telerikacademy.testframework.UserActions;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,7 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-    // FPT1-25 [Add New Post] Create Public Post
+    @Description("FPT1-25 [Add New Post] Create Public Post")
     public void when_UserCreatePublicPost_expect_PublicPostIsCreated() {
         postPage.createPost("public");
         postPage.assertPostText();
@@ -29,7 +30,7 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-    // FTP1-26 [Add New Post] Create Private Post
+    @Description("FTP1-26 [Add New Post] Create Private Post")
     public void when_UserCreatePrivatePost_expect_PrivatePostIsCreated() {
         postPage.createPost("private");
         postPage.assertPostPrivateText();
@@ -37,7 +38,7 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-55 [Delete Post] Delete an Existing Public Post
+    @Description("FPT1-55 [Delete Post] Delete an Existing Public Post")
     public void when_UserCreatePublicPost_expect_PublicPostIsDeleted() {
         postPage.createPost("public");
         postPage.assertPostText();
@@ -47,7 +48,7 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-56 [Delete Post] Delete an Existing Private Post
+    @Description("FPT1-56 [Delete Post] Delete an Existing Private Post")
     public void when_UserCreatePrivatePost_expect_PrivatePostIsDeleted() {
         postPage.createPost("private");
         postPage.assertPostPrivateText();
@@ -57,7 +58,7 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-45 [Edit Post] Edit an Existing Public Post
+    @Description("FPT1-45 [Edit Post] Edit an Existing Public Post")
     public void when_UserEditPublicPost_expect_PublicPostIsEdited() {
         postPage.createPost("public");
         postPage.assertPostText();
@@ -69,7 +70,7 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-46 [Edit Post]  Edit an Existing Private Post
+    @Description("FPT1-46 [Edit Post]  Edit an Existing Private Post")
     public void when_UserEditPrivatePost_expect_PrivatePostIsEdited() {
         postPage.createPost("private");
         postPage.assertPostPrivateText();
@@ -81,7 +82,7 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-123 [Like] Like a public post of another user
+    @Description("FPT1-123 [Like] Like a public post of another user")
     public void when_UserLikePublicPost_expect_PostIsLiked() {
         postPage.createPost("public");
         postPage.assertPostText();
@@ -99,7 +100,7 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-    //FTP1-124 [Like] Dislike a public post of another user
+    @Description("FTP1-124 [Like] Dislike a public post of another user")
     public void when_UserDislikePublicPost_expect_PostIsDisliked() {
         postPage.createPost("public");
         postPage.assertPostText();
@@ -119,7 +120,7 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-35 [Add New Post] Create Public Post with a Description Length of 1001 symbols
+    @Description("FPT1-35 [Add New Post] Create Public Post with a Description Length of 1001 symbols")
     public void when_UserCreatePublicPostWithInvalidData_expect_PostNotCreated() {
         String longDescription = UserActions.generateLongString();
         postPage.createPostWithLongDescription("public", longDescription);
@@ -127,7 +128,7 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-36 [Add New Post] Create Private Post with a Description Length of 1001 symbols
+    @Description("FPT1-36 [Add New Post] Create Private Post with a Description Length of 1001 symbols")
     public void when_UserCreatePrivatePostWithInvalidData_expect_PostNotCreated() {
         String longDescription = UserActions.generateLongString();
         postPage.createPostWithLongDescription("private", longDescription);
