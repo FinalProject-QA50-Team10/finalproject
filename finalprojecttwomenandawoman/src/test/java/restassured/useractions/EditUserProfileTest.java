@@ -6,6 +6,7 @@ import com.telerikacademy.testframework.api.models.EditProfileModel;
 import com.telerikacademy.testframework.api.models.ErrorModel;
 import com.telerikacademy.testframework.api.models.UserInformationModel;
 import io.restassured.response.Response;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
@@ -16,7 +17,7 @@ public class EditUserProfileTest {
     private Response userResponse;
 
     @Test
-    //FPT1-1 [Edit Profile] Edit User Profile with Personal Information
+    @Description("FPT1-1 [Edit Profile] Edit User Profile with Personal Information")
     public void when_UserEditsHisProfile_expect_ProfileIsSuccessfullyEdited() {
         userResponse = userAPI.editUserProfile(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD,
                 FOR_EDIT_BIRTHDAY, FOR_EDIT_FIRST_NAME, FOR_EDIT_ID, FOR_EDIT_LAST_NAME);
@@ -30,7 +31,7 @@ public class EditUserProfileTest {
     }
 
     @Test
-    //FPT1-1 [Edit Profile] Edit User Profile with Personal Information
+    @Description("FPT1-1 [Edit Profile] Edit User Profile with Personal Information")
     public void when_UserEditsHisFirstName_expect_FirstNameIsSuccessfullyEdited() {
         var unchangedUser = userAPI.getUserInformation(FOR_EDIT_USERNAME, FOR_EDIT_ID).as(UserInformationModel.class);
         userResponse = userAPI.editUserProfile(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD,
@@ -43,7 +44,7 @@ public class EditUserProfileTest {
     }
 
     @Test
-    //FPT1-1 [Edit Profile] Edit User Profile with Personal Information
+    @Description("FPT1-1 [Edit Profile] Edit User Profile with Personal Information")
     public void when_UserEditsHisLastName_expect_LastNameIsSuccessfullyEdited() {
         var unchangedUser = userAPI.getUserInformation(FOR_EDIT_USERNAME, FOR_EDIT_ID).as(UserInformationModel.class);
         userResponse = userAPI.editUserProfile(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD,
@@ -56,7 +57,7 @@ public class EditUserProfileTest {
     }
 
     @Test
-    //FPT1-23 [Edit Profile] Edit User Profile with Empty Data and Verify Error Handling
+    @Description("FPT1-23 [Edit Profile] Edit User Profile with Empty Data and Verify Error Handling")
     public void when_UserEditsProfileWithEmptyData_expect_ProfileIsNotFound() {
         var unchangedUser = userAPI.getUserInformation(FOR_EDIT_USERNAME, FOR_EDIT_ID).as(UserInformationModel.class);
         userResponse = userAPI.editUserProfile(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD,

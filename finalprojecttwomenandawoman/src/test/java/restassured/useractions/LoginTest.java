@@ -3,6 +3,7 @@ package restassured.useractions;
 import com.telerikacademy.testframework.api.ApiTestAssertions;
 import com.telerikacademy.testframework.api.BaseSetupMethods;
 import io.restassured.response.Response;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
@@ -14,7 +15,7 @@ public class LoginTest {
     private Response loginResponse;
 
     @Test
-    //FPT1-85 [Login Page] Login with valid username and valid password
+    @Description("FPT1-85 [Login Page] Login with valid username and valid password")
     public void when_UnauthenticatedUserLogsInWithValidCredentials_expect_SuccessfulLogin() {
         loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
 
@@ -22,7 +23,7 @@ public class LoginTest {
     }
 
     @Test
-    //FPT1-89 [Login Page] Try to log in with a valid username and invalid password
+    @Description("FPT1-89 [Login Page] Try to log in with a valid username and invalid password")
     public void when_UnauthenticatedUserLogsInWithValidUsernameAndInvalidPassword_expect_UnsuccessfulLogin() {
         loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, GEORGE_BUSH_PASSWORD);
 

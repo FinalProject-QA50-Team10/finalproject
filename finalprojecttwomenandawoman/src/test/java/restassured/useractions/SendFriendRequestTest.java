@@ -4,6 +4,7 @@ import com.telerikacademy.testframework.api.ApiTestAssertions;
 import com.telerikacademy.testframework.api.BaseSetupMethods;
 import com.telerikacademy.testframework.api.models.UserInformationModel;
 import io.restassured.response.Response;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +25,7 @@ public class SendFriendRequestTest {
     }
 
     @Test
-    //FPT1-116 [Friends Request] User sends request to connect with another user
+    @Description("FPT1-116 [Friends Request] User sends request to connect with another user")
     public void when_UserSendsFriendRequestToAnotherUser_expect_RequestSuccessfullySent() {
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
@@ -35,7 +36,7 @@ public class SendFriendRequestTest {
     }
 
     @Test
-    //FPT1-116 [Friends Request] User sends request to connect with another user
+    @Description("FPT1-116 [Friends Request] User sends request to connect with another user")
     public void when_UserSendsFriendRequest_expect_RequestsAreVisible() {
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);
@@ -49,7 +50,7 @@ public class SendFriendRequestTest {
     }
 
     @Test
-    //FPT1-116 [Friends Request] User sends request to connect with another user
+    @Description("FPT1-116 [Friends Request] User sends request to connect with another user")
     public void when_UserSendsFriendRequestToAnotherUser_expect_RequestSuccessfullyAccepted() {
         var userAccepting = userAPI.getUserInformation(RANDOM_USERNAME, LAST_REGISTERED_USER_ID)
                 .as(UserInformationModel.class);

@@ -1,5 +1,6 @@
 package test.cases.selenuim;
 
+import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ public class EditPersonalProfileTests extends BaseTestSetup {
     }
 
     @Test
-    //[Edit Profile] Edit User Profile with Personal Information
+    @Description("[Edit Profile] Edit User Profile with Personal Information")
     public void when_AuthenticatedUserClickEditProfileButton_expect_PersonalProfileFormIsVisible() {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickEditProfileButton();
@@ -31,7 +32,7 @@ public class EditPersonalProfileTests extends BaseTestSetup {
     }
 
     @Test
-    //[Edit Profile] Edit User Profile with Personal Information
+    @Description("[Edit Profile] Edit User Profile with Personal Information")
     public void when_AuthenticatedUserEditPersonalProfileWithValidNewNameAndValidNewEmail_expect_PersonalProfileIsUpdated() {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickEditProfileButton();
@@ -45,7 +46,7 @@ public class EditPersonalProfileTests extends BaseTestSetup {
     }
 
     @Test
-    //[Edit Profile] Edit User Profile with Empty Data in First Name and Verify Error Handling
+    @Description("[Edit Profile] Edit User Profile with Empty Data in First Name and Verify Error Handling")
     public void when_AuthenticatedUserEditPersonalProfileWithEmptyFirstName_expect_ErrorMessageIsVisible() {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickEditProfileButton();

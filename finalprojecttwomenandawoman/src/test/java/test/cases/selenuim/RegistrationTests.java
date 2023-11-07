@@ -1,5 +1,6 @@
 package test.cases.selenuim;
 
+import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ public class RegistrationTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-135 [Registration] Successful Registration
+    @Description("FPT1-135 [Registration] Successful Registration")
     public void when_UnauthenticatedUserFillRegisterFormWithValidData_expect_SuccessfulMessageIsVisible() {
         registerPage.assertPageNavigated();
         registerPage.fillRegisterForm(RANDOM_USERNAME, RANDOM_EMAIL, GEORGE_BUSH_PASSWORD);
@@ -33,7 +34,7 @@ public class RegistrationTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-136 [Registration] Attempt Registration with Empty Fields
+    @Description("FPT1-136 [Registration] Attempt Registration with Empty Fields")
     public void when_UnauthenticatedUserFillRegisterFormWithEmptyData_expect_Error() {
         registerPage.assertPageNavigated();
         registerPage.fillRegisterForm(EMPTY_STRING, EMPTY_STRING, EMPTY_STRING);
@@ -41,7 +42,7 @@ public class RegistrationTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-158 [Registration] Attempt Registration With Mismatched Passwords
+    @Description("FPT1-158 [Registration] Attempt Registration With Mismatched Passwords")
     public void when_UnauthenticatedUserFillRegisterFormWithInvalidPassword_expect_ErrorMessageIsVisible() {
         registerPage.assertPageNavigated();
         registerPage.fillRegisterForm(RANDOM_USERNAME, RANDOM_EMAIL, INVALID_PASSWORD);
@@ -51,7 +52,7 @@ public class RegistrationTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-162 [Registration] Attempt Registration With Email Containing Spaces
+    @Description("FPT1-162 [Registration] Attempt Registration With Email Containing Spaces")
     public void when_UnauthenticatedUserFillRegisterFormWithInvalidEmail_expect_ErrorMessageIsVisible() {
         registerPage.assertPageNavigated();
         registerPage.fillRegisterForm(RANDOM_USERNAME, INVALID_EMAIL, MR_BEAST_PASSWORD);
@@ -61,7 +62,7 @@ public class RegistrationTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-143 [Registration] Attempt Registration With Already Existing Username
+    @Description("FPT1-143 [Registration] Attempt Registration With Already Existing Username")
     public void when_UnauthenticatedUserFillRegisterFormWithAlreadyExistingUsername_expect_ErrorMessageIsVisible() {
         registerPage.assertPageNavigated();
         registerPage.fillRegisterForm(MR_BEAST_USERNAME, RANDOM_EMAIL, MR_BEAST_PASSWORD);

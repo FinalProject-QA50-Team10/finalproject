@@ -1,5 +1,6 @@
 package test.cases.selenuim;
 
+import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ public class FriendsRequestTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-116 [Friends Request] User sends a request to connect with another user
+    @Description("FPT1-116 [Friends Request] User sends a request to connect with another user")
     public void when_AuthenticatedUserSendsRequestToConnectWithAnotherUser_expect_SuccessfulMessageIsVisible() {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickConnectButton();
@@ -38,7 +39,7 @@ public class FriendsRequestTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-116 [Friends Request] User sends a request to connect with another user
+    @Description("FPT1-116 [Friends Request] User sends a request to connect with another user")
     public void when_AuthenticatedUserSendsRequestToConnectWithAnotherUser_expect_SuccessfulAcceptedRequest() {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickConnectButton();
@@ -61,7 +62,7 @@ public class FriendsRequestTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-116 [Friends Request] User sends a request to connect with another user
+    @Description("FPT1-116 [Friends Request] User sends a request to connect with another user")
     public void when_TwoUsersAreConnectedAndOneOfThemClickDisconnectButton_expect_DisconnectButtonIsVisible() {
         personalProfilePage.assertPageNavigated();
         personalProfilePage.clickConnectButton();

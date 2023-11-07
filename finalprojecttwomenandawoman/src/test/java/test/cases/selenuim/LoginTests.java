@@ -1,5 +1,6 @@
 package test.cases.selenuim;
 
+import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,7 @@ public class LoginTests extends BaseTestSetup {
     }
 
     @Test
-    //[Login Page] Verify Sing in button functionality and Login page elements
+    @Description("[Login Page] Verify Sing in button functionality and Login page elements")
     public void when_UnauthenticatedUserNavigateToLoginPage_expect_LoginPageElementsAreVisible() {
         loginPage.assertPageNavigated();
         loginPage.assertLoginPageTitle();
@@ -30,7 +31,7 @@ public class LoginTests extends BaseTestSetup {
     }
 
     @Test
-    //[Login Page] Login with valid username and valid password
+    @Description("[Login Page] Login with valid username and valid password")
     public void when_UnauthenticatedUserLoginWithValidCredentials_expect_SuccessfulHomePageElementsAreVisible() {
         loginPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
@@ -42,7 +43,7 @@ public class LoginTests extends BaseTestSetup {
     }
 
     @Test
-    //[Login Page] Try to log in with an empty username and an empty password
+    @Description("[Login Page] Try to log in with an empty username and an empty password")
     public void when_UnauthenticatedUserLoginWithEmptyUsernameAndEmptyPassword_expect_ErrorMessage() {
         loginPage.assertPageNavigated();
         loginPage.login(EMPTY_STRING, EMPTY_STRING);
@@ -52,7 +53,7 @@ public class LoginTests extends BaseTestSetup {
     }
 
     @Test
-    //[Login Page] Try to log in with a valid username and invalid password
+    @Description("[Login Page] Try to log in with a valid username and invalid password")
     public void when_UnauthenticatedUserLoginWithValidUsernameAndInvalidPassword_expect_ErrorMessage() {
         loginPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, MR_BEAST_PASSWORD);
