@@ -35,5 +35,4 @@ public class FeedTests extends BaseTestSetup {
         actions.waitForElementVisible(EXPLORE_POST_BUTTON);
         actions.assertElementPresent(EXPLORE_POST_BUTTON);
     }
-
 }

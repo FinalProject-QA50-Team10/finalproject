@@ -10,6 +10,7 @@ public class PostsModel extends Object {
     public String picture;
     public String date;
     public ArrayList<Object> likes;
+
     public ArrayList<Object> comments;
     public int rank;
     public CategoryModel category;

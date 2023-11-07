@@ -68,7 +68,6 @@ public class UserActions {
     }
 
     public void dragAndDropElement(String fromElementLocator, String toElementLocator) {
-
         String fromLocator = getLocatorValueByKey(fromElementLocator);
         WebElement fromElement = driver.findElement(By.xpath(fromLocator));
 
@@ -98,11 +97,8 @@ public class UserActions {
     }
 
     public void waitForElementPresent(String locator, Object... arguments) {
-        // TODO: Implement the method
-        // 1. Initialize Wait utility with default timeout from properties
         int defaultTimeout = Integer.parseInt(getConfigPropertyByKey("config.defaultTimeoutSeconds"));
-        // 2. Use the method that checks for Element present
-        // 3. Fail the test with meaningful error message in case the element is not present
+
         waitForElementPresenceUntilTimeout(locator, defaultTimeout, arguments);
     }
 
@@ -161,14 +157,11 @@ public class UserActions {
     }
 
     public void assertElementAttribute(String locator, String attributeName, String attributeValue) {
-        // TODO: Implement the method
-        // 1. Find Element using the locator value from Properties
         String xpath = getLocatorValueByKey(locator);
         WebElement element = driver.findElement(By.xpath(xpath));
-        // 2. Get the element attribute
         String value = element.getAttribute(attributeName);
-        // 3. Assert equality with expected value
-        Assertions.assertEquals(format("Element with locator %s doesn't match", attributeName), getLocatorValueByKey(attributeValue), value);
+        Assertions.assertEquals(format("Element with locator %s doesn't match", attributeName),
+                getLocatorValueByKey(attributeValue), value);
     }
 
 
@@ -220,13 +213,9 @@ public class UserActions {
         return driver.findElements(By.xpath(locator));
     }
 
-    public String getElementAttribute(String locator, String attributeName) { // attributeName = po id, x-path..
-        // TODO: Implement the method
-        // 1. Find Element using the locator value from Properties
+    public String getElementAttribute(String locator, String attributeName) {
         String locatorKey = getLocatorValueByKey(locator);
         WebElement element = driver.findElement(By.xpath(locatorKey));
-        // 2. Get the element attribute
-        // 3. Return the expected value
         return element.getAttribute(attributeName);
     }
 
@@ -236,7 +225,6 @@ public class UserActions {
 
         Actions actions = new Actions(driver);
         actions.scrollToElement(element);
-        //  actions.moveToElement(element);
         actions.perform();
     }
 
@@ -288,6 +276,4 @@ public class UserActions {
     private String getLocatorValueByKey(String locator, Object[] arguments) {
         return format(getUIMappingByKey(locator), arguments);
     }
-
-
 }

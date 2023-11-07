@@ -80,6 +80,4 @@ public class PersonalProfilePage extends BasePage {
         actions.waitForElementVisible(DISCONNECT_BUTTON_PATH);
         actions.assertElementPresent(DISCONNECT_BUTTON_PATH);
     }
-
-
 }

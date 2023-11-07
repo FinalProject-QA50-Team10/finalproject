@@ -13,6 +13,7 @@ public class Constants {
     public static final String ADMIN_NAME = "WEare.admin.username";
     public static final String ADMIN_PASSWORD = "WEare.admin.password";
     public static final String GEORGE_BUSH_NAME = "George Bush";
+
     public static final String GEORGE_BUSH_USERNAME = "WEare.GeorgeBush.username";
     public static final String GEORGE_BUSH_FIRST_NAME = "George";
     public static final String GEORGE_BUSH_LAST_NAME = " Bush";

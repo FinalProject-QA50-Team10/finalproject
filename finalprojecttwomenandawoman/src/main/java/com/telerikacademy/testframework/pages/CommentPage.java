@@ -114,6 +114,5 @@ public class CommentPage extends BasePage {
         Assertions.assertEquals(Utils.getConfigPropertyByKey(POSTS_URL), currentUrl,
                 "Landed URL is not as expected. Actual URL: " + currentUrl + ". Expected URL: " + POSTS_URL);
     }
-
 }
 

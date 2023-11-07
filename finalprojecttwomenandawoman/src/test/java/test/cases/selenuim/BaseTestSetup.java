@@ -10,7 +10,6 @@ import static com.telerikacademy.testframework.pages.Constants.HOME_PAGE;
 public class BaseTestSetup {
 
     UserActions actions;
-
     LoginPage loginPage;
     UnauthenticatedUserHomePage unauthenticatedUser;
     RegistrationPage registerPage;
