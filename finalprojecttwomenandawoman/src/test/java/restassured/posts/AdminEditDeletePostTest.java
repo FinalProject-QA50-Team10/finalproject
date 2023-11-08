@@ -1,6 +1,7 @@
 package restassured.posts;
 
 import io.restassured.response.Response;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
 import restassured.base.BasePostTestSetupBeforeAfter;
 
@@ -9,7 +10,7 @@ import static com.telerikacademy.testframework.api.utils.Constants.*;
 public class AdminEditDeletePostTest extends BasePostTestSetupBeforeAfter {
 
     @Test
-    //FPT1-61 [Delete Post] Delete an Existing Post as Admin
+    @Description("FPT1-61 [Delete Post] Delete an Existing Post as Admin")
     public void when_AdminDeletesPost_expect_PostIsDeleted() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
@@ -29,7 +30,7 @@ public class AdminEditDeletePostTest extends BasePostTestSetupBeforeAfter {
     }
 
     @Test
-    //FPT1-60 [Edit Post] Edit existing public post as Admin
+    @Description("FPT1-60 [Edit Post] Edit existing public post as Admin")
     public void when_AdminEditsPost_expect_PostIsEdited() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
