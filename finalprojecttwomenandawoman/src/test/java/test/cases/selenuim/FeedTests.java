@@ -1,5 +1,6 @@
 package test.cases.selenuim;
 
+import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ public class FeedTests extends BaseTestSetup {
     }
 
     @Test
-    //FPT1-189 [Feed] Verify Unauthenticated Users Can Access Public Feed
+    @Description("FPT1-189 [Feed] Verify Unauthenticated Users Can Access Public Feed")
     public void when_NavigatingToPublicFeedWithoutAuthentication_expect_FeedIsAccessible() {
         feedPage.navigateToPublicFeed();
 

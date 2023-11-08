@@ -1,6 +1,7 @@
 package restassured.comments;
 
 import io.restassured.response.Response;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
 import restassured.base.BaseCommentTestSetupBeforeAfter;
 
@@ -9,7 +10,7 @@ import static com.telerikacademy.testframework.api.utils.Constants.*;
 public class CommentInvalidCreationTest extends BaseCommentTestSetupBeforeAfter {
 
     @Test
-    //FPT1-170 [Comment] Create Comment With 1001 Characters as Registered User
+    @Description("FPT1-170 [Comment] Create Comment With 1001 Characters as Registered User")
     public void when_UserCreatesInvalidComment_expect_ErrorStatusCode() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);

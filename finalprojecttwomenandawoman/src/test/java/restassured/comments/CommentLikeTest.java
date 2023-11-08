@@ -1,6 +1,7 @@
 package restassured.comments;
 
 import io.restassured.response.Response;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
 import restassured.base.BaseCommentTestSetupBeforeAfter;
 
@@ -9,7 +10,7 @@ import static com.telerikacademy.testframework.api.utils.Constants.*;
 public class CommentLikeTest extends BaseCommentTestSetupBeforeAfter {
 
     @Test
-    //FPT1-125 [Like] Verify comments Like button
+    @Description("FPT1-125 [Like] Verify comments Like button")
     public void when_UserLikesComment_expect_CommentIsLiked() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
@@ -36,7 +37,7 @@ public class CommentLikeTest extends BaseCommentTestSetupBeforeAfter {
     }
 
     @Test
-    //FPT1-126 [Like] Verify comments Dislike button
+    @Description("FPT1-126 [Like] Verify comments Dislike button")
     public void when_UserDislikesComment_expect_CommentIsDisliked() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);

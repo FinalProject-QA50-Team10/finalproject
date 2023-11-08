@@ -1,6 +1,7 @@
 package restassured.comments;
 
 import io.restassured.response.Response;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
 import restassured.base.BaseCommentTestSetupBeforeAfter;
 
@@ -9,7 +10,7 @@ import static com.telerikacademy.testframework.api.utils.Constants.*;
 public class AdminCommentEditDeleteTest extends BaseCommentTestSetupBeforeAfter {
 
     @Test
-    //FPT1-62 [Edit Comment] Edit an Existing Comment as Admin
+    @Description("FPT1-62 [Edit Comment] Edit an Existing Comment as Admin")
     public void when_AdminEditsComment_expect_CommentIsEdited() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
@@ -34,7 +35,7 @@ public class AdminCommentEditDeleteTest extends BaseCommentTestSetupBeforeAfter 
     }
 
     @Test
-    //FPT1-63 [Delete Comment] Delete an Existing Comment as Admin
+    @Description("FPT1-63 [Delete Comment] Delete an Existing Comment as Admin")
     public void when_AdminDeletesComment_expect_CommentIsDeleted() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);

@@ -1,6 +1,7 @@
 package restassured.comments;
 
 import io.restassured.response.Response;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
 import restassured.base.BaseCommentTestSetupBeforeAfter;
 
@@ -9,7 +10,7 @@ import static com.telerikacademy.testframework.api.utils.Constants.*;
 public class CommentManipulationTest extends BaseCommentTestSetupBeforeAfter {
 
     @Test
-    //FPT1-167 [Comment] Create Comment Successfully as Registered User
+    @Description("FPT1-167 [Comment] Create Comment Successfully as Registered User")
     public void when_UserCreatesComment_expect_CommentIsCreated() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
@@ -31,7 +32,7 @@ public class CommentManipulationTest extends BaseCommentTestSetupBeforeAfter {
     }
 
     @Test
-    //FPT1-178 [Comment] Edit Comment Successfully as Registered User
+    @Description("FPT1-178 [Comment] Edit Comment Successfully as Registered User")
     public void when_UserEditsComment_expect_CommentIsEdited() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
@@ -58,7 +59,7 @@ public class CommentManipulationTest extends BaseCommentTestSetupBeforeAfter {
     }
 
     @Test
-    //FPT1-182 [Comment] Delete Comment Successfully as Registered User
+    @Description("FPT1-182 [Comment] Delete Comment Successfully as Registered User")
     public void when_UserDeletesComment_expect_CommentIsDeleted() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
