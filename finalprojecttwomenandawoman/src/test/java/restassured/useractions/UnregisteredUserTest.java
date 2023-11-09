@@ -20,7 +20,7 @@ public class UnregisteredUserTest {
     private Response unregisteredUser;
 
     @Test
-    @Description("FPT1-189 [Feed] Verify Unauthenticated Users Can Access Public Feed")
+    @Description("FPT1-421 [Public Feed] Verify Unauthenticated Users Can Access Public Feed")
     public void when_GuestUserBrowsesPublicPosts_expect_AllPostsArePublic() {
         unregisteredUser = userActionsAPI.browseAllPublicPosts();
         List<PostsModel> posts = userActionsAPI.getListOfPosts(unregisteredUser);
@@ -31,7 +31,7 @@ public class UnregisteredUserTest {
     }
 
     @Test
-    @Description("FPT1-103 [Search Form] Search users with a valid first and valid second name as a guest")
+    @Description("FPT1-422 [Search Form] Search users with a valid first and valid second name as a guest")
     public void when_GuestUserSearchesForUserWithValidName_expect_Success() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_NAME);
         List<SearchModel> users = assertions.getListOfUsers(unregisteredUser);
@@ -42,7 +42,17 @@ public class UnregisteredUserTest {
     }
 
     @Test
-    @Description("FPT1-101 [Search Form] Search users with empty name and empty job title as a guest")
+    @Description("FPT1-496 [Search Form] Search users with empty name and empty job title as a guest")
+    public void when_GuestUserSearchesForUserWithEmptyNameAndEmptyJobTitle_expect_SuccessfulRegisteredUsersAreVisible() {
+        unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, EMPTY_STRING);
+        List<SearchModel> users = assertions.getListOfUsers(unregisteredUser);
+
+        assertions.assertStatusCode200(unregisteredUser.statusCode());
+        assertions.assertListIsNotEmpty(Collections.singletonList(users));
+    }
+
+    @Test
+    @Description("FPT1-496 [Search Form] Search users with empty name and empty job title as a guest")
     public void when_GuestUserSearchForUserWithEmptyNameAndEmptyJobTitle_expected_Success() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, EMPTY_STRING);
         List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
@@ -52,7 +62,7 @@ public class UnregisteredUserTest {
     }
 
     @Test
-    @Description("FPT1-104 [Search Form] Search for users with valid first name as a guest")
+    @Description("FPT1-493 [Search Form] Search users with valid first name as a guest")
     public void when_GuestUserSearchesForUserWithValidFirstName_expect_Success() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_FIRST_NAME);
         List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
@@ -63,7 +73,7 @@ public class UnregisteredUserTest {
     }
 
     @Test
-    @Description("FPT1-105 [Search Form] Search users with valid last name as a guest")
+    @Description("FPT1-494 [Search Form] Search users with valid last name as a guest")
     public void when_GuestUserSearchesForUserWithValidLastName_expect_Success() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, GEORGE_BUSH_LAST_NAME);
         List<SearchModel> users = userActionsAPI.getListOfUsers(unregisteredUser);
@@ -74,7 +84,7 @@ public class UnregisteredUserTest {
     }
 
     @Test
-    @Description("FPT1-226 [Search Form] Search users by invalid first and last name as a guest")
+    @Description("FPT1-495 [Search Form] Search users by invalid first and last name as a guest")
     public void when_GuestUserSearchesForUserWithInvalidName_expect_NotFound() {
         unregisteredUser = userActionsAPI.searchUsersByName(EMPTY_STRING, INVALID_NAME);
         var errorModel = unregisteredUser.as(ErrorModel.class);

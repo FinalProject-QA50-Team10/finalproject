@@ -15,7 +15,7 @@ public class LoginTest {
     private Response loginResponse;
 
     @Test
-    @Description("FPT1-85 [Login Page] Login with valid username and valid password")
+    @Description("FPT1-409 [Authentication] Login with valid username and valid password")
     public void when_UnauthenticatedUserLogsInWithValidCredentials_expect_SuccessfulLogin() {
         loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, MR_BEAST_PASSWORD);
 
@@ -23,7 +23,7 @@ public class LoginTest {
     }
 
     @Test
-    @Description("FPT1-89 [Login Page] Try to log in with a valid username and invalid password")
+    @Description("FPT1-410 [Authentication] Login with a valid username and an invalid password")
     public void when_UnauthenticatedUserLogsInWithValidUsernameAndInvalidPassword_expect_UnsuccessfulLogin() {
         loginResponse = loginAPI.signInUser(MR_BEAST_USERNAME, GEORGE_BUSH_PASSWORD);
 
