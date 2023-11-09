@@ -2,6 +2,7 @@ package restassured.posts;
 
 import com.telerikacademy.testframework.api.models.ErrorModel;
 import io.restassured.response.Response;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
 import restassured.base.BasePostTestSetupBeforeAfter;
 
@@ -10,7 +11,7 @@ import static com.telerikacademy.testframework.api.utils.Constants.*;
 public class PrivatePostPostTest extends BasePostTestSetupBeforeAfter {
 
     @Test
-    //FPT1-26 [Add New Post] Create Private Post
+    @Description("FPT1-26 [Add New Post] Create Private Post")
     public void when_UserCreatesValidPrivatePost_expect_ValidPrivatePostIsCreated() {
         Response createNewPrivatePost = apiMethods.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
                 POST_DESCRIPTION_VALID);
@@ -27,7 +28,7 @@ public class PrivatePostPostTest extends BasePostTestSetupBeforeAfter {
     }
 
     @Test
-    //FTP1-36 [Add New Post] Generate new invalid private post
+    @Description("FTP1-36 [Add New Post] Generate new invalid private post")
     public void when_UserCreatesInvalidPrivatePost_expect_InvalidPrivatePostIsNotCreated() {
         Response createNewInvalidPrivatePost = apiMethods.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
                 POST_DESCRIPTION_INVALID);
@@ -39,7 +40,7 @@ public class PrivatePostPostTest extends BasePostTestSetupBeforeAfter {
     }
 
     @Test
-    //FTP1-46 [Edit Post] Edit existing private post
+    @Description("FTP1-46 [Edit Post] Edit existing private post")
     public void when_UserEditsPrivatePost_expect_PrivatePostIsEdited() {
         Response createNewPrivatePost = apiMethods.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
                 POST_DESCRIPTION_VALID);
@@ -60,7 +61,7 @@ public class PrivatePostPostTest extends BasePostTestSetupBeforeAfter {
     }
 
     @Test
-    //FPT1-56 [Delete Post] Delete an Existing Private Post
+    @Description("FPT1-56 [Delete Post] Delete an Existing Private Post")
     public void when_UserDeletesPrivatePost_expect_PrivatePostIsDeleted() {
         Response createNewPrivatePost = apiMethods.createPrivatePost(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD,
                 POST_DESCRIPTION_VALID);

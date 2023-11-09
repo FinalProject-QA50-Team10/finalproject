@@ -1,6 +1,7 @@
 package restassured.posts;
 
 import io.restassured.response.Response;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
 import restassured.base.BasePostTestSetupBeforeAfter;
 
@@ -9,7 +10,7 @@ import static com.telerikacademy.testframework.api.utils.Constants.*;
 public class PublicPostLikePostTest extends BasePostTestSetupBeforeAfter {
 
     @Test
-    //FPT1-123 [Like] Verify posts Like button
+    @Description("FPT1-123 [Like] Verify posts Like button")
     public void when_UserLikesPublicPost_expect_PublicPostIsLiked() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
@@ -34,7 +35,7 @@ public class PublicPostLikePostTest extends BasePostTestSetupBeforeAfter {
     }
 
     @Test
-    //FPT1-124 [Like] Verify posts Dislike button
+    @Description("FPT1-124 [Like] Verify posts Dislike button")
     public void when_UserDislikesPublicPost_expect_PublicPostIsDisliked() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);

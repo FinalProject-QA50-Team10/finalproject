@@ -2,6 +2,7 @@ package restassured.posts;
 
 import com.telerikacademy.testframework.api.models.ErrorModel;
 import io.restassured.response.Response;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
 import restassured.base.BasePostTestSetupBeforeAfter;
 
@@ -10,7 +11,7 @@ import static com.telerikacademy.testframework.api.utils.Constants.*;
 public class PublicPostPostTest extends BasePostTestSetupBeforeAfter {
 
     @Test
-    //FPT1-25 [Add New Post] Create Public Post
+    @Description("FPT1-25 [Add New Post] Create Public Post")
     public void when_UserCreatesValidPublicPost_expect_ValidPublicPostIsCreated() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
@@ -27,7 +28,7 @@ public class PublicPostPostTest extends BasePostTestSetupBeforeAfter {
     }
 
     @Test
-    //FTP1-35 [Add New Post] Generate new invalid public post
+    @Description("FTP1-35 [Add New Post] Generate new invalid public post")
     public void when_UserCreatesInvalidPublicPost_expect_InvalidPublicPostIsNotCreated() {
         Response createNewInvalidPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_INVALID);
@@ -39,7 +40,7 @@ public class PublicPostPostTest extends BasePostTestSetupBeforeAfter {
     }
 
     @Test
-    //FTP1-45 [Edit Post] Edit existing public post
+    @Description("FTP1-45 [Edit Post] Edit existing public post")
     public void when_UserEditsPublicPost_expect_PublicPostIsEdited() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
@@ -60,7 +61,7 @@ public class PublicPostPostTest extends BasePostTestSetupBeforeAfter {
     }
 
     @Test
-    //FPT1-55 [Delete Post] Delete an Existing Public Post
+    @Description("FPT1-55 [Delete Post] Delete an Existing Public Post")
     public void when_UserDeletesPublicPost_expect_PublicPostIsDeleted() {
         Response createNewPublicPost = apiMethods.createPublicPost(MR_BEAST_USERNAME, MR_BEAST_PASSWORD,
                 POST_DESCRIPTION_VALID);
