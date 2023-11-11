@@ -106,9 +106,36 @@ public class PostPage extends BasePage {
         actions.clickElement(POST_SAVE_BUTTON);
     }
 
+    public void createPostWithBlankDescription(String postType) {
+        actions.waitForElementClickable(POSTS_ADD_NEW_POST);
+        actions.clickElement(POSTS_ADD_NEW_POST);
+        actions.waitForElementClickable(POSTS_VISIBILITY);
+        actions.clickElement(POSTS_VISIBILITY);
+
+        if (postType.equalsIgnoreCase("public")) {
+            actions.waitForElementClickable(POSTS_PUBLIC_VISIBILITY);
+            actions.clickElement(POSTS_PUBLIC_VISIBILITY);
+            actions.waitForElementClickable(POST_MESSAGE_FIELD);
+            actions.typeValueInField(POST_EMPTY_MESSAGE, POST_MESSAGE_FIELD);
+        } else if (postType.equalsIgnoreCase("private")) {
+            actions.waitForElementClickable(POSTS_PRIVATE_VISIBILITY);
+            actions.clickElement(POSTS_PRIVATE_VISIBILITY);
+            actions.waitForElementClickable(POST_MESSAGE_FIELD);
+            actions.typeValueInField(POST_EMPTY_MESSAGE, POST_MESSAGE_FIELD);
+        }
+
+        actions.waitForElementClickable(POST_SAVE_BUTTON);
+        actions.clickElement(POST_SAVE_BUTTON);
+    }
+
     public void assertPostText() {
         actions.waitForElementClickable(POST_TEXT);
         actions.assertElementPresent(POST_TEXT);
+    }
+
+    public void assertPostEmptyText() {
+        actions.waitForElementClickable(POST_EMPTY_TEXT);
+        actions.assertElementPresent(POST_EMPTY_TEXT);
     }
 
     public void assertPostPrivateText() {
@@ -140,6 +167,7 @@ public class PostPage extends BasePage {
         actions.waitForElementClickable(POST_INVALID_TEXT_MESSAGE);
         actions.assertElementPresent(POST_INVALID_TEXT_MESSAGE);
     }
+
     public void assertEditedPostText() {
         actions.waitForElementClickable(EDIT_POST_TEXT);
         actions.assertElementPresent(EDIT_POST_TEXT);

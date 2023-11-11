@@ -38,6 +38,16 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
+    @Description("FTP1-33 [Add New Post] Create Public Post with a Blank Description")
+    public void when_UserCreatePublicPostWithBlankDescription_expect_PublicPostIsNotCreated() {
+        postPage.createPostWithBlankDescription("public");
+        postPage.assertPostEmptyText();
+        postPage.assertPostIsPublic();
+        postPage.deletePost();
+        postPage.assertDeletePostMessage();
+    }
+
+    @Test
     @Description("FPT1-55 [Delete Post] Delete an Existing Public Post")
     public void when_UserCreatePublicPost_expect_PublicPostIsDeleted() {
         postPage.createPost("public");
