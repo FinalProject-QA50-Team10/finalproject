@@ -96,6 +96,7 @@ public class Constants {
     public static final String SEE_USER_PROFILE_BUTTON = "admin.seeUserProfileButton";
     public static final String ENABLE_USER_BUTTON = "admin.enableUserButton";
     public static final String DISABLE_USER_BUTTON = "admin.disableUserButton";
+    public static final String USER_NAMES_AND_SEE_USER_PROFILE = "admin.userNamesAndSeeUserProfile";
 
 
     //##############  POSTS #################

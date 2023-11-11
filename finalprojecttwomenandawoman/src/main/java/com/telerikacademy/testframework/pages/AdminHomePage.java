@@ -47,6 +47,18 @@ public class AdminHomePage extends BasePage {
         actions.clickElement(POST_SAVE_BUTTON);
     }
 
+    public void viewUsersAsAdmin() {
+        actions.waitForElementClickable(ADMIN_ZONE_BUTTON);
+        actions.clickElement(ADMIN_ZONE_BUTTON);
+        actions.waitForElementClickable(VIEW_USERS_BUTTON);
+        actions.clickElement(VIEW_USERS_BUTTON);
+    }
+
+    public void assertAdminCanViewAllUsers() {
+        actions.waitForElementClickable(USER_NAMES_AND_SEE_USER_PROFILE);
+        actions.assertElementPresent(USER_NAMES_AND_SEE_USER_PROFILE);
+    }
+
     public void assertEnableUserButton() {
         actions.waitForElementPresent(ENABLE_USER_BUTTON);
         actions.assertElementPresent(ENABLE_USER_BUTTON);

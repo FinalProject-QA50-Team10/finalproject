@@ -106,4 +106,13 @@ public class AdminTests extends BaseTestSetup {
         adminHomePage.deletePostWithAdminAccess();
         postPage.assertDeletePostMessage();
     }
+
+    @Test
+    @Description("FPT1-64 [View Users] View Users as Admin")
+    public void when_AdminViewUsers_expect_SuccessfulViewingAllUsers() {
+        loginPage.assertPageNavigated();
+        loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
+        adminHomePage.viewUsersAsAdmin();
+        adminHomePage.assertAdminCanViewAllUsers();
+    }
 }
