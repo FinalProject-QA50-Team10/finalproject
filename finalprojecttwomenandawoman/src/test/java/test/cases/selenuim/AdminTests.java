@@ -115,4 +115,20 @@ public class AdminTests extends BaseTestSetup {
         adminHomePage.viewUsersAsAdmin();
         adminHomePage.assertAdminCanViewAllUsers();
     }
+
+    @Test
+    @Description("FTP1-66 [Edit Profile] Edit Personal Profile as Admin")
+    public void when_AdminEditPersonalProfile_expect_PersonalProfileIsSuccessfulEdited() {
+        loginPage.assertPageNavigated();
+        loginPage.login(ADMIN_NAME, ADMIN_PASSWORD);
+        authenticatedUserHomePage.clickPersonalProfileButton();
+        personalProfilePage.clickEditProfileButton();
+        editProfilePage.assertPageNavigated();
+        editProfilePage.fillEditPersonalProfile(
+                FOR_ADMIN_EDIT_FIRST_NAME, FOR_ADMIN_EDIT_LAST_NAME, FOR_ADMIN_EDIT_EMAIL);
+        editProfilePage.assertPageNavigated();
+        editProfilePage.clickPersonalProfileButton();
+        editProfilePage.asserUserNameEdited(FOR_ADMIN_EDIT_FIRST_NAME, FOR_ADMIN_EDIT_LAST_NAME);
+        editProfilePage.assertEmailEdited(FOR_ADMIN_EDIT_EMAIL);
+    }
 }

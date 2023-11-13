@@ -33,6 +33,9 @@ public class Constants {
     public static final String FOR_EDIT_BIRTHDAY = "17/07/2021";
     public static final String FOR_EDIT_FIRST_NAME = "Ryan";
     public static final String FOR_EDIT_LAST_NAME = "Gosling";
+    public static final String FOR_ADMIN_EDIT_FIRST_NAME = "Admin";
+    public static final String FOR_ADMIN_EDIT_LAST_NAME = "Boss";
+    public static final String FOR_ADMIN_EDIT_EMAIL = "admin@gmail.com";
     public static final int INVALID_ID = 800;
     public static final String INVALID_USERNAME = "Barbie";
     public static final String CYRILLIC_USERNAME = "Барби";
