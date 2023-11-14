@@ -63,7 +63,7 @@ public class LoginTests extends BaseTestSetup {
     }
 
     @Test
-    //[Login Page] Try to log in with invalid username and valid password
+    @Description("[Login Page] Try to log in with invalid username and valid password")
     public void when_UnauthenticatedUserLoginWithInvalidUsernameAndValidPassword_expect_ErrorMessage() {
         loginPage.assertPageNavigated();
         loginPage.login(INVALID_USERNAME, MR_BEAST_PASSWORD);
@@ -73,7 +73,7 @@ public class LoginTests extends BaseTestSetup {
     }
 
     @Test
-    //[Login Page] Verify the Logout button functionality
+    @Description("[Login Page] Verify the Logout button functionality")
     public void when_AuthenticatedUserClickLogoutButton_expect_SuccessfulLogout() {
         loginPage.assertPageNavigated();
         loginPage.login(GEORGE_BUSH_USERNAME, GEORGE_BUSH_PASSWORD);
